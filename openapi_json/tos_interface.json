@@ -1,0 +1,1038 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Tos Interface",
+        "description": "\nDalian TOS interface.\n\n## \u6a21\u62df\u8bf7\u6c42\u8bf4\u660e/\u793a\u4f8b\n\n### position\n\n\u5806\u573a\uff1aASCTP.1.10.B.F.1 (1\u53f7\u5806\u573a.10\u8d1d.B\u8f66\u9053.\u524d20\u5c3a.\u7bb1\u7c7b\u578b1)\n\n\u5cb8\u6865\uff1aQCTP.01.A.F.1  (1\u53f7\u5cb8\u6865A\u8f66\u9053,\u524d20\u5c3a,\u7bb1\u7c7b\u578b1)\n\nQCTP.01.A.R.1(1\u53f7\u5cb8\u6865A\u8f66\u9053,\u540e20\u5c3a,\u7bb1\u7c7b\u578b1)\n\nQCTP.01.A.C.1 (1\u53f7\u5cb8\u6865A\u8f66\u9053,\u53cc20/40/45\u5c3a,\u7bb1\u7c7b\u578b1)\n\n\u7bb1\u7c7b\u578b\u8bf4\u660e 1\uff1a\u535520\u5c3a 2\uff1a\u53cc20\u5c3a 3\uff1a40\u5c3a 4\uff1a45\u5c3a\n\n\u9501\u7ad9\uff1aLOCK.05\n\n\u5145\u7535\u7ad9\uff1aCHARGE.2\n\n### task_type\n\n1: # \u6536\u7bb1\n\n2: # \u9001\u7bb1\n\n3: # \u505c\u8f66\u573a\n\n4: # \u5145\u7535\u7ad9\n\n6: # \u9501\u7ad9\n\n### cmd_type\n\nU: \u5378\u8239\n\nL: \u88c5\u8239\n\nM: \u79fb\u7bb1\n\n### device\n\n\u76ee\u6807 armg, qc \u4efb\u52a1\u5ffd\u7565\u6b64\u9879\n\n\n\n### recommend_path\n\n\u683c\u5f0f\uff1a\"ROUTE.1:15.A:A24.2:22\"\uff0c \u628a\u5176\u4e2d\u7684 A24 \u6362\u6210\u522b\u7684\u503c\u53ef\u9009\u62e9\u4e0b\u6865\u70b9\uff0c\u5bf9\u5e94\u5173\u7cfb\u5982\u4e0b\uff1a\n\n```\n'A14': 'VPB11',\n'A15': 'VPB10',\n'A17': 'VPB09',\n'A18': 'VPB08',\n'A20': 'VPB07',\n'A21': 'VPB06',\n'A22': 'VPB05',\n'A24': 'VPB04',\n'A25': 'VPB03',\n'A28': 'VPB02',\n\"default\": \"VPB50\",\n```\n\n",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/fms/area/inventory/query/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Area Inventory Query",
+                "operationId": "area_inventory_query_fms_area_inventory_query__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AreaInventoryQuery"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fms/wacreated/response/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Wa Created Response",
+                "operationId": "wa_created_response_fms_wacreated_response__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WaCreatedResponse"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fms/wacancelled/response/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Wa Cancelled Response",
+                "operationId": "wa_cancelled_response_fms_wacancelled_response__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WaCancelledResponse"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fms/sc/status/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Sc Status",
+                "operationId": "sc_status_fms_sc_status__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScStatus"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fms/area/availability/updated/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Area Availability Updated",
+                "operationId": "area_availability_updated_fms_area_availability_updated__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AreaAvailabilityUpdated"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fms/container/change/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Container Change",
+                "operationId": "container_change_fms_container_change__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContainerUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ail/message/": {
+            "post": {
+                "tags": [
+                    "tos"
+                ],
+                "summary": "Ail Message",
+                "operationId": "ail_message_ail_message__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Item",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/work/queue/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Import Queue",
+                "operationId": "import_queue_upload_work_queue__post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_import_queue_upload_work_queue__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/work/inventory/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Import Inventory",
+                "operationId": "import_inventory_upload_work_inventory__post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_import_inventory_upload_work_inventory__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/inventory_import_degree/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Inventory Import Degree",
+                "operationId": "inventory_import_degree_upload_inventory_import_degree__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InventoryImportDegree"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/work/instruction/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Import Instruction",
+                "operationId": "import_instruction_upload_work_instruction__post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_import_instruction_upload_work_instruction__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/new/login/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Login",
+                "operationId": "login_upload_new_login__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/new/button/send/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "New Button Send",
+                "operationId": "new_button_send_upload_new_button_send__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ButtonSend"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/new/button/refresh/": {
+            "get": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "New Button Refresh",
+                "operationId": "new_button_refresh_upload_new_button_refresh__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/upload/gui/inventory/": {
+            "post": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Gui Import Inventory",
+                "operationId": "gui_import_inventory_upload_gui_inventory__post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_gui_import_inventory_upload_gui_inventory__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory_data/finish_workinstruction.csv": {
+            "get": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Finish Workinstruction",
+                "operationId": "finish_workinstruction_inventory_data_finish_workinstruction_csv_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory_data/init_yard.csv": {
+            "get": {
+                "tags": [
+                    "usb_tos"
+                ],
+                "summary": "Init Yard",
+                "operationId": "init_yard_inventory_data_init_yard_csv_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AreaAvailabilityUpdated": {
+                "title": "AreaAvailabilityUpdated",
+                "required": [
+                    "messageID",
+                    "messageName",
+                    "AreaStatusEvent_type",
+                    "Area_type",
+                    "status",
+                    "Position_list"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageID": {
+                        "title": "Messageid",
+                        "type": "string"
+                    },
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "AreaStatusEvent_type": {
+                        "title": "Areastatusevent Type",
+                        "type": "string"
+                    },
+                    "Area_type": {
+                        "title": "Area Type",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "string"
+                    },
+                    "Position_list": {
+                        "title": "Position List",
+                        "type": "array",
+                        "items": {}
+                    }
+                }
+            },
+            "AreaInventoryQuery": {
+                "title": "AreaInventoryQuery",
+                "required": [
+                    "messageID",
+                    "messageName",
+                    "timeStamp",
+                    "InventoryStatusQueryEvent_type",
+                    "Area_type",
+                    "Position_type",
+                    "block"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageID": {
+                        "title": "Messageid",
+                        "type": "string"
+                    },
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "timeStamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "InventoryStatusQueryEvent_type": {
+                        "title": "Inventorystatusqueryevent Type",
+                        "type": "string"
+                    },
+                    "Area_type": {
+                        "title": "Area Type",
+                        "type": "string"
+                    },
+                    "Position_type": {
+                        "title": "Position Type",
+                        "type": "string"
+                    },
+                    "block": {
+                        "title": "Block",
+                        "type": "string"
+                    }
+                }
+            },
+            "Body_gui_import_inventory_upload_gui_inventory__post": {
+                "title": "Body_gui_import_inventory_upload_gui_inventory__post",
+                "required": [
+                    "uploadfile"
+                ],
+                "type": "object",
+                "properties": {
+                    "uploadfile": {
+                        "title": "Uploadfile",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "Body_import_instruction_upload_work_instruction__post": {
+                "title": "Body_import_instruction_upload_work_instruction__post",
+                "required": [
+                    "uploadfile"
+                ],
+                "type": "object",
+                "properties": {
+                    "uploadfile": {
+                        "title": "Uploadfile",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "Body_import_inventory_upload_work_inventory__post": {
+                "title": "Body_import_inventory_upload_work_inventory__post",
+                "required": [
+                    "uploadfile"
+                ],
+                "type": "object",
+                "properties": {
+                    "uploadfile": {
+                        "title": "Uploadfile",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "Body_import_queue_upload_work_queue__post": {
+                "title": "Body_import_queue_upload_work_queue__post",
+                "required": [
+                    "uploadfile"
+                ],
+                "type": "object",
+                "properties": {
+                    "uploadfile": {
+                        "title": "Uploadfile",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "ButtonSend": {
+                "title": "ButtonSend",
+                "required": [
+                    "task_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "task_name": {
+                        "title": "Task Name",
+                        "type": "string"
+                    }
+                }
+            },
+            "ContainerUpdate": {
+                "title": "ContainerUpdate",
+                "required": [
+                    "messageID",
+                    "messageName",
+                    "InventoryStatusEvent_type",
+                    "uid",
+                    "number",
+                    "ISO",
+                    "isoLenFt",
+                    "length",
+                    "width",
+                    "height",
+                    "weight",
+                    "Position_type",
+                    "area",
+                    "lane",
+                    "offsetMm",
+                    "orientation"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageID": {
+                        "title": "Messageid",
+                        "type": "string"
+                    },
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "InventoryStatusEvent_type": {
+                        "title": "Inventorystatusevent Type",
+                        "type": "string"
+                    },
+                    "uid": {
+                        "title": "Uid",
+                        "type": "string"
+                    },
+                    "number": {
+                        "title": "Number",
+                        "type": "string"
+                    },
+                    "ISO": {
+                        "title": "Iso",
+                        "type": "string"
+                    },
+                    "isoLenFt": {
+                        "title": "Isolenft",
+                        "type": "string"
+                    },
+                    "length": {
+                        "title": "Length",
+                        "type": "string"
+                    },
+                    "width": {
+                        "title": "Width",
+                        "type": "string"
+                    },
+                    "height": {
+                        "title": "Height",
+                        "type": "string"
+                    },
+                    "weight": {
+                        "title": "Weight",
+                        "type": "string"
+                    },
+                    "Position_type": {
+                        "title": "Position Type",
+                        "type": "string"
+                    },
+                    "area": {
+                        "title": "Area",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
+                        "type": "string"
+                    },
+                    "offsetMm": {
+                        "title": "Offsetmm",
+                        "type": "string"
+                    },
+                    "orientation": {
+                        "title": "Orientation",
+                        "type": "string"
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "InventoryImportDegree": {
+                "title": "InventoryImportDegree",
+                "required": [
+                    "msg"
+                ],
+                "type": "object",
+                "properties": {
+                    "msg": {
+                        "title": "Msg",
+                        "type": "string"
+                    },
+                    "code": {
+                        "title": "Code",
+                        "type": "integer",
+                        "default": 200
+                    }
+                }
+            },
+            "Login": {
+                "title": "Login",
+                "required": [
+                    "user_name",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "user_name": {
+                        "title": "User Name",
+                        "type": "string"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "type": "string"
+                    }
+                }
+            },
+            "ScStatus": {
+                "title": "ScStatus",
+                "required": [
+                    "vehicle_id",
+                    "mode"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "mode": {
+                        "title": "Mode",
+                        "type": "string"
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            },
+            "WaCancelledResponse": {
+                "title": "WaCancelledResponse",
+                "required": [
+                    "messageID",
+                    "messageName",
+                    "status",
+                    "name",
+                    "equipType",
+                    "AckMessage_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageID": {
+                        "title": "Messageid",
+                        "type": "string"
+                    },
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "equipType": {
+                        "title": "Equiptype",
+                        "type": "string"
+                    },
+                    "AckMessage_code": {
+                        "title": "Ackmessage Code",
+                        "type": "string"
+                    }
+                }
+            },
+            "WaCreatedResponse": {
+                "title": "WaCreatedResponse",
+                "required": [
+                    "messageID",
+                    "timeStamp",
+                    "pong",
+                    "messageUniqueID",
+                    "messageName",
+                    "AckEvent_type",
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageID": {
+                        "title": "Messageid",
+                        "type": "string"
+                    },
+                    "timeStamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "pong": {
+                        "title": "Pong",
+                        "type": "string"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "AckEvent_type": {
+                        "title": "Ackevent Type",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

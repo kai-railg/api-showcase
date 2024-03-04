@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+sources = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[project]
+name = "chain-api-showcase"
+version = "0.0.1"
+authors = [
+    { name = "kai.wang", email = "kai.wang@westwell-lab.com" },
+]
+description = "chain api showcase package"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "requests",
+    "chain-http",
+    "datamodel-code-generator"
+]
+
+
+[project.urls]
+"Homepage" = ""
+"Bug Tracker" = ""
+

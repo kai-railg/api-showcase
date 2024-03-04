@@ -1,0 +1,58 @@
+# -*- coding: utf-8 -*-
+
+import os
+from typing import Union
+from urllib import parse
+
+from pydantic import BaseModel
+from chain_http.async_client import (
+    get as async_get,
+    post as async_post,
+    AsyncHttpResponse,
+)
+
+from ..schemas.{{ project_name }} import *
+
+FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
+{# 处理post请求的模型和get参数，避免不必要的换行 #}
+{% macro generate_parameter(endpoint) -%}
+{%- if endpoint.model -%}
+body: {{ endpoint.model }}{{ "," if endpoint.parameters }}
+{%- endif -%}
+{%- for parameter in endpoint.parameters %}
+    {%- if parameter.model  -%}
+    {{ parameter.name }}: {{ parameter.model }}{{ ", " if not loop.last }}
+    {%- elif parameter.type == 'string' -%}
+{{ parameter.name }}: str{{ ", " if not loop.last }}
+    {%- elif parameter.type == 'integer' -%}
+{{ parameter.name }}: int{{ ", " if not loop.last }}
+    {%- elif parameter.type -%}
+{{ parameter.name }}: {{ parameter.type }}{{ ", " if not loop.last }}
+    {%- endif -%}
+{%- endfor -%}
+{%- endmacro %}
+class {{ cls_name }}(object):
+    url = FMS_IP_ADDRESS + ":" + "{{ port }}"
+    {% for endpoint in endpoints %}
+    @classmethod
+    async def {{ endpoint.func_name }}(cls, {{ generate_parameter(endpoint) }}) -> AsyncHttpResponse:
+        """
+        {{ endpoint.summary }}
+        {{ endpoint.description }}
+        """
+        {% if endpoint.method == 'post' %}
+        return await async_post(
+            url=parse.urljoin(
+                cls.url, "{{ endpoint.path }}"
+            ),
+            {% if endpoint.model %}json=body.dict(),{% endif %}
+            {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
+        )
+        {% elif endpoint.method == 'get' %}
+        return await async_get(
+            url=parse.urljoin(
+                cls.url, "{{ endpoint.path }}"
+            ),
+            {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
+        )
+        {% endif %} {% endfor %}

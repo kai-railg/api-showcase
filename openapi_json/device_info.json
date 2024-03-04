@@ -1,0 +1,2560 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Device Info Service",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/deviceInfo/maintain/status": {
+            "post": {
+                "tags": [
+                    "maintain"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_deviceInfo_maintain_status_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Service Status Api Deviceinfo Maintain Status Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/maintain/start_tracemalloc": {
+            "get": {
+                "tags": [
+                    "maintain"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_deviceInfo_maintain_start_tracemalloc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Service Status Api Deviceinfo Maintain Start Tracemalloc Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/maintain/stop_tracemalloc": {
+            "get": {
+                "tags": [
+                    "maintain"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_deviceInfo_maintain_stop_tracemalloc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Service Status Api Deviceinfo Maintain Stop Tracemalloc Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/maintain/get_tracemalloc": {
+            "get": {
+                "tags": [
+                    "maintain"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_deviceInfo_maintain_get_tracemalloc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Service Status Api Deviceinfo Maintain Get Tracemalloc Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/maintain/deleteVehicle": {
+            "post": {
+                "tags": [
+                    "maintain"
+                ],
+                "summary": "\u5220\u9664\u67d0\u4e2a\u8f66\u8f86\u7684\u6240\u6709\u4fe1\u606f",
+                "operationId": "\u5220\u9664\u67d0\u4e2a\u8f66\u8f86\u7684\u6240\u6709\u4fe1\u606f_api_deviceInfo_maintain_deleteVehicle_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/maintain/deleteTg": {
+            "post": {
+                "tags": [
+                    "maintain"
+                ],
+                "summary": "\u5220\u9664\u62d6\u6302\u4fe1\u606f",
+                "operationId": "\u5220\u9664\u62d6\u6302\u4fe1\u606f_api_deviceInfo_maintain_deleteTg_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/vehicleDetails": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u8f66\u8f86\u8be6\u60c5",
+                "operationId": "\u83b7\u53d6\u8f66\u8f86\u8be6\u60c5_api_deviceInfo_vehicleStatus_vehicleDetails_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u8f66\u8f86\u8be6\u60c5",
+                "operationId": "\u8bbe\u7f6e\u8f66\u8f86\u8be6\u60c5_api_deviceInfo_vehicleStatus_vehicleDetails_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/VehicleType"
+                        },
+                        "name": "vehicle_type",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vin",
+                            "type": "string"
+                        },
+                        "name": "vin",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Color",
+                            "type": "string"
+                        },
+                        "name": "color",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Manufacturer",
+                            "type": "string"
+                        },
+                        "name": "manufacturer",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Engine Type",
+                            "type": "string"
+                        },
+                        "name": "engine_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/LoginStatus": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5355\u8f66\u767b\u5f55\u72b6\u6001",
+                "operationId": "\u83b7\u53d6\u5355\u8f66\u767b\u5f55\u72b6\u6001_api_deviceInfo_vehicleStatus_LoginStatus_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5355\u8f66\u767b\u5f55\u72b6\u6001 Api Deviceinfo Vehiclestatus Loginstatus Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5355\u8f66\u767b\u5f55\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u5355\u8f66\u767b\u5f55\u72b6\u6001_api_deviceInfo_vehicleStatus_LoginStatus_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetLoginStatusPost"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/mode": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5355\u8f66\u6a21\u5f0f",
+                "operationId": "\u83b7\u53d6\u5355\u8f66\u6a21\u5f0f_api_deviceInfo_vehicleStatus_mode_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5355\u8f66\u6a21\u5f0f Api Deviceinfo Vehiclestatus Mode Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5355\u8f66\u6a21\u5f0f",
+                "operationId": "\u8bbe\u7f6e\u5355\u8f66\u6a21\u5f0f_api_deviceInfo_vehicleStatus_mode_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetModePost"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/bsm": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5355\u8f66\u5750\u6807",
+                "operationId": "\u83b7\u53d6\u5355\u8f66\u5750\u6807_api_deviceInfo_vehicleStatus_bsm_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5355\u8f66\u5750\u6807 Api Deviceinfo Vehiclestatus Bsm Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/soc": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5355\u8f66\u7535\u91cf",
+                "operationId": "\u83b7\u53d6\u5355\u8f66\u7535\u91cf_api_deviceInfo_vehicleStatus_soc_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5355\u8f66\u7535\u91cf Api Deviceinfo Vehiclestatus Soc Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5355\u8f66\u7535\u91cf",
+                "operationId": "\u8bbe\u7f6e\u5355\u8f66\u7535\u91cf_api_deviceInfo_vehicleStatus_soc_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetSocPost"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u5355\u8f66\u7535\u91cf Api Deviceinfo Vehiclestatus Soc Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/longPath": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u957f\u8def\u5f84",
+                "operationId": "\u83b7\u53d6\u957f\u8def\u5f84_api_deviceInfo_vehicleStatus_longPath_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u957f\u8def\u5f84 Api Deviceinfo Vehiclestatus Longpath Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u957f\u8def\u5f84",
+                "operationId": "\u8bbe\u7f6e\u957f\u8def\u5f84_api_deviceInfo_vehicleStatus_longPath_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetLongPath"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u957f\u8def\u5f84 Api Deviceinfo Vehiclestatus Longpath Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/shortPath": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u77ed\u8def\u5f84",
+                "operationId": "\u83b7\u53d6\u77ed\u8def\u5f84_api_deviceInfo_vehicleStatus_shortPath_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u77ed\u8def\u5f84 Api Deviceinfo Vehiclestatus Shortpath Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u77ed\u8def\u5f84",
+                "operationId": "\u8bbe\u7f6e\u77ed\u8def\u5f84_api_deviceInfo_vehicleStatus_shortPath_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetShortPath"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u77ed\u8def\u5f84 Api Deviceinfo Vehiclestatus Shortpath Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/suspend": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5355\u8f66\u6025\u505c\u72b6\u6001",
+                "operationId": "\u83b7\u53d6\u5355\u8f66\u6025\u505c\u72b6\u6001_api_deviceInfo_vehicleStatus_suspend_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5355\u8f66\u6025\u505c\u72b6\u6001 Api Deviceinfo Vehiclestatus Suspend Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5355\u8f66\u6025\u505c\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u5355\u8f66\u6025\u505c\u72b6\u6001_api_deviceInfo_vehicleStatus_suspend_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Request",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/trailerStatus": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5355\u8f66\u62d6\u6302\u72b6\u6001",
+                "operationId": "\u83b7\u53d6\u5355\u8f66\u62d6\u6302\u72b6\u6001_api_deviceInfo_vehicleStatus_trailerStatus_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5355\u8f66\u62d6\u6302\u72b6\u6001 Api Deviceinfo Vehiclestatus Trailerstatus Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5355\u8f66\u62d6\u6302\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u5355\u8f66\u62d6\u6302\u72b6\u6001_api_deviceInfo_vehicleStatus_trailerStatus_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetTrailerStatusPost"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/ghostVehicle": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u5e7d\u7075\u8f66\u72b6\u6001",
+                "operationId": "\u83b7\u53d6\u5e7d\u7075\u8f66\u72b6\u6001_api_deviceInfo_vehicleStatus_ghostVehicle_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5e7d\u7075\u8f66\u72b6\u6001 Api Deviceinfo Vehiclestatus Ghostvehicle Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5e7d\u7075\u8f66\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u5e7d\u7075\u8f66\u72b6\u6001_api_deviceInfo_vehicleStatus_ghostVehicle_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetGhostVehiclePost"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/ghostVehicleCancel": {
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5e7d\u7075\u8f66\u53d6\u6d88\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u5e7d\u7075\u8f66\u53d6\u6d88\u72b6\u6001_api_deviceInfo_vehicleStatus_ghostVehicleCancel_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetGhostVehicleCancelPost"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/getVehicleChassis": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u8f66\u8f86\u5e95\u76d8\u4fe1\u606f",
+                "operationId": "\u83b7\u53d6\u8f66\u8f86\u5e95\u76d8\u4fe1\u606f_api_deviceInfo_vehicleStatus_getVehicleChassis_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u8f66\u8f86\u5e95\u76d8\u4fe1\u606f Api Deviceinfo Vehiclestatus Getvehiclechassis Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/getVehicleAscChassis": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u8de8\u8fd0\u8f66\u5e95\u76d8\u4fe1\u606f",
+                "operationId": "\u83b7\u53d6\u8de8\u8fd0\u8f66\u5e95\u76d8\u4fe1\u606f_api_deviceInfo_vehicleStatus_getVehicleAscChassis_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u8de8\u8fd0\u8f66\u5e95\u76d8\u4fe1\u606f Api Deviceinfo Vehiclestatus Getvehicleascchassis Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/getVehiclesys": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u8f66\u8f86\u7cfb\u7edf\u4fe1\u606f",
+                "operationId": "\u83b7\u53d6\u8f66\u8f86\u7cfb\u7edf\u4fe1\u606f_api_deviceInfo_vehicleStatus_getVehiclesys_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u8f66\u8f86\u7cfb\u7edf\u4fe1\u606f Api Deviceinfo Vehiclestatus Getvehiclesys Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/SetOperation": {
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6eOperation\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6eoperation\u72b6\u6001_api_deviceInfo_vehicleStatus_SetOperation_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Request",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/Operation": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6Operation\u72b6\u6001",
+                "operationId": "\u83b7\u53d6operation\u72b6\u6001_api_deviceInfo_vehicleStatus_Operation_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6Operation\u72b6\u6001 Api Deviceinfo Vehiclestatus Operation Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/SuspendReasonReport": {
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u62a5\u544a\u8f66\u8f86\u505c\u6b62\u539f\u56e0",
+                "operationId": "\u62a5\u544a\u8f66\u8f86\u505c\u6b62\u539f\u56e0_api_deviceInfo_vehicleStatus_SuspendReasonReport_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReportSuspend"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u62a5\u544a\u8f66\u8f86\u505c\u6b62\u539f\u56e0 Api Deviceinfo Vehiclestatus Suspendreasonreport Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/SuspendReason": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u8f66\u8f86\u505c\u6b62\u539f\u56e0",
+                "operationId": "\u83b7\u53d6\u8f66\u8f86\u505c\u6b62\u539f\u56e0_api_deviceInfo_vehicleStatus_SuspendReason_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u8f66\u8f86\u505c\u6b62\u539f\u56e0 Api Deviceinfo Vehiclestatus Suspendreason Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/StopTime": {
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u62a5\u544a\u8f66\u8f86\u505c\u8f66\u65f6\u957f",
+                "operationId": "\u62a5\u544a\u8f66\u8f86\u505c\u8f66\u65f6\u957f_api_deviceInfo_vehicleStatus_StopTime_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReportStopTime"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u62a5\u544a\u8f66\u8f86\u505c\u8f66\u65f6\u957f Api Deviceinfo Vehiclestatus Stoptime Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/CurrentStatus": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u8f66\u8f86\u7684\u5f53\u524d\u72b6\u6001\u4fe1\u606f",
+                "operationId": "\u83b7\u53d6\u6240\u6709\u8f66\u8f86\u7684\u5f53\u524d\u72b6\u6001\u4fe1\u606f_api_deviceInfo_vehicleStatus_CurrentStatus_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u6240\u6709\u8f66\u8f86\u7684\u5f53\u524d\u72b6\u6001\u4fe1\u606f Api Deviceinfo Vehiclestatus Currentstatus Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/vehicleStatus/BtnStatus": {
+            "get": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u83b7\u53d6\u6025\u505c\uff0c\u5de6\u9a7b\u8f66\uff0c\u53f3\u9a7b\u8f66\u7684\u6309\u94ae\u72b6\u6001",
+                "operationId": "\u83b7\u53d6\u6025\u505c_\u5de6\u9a7b\u8f66_\u53f3\u9a7b\u8f66\u7684\u6309\u94ae\u72b6\u6001_api_deviceInfo_vehicleStatus_BtnStatus_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u6025\u505c \u5de6\u9a7b\u8f66 \u53f3\u9a7b\u8f66\u7684\u6309\u94ae\u72b6\u6001 Api Deviceinfo Vehiclestatus Btnstatus Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u6025\u505c\uff0c\u5de6\u9a7b\u8f66\uff0c\u53f3\u9a7b\u8f66\u7684\u6309\u94ae\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u6025\u505c_\u5de6\u9a7b\u8f66_\u53f3\u9a7b\u8f66\u7684\u6309\u94ae\u72b6\u6001_api_deviceInfo_vehicleStatus_BtnStatus_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BtnStatusSchemas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u6025\u505c \u5de6\u9a7b\u8f66 \u53f3\u9a7b\u8f66\u7684\u6309\u94ae\u72b6\u6001 Api Deviceinfo Vehiclestatus Btnstatus Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/craneStatus/": {
+            "get": {
+                "tags": [
+                    "crane_status"
+                ],
+                "summary": "\u83b7\u53d6 Crane \u72b6\u6001",
+                "operationId": "\u83b7\u53d6_crane_\u72b6\u6001_api_deviceInfo_craneStatus__get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Device Id",
+                            "type": "string"
+                        },
+                        "name": "device_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Vehicle Id",
+                            "type": "string"
+                        },
+                        "name": "vehicle_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Lane",
+                            "type": "string"
+                        },
+                        "name": "lane",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Block",
+                            "type": "string"
+                        },
+                        "name": "block",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Stack",
+                            "type": "string"
+                        },
+                        "name": "stack",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6 Crane \u72b6\u6001 Api Deviceinfo Cranestatus  Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/craneStatus/lane": {
+            "get": {
+                "tags": [
+                    "crane_status"
+                ],
+                "summary": "\u83b7\u53d6\u8f66\u9053Y",
+                "operationId": "\u83b7\u53d6\u8f66\u9053Y_api_deviceInfo_craneStatus_lane_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Lane",
+                            "type": "string"
+                        },
+                        "name": "lane",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u8f66\u9053Y Api Deviceinfo Cranestatus Lane Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/craneStatus/craneList": {
+            "get": {
+                "tags": [
+                    "crane_status"
+                ],
+                "summary": "\u83b7\u53d6 Crane \u5217\u8868",
+                "operationId": "\u83b7\u53d6_crane_\u5217\u8868_api_deviceInfo_craneStatus_craneList_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Feild Get",
+                            "type": "string",
+                            "default": "min"
+                        },
+                        "name": "feild_get",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6 Crane \u5217\u8868 Api Deviceinfo Cranestatus Cranelist Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/plcStatus": {
+            "get": {
+                "tags": [
+                    "plc_status"
+                ],
+                "summary": "\u83b7\u53d6 Plc \u72b6\u6001",
+                "operationId": "\u83b7\u53d6_plc_\u72b6\u6001_api_deviceInfo_plcStatus_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Device Id",
+                            "type": "string",
+                            "default": "all"
+                        },
+                        "name": "device_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6 Plc \u72b6\u6001 Api Deviceinfo Plcstatus Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/PileInfo/SetPileInfoReport": {
+            "post": {
+                "tags": [
+                    "pile_info"
+                ],
+                "summary": "\u8bbe\u7f6e\u5145\u7535\u6869\u4fe1\u606f",
+                "operationId": "\u8bbe\u7f6e\u5145\u7535\u6869\u4fe1\u606f_api_deviceInfo_PileInfo_SetPileInfoReport_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetPileInfoSchemas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/PileInfo/getPileInfoReport": {
+            "post": {
+                "tags": [
+                    "pile_info"
+                ],
+                "summary": "\u83b7\u53d6\u5145\u7535\u6869",
+                "operationId": "\u83b7\u53d6\u5145\u7535\u6869_api_deviceInfo_PileInfo_getPileInfoReport_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetPileInfoSchemas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u5145\u7535\u6869 Api Deviceinfo Pileinfo Getpileinforeport Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/PileInfo/SetPileInfoAllCodeReport": {
+            "post": {
+                "tags": [
+                    "pile_info"
+                ],
+                "summary": "\u8bbe\u7f6e\u6240\u6709\u5145\u7535\u6869\u5f00\u5173",
+                "operationId": "\u8bbe\u7f6e\u6240\u6709\u5145\u7535\u6869\u5f00\u5173_api_deviceInfo_PileInfo_SetPileInfoAllCodeReport_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetPileInfoAllSchemas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u6240\u6709\u5145\u7535\u6869\u5f00\u5173 Api Deviceinfo Pileinfo Setpileinfoallcodereport Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/PileInfo/GetPileInfoAllCodeReport": {
+            "get": {
+                "tags": [
+                    "pile_info"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u5145\u7535\u6869\u5f00\u5173",
+                "operationId": "\u83b7\u53d6\u6240\u6709\u5145\u7535\u6869\u5f00\u5173_api_deviceInfo_PileInfo_GetPileInfoAllCodeReport_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u6240\u6709\u5145\u7535\u6869\u5f00\u5173 Api Deviceinfo Pileinfo Getpileinfoallcodereport Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/PileInfo/PileMessage": {
+            "post": {
+                "tags": [
+                    "pile_info"
+                ],
+                "summary": "\u5145\u7535\u6545\u969c\u539f\u56e0",
+                "operationId": "\u5145\u7535\u6545\u969c\u539f\u56e0_api_deviceInfo_PileInfo_PileMessage_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PileMessageSchemas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u5145\u7535\u6545\u969c\u539f\u56e0 Api Deviceinfo Pileinfo Pilemessage Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/PileInfo/PileMessageGet": {
+            "get": {
+                "tags": [
+                    "pile_info"
+                ],
+                "summary": "\u5145\u7535\u6545\u969c\u539f\u56e0\u67e5\u8be2",
+                "operationId": "\u5145\u7535\u6545\u969c\u539f\u56e0\u67e5\u8be2_api_deviceInfo_PileInfo_PileMessageGet_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u5145\u7535\u6545\u969c\u539f\u56e0\u67e5\u8be2 Api Deviceinfo Pileinfo Pilemessageget Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/externalTruck/arriveTg": {
+            "post": {
+                "tags": [
+                    "external_truck"
+                ],
+                "summary": "\u5916\u96c6\u5361\u5230\u8fbe Tg \u533a\u57df",
+                "operationId": "\u5916\u96c6\u5361\u5230\u8fbe_TG_\u533a\u57df_api_deviceInfo_externalTruck_arriveTg_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Request",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u5916\u96c6\u5361\u5230\u8fbe Tg \u533a\u57df Api Deviceinfo Externaltruck Arrivetg Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/externalTruck/leaveTg": {
+            "post": {
+                "tags": [
+                    "external_truck"
+                ],
+                "summary": "\u5916\u96c6\u5361\u79bb\u5f00 Tg \u533a\u57df",
+                "operationId": "\u5916\u96c6\u5361\u79bb\u5f00_TG_\u533a\u57df_api_deviceInfo_externalTruck_leaveTg_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Request",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u5916\u96c6\u5361\u79bb\u5f00 Tg \u533a\u57df Api Deviceinfo Externaltruck Leavetg Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/emergency_status/SetmultiCarEmergencyStop": {
+            "post": {
+                "tags": [
+                    "emergency_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u7269\u7406\u6025\u505c\u72b6\u6001",
+                "operationId": "\u8bbe\u7f6e\u7269\u7406\u6025\u505c\u72b6\u6001_api_deviceInfo_emergency_status_SetmultiCarEmergencyStop_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Request",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u7269\u7406\u6025\u505c\u72b6\u6001 Api Deviceinfo Emergency Status Setmulticaremergencystop Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deviceInfo/emergency_status/GetmultiCarEmergencyStop": {
+            "get": {
+                "tags": [
+                    "emergency_status"
+                ],
+                "summary": "\u83b7\u53d6\u7269\u7406\u6025\u505c\u72b6\u6001",
+                "operationId": "\u83b7\u53d6\u7269\u7406\u6025\u505c\u72b6\u6001_api_deviceInfo_emergency_status_GetmultiCarEmergencyStop_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u83b7\u53d6\u7269\u7406\u6025\u505c\u72b6\u6001 Api Deviceinfo Emergency Status Getmulticaremergencystop Get",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BtnStatusSchemas": {
+                "title": "BtnStatusSchemas",
+                "required": [
+                    "emergency_stop",
+                    "left_status",
+                    "right_status"
+                ],
+                "type": "object",
+                "properties": {
+                    "emergency_stop": {
+                        "title": "Emergency Stop",
+                        "type": "string"
+                    },
+                    "left_status": {
+                        "title": "Left Status",
+                        "type": "string"
+                    },
+                    "right_status": {
+                        "title": "Right Status",
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateSuccessSchema": {
+                "title": "CreateSuccessSchema",
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "title": "Code",
+                        "type": "integer",
+                        "default": 200
+                    },
+                    "msg": {
+                        "title": "Msg",
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "error": {
+                        "title": "Error",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "GetPileInfoSchemas": {
+                "title": "GetPileInfoSchemas",
+                "required": [
+                    "message_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "message_name": {
+                        "title": "Message Name",
+                        "type": "string"
+                    },
+                    "charging_station_id": {
+                        "title": "Charging Station Id",
+                        "type": "string"
+                    }
+                }
+            },
+            "GhostStatus": {
+                "title": "GhostStatus",
+                "enum": [
+                    "ghost",
+                    "normal"
+                ],
+                "type": "string",
+                "description": "An enumeration."
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "LoginStatus": {
+                "title": "LoginStatus",
+                "enum": [
+                    "login",
+                    "logout"
+                ],
+                "type": "string",
+                "description": "An enumeration."
+            },
+            "PileMessageSchemas": {
+                "title": "PileMessageSchemas",
+                "required": [
+                    "charging_station_id",
+                    "atID",
+                    "message",
+                    "MessageId"
+                ],
+                "type": "object",
+                "properties": {
+                    "charging_station_id": {
+                        "title": "Charging Station Id",
+                        "type": "string"
+                    },
+                    "atID": {
+                        "title": "Atid",
+                        "type": "string"
+                    },
+                    "message": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "MessageId": {
+                        "title": "Messageid",
+                        "type": "string"
+                    }
+                }
+            },
+            "Point": {
+                "title": "Point",
+                "required": [
+                    "x",
+                    "y",
+                    "theta"
+                ],
+                "type": "object",
+                "properties": {
+                    "x": {
+                        "title": "X",
+                        "type": "number"
+                    },
+                    "y": {
+                        "title": "Y",
+                        "type": "number"
+                    },
+                    "theta": {
+                        "title": "Theta",
+                        "type": "number"
+                    }
+                }
+            },
+            "Position": {
+                "title": "Position",
+                "required": [
+                    "x",
+                    "y",
+                    "z",
+                    "theta",
+                    "v"
+                ],
+                "type": "object",
+                "properties": {
+                    "x": {
+                        "title": "X",
+                        "type": "number"
+                    },
+                    "y": {
+                        "title": "Y",
+                        "type": "number"
+                    },
+                    "z": {
+                        "title": "Z",
+                        "type": "number"
+                    },
+                    "theta": {
+                        "title": "Theta",
+                        "type": "number"
+                    },
+                    "v": {
+                        "title": "V",
+                        "type": "number"
+                    }
+                }
+            },
+            "ReportStopTime": {
+                "title": "ReportStopTime",
+                "required": [
+                    "vehicle_id",
+                    "stop_time"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "stop_time": {
+                        "title": "Stop Time",
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "integer"
+                            }
+                        ]
+                    }
+                }
+            },
+            "ReportSuspend": {
+                "title": "ReportSuspend",
+                "required": [
+                    "vehicle_id",
+                    "suspend_reason",
+                    "suspend_time_stamp"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "suspend_reason": {
+                        "title": "Suspend Reason",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "suspend_time_stamp": {
+                        "title": "Suspend Time Stamp",
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "integer"
+                            }
+                        ]
+                    }
+                }
+            },
+            "SetGhostVehicleCancelPost": {
+                "title": "SetGhostVehicleCancelPost",
+                "required": [
+                    "vehicle_id",
+                    "manual_cancel"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "manual_cancel": {
+                        "title": "Manual Cancel",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "SetGhostVehiclePost": {
+                "title": "SetGhostVehiclePost",
+                "required": [
+                    "vehicle_id",
+                    "ghost_status",
+                    "position"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "ghost_status": {
+                        "$ref": "#/components/schemas/GhostStatus"
+                    },
+                    "position": {
+                        "$ref": "#/components/schemas/Position"
+                    }
+                }
+            },
+            "SetLoginStatusPost": {
+                "title": "SetLoginStatusPost",
+                "required": [
+                    "vehicle_id",
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/LoginStatus"
+                    },
+                    "vehicle_type": {
+                        "$ref": "#/components/schemas/VehicleType"
+                    }
+                }
+            },
+            "SetLongPath": {
+                "title": "SetLongPath",
+                "required": [
+                    "vehicle_id",
+                    "vehicle_mission_id",
+                    "destination_type",
+                    "path"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "vehicle_mission_id": {
+                        "title": "Vehicle Mission Id",
+                        "type": "string"
+                    },
+                    "destination_type": {
+                        "title": "Destination Type",
+                        "type": "string"
+                    },
+                    "path": {
+                        "title": "Path",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Point"
+                        }
+                    }
+                }
+            },
+            "SetModePost": {
+                "title": "SetModePost",
+                "required": [
+                    "vehicle_id",
+                    "mode"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "mode": {
+                        "title": "Mode",
+                        "type": "string"
+                    }
+                }
+            },
+            "SetPileInfoAllSchemas": {
+                "title": "SetPileInfoAllSchemas",
+                "required": [
+                    "pile_info_all_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "pile_info_all_code": {
+                        "title": "Pile Info All Code",
+                        "type": "integer"
+                    }
+                }
+            },
+            "SetPileInfoSchemas": {
+                "title": "SetPileInfoSchemas",
+                "required": [
+                    "pile_info_data"
+                ],
+                "type": "object",
+                "properties": {
+                    "pile_info_data": {
+                        "title": "Pile Info Data",
+                        "type": "object"
+                    }
+                }
+            },
+            "SetShortPath": {
+                "title": "SetShortPath",
+                "required": [
+                    "vehicle_id",
+                    "vehicle_mission_id",
+                    "destination_type",
+                    "path"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "vehicle_mission_id": {
+                        "title": "Vehicle Mission Id",
+                        "type": "string"
+                    },
+                    "destination_type": {
+                        "title": "Destination Type",
+                        "type": "string"
+                    },
+                    "path": {
+                        "title": "Path",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Point"
+                        }
+                    }
+                }
+            },
+            "SetSocPost": {
+                "title": "SetSocPost",
+                "required": [
+                    "vehicle_id",
+                    "fuel_type",
+                    "remaining_fuel_percentage",
+                    "remaining_fuel_capacity",
+                    "charge_status"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "fuel_type": {
+                        "title": "Fuel Type",
+                        "type": "string"
+                    },
+                    "battery_state": {
+                        "title": "Battery State",
+                        "type": "string",
+                        "default": "normal"
+                    },
+                    "remaining_fuel_percentage": {
+                        "title": "Remaining Fuel Percentage",
+                        "type": "number"
+                    },
+                    "remaining_fuel_capacity": {
+                        "title": "Remaining Fuel Capacity",
+                        "type": "number"
+                    },
+                    "charge_status": {
+                        "title": "Charge Status",
+                        "type": "string"
+                    }
+                }
+            },
+            "SetTrailerStatusPost": {
+                "title": "SetTrailerStatusPost",
+                "required": [
+                    "vehicle_id",
+                    "has_trailer"
+                ],
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "title": "Vehicle Id",
+                        "type": "string"
+                    },
+                    "has_trailer": {
+                        "title": "Has Trailer",
+                        "type": "string"
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            },
+            "VehicleType": {
+                "title": "VehicleType",
+                "enum": [
+                    "QTRUCK",
+                    "ASC",
+                    "IGV"
+                ],
+                "type": "string",
+                "description": "An enumeration."
+            }
+        }
+    }
+}

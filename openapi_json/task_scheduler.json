@@ -1,0 +1,1332 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/receive_mi/": {
+            "post": {
+                "summary": "Process Movement Instructions",
+                "operationId": "process_movement_instructions_receive_mi__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MovementInstructions"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovementCreatedResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/remove": {
+            "post": {
+                "summary": "Process Remove",
+                "operationId": "process_remove_remove_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/receive_mi/dc": {
+            "post": {
+                "summary": "Process Movement Instructions",
+                "operationId": "process_movement_instructions_receive_mi_dc_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DependencyCheck"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DependencyCheckResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/receive_mi/cancel": {
+            "post": {
+                "summary": "Process Movement Cancel Instructions",
+                "operationId": "process_movement_cancel_instructions_receive_mi_cancel_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MovementCancel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovementCancelResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/receive_mi/update": {
+            "post": {
+                "summary": "Process Movement Instruction Update",
+                "operationId": "process_movement_instruction_update_receive_mi_update_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MovementInstructions"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MovementCancelResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/receive_action_code": {
+            "post": {
+                "summary": "Process Code",
+                "operationId": "process_code_receive_action_code_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleOrder"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ActionCodeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tos_interface/order_update": {
+            "post": {
+                "summary": "Process Tos Side Order Update",
+                "operationId": "process_tos_side_order_update_tos_interface_order_update_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TOSOrderUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/monitor/check_sc": {
+            "get": {
+                "summary": "Monitor Sc Status",
+                "operationId": "monitor_sc_status_monitor_check_sc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/monitor/check_sc_details/{sc_id}": {
+            "get": {
+                "summary": "Get Sc Data Status",
+                "operationId": "get_sc_data_status_monitor_check_sc_details__sc_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Sc Id",
+                            "type": "string"
+                        },
+                        "name": "sc_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ActionCodeResponse": {
+                "title": "ActionCodeResponse",
+                "required": [
+                    "messageUniqueId",
+                    "messageTimestamp",
+                    "buffer",
+                    "deliveryStatus",
+                    "locationCheck"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "ActionCodeResponse"
+                    },
+                    "messageUniqueId": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "messageTimestamp": {
+                        "title": "Messagetimestamp",
+                        "type": "string"
+                    },
+                    "buffer": {
+                        "title": "Buffer",
+                        "type": "boolean"
+                    },
+                    "deliveryStatus": {
+                        "title": "Deliverystatus",
+                        "type": "string"
+                    },
+                    "locationCheck": {
+                        "$ref": "#/components/schemas/LocationCheck"
+                    }
+                }
+            },
+            "ContainerDefinition": {
+                "title": "ContainerDefinition",
+                "required": [
+                    "uniqueObjectID",
+                    "logicalLocation",
+                    "portLocation",
+                    "weight",
+                    "relativePos",
+                    "targetReady"
+                ],
+                "type": "object",
+                "properties": {
+                    "uniqueObjectID": {
+                        "title": "Uniqueobjectid",
+                        "type": "string"
+                    },
+                    "number": {
+                        "title": "Number",
+                        "type": "string"
+                    },
+                    "logicalLocation": {
+                        "$ref": "#/components/schemas/Origin"
+                    },
+                    "portLocation": {
+                        "$ref": "#/components/schemas/PortLocation"
+                    },
+                    "ISO": {
+                        "title": "Iso",
+                        "type": "string"
+                    },
+                    "length": {
+                        "title": "Length",
+                        "type": "number"
+                    },
+                    "width": {
+                        "title": "Width",
+                        "type": "number"
+                    },
+                    "height": {
+                        "title": "Height",
+                        "type": "number"
+                    },
+                    "weight": {
+                        "title": "Weight",
+                        "type": "number"
+                    },
+                    "relativePos": {
+                        "title": "Relativepos",
+                        "type": "string"
+                    },
+                    "targetReady": {
+                        "title": "Targetready",
+                        "type": "boolean"
+                    },
+                    "reeferStatus": {
+                        "title": "Reeferstatus",
+                        "type": "string"
+                    },
+                    "associatedTwinContainer_1": {
+                        "title": "Associatedtwincontainer 1",
+                        "type": "string"
+                    },
+                    "associatedTwinContainer_2": {
+                        "title": "Associatedtwincontainer 2",
+                        "type": "string"
+                    }
+                }
+            },
+            "DependencyCheck": {
+                "title": "DependencyCheck",
+                "required": [
+                    "messageUniqueID",
+                    "movementInstructions"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "dependencyCheck"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "movementInstructions": {
+                        "title": "Movementinstructions",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WorkQueueInfo"
+                        }
+                    }
+                }
+            },
+            "DependencyCheckResponse": {
+                "title": "DependencyCheckResponse",
+                "required": [
+                    "messageName",
+                    "messageUniqueID",
+                    "timeStamp",
+                    "dependencyList"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "timeStamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "dependencyList": {
+                        "title": "Dependencylist",
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/DependencyItem"
+                        }
+                    }
+                }
+            },
+            "DependencyDefinition": {
+                "title": "DependencyDefinition",
+                "required": [
+                    "movementUniqueID",
+                    "processDependency"
+                ],
+                "type": "object",
+                "properties": {
+                    "movementUniqueID": {
+                        "title": "Movementuniqueid",
+                        "type": "string"
+                    },
+                    "processDependency": {
+                        "title": "Processdependency",
+                        "type": "string"
+                    }
+                }
+            },
+            "DependencyInfo": {
+                "title": "DependencyInfo",
+                "required": [
+                    "movementUniqueID",
+                    "origin",
+                    "destination",
+                    "containerNumber"
+                ],
+                "type": "object",
+                "properties": {
+                    "movementUniqueID": {
+                        "title": "Movementuniqueid",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "$ref": "#/components/schemas/Origin"
+                    },
+                    "destination": {
+                        "$ref": "#/components/schemas/Destination"
+                    },
+                    "containerNumber": {
+                        "title": "Containernumber",
+                        "type": "string"
+                    }
+                }
+            },
+            "DependencyItem": {
+                "title": "DependencyItem",
+                "required": [
+                    "pickupDependency",
+                    "groundDependency"
+                ],
+                "type": "object",
+                "properties": {
+                    "pickupDependency": {
+                        "title": "Pickupdependency",
+                        "type": "array",
+                        "items": {
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "groundDependency": {
+                        "title": "Grounddependency",
+                        "type": "array",
+                        "items": {
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "Destination": {
+                "title": "Destination",
+                "required": [
+                    "area",
+                    "block",
+                    "lane",
+                    "stack",
+                    "tier",
+                    "orientation"
+                ],
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "title": "Area",
+                        "type": "string"
+                    },
+                    "block": {
+                        "title": "Block",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
+                        "type": "integer"
+                    },
+                    "stack": {
+                        "title": "Stack",
+                        "type": "string"
+                    },
+                    "tier": {
+                        "title": "Tier",
+                        "type": "integer"
+                    },
+                    "orientation": {
+                        "title": "Orientation",
+                        "type": "string"
+                    }
+                }
+            },
+            "ExecutorDestination": {
+                "title": "ExecutorDestination",
+                "required": [
+                    "logicalLocation"
+                ],
+                "type": "object",
+                "properties": {
+                    "logicalLocation": {
+                        "$ref": "#/components/schemas/ExecutorLogicalLocation"
+                    },
+                    "portLocation": {
+                        "$ref": "#/components/schemas/ExecutorPortLocation"
+                    }
+                }
+            },
+            "ExecutorLogicalLocation": {
+                "title": "ExecutorLogicalLocation",
+                "required": [
+                    "area",
+                    "block",
+                    "stack",
+                    "orientation"
+                ],
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "title": "Area",
+                        "type": "string"
+                    },
+                    "block": {
+                        "title": "Block",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
+                        "type": "integer"
+                    },
+                    "stack": {
+                        "title": "Stack",
+                        "type": "string"
+                    },
+                    "tier": {
+                        "title": "Tier",
+                        "type": "integer"
+                    },
+                    "orientation": {
+                        "title": "Orientation",
+                        "type": "string"
+                    }
+                }
+            },
+            "ExecutorPortLocation": {
+                "title": "ExecutorPortLocation",
+                "required": [
+                    "portX",
+                    "portY"
+                ],
+                "type": "object",
+                "properties": {
+                    "portX": {
+                        "title": "Portx",
+                        "type": "number"
+                    },
+                    "portY": {
+                        "title": "Porty",
+                        "type": "number"
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "JobContent": {
+                "title": "JobContent",
+                "required": [
+                    "tosUniqueID"
+                ],
+                "type": "object",
+                "properties": {
+                    "tosUniqueID": {
+                        "title": "Tosuniqueid",
+                        "type": "string"
+                    }
+                }
+            },
+            "JobType": {
+                "title": "JobType",
+                "enum": [
+                    "RECEIVE",
+                    "DELIVER",
+                    "NAVIGATION"
+                ],
+                "description": "An enumeration."
+            },
+            "LocationCheck": {
+                "title": "LocationCheck",
+                "required": [
+                    "area",
+                    "block",
+                    "lane",
+                    "stack",
+                    "tier",
+                    "orientation"
+                ],
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "title": "Area",
+                        "type": "string"
+                    },
+                    "block": {
+                        "title": "Block",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
+                        "type": "integer"
+                    },
+                    "stack": {
+                        "title": "Stack",
+                        "type": "integer"
+                    },
+                    "tier": {
+                        "title": "Tier",
+                        "type": "integer"
+                    },
+                    "orientation": {
+                        "title": "Orientation",
+                        "type": "string"
+                    }
+                }
+            },
+            "MoveType": {
+                "title": "MoveType",
+                "enum": [
+                    "single",
+                    "twin",
+                    "twinform"
+                ],
+                "description": "An enumeration."
+            },
+            "MovementCancel": {
+                "title": "MovementCancel",
+                "required": [
+                    "messageUniqueID",
+                    "timestamp",
+                    "equipmentName",
+                    "equipType"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "movementCancel"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "equipmentName": {
+                        "title": "Equipmentname",
+                        "type": "string"
+                    },
+                    "equipType": {
+                        "title": "Equiptype",
+                        "type": "string"
+                    }
+                }
+            },
+            "MovementCancelResponse": {
+                "title": "MovementCancelResponse",
+                "required": [
+                    "messageUniqueID",
+                    "timestamp",
+                    "cancelResult"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "movementCancelResponse"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "cancelResult": {
+                        "title": "Cancelresult",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "MovementCreatedResponse": {
+                "title": "MovementCreatedResponse",
+                "required": [
+                    "messageUniqueID",
+                    "timeStamp",
+                    "movementInstructionStatus"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "MovementCreatedResponse"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "timeStamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "stopStatus": {
+                        "title": "Stopstatus",
+                        "type": "boolean"
+                    },
+                    "movementInstructionStatus": {
+                        "title": "Movementinstructionstatus",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MovementInstructionStatus"
+                        }
+                    }
+                }
+            },
+            "MovementInstruction": {
+                "title": "MovementInstruction",
+                "required": [
+                    "movementUniqueID",
+                    "movementStatus",
+                    "messageSequence",
+                    "workQueueName",
+                    "movementType",
+                    "origin",
+                    "destination",
+                    "originStartTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "movementUniqueID": {
+                        "title": "Movementuniqueid",
+                        "type": "string"
+                    },
+                    "movementStatus": {
+                        "title": "Movementstatus",
+                        "type": "string"
+                    },
+                    "messageSequence": {
+                        "title": "Messagesequence",
+                        "type": "integer"
+                    },
+                    "workQueueName": {
+                        "title": "Workqueuename",
+                        "type": "string"
+                    },
+                    "movementType": {
+                        "title": "Movementtype",
+                        "type": "string"
+                    },
+                    "twinPickupGap": {
+                        "title": "Twinpickupgap",
+                        "type": "integer"
+                    },
+                    "twinGroundingGap": {
+                        "title": "Twingroundinggap",
+                        "type": "integer"
+                    },
+                    "equipmentName": {
+                        "title": "Equipmentname",
+                        "type": "string"
+                    },
+                    "teleoperatorAssistance": {
+                        "$ref": "#/components/schemas/TeleoperatorAssistance"
+                    },
+                    "origin": {
+                        "$ref": "#/components/schemas/Origin"
+                    },
+                    "destination": {
+                        "$ref": "#/components/schemas/Destination"
+                    },
+                    "originStartTime": {
+                        "title": "Originstarttime",
+                        "type": "string"
+                    },
+                    "containerDetails": {
+                        "$ref": "#/components/schemas/ContainerDefinition"
+                    },
+                    "associatedTwinMove": {
+                        "title": "Associatedtwinmove",
+                        "type": "string"
+                    },
+                    "movementDependencies": {
+                        "title": "Movementdependencies",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DependencyDefinition"
+                        }
+                    }
+                }
+            },
+            "MovementInstructionStatus": {
+                "title": "MovementInstructionStatus",
+                "required": [
+                    "movementUniqueID",
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "movementUniqueID": {
+                        "title": "Movementuniqueid",
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/Status"
+                    },
+                    "equipmentName": {
+                        "title": "Equipmentname",
+                        "type": "string"
+                    },
+                    "rejectCode": {
+                        "title": "Rejectcode",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "rejectReason": {
+                        "title": "Rejectreason",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "MovementInstructions": {
+                "title": "MovementInstructions",
+                "required": [
+                    "messageUniqueID",
+                    "messageName",
+                    "timeStamp",
+                    "messageSource",
+                    "movementInstructions"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "timeStamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "messageSource": {
+                        "title": "Messagesource",
+                        "type": "string"
+                    },
+                    "movementInstructions": {
+                        "title": "Movementinstructions",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MovementInstruction"
+                        }
+                    }
+                }
+            },
+            "MovementType": {
+                "title": "MovementType",
+                "enum": [
+                    "Yardmove",
+                    "Load",
+                    "Discharge"
+                ],
+                "description": "An enumeration."
+            },
+            "Origin": {
+                "title": "Origin",
+                "required": [
+                    "area",
+                    "block",
+                    "lane",
+                    "stack",
+                    "tier",
+                    "orientation"
+                ],
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "title": "Area",
+                        "type": "string"
+                    },
+                    "block": {
+                        "title": "Block",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
+                        "type": "integer"
+                    },
+                    "stack": {
+                        "title": "Stack",
+                        "type": "string"
+                    },
+                    "tier": {
+                        "title": "Tier",
+                        "type": "integer"
+                    },
+                    "orientation": {
+                        "title": "Orientation",
+                        "type": "string"
+                    }
+                }
+            },
+            "PlannedContainerDestinationDict": {
+                "title": "PlannedContainerDestinationDict",
+                "required": [
+                    "area",
+                    "uniqueObjectID",
+                    "targetReady",
+                    "relativePos",
+                    "destDoorDirection",
+                    "containerISO",
+                    "containerLengthFT",
+                    "containerHeight",
+                    "containerWeightKG"
+                ],
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "title": "Area",
+                        "type": "string"
+                    },
+                    "block": {
+                        "title": "Block",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
+                        "type": "integer"
+                    },
+                    "stack": {
+                        "title": "Stack",
+                        "type": "string"
+                    },
+                    "tier": {
+                        "title": "Tier",
+                        "type": "integer"
+                    },
+                    "uniqueObjectID": {
+                        "title": "Uniqueobjectid",
+                        "type": "string"
+                    },
+                    "targetReady": {
+                        "title": "Targetready",
+                        "type": "boolean"
+                    },
+                    "reeferStatus": {
+                        "title": "Reeferstatus",
+                        "type": "string"
+                    },
+                    "relativePos": {
+                        "title": "Relativepos",
+                        "type": "string"
+                    },
+                    "destDoorDirection": {
+                        "title": "Destdoordirection",
+                        "type": "string"
+                    },
+                    "containerNum": {
+                        "title": "Containernum",
+                        "type": "string"
+                    },
+                    "containerISO": {
+                        "title": "Containeriso",
+                        "type": "string"
+                    },
+                    "containerLengthFT": {
+                        "title": "Containerlengthft",
+                        "type": "number"
+                    },
+                    "containerHeight": {
+                        "title": "Containerheight",
+                        "type": "number"
+                    },
+                    "containerWeightKG": {
+                        "title": "Containerweightkg",
+                        "type": "number"
+                    },
+                    "containerWidth": {
+                        "title": "Containerwidth",
+                        "type": "number"
+                    },
+                    "associatedTwinContainer_id": {
+                        "title": "Associatedtwincontainer Id",
+                        "type": "string"
+                    }
+                }
+            },
+            "PortLocation": {
+                "title": "PortLocation",
+                "type": "object",
+                "properties": {
+                    "portX": {
+                        "title": "Portx",
+                        "type": "number"
+                    },
+                    "portY": {
+                        "title": "Porty",
+                        "type": "number"
+                    }
+                }
+            },
+            "StageData": {
+                "title": "StageData",
+                "required": [
+                    "job_status",
+                    "job_lane"
+                ],
+                "type": "object",
+                "properties": {
+                    "job_status": {
+                        "title": "Job Status",
+                        "type": "string"
+                    },
+                    "job_lane": {
+                        "title": "Job Lane",
+                        "type": "string"
+                    }
+                }
+            },
+            "Status": {
+                "title": "Status",
+                "enum": [
+                    "OK",
+                    "FAIL"
+                ],
+                "description": "An enumeration."
+            },
+            "TOSOrderUpdate": {
+                "title": "TOSOrderUpdate",
+                "required": [
+                    "messageUniqueID",
+                    "timestamp",
+                    "updateOrderOperationType",
+                    "updateOrderUniqueID",
+                    "updateOrderStatus"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "TOSOrderUpdate"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "updateOrderOperationType": {
+                        "title": "Updateorderoperationtype",
+                        "type": "string"
+                    },
+                    "updateOrderUniqueID": {
+                        "title": "Updateorderuniqueid",
+                        "type": "string"
+                    },
+                    "updateOrderStatus": {
+                        "title": "Updateorderstatus",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "TeleoperatorAssistance": {
+                "title": "TeleoperatorAssistance",
+                "enum": [
+                    "PICKUP",
+                    "GROUND",
+                    "PICKUP_AND_GROUND"
+                ],
+                "description": "An enumeration."
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            },
+            "VehicleOrder": {
+                "title": "VehicleOrder",
+                "required": [
+                    "uniqueOrderID",
+                    "origin",
+                    "jobType",
+                    "vehicleID"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string",
+                        "default": "VehicleOrder"
+                    },
+                    "messageUniqueId": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "messageTimestamp": {
+                        "title": "Messagetimestamp",
+                        "type": "string"
+                    },
+                    "moveType": {
+                        "$ref": "#/components/schemas/MoveType"
+                    },
+                    "uniqueOrderID": {
+                        "title": "Uniqueorderid",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "title": "Origin",
+                        "type": "string"
+                    },
+                    "jobType": {
+                        "$ref": "#/components/schemas/JobType"
+                    },
+                    "vehicleID": {
+                        "title": "Vehicleid",
+                        "type": "string"
+                    },
+                    "bidirection": {
+                        "title": "Bidirection",
+                        "type": "integer"
+                    },
+                    "job_content": {
+                        "$ref": "#/components/schemas/JobContent"
+                    },
+                    "movementType": {
+                        "$ref": "#/components/schemas/MovementType"
+                    },
+                    "destination": {
+                        "$ref": "#/components/schemas/ExecutorDestination"
+                    },
+                    "plannedContainerDestinationList": {
+                        "title": "Plannedcontainerdestinationlist",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PlannedContainerDestinationDict"
+                        }
+                    },
+                    "actionCode": {
+                        "title": "Actioncode",
+                        "type": "string"
+                    },
+                    "stageData": {
+                        "$ref": "#/components/schemas/StageData"
+                    }
+                }
+            },
+            "WorkQueueInfo": {
+                "title": "WorkQueueInfo",
+                "required": [
+                    "work_queue",
+                    "tos_to_scheduler_dependency_list"
+                ],
+                "type": "object",
+                "properties": {
+                    "work_queue": {
+                        "title": "Work Queue",
+                        "type": "string"
+                    },
+                    "tos_to_scheduler_dependency_list": {
+                        "title": "Tos To Scheduler Dependency List",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DependencyInfo"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

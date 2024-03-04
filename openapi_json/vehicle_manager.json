@@ -1,0 +1,4002 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "ChainBoot",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/vehicleManager/fleetmgmt/": {
+            "get": {
+                "tags": [
+                    "fleetmgmt"
+                ],
+                "summary": "\u67e5\u8be2\u6240\u6709\u8f66\u8f86\u7684\u4e0a\u4e0b\u7ebf\u72b6\u6001",
+                "operationId": "\u67e5\u8be2\u6240\u6709\u8f66\u8f86\u7684\u4e0a\u4e0b\u7ebf\u72b6\u6001_api_vehicleManager_fleetmgmt__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FleetmgmtResponseInSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/stop/": {
+            "post": {
+                "tags": [
+                    "stop"
+                ],
+                "summary": "\u5355\u8f66\u8b66\u505c",
+                "operationId": "\u5355\u8f66\u8b66\u505c_api_vehicleManager_stop__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StopRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StopResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/stop-all/": {
+            "post": {
+                "tags": [
+                    "stop-all"
+                ],
+                "summary": "\u5168\u573a\u8b66\u505c",
+                "operationId": "\u5168\u573a\u8b66\u505c_api_vehicleManager_stop_all__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StopAllRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StopAllResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/position_remove/{vin}": {
+            "post": {
+                "tags": [
+                    "position_remove"
+                ],
+                "summary": "\u5220\u9664\u5e7d\u7075\u8f66",
+                "operationId": "\u5220\u9664\u5e7d\u7075\u8f66_api_vehicleManager_position_remove__vin__post",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vin"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RemoveVehiclePositionRequestInSchema"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RemoveVehiclePositionResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/position_remove_all/": {
+            "post": {
+                "tags": [
+                    "position_remove_all"
+                ],
+                "summary": "\u4e00\u952e\u6e05\u7406\u5360\u4f4d\u8f66\u8f86",
+                "operationId": "\u4e00\u952e\u6e05\u7406\u5360\u4f4d\u8f66\u8f86_api_vehicleManager_position_remove_all__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RemoveAllVehiclePositionRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RemoveAllVehiclePositionResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/power/": {
+            "post": {
+                "tags": [
+                    "power"
+                ],
+                "summary": "\u4e0a/\u4e0b\u7535",
+                "operationId": "\u4e0a_\u4e0b\u7535_api_vehicleManager_power__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehiclePowerRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehiclePowerResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/bertinitial/": {
+            "post": {
+                "tags": [
+                    "bertinitial"
+                ],
+                "summary": "\u66f4\u65b0\u8239\u8236\u505c\u9760\u671d\u5411",
+                "description": ":param request: {'vesselVisitId': '9450387', 'operateType': 2, 'vesselDirection': 2, 'bowPbNum': [], 'sternPbNum': []}\noperateType: 1 Initial (Default) \u8239\u8236\u9760\u5cb8; 2 Departure \u8239\u8236\u79bb\u5cb8",
+                "operationId": "\u66f4\u65b0\u8239\u8236\u505c\u9760\u671d\u5411_api_vehicleManager_bertinitial__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BerthRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BerthResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/navigation/": {
+            "post": {
+                "tags": [
+                    "navigation"
+                ],
+                "summary": "\u4e0b\u53d1\u8def\u5f84",
+                "description": "\u8d77\u59cb\u70b9:\n    CLTP-X2-13-01, CLTP-X3-13-01, CLTP-X4-13-01, CLTP-X2-18-01, CLTP-X3-18-01, CLTP-X4-18-01\n\nrequest params:\n{\n    \"vehicleMissionId\": \"Test_20230414_123_f2fsf232t3232r3\",\n    \"parkClosely\": 0,\n    \"operationType\": \"\",\n    \"vin\": \"I001\",\n    \"destination\": \"CLTP-T2-04-01\",\n    \"missionType\": \"MOVE\",\n    \"passingLocation\": [],\n    \"containerId1\": \"string\",\n    \"containerId1Size\": 0,\n    \"containerId1Pos\": 0,\n    \"containerId1Seq\": 0,\n    \"containerId2\": \"string\",\n    \"containerId2Size\": 0,\n    \"containerId2Pos\": 0\n}",
+                "operationId": "\u4e0b\u53d1\u8def\u5f84_api_vehicleManager_navigation__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NavigationRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/abort/{vehicle_id}": {
+            "post": {
+                "tags": [
+                    "ABORT"
+                ],
+                "summary": "Abort",
+                "description": ":param request: {\"vehicle_id\": \"SC01\", \"updateMissionStatus\": \"ABORT\", \"transId\":\"a-b-c\"}\n:return:",
+                "operationId": "ABORT_api_vehicleManager_abort__vehicle_id__post",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AbortResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/twist_lock/status/{twist_lock_station_id}": {
+            "get": {
+                "tags": [
+                    "twist_lock_status"
+                ],
+                "summary": "\u67e5\u8be2\u5355\u4e2a\u9501\u7ad9\u72b6\u6001",
+                "operationId": "\u67e5\u8be2\u5355\u4e2a\u9501\u7ad9\u72b6\u6001_api_vehicleManager_twist_lock_status__twist_lock_station_id__get",
+                "parameters": [
+                    {
+                        "name": "twist_lock_station_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Twist Lock Station Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/twist_locks/": {
+            "get": {
+                "tags": [
+                    "twist_locks"
+                ],
+                "summary": "\u6839\u636e\u72b6\u6001\u67e5\u8be2\u7b26\u5408\u8981\u6c42\u7684\u6240\u6709\u9501\u7ad9",
+                "description": "status \u5171\u6709\u5982\u4e0b\u679a\u4e3e\u503cCLOSE\uff0cIDLE\uff0cOCCUPIED\uff0cASSIGNED\uff0cREMOVE,ALL",
+                "operationId": "\u6839\u636e\u72b6\u6001\u67e5\u8be2\u7b26\u5408\u8981\u6c42\u7684\u6240\u6709\u9501\u7ad9_api_vehicleManager_twist_locks__get",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Status"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/handshake/": {
+            "post": {
+                "tags": [
+                    "handshake"
+                ],
+                "summary": "\u63e1\u624b\u5f00\u5173",
+                "description": ":param request: {'vehicleMissionId':'aaaaaa-bbbb','vin':'SC01','handshakeType':'on'}\n:return:",
+                "operationId": "\u63e1\u624b\u5f00\u5173_api_vehicleManager_handshake__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HandshakeRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HandshakeResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/qc_positions_change/": {
+            "post": {
+                "tags": [
+                    "qc_positions_change"
+                ],
+                "summary": "\u4fee\u6539Redis\u4e2d\u5cb8\u6865\u7684\u5750\u6807\u503c",
+                "description": ":param request: {'vehicleMissionId':'aaa-bbb','QCNumber':'QC01','x':'123','y':'123'}\n:return:",
+                "operationId": "\u4fee\u6539REDIS\u4e2d\u5cb8\u6865\u7684\u5750\u6807\u503c_api_vehicleManager_qc_positions_change__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QCPositionRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QCPositionResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/unlock/": {
+            "post": {
+                "tags": [
+                    "unlock"
+                ],
+                "summary": "\u5f02\u5e38\u65f6\u89e3\u9501",
+                "description": ":param request: {'vehicleMissionId':'aaa-bbb','vin':'SC01','operationType':'unlock','offset':15}\n:return:",
+                "operationId": "\u5f02\u5e38\u65f6\u89e3\u9501_api_vehicleManager_unlock__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UnlockVehicleRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnlockVehicleResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/alignment/": {
+            "post": {
+                "tags": [
+                    "alignment"
+                ],
+                "summary": "\u4e0b\u53d1\u5bf9\u4f4d\u4efb\u52a1",
+                "description": ":param request:\n{\n    \"vehicleMissionId\": \"SC01\",\n    \"timeStamp\": \"SC01\",\n    \"vin\": \"SC01\",\n    \"operationType\": \"INPOSITION\",\n    \"craneID\": \"QC01\",\n    \"offset\": 15,  # \u5355\u4f4d\uff1amm\n    \"ICPS\": 1,\n    \"containerId1\": \"TEST123\"\n    \"containerId1Size\": 40,\n    \"containerId1Pos\": 1,\n}\n:return:",
+                "operationId": "\u4e0b\u53d1\u5bf9\u4f4d\u4efb\u52a1_api_vehicleManager_alignment__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AlignmentRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AlignmentResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/safetyLeave/": {
+            "post": {
+                "tags": [
+                    "safety_leave"
+                ],
+                "summary": "\u5b89\u5168\u9a76\u79bb",
+                "description": ":param request: {'vin':'SC01','operationType':'LEAVE'}\n:return:",
+                "operationId": "\u5b89\u5168\u9a76\u79bb_api_vehicleManager_safetyLeave__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SafeLeaveRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SafeLeaveResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/lockout_notification/": {
+            "post": {
+                "tags": [
+                    "lockout_notification"
+                ],
+                "summary": "\u95ed\u9501\u901a\u77e5",
+                "description": ":param request: {'vin':'SC01','missionId':'11'\uff0c'targetId':'RTG01','autoCalib':1}\n:return:",
+                "operationId": "\u95ed\u9501\u901a\u77e5_api_vehicleManager_lockout_notification__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LockoutNotificationRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LockoutNotificationResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/short_route_mission/": {
+            "post": {
+                "tags": [
+                    "short_route_mission"
+                ],
+                "summary": "\u77ed\u9014\u5012\u8f66",
+                "description": "{\n    \"vehicleMissionId\": \"35a0e1d4-e24d-11ec-adf5-4e77e2b881e4\",\n    \"vin\": \"SC01\",\n    \"destination\": \"YARD.A02.1.07.LS\",\n}\n:\u9002\u7528\u9879\u76ee\uff1a\u53a6\u95e8\u6d77\u6da6\u7801\u5934\uff0c\u4e0e2.5.1\u63a5\u53e3\u53c2\u6570\u4e00\u81f4\n:param request:\n:return:",
+                "operationId": "\u77ed\u9014\u5012\u8f66_api_vehicleManager_short_route_mission__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ShortBackPathRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortBackPathResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/query_position_available/": {
+            "post": {
+                "tags": [
+                    "query_position_available"
+                ],
+                "summary": "\u67e5\u8be2\u70b9\u4f4d\u662f\u5426\u53ef\u7528",
+                "description": "{\n    \"vehicleMissionId\":\"4584be76-e082-11ec-9104-3cecef8668a8\",\n    \"destination\": \"YARD.CK.Z.02\",\n    \"vin\": \"V001\",\n    \"timestamp\": 1654495088\n}\n:\u9002\u7528\u9879\u76ee\uff1a\u5185\u8499\u7b56\u514b\u53e3\u5cb8\n:param request:\n:return:",
+                "operationId": "\u67e5\u8be2\u70b9\u4f4d\u662f\u5426\u53ef\u7528_api_vehicleManager_query_position_available__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QueryAvailablePosRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QueryAvailablePosResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/report_led_information/": {
+            "post": {
+                "tags": [
+                    "report_led_information"
+                ],
+                "summary": "\u5411\u5355\u8f66\u4e0a\u62a5Led\u4fe1\u606f",
+                "description": "{\n    \"vehicleMissionId\":\"4584be76-e082-11ec-9104-3cecef8668a8\",\n    \"vin\": \"A001\",\n    \"LedValues\": 1,  # \u56fe\u7247\u5bf9\u5e94\u7684\u7f16\u53f7(\u53ef\u9009\u5b57\u6bb5)\n    \"ID\":40  # \u9ed8\u8ba440\uff0c\u4e13\u95e8\u7528\u4e8e\u5728\u7a7a\u7bb1\u5806\u573a\u663e\u793aIGV\u8f66\u53f7(\u53ef\u9009\u5b57\u6bb5)\n}\n:\u9002\u7528\u9879\u76ee\uff1a\u53a6\u95e8\u6d77\u6da6\u7801\u5934\n:param request:\n:return:",
+                "operationId": "\u5411\u5355\u8f66\u4e0a\u62a5LED\u4fe1\u606f_api_vehicleManager_report_led_information__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReportLedInfoRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReportLedInfoResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/weather/": {
+            "post": {
+                "tags": [
+                    "weather"
+                ],
+                "summary": "\u5929\u6c14\u4fe1\u606f\u901a\u77e5",
+                "description": ":param request: {'vehicleMissionId':'aaaa-bbbb','vin':'SC01','operationType':'rain'}\n:return:",
+                "operationId": "\u5929\u6c14\u4fe1\u606f\u901a\u77e5_api_vehicleManager_weather__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReportWeatherRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReportWeatherResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/ts_positions_change/": {
+            "post": {
+                "tags": [
+                    "ts_positions_change"
+                ],
+                "summary": "\u4fee\u6539Redis\u4e2d\u9501\u7ad9\u7684\u5750\u6807\u503c",
+                "description": ":param request:{\n    \"transId\": \"1-2-3-4\",\n    \"ts_name\": \"A.L.TS.01\",  # \"\u8239\u8236\u822a\u6b21A.\u88c5\u5378\u5c5e\u6027D/L.TS.\u8f66\u9053\u53f7;\u88c5\u8239L,\u5378\u8239D\",\n    \"ts_x\": 123.44,\n    \"ts_lane\": \"02\",\n    \"ts_type\":\"L\"  # \u9501\u7ad9\u7c7b\u578b:\u88c5\u8239L;\u5378\u8239D\n}\n:return:{\n    \"ts_name\": \"A.L.TS.01\",  # \"\u8239\u8236\u822a\u6b21A.\u88c5\u5378\u5c5e\u6027D/L.TS.\u8f66\u9053\u53f7;\u88c5\u8239L,\u5378\u8239D\",\n    \"ts_x\": 2.2,\n    \"ts_y\": 2.3,\n    \"status\":200\n}",
+                "operationId": "\u4fee\u6539REDIS\u4e2d\u9501\u7ad9\u7684\u5750\u6807\u503c_api_vehicleManager_ts_positions_change__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TSPositionRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TSPositionResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/create_qctp_area/": {
+            "post": {
+                "tags": [
+                    "create_qctp_area"
+                ],
+                "summary": "\u521b\u5efaQctp\u5012\u8f66\u968f\u52a8\u533a\u57df",
+                "operationId": "\u521b\u5efaQCTP\u5012\u8f66\u968f\u52a8\u533a\u57df_api_vehicleManager_create_qctp_area__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDynamicQCAreaRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateDynamicQCAreaResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/delete_qctp_area/": {
+            "post": {
+                "tags": [
+                    "delete_qctp_area"
+                ],
+                "summary": "\u5220\u9664Qctp\u5012\u8f66\u968f\u52a8\u533a\u57df",
+                "operationId": "\u5220\u9664QCTP\u5012\u8f66\u968f\u52a8\u533a\u57df_api_vehicleManager_delete_qctp_area__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteDynamicQCAreaRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeleteDynamicQCAreaResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/handle_area_by_qc_number/": {
+            "post": {
+                "tags": [
+                    "handle_area_by_qc_number"
+                ],
+                "summary": "\u5378\u8231\u76d6\u677f\u671f\u95f4\u521b\u5efaEvade\u7c7b\u578b\u9501\u95ed\u533a",
+                "description": ":param request: {'transId': 'de2cb4b3-c324-45f9-84ff-097b3d2c728a','lockAreaId':'QCTP.QC38.04','operationType':'CREATE'}\n:param request: {'transId': 'de2cb4b3-c324-45f9-84ff-097b3d2c728a','lockAreaId':'QCTP.QC38.04','operationType':'DELETE'}\n:return:",
+                "operationId": "\u5378\u8231\u76d6\u677f\u671f\u95f4\u521b\u5efaEVADE\u7c7b\u578b\u9501\u95ed\u533a_api_vehicleManager_handle_area_by_qc_number__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HandleAreaByQCRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HandleAreaByQCResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/query_position_available_by_destination_type/": {
+            "post": {
+                "tags": [
+                    "query_position_available_by_destination_type"
+                ],
+                "summary": "\u6309\u7167\u70b9\u4f4d\u7c7b\u522b\u67e5\u8be2\u70b9\u4f4d\u662f\u5426\u53ef\u7528",
+                "description": ":\u9002\u7528\u9879\u76ee\uff1a\u6240\u6709\u9879\u76ee-\u4ea7\u54c1\u7ebf\n\n:param request:\n    {\n    \"vehicleMissionId\":\"4584be76-e082-11ec-9104-3cecef8668a8\",\n    \"timestamp\": \"20201105T121212Z\",  # \u65f6\u95f4\u6233\uff0c\u6d88\u606f\u4e0a\u62a5\u65f6\u95f4\uff0cUTC\u65f6\u95f4\n    \"destinationType\": [\"PARK\", \"CHARGING\"]\n    }\n\n    {\n        \"missionId\": \"a-b-c\",\n        \"timestampSelf\": \"20161219T114920178Z\",\n        \"timestamp\": 1671545703,\n        \"data\":{\n            \"PARK\": [{\"x\": 1.1, \"y\": 2.2, \"theta\": 3.14, \"destination\": \"PARK.PB01\"}],\n            \"CHARGING\": [{\"x\": 1.1, \"y\": 2.2, \"theta\": 3.14, \"destination\": \"CHARGING.01\"}]\n        }\n    }\n\n:return:\n        {\n        \"vehicleMissionId\": \"a-b-c\",\n        \"timestamp\": \"20161219T114920178Z\",\n        \"msg\":\"\",\n        \"data\":{\n            \"PARK\": [\"PARK.PB01\"],\n            \"CHARGING\": [\"CHARGING.01\"]\n            }\n        }",
+                "operationId": "\u6309\u7167\u70b9\u4f4d\u7c7b\u522b\u67e5\u8be2\u70b9\u4f4d\u662f\u5426\u53ef\u7528_api_vehicleManager_query_position_available_by_destination_type__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QueryAvailablePosByTypeRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QueryAvailablePosByTypeResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/handel_nopass_area/": {
+            "post": {
+                "tags": [
+                    "handel_nopass_area"
+                ],
+                "summary": "\u521b\u5efa/\u66f4\u65b0/\u5220\u9664\u9501\u95ed\u533a",
+                "operationId": "\u521b\u5efa_\u66f4\u65b0_\u5220\u9664\u9501\u95ed\u533a_api_vehicleManager_handel_nopass_area__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/query_nopass_area/": {
+            "post": {
+                "tags": [
+                    "query_nopass_area"
+                ],
+                "summary": "\u67e5\u8be2\u9501\u95ed\u533a",
+                "operationId": "\u67e5\u8be2\u9501\u95ed\u533a_api_vehicleManager_query_nopass_area__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/report_speed_ratio/": {
+            "post": {
+                "tags": [
+                    "report_speed_ratio"
+                ],
+                "summary": "\u8c03\u6574\u5355\u8f66\u4eff\u771f\u5668\u500d\u7387",
+                "description": ":param request: {'vehicleMissionId':'aaaa-bbbb','vin':'ALL','speedRatio':1}\n:return:",
+                "operationId": "\u8c03\u6574\u5355\u8f66\u4eff\u771f\u5668\u500d\u7387_api_vehicleManager_report_speed_ratio__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReportSpeedRatioRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/save_lock_area_check_time/": {
+            "post": {
+                "tags": [
+                    "save_lock_area_check_time"
+                ],
+                "summary": "\u8bbe\u7f6e\u8f66\u8f86\u5728\u5361\u53e3\u7684\u7b49\u5f85\u65f6\u95f4",
+                "description": ":param request:{\n    \"transId\":\"a-b-c\",\n    \"lockAreaId\": \"1-2-3-4\",\n    \"checkTime\": 5  # \u5355\u4f4d\uff1a\u79d2\n}\n:return:{\n    \"status\":200\n}",
+                "operationId": "\u8bbe\u7f6e\u8f66\u8f86\u5728\u5361\u53e3\u7684\u7b49\u5f85\u65f6\u95f4_api_vehicleManager_save_lock_area_check_time__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/forced_alarm_cancel/": {
+            "post": {
+                "tags": [
+                    "forced_alarm_cancel"
+                ],
+                "summary": "\u5f3a\u5236\u6062\u590d\u6545\u969c\u8f66\u8f86",
+                "operationId": "\u5f3a\u5236\u6062\u590d\u6545\u969c\u8f66\u8f86_api_vehicleManager_forced_alarm_cancel__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/report_qtruck_command/": {
+            "post": {
+                "tags": [
+                    "\u5012\u8f66\u53ca\u4e0a\u4e0b\u6302"
+                ],
+                "summary": "\u5012\u8f66\u53ca\u4e0a\u4e0b\u6302",
+                "description": ":param request: {'transId':'aaaa-bbbb','vin':'SC01','missionCommand':15}\n    command\u7ed9\u503c\u8303\u56f4\n        15-\u8f66\u8f86\u81ea\u884c\u5012\u8f66\u8fdb\u505c\u8f66\u4f4d\n        16-\u5f00\u59cb\u81ea\u52a8\u4e0a\u6302\n        17-\u5f00\u59cb\u81ea\u52a8\u4e0b\u6302",
+                "operationId": "\u5012\u8f66\u53ca\u4e0a\u4e0b\u6302_api_vehicleManager_report_qtruck_command__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReportQtruckCommandRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReportQtruckCommandResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/alarm_request/": {
+            "post": {
+                "tags": [
+                    "\u544a\u8b66\u4fe1\u606f\u4e0a\u62a5"
+                ],
+                "summary": "\u544a\u8b66\u4fe1\u606f\u4e0a\u62a5",
+                "description": ":param request:\n    11- path planning interface\u6545\u969c[\u81ea\u5b9a\u4e49]\n    12- path planning\u6545\u969c[\u81ea\u5b9a\u4e49]\n    13- path planning hub\u6545\u969c[\u81ea\u5b9a\u4e49]",
+                "operationId": "\u544a\u8b66\u4fe1\u606f\u4e0a\u62a5_api_vehicleManager_alarm_request__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AlarmRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AlarmResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/receive_vehicle_message/": {
+            "post": {
+                "tags": [
+                    "receive_vehicle_message"
+                ],
+                "summary": "\u63a5\u6536\u8f66\u8f86\u7684Mqtt\u6d88\u606f",
+                "operationId": "\u63a5\u6536\u8f66\u8f86\u7684MQTT\u6d88\u606f_api_vehicleManager_receive_vehicle_message__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VinMqttRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VinMqttResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/sensorInfo/": {
+            "get": {
+                "tags": [
+                    "report_sensor_info"
+                ],
+                "summary": "\u4e0a\u62a5\u8f66\u8f86\u6fc0\u5149\u6570\u636e",
+                "operationId": "\u4e0a\u62a5\u8f66\u8f86\u6fc0\u5149\u6570\u636e_api_vehicleManager_sensorInfo__get",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SensorResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/unlock_init/": {
+            "post": {
+                "tags": [
+                    "unlock_init"
+                ],
+                "summary": "\u4e0b\u53d1\u89e3\u9501\u4efb\u52a1",
+                "description": "todo \u9700\u8981\u5b9e\u73b0\u4e0b\u53d1\u89e3\u9501\u4efb\u52a1\u903b\u8f91\uff0c\u9700\u8981\u5b9e\u73b0request_body\u5bf9\u5e94\u7684schema",
+                "operationId": "\u4e0b\u53d1\u89e3\u9501\u4efb\u52a1_api_vehicleManager_unlock_init__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/eventRegister/": {
+            "post": {
+                "tags": [
+                    "event_register"
+                ],
+                "summary": "\u4e8b\u4ef6\u6ce8\u518c",
+                "description": "todo \u9700\u8981\u5b9e\u73b0\u4e8b\u4ef6\u6ce8\u518c\u7684\u903b\u8f91\uff0c request_body\u7684schema\u4e5f\u9700\u8981\u5b9e\u73b0",
+                "operationId": "\u4e8b\u4ef6\u6ce8\u518c_api_vehicleManager_eventRegister__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EventRegisterInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/api_test/": {
+            "post": {
+                "tags": [
+                    "api_test"
+                ],
+                "summary": "Receive Vehicle Message",
+                "operationId": "receive_vehicle_message_api_vehicleManager_api_test__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/trace/start_tracemalloc": {
+            "get": {
+                "tags": [
+                    "trace"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_vehicleManager_trace_start_tracemalloc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/trace/stop_tracemalloc": {
+            "get": {
+                "tags": [
+                    "trace"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_vehicleManager_trace_stop_tracemalloc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicleManager/trace/get_tracemalloc": {
+            "get": {
+                "tags": [
+                    "trace"
+                ],
+                "summary": "Service Status",
+                "operationId": "service_status_api_vehicleManager_trace_get_tracemalloc_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/GetRRTaskInfo/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e3b\u52a8\u8bf7\u6c42\u83b7\u53d6\u4efb\u52a1\u4fe1\u606f"
+                ],
+                "summary": "\u8bf7\u6c42\u4efb\u52a1\u4fe1\u606f",
+                "operationId": "\u8bf7\u6c42\u4efb\u52a1\u4fe1\u606f_WellGNS_GetRRTaskInfo__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TaskInfoRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskInfoResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/SetRRTaskStatus/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e3b\u52a8\u4e0a\u62a5\u4efb\u52a1\u72b6\u6001"
+                ],
+                "summary": "\u8bf7\u6c42\u83b7\u53d6",
+                "operationId": "\u8bf7\u6c42\u83b7\u53d6_WellGNS_SetRRTaskStatus__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TaskStatusRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/TruckPathReport/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e3b\u52a8\u4e0a\u62a5\u8def\u5f84\u4fe1\u606f"
+                ],
+                "summary": "\u4e0a\u62a5\u8def\u5f84\u4fe1\u606f",
+                "operationId": "\u4e0a\u62a5\u8def\u5f84\u4fe1\u606f_WellGNS_TruckPathReport__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PathRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/GetRoute/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u8bf7\u6c42\u8def\u5f84\u4fe1\u606f"
+                ],
+                "summary": "\u8bf7\u6c42\u5bfc\u822a\u8def\u5f84",
+                "operationId": "\u8bf7\u6c42\u5bfc\u822a\u8def\u5f84_WellGNS_GetRoute__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PathRequestInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathResponseInSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/getEmergencyStopInfo/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u8bf7\u6c42\u6025\u505c\u4fe1\u606f"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u83b7\u53d6\u6025\u505c\u4fe1\u606f",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u83b7\u53d6\u6025\u505c\u4fe1\u606f_WellGNS_getEmergencyStopInfo__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/SetTruckLocationInfo/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e0a\u62a5\u4f4d\u7f6e\u4fe1\u606f"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u4f4d\u7f6e\u4fe1\u606f",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u4f4d\u7f6e\u4fe1\u606f_WellGNS_SetTruckLocationInfo__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/SetTruckChassis/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e0a\u62a5\u5e95\u76d8\u4fe1\u606f"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u5e95\u76d8\u4fe1\u606f",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u5e95\u76d8\u4fe1\u606f_WellGNS_SetTruckChassis__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/SetTruckSystemStatus/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e0a\u62a5\u7cfb\u7edf\u4fe1\u606f"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u7cfb\u7edf\u4fe1\u606f",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u7cfb\u7edf\u4fe1\u606f_WellGNS_SetTruckSystemStatus__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/SetSuspendReasonReport/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e0a\u62a5\u505c\u8f66\u539f\u56e0"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u505c\u8f66\u539f\u56e0",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u505c\u8f66\u539f\u56e0_WellGNS_SetSuspendReasonReport__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/CauseMatchFailure/": {
+            "post": {
+                "tags": [
+                    "\u8f66\u8f86\u4e0a\u62a5\u5bf9\u4f4d\u8d85\u65f6\u539f\u56e0"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u5bf9\u4f4d\u8d85\u65f6\u539f\u56e0",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u5bf9\u4f4d\u8d85\u65f6\u539f\u56e0_WellGNS_CauseMatchFailure__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/GetServiceStatus/": {
+            "get": {
+                "tags": [
+                    "\u8f66\u8f86\u83b7\u53d6\u670d\u52a1\u72b6\u6001"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u83b7\u53d6\u670d\u52a1\u72b6\u6001",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u83b7\u53d6\u670d\u52a1\u72b6\u6001_WellGNS_GetServiceStatus__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/GetRainFallInfo/": {
+            "get": {
+                "tags": [
+                    "\u83b7\u53d6\u96e8\u91cf\u6a21\u5f0f\u4ee5\u53ca\u96e8\u91cf\u4fe1\u606f"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u83b7\u53d6\u96e8\u91cf\u6a21\u5f0f\u4ee5\u53ca\u96e8\u91cf\u4fe1\u606f",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u83b7\u53d6\u96e8\u91cf\u6a21\u5f0f\u4ee5\u53ca\u96e8\u91cf\u4fe1\u606f_WellGNS_GetRainFallInfo__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/GetAllvehicleinfo/": {
+            "get": {
+                "tags": [
+                    "\u83b7\u53d6\u8f66\u8f86\u4f4d\u7f6e\u4fe1\u606f"
+                ],
+                "summary": "\u83b7\u53d6\u8f66\u8f86\u4f4d\u7f6e\u4fe1\u606f",
+                "operationId": "\u83b7\u53d6\u8f66\u8f86\u4f4d\u7f6e\u4fe1\u606f_WellGNS_GetAllvehicleinfo__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/WellGNS/GetTrunkInformation/": {
+            "post": {
+                "tags": [
+                    "\u83b7\u53d6\u8f66\u8f86\u662f\u5426\u6709\u7bb1\u4fe1\u606f"
+                ],
+                "summary": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u662f\u5426\u6709\u7bb1\u4fe1\u606f",
+                "operationId": "\u9a6c\u6765\u897f\u4e9a\u5355\u8f66\u4e0a\u62a5\u662f\u5426\u6709\u7bb1\u4fe1\u606f_WellGNS_GetTrunkInformation__post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AbortResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "integer",
+                        "title": "Status",
+                        "default": 200
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "AbortResponseInSchema"
+            },
+            "AlarmRequestInSchema": {
+                "properties": {
+                    "header": {
+                        "$ref": "#/components/schemas/HeaderObj"
+                    },
+                    "body": {
+                        "$ref": "#/components/schemas/BodyObj"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "header",
+                    "body"
+                ],
+                "title": "AlarmRequestInSchema"
+            },
+            "AlarmResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "AlarmResponseInSchema"
+            },
+            "AlignmentRequestInSchema": {
+                "properties": {
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "timeStamp": {
+                        "type": "string",
+                        "title": "Timestamp"
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype",
+                        "default": "INPOSITION"
+                    },
+                    "craneID": {
+                        "type": "string",
+                        "title": "Craneid"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "title": "Offset"
+                    },
+                    "ICPS": {
+                        "type": "integer",
+                        "title": "Icps"
+                    },
+                    "containerId1": {
+                        "type": "string",
+                        "title": "Containerid1",
+                        "default": ""
+                    },
+                    "containerId1Size": {
+                        "type": "integer",
+                        "title": "Containerid1Size",
+                        "default": 99
+                    },
+                    "containerId1Pos": {
+                        "type": "integer",
+                        "title": "Containerid1Pos",
+                        "default": 99
+                    },
+                    "containerId2": {
+                        "type": "string",
+                        "title": "Containerid2",
+                        "default": ""
+                    },
+                    "containerId2Size": {
+                        "type": "integer",
+                        "title": "Containerid2Size",
+                        "default": 99
+                    },
+                    "containerId2Pos": {
+                        "type": "integer",
+                        "title": "Containerid2Pos",
+                        "default": 99
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicleMissionId",
+                    "timeStamp",
+                    "vin",
+                    "craneID",
+                    "offset",
+                    "ICPS"
+                ],
+                "title": "AlignmentRequestInSchema"
+            },
+            "AlignmentResponseInSchema": {
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "title": "Status",
+                        "default": 200
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "AlignmentResponseInSchema"
+            },
+            "BerthRequestInSchema": {
+                "properties": {
+                    "vesselVisitId": {
+                        "type": "string",
+                        "title": "Vesselvisitid"
+                    },
+                    "operateType": {
+                        "type": "integer",
+                        "title": "Operatetype"
+                    },
+                    "vesselDirection": {
+                        "type": "integer",
+                        "title": "Vesseldirection"
+                    },
+                    "bowPbNum": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Bowpbnum"
+                    },
+                    "sternPbNum": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Sternpbnum"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vesselVisitId",
+                    "operateType",
+                    "vesselDirection",
+                    "bowPbNum",
+                    "sternPbNum"
+                ],
+                "title": "BerthRequestInSchema"
+            },
+            "BerthResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "BerthResponseInSchema"
+            },
+            "BodyObj": {
+                "properties": {
+                    "alarmLevel": {
+                        "type": "integer",
+                        "title": "Alarmlevel"
+                    },
+                    "alarmType": {
+                        "type": "integer",
+                        "title": "Alarmtype"
+                    },
+                    "alarmCode": {
+                        "type": "integer",
+                        "title": "Alarmcode"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "default": ""
+                    },
+                    "subCode": {
+                        "type": "integer",
+                        "title": "Subcode",
+                        "default": 0
+                    },
+                    "subDescription": {
+                        "type": "string",
+                        "title": "Subdescription",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "alarmLevel",
+                    "alarmType",
+                    "alarmCode"
+                ],
+                "title": "BodyObj"
+            },
+            "CreateDynamicQCAreaRequestInSchema": {
+                "properties": {
+                    "xl": {
+                        "type": "number",
+                        "title": "Xl"
+                    },
+                    "xr": {
+                        "type": "number",
+                        "title": "Xr"
+                    },
+                    "ship_id": {
+                        "type": "string",
+                        "title": "Ship Id"
+                    },
+                    "position": {
+                        "type": "string",
+                        "title": "Position"
+                    },
+                    "lane": {
+                        "type": "integer",
+                        "title": "Lane"
+                    },
+                    "navi": {
+                        "type": "boolean",
+                        "title": "Navi",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "xl",
+                    "xr",
+                    "ship_id",
+                    "position",
+                    "lane"
+                ],
+                "title": "CreateDynamicQCAreaRequestInSchema"
+            },
+            "CreateDynamicQCAreaResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "CreateDynamicQCAreaResponseInSchema"
+            },
+            "CreateSuccessSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "CreateSuccessSchema"
+            },
+            "DeleteDynamicQCAreaRequestInSchema": {
+                "properties": {
+                    "ship_id": {
+                        "type": "string",
+                        "title": "Ship Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ship_id"
+                ],
+                "title": "DeleteDynamicQCAreaRequestInSchema"
+            },
+            "DeleteDynamicQCAreaResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "DeleteDynamicQCAreaResponseInSchema"
+            },
+            "EventRegisterInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "timeStamp": {
+                        "type": "string",
+                        "title": "Timestamp"
+                    },
+                    "eventType": {
+                        "type": "string",
+                        "title": "Eventtype"
+                    },
+                    "data": {
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "timeStamp",
+                    "eventType"
+                ],
+                "title": "EventRegisterInSchema"
+            },
+            "FleetmgmtResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "count": {
+                        "type": "integer",
+                        "title": "Count",
+                        "default": 0
+                    },
+                    "vehicles": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Vehicles",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "title": "FleetmgmtResponseInSchema"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "errors": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Errors"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "HandleAreaByQCRequestInSchema": {
+                "properties": {
+                    "transId": {
+                        "type": "string",
+                        "title": "Transid"
+                    },
+                    "lockAreaId": {
+                        "type": "string",
+                        "title": "Lockareaid"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype"
+                    },
+                    "freeZone": {
+                        "type": "string",
+                        "title": "Freezone",
+                        "default": ""
+                    },
+                    "allowedEquipments": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Allowedequipments",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "transId",
+                    "lockAreaId",
+                    "operationType"
+                ],
+                "title": "HandleAreaByQCRequestInSchema"
+            },
+            "HandleAreaByQCResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "HandleAreaByQCResponseInSchema"
+            },
+            "HandshakeRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "handshakeType": {
+                        "type": "string",
+                        "title": "Handshaketype"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "handshakeType"
+                ],
+                "title": "HandshakeRequestInSchema"
+            },
+            "HandshakeResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "HandshakeResponseInSchema"
+            },
+            "HeaderObj": {
+                "properties": {
+                    "transId": {
+                        "type": "string",
+                        "title": "Transid"
+                    },
+                    "deviceId": {
+                        "type": "string",
+                        "title": "Deviceid"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "title": "Timestamp"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "transId",
+                    "deviceId",
+                    "timestamp"
+                ],
+                "title": "HeaderObj"
+            },
+            "LockoutNotificationRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "missionId": {
+                        "type": "string",
+                        "title": "Missionid"
+                    },
+                    "targetId": {
+                        "type": "string",
+                        "title": "Targetid"
+                    },
+                    "autoCalib": {
+                        "type": "integer",
+                        "title": "Autocalib"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "missionId",
+                    "targetId",
+                    "autoCalib"
+                ],
+                "title": "LockoutNotificationRequestInSchema"
+            },
+            "LockoutNotificationResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "LockoutNotificationResponseInSchema"
+            },
+            "NavigationRequestInSchema": {
+                "properties": {
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "parkClosely": {
+                        "type": "integer",
+                        "title": "Parkclosely",
+                        "default": 0
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype",
+                        "default": ""
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "X": {
+                        "type": "number",
+                        "title": "X"
+                    },
+                    "Y": {
+                        "type": "number",
+                        "title": "Y"
+                    },
+                    "XY_heading": {
+                        "type": "number",
+                        "title": "Xy Heading"
+                    },
+                    "destination": {
+                        "type": "string",
+                        "title": "Destination"
+                    },
+                    "missionType": {
+                        "type": "string",
+                        "title": "Missiontype"
+                    },
+                    "movementType": {
+                        "type": "string",
+                        "title": "Movementtype"
+                    },
+                    "orientation": {
+                        "type": "string",
+                        "title": "Orientation"
+                    },
+                    "moveTask": {
+                        "type": "boolean",
+                        "title": "Movetask",
+                        "default": false
+                    },
+                    "passingLocation": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Passinglocation",
+                        "default": []
+                    },
+                    "missionStage": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Missionstage"
+                    },
+                    "bidirection": {
+                        "type": "integer",
+                        "title": "Bidirection",
+                        "default": 1
+                    },
+                    "containerId1": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1"
+                    },
+                    "containerId1Size": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Size"
+                    },
+                    "containerId1Pos": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Pos"
+                    },
+                    "containerId1Seq": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Seq"
+                    },
+                    "containerId1Orientation": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Orientation"
+                    },
+                    "containerId1ISO": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Iso"
+                    },
+                    "containerId1X": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1X"
+                    },
+                    "containerId1Y": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Y"
+                    },
+                    "containerId1Weight": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid1Weight"
+                    },
+                    "containerId2": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2"
+                    },
+                    "containerId2Size": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2Size"
+                    },
+                    "containerId2Pos": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2Pos"
+                    },
+                    "containerId2Seq": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2Seq"
+                    },
+                    "containerId2ISO": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2Iso"
+                    },
+                    "containerId2X": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2X"
+                    },
+                    "containerId2Y": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2Y"
+                    },
+                    "containerId2Orientation": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerid2Orientation"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicleMissionId",
+                    "vin",
+                    "destination",
+                    "missionType"
+                ],
+                "title": "NavigationRequestInSchema"
+            },
+            "PathRequestInSchema": {
+                "properties": {
+                    "i_at_id": {
+                        "type": "string",
+                        "title": "I At Id"
+                    },
+                    "waypoints": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Waypoints",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "i_at_id"
+                ],
+                "title": "PathRequestInSchema"
+            },
+            "PathResponseInSchema": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "truck_id": {
+                        "type": "string",
+                        "title": "Truck Id",
+                        "default": "AT01"
+                    }
+                },
+                "type": "object",
+                "title": "PathResponseInSchema"
+            },
+            "QCPositionRequestInSchema": {
+                "properties": {
+                    "QCNumber": {
+                        "type": "string",
+                        "title": "Qcnumber"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "x": {
+                        "type": "integer",
+                        "title": "X"
+                    },
+                    "y": {
+                        "type": "integer",
+                        "title": "Y"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "QCNumber",
+                    "vehicleMissionId",
+                    "x",
+                    "y"
+                ],
+                "title": "QCPositionRequestInSchema"
+            },
+            "QCPositionResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "QCPositionResponseInSchema"
+            },
+            "QueryAvailablePosByTypeRequestInSchema": {
+                "properties": {
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "title": "Timestamp"
+                    },
+                    "destinationType": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Destinationtype"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicleMissionId",
+                    "timestamp",
+                    "destinationType"
+                ],
+                "title": "QueryAvailablePosByTypeRequestInSchema"
+            },
+            "QueryAvailablePosByTypeResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "type": "string",
+                        "title": "Data",
+                        "default": ""
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": ""
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "title": "Timestamp",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicleMissionId"
+                ],
+                "title": "QueryAvailablePosByTypeResponseInSchema"
+            },
+            "QueryAvailablePosRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "destination": {
+                        "type": "string",
+                        "title": "Destination"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "title": "Timestamp"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "destination",
+                    "timestamp"
+                ],
+                "title": "QueryAvailablePosRequestInSchema"
+            },
+            "QueryAvailablePosResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "QueryAvailablePosResponseInSchema"
+            },
+            "RemoveAllVehiclePositionRequestInSchema": {
+                "properties": {
+                    "requestId": {
+                        "type": "string",
+                        "title": "Requestid"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "requestId",
+                    "operationType"
+                ],
+                "title": "RemoveAllVehiclePositionRequestInSchema"
+            },
+            "RemoveAllVehiclePositionResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": ""
+                    },
+                    "statusCode": {
+                        "type": "string",
+                        "title": "Statuscode",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "RemoveAllVehiclePositionResponseInSchema"
+            },
+            "RemoveVehiclePositionRequestInSchema": {
+                "properties": {
+                    "transId": {
+                        "type": "string",
+                        "title": "Transid"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype",
+                        "default": "cancel"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "transId"
+                ],
+                "title": "RemoveVehiclePositionRequestInSchema"
+            },
+            "RemoveVehiclePositionResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": ""
+                    },
+                    "statusCode": {
+                        "type": "string",
+                        "title": "Statuscode",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "RemoveVehiclePositionResponseInSchema"
+            },
+            "ReportLedInfoRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "LedValues": {
+                        "type": "integer",
+                        "title": "Ledvalues"
+                    },
+                    "ID": {
+                        "type": "integer",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "LedValues",
+                    "ID"
+                ],
+                "title": "ReportLedInfoRequestInSchema"
+            },
+            "ReportLedInfoResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "ReportLedInfoResponseInSchema"
+            },
+            "ReportQtruckCommandRequestInSchema": {
+                "properties": {
+                    "transId": {
+                        "type": "string",
+                        "title": "Transid"
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "missionCommand": {
+                        "type": "integer",
+                        "title": "Missioncommand"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "transId",
+                    "vin",
+                    "missionCommand"
+                ],
+                "title": "ReportQtruckCommandRequestInSchema"
+            },
+            "ReportQtruckCommandResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "ReportQtruckCommandResponseInSchema"
+            },
+            "ReportSpeedRatioRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": "ALL"
+                    },
+                    "speedRatio": {
+                        "type": "integer",
+                        "title": "Speedratio",
+                        "default": 1
+                    }
+                },
+                "type": "object",
+                "title": "ReportSpeedRatioRequestInSchema"
+            },
+            "ReportWeatherRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "operationType"
+                ],
+                "title": "ReportWeatherRequestInSchema"
+            },
+            "ReportWeatherResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "ReportWeatherResponseInSchema"
+            },
+            "SafeLeaveRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype",
+                        "default": "LEAVE"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "timeStamp": {
+                        "type": "string",
+                        "title": "Timestamp"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "timeStamp"
+                ],
+                "title": "SafeLeaveRequestInSchema"
+            },
+            "SafeLeaveResponseInSchema": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "SafeLeaveResponseInSchema"
+            },
+            "SensorResponseInSchema": {
+                "properties": {
+                    "FrontObsExists": {
+                        "type": "integer",
+                        "title": "Frontobsexists",
+                        "default": -9999
+                    },
+                    "RearObsExists": {
+                        "type": "integer",
+                        "title": "Rearobsexists",
+                        "default": -9999
+                    },
+                    "ObsHeight": {
+                        "type": "integer",
+                        "title": "Obsheight",
+                        "default": -9999
+                    }
+                },
+                "type": "object",
+                "title": "SensorResponseInSchema"
+            },
+            "ShortBackPathRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "destination": {
+                        "type": "string",
+                        "title": "Destination"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "destination"
+                ],
+                "title": "ShortBackPathRequestInSchema"
+            },
+            "ShortBackPathResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "ShortBackPathResponseInSchema"
+            },
+            "StopAllRequestInSchema": {
+                "properties": {
+                    "requestId": {
+                        "type": "string",
+                        "title": "Requestid"
+                    },
+                    "command": {
+                        "type": "integer",
+                        "title": "Command",
+                        "default": 0
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "requestId"
+                ],
+                "title": "StopAllRequestInSchema"
+            },
+            "StopAllResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "StopAllResponseInSchema"
+            },
+            "StopRequestInSchema": {
+                "properties": {
+                    "vehicle_id": {
+                        "type": "string",
+                        "title": "Vehicle Id"
+                    },
+                    "command": {
+                        "type": "integer",
+                        "title": "Command"
+                    },
+                    "operation_type": {
+                        "type": "string",
+                        "title": "Operation Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicle_id",
+                    "command",
+                    "operation_type"
+                ],
+                "title": "StopRequestInSchema"
+            },
+            "StopResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "StopResponseInSchema"
+            },
+            "TSPositionRequestInSchema": {
+                "properties": {
+                    "transId": {
+                        "type": "string",
+                        "title": "Transid"
+                    },
+                    "ts_name": {
+                        "type": "string",
+                        "title": "Ts Name"
+                    },
+                    "ts_x": {
+                        "type": "string",
+                        "title": "Ts X"
+                    },
+                    "ts_lane": {
+                        "type": "string",
+                        "title": "Ts Lane"
+                    },
+                    "ts_type": {
+                        "type": "string",
+                        "title": "Ts Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "transId",
+                    "ts_name",
+                    "ts_x",
+                    "ts_lane",
+                    "ts_type"
+                ],
+                "title": "TSPositionRequestInSchema"
+            },
+            "TSPositionResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "ts_name": {
+                        "type": "string",
+                        "title": "Ts Name",
+                        "default": ""
+                    },
+                    "ts_x": {
+                        "type": "number",
+                        "title": "Ts X",
+                        "default": 0
+                    },
+                    "ts_y": {
+                        "type": "number",
+                        "title": "Ts Y",
+                        "default": 0
+                    }
+                },
+                "type": "object",
+                "title": "TSPositionResponseInSchema"
+            },
+            "TaskInfoRequestInSchema": {
+                "properties": {
+                    "truck_id": {
+                        "type": "string",
+                        "title": "Truck Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "truck_id"
+                ],
+                "title": "TaskInfoRequestInSchema"
+            },
+            "TaskInfoResponseInSchema": {
+                "properties": {
+                    "container_info": {
+                        "type": "object",
+                        "title": "Container Info"
+                    },
+                    "task_type": {
+                        "type": "integer",
+                        "title": "Task Type",
+                        "default": 1
+                    },
+                    "task_op": {
+                        "type": "integer",
+                        "title": "Task Op"
+                    },
+                    "task_id": {
+                        "type": "integer",
+                        "title": "Task Id"
+                    },
+                    "nGen_task_id": {
+                        "type": "integer",
+                        "title": "Ngen Task Id"
+                    },
+                    "header": {
+                        "type": "object",
+                        "title": "Header"
+                    },
+                    "overtake": {
+                        "type": "boolean",
+                        "title": "Overtake"
+                    },
+                    "tp_info": {
+                        "type": "object",
+                        "title": "Tp Info"
+                    },
+                    "vessel_info": {
+                        "type": "object",
+                        "title": "Vessel Info"
+                    },
+                    "force_overtake": {
+                        "type": "integer",
+                        "title": "Force Overtake"
+                    },
+                    "is_redo": {
+                        "type": "boolean",
+                        "title": "Is Redo"
+                    },
+                    "origin_tasktype": {
+                        "type": "string",
+                        "title": "Origin Tasktype"
+                    },
+                    "task_source": {
+                        "type": "integer",
+                        "title": "Task Source"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "container_info",
+                    "task_op",
+                    "task_id",
+                    "nGen_task_id",
+                    "header",
+                    "overtake",
+                    "tp_info",
+                    "vessel_info",
+                    "force_overtake",
+                    "is_redo",
+                    "origin_tasktype",
+                    "task_source"
+                ],
+                "title": "TaskInfoResponseInSchema"
+            },
+            "TaskStatusRequestInSchema": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success"
+                    },
+                    "task_info": {
+                        "type": "object",
+                        "title": "Task Info"
+                    },
+                    "time_stamp": {
+                        "type": "number",
+                        "title": "Time Stamp"
+                    },
+                    "truck_id": {
+                        "type": "string",
+                        "title": "Truck Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "success",
+                    "task_info",
+                    "time_stamp",
+                    "truck_id"
+                ],
+                "title": "TaskStatusRequestInSchema"
+            },
+            "UnlockVehicleRequestInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "type": "string",
+                        "title": "Vehiclemissionid"
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "title": "Operationtype"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "title": "Offset"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin",
+                    "vehicleMissionId",
+                    "operationType",
+                    "offset"
+                ],
+                "title": "UnlockVehicleRequestInSchema"
+            },
+            "UnlockVehicleResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": ""
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "title": "Errormsg",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "UnlockVehicleResponseInSchema"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "VehiclePowerRequestInSchema": {
+                "properties": {
+                    "requestId": {
+                        "type": "string",
+                        "title": "Requestid"
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "mgmtType": {
+                        "type": "string",
+                        "title": "Mgmttype"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "requestId",
+                    "vin",
+                    "mgmtType"
+                ],
+                "title": "VehiclePowerRequestInSchema"
+            },
+            "VehiclePowerResponseInSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "VehiclePowerResponseInSchema"
+            },
+            "VinMqttRequestInSchema": {
+                "properties": {
+                    "topic_name": {
+                        "type": "string",
+                        "title": "Topic Name"
+                    },
+                    "qos": {
+                        "type": "integer",
+                        "title": "Qos"
+                    },
+                    "message_type": {
+                        "type": "string",
+                        "title": "Message Type"
+                    },
+                    "received_data": {
+                        "type": "string",
+                        "title": "Received Data"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "topic_name",
+                    "qos",
+                    "message_type",
+                    "received_data"
+                ],
+                "title": "VinMqttRequestInSchema"
+            },
+            "VinMqttResponseInSchema": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "title": "VinMqttResponseInSchema"
+            }
+        }
+    }
+}

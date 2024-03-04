@@ -1,0 +1,1344 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "ChainBoot",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/message_event/start": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Start Process",
+                "description": "\u6d41\u7a0b\u542f\u52a8",
+                "operationId": "start_process_message_event_start_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleOrderSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/message_event/abort": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Abort Process",
+                "description": "\u4e2d\u6b62\u6d41\u7a0b",
+                "operationId": "abort_process_message_event_abort_post",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    },
+                    {
+                        "name": "cancel_reason",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "",
+                            "title": "Cancel Reason"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/message_event/rch": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Rch",
+                "operationId": "rch_message_event_rch_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RchSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/message_event/update_qc_task": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Update Task",
+                "operationId": "update_task_message_event_update_qc_task_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateQcTaskSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/message_event/event": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Event Listener",
+                "operationId": "event_listener_message_event_event_post",
+                "parameters": [
+                    {
+                        "name": "event_type",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/ReceiveTaskType"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EventListenerInSchema"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/message_event/cancel_camunda_process": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Cancel Camunda Process",
+                "operationId": "cancel_camunda_process_message_event_cancel_camunda_process_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CancelCamundaSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/message_event/boundary_event": {
+            "post": {
+                "tags": [
+                    "message_event"
+                ],
+                "summary": "Boundary Event",
+                "operationId": "boundary_event_message_event_boundary_event_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BoundaryEventSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/process_instance/skip": {
+            "post": {
+                "tags": [
+                    "process_instance"
+                ],
+                "summary": "\u8282\u70b9\u8df3\u8dc3",
+                "operationId": "\u8282\u70b9\u8df3\u8dc3_process_instance_skip_post",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    },
+                    {
+                        "name": "target_node",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Target Node"
+                        }
+                    },
+                    {
+                        "name": "current_task_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Current Task Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/process_instance/activity": {
+            "get": {
+                "tags": [
+                    "process_instance"
+                ],
+                "summary": "\u83b7\u53d6\u5f53\u524d\u8282\u70b9Name",
+                "operationId": "\u83b7\u53d6\u5f53\u524d\u8282\u70b9name_process_instance_activity_get",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetActivityNode"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/service_task": {
+            "post": {
+                "tags": [
+                    "service_task_api"
+                ],
+                "summary": "",
+                "operationId": "_service_task_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ServiceTaskInSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceTaskOutSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BoundaryEventEnum": {
+                "type": "string",
+                "enum": [
+                    "update_event",
+                    "shuffle_event",
+                    "temp_parking_event",
+                    "temp_parking_cancel",
+                    "temp_parking_resume",
+                    "redo_event",
+                    "manual_complete_event",
+                    "teleop_event"
+                ],
+                "title": "BoundaryEventEnum"
+            },
+            "BoundaryEventSchema": {
+                "properties": {
+                    "event_name": {
+                        "$ref": "#/components/schemas/BoundaryEventEnum"
+                    },
+                    "vehicle_id": {
+                        "type": "string",
+                        "title": "Vehicle Id"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "default": {}
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "event_name",
+                    "vehicle_id"
+                ],
+                "title": "BoundaryEventSchema"
+            },
+            "CancelCamundaSchema": {
+                "properties": {
+                    "vehicle_id": {
+                        "type": "string",
+                        "title": "Vehicle Id"
+                    },
+                    "instance_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Instance Id",
+                        "default": ""
+                    },
+                    "cancel_reason": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cancel Reason",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicle_id"
+                ],
+                "title": "CancelCamundaSchema"
+            },
+            "CreateSuccessSchema": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "CreateSuccessSchema"
+            },
+            "DestinationSchema": {
+                "properties": {
+                    "logicalLocation": {
+                        "$ref": "#/components/schemas/LogicalLocation"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "logicalLocation"
+                ],
+                "title": "DestinationSchema"
+            },
+            "EventListenerInSchema": {
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "vehicleMissionId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Vehiclemissionid"
+                    },
+                    "jobId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Jobid"
+                    },
+                    "origin": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Origin",
+                        "default": ""
+                    },
+                    "timeStamp": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Timestamp",
+                        "default": ""
+                    },
+                    "data": {
+                        "type": "object",
+                        "title": "Data",
+                        "default": {}
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vin"
+                ],
+                "title": "EventListenerInSchema"
+            },
+            "GetActivityNode": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "GetActivityNode"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "errors": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Errors"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "LogicalLocation": {
+                "properties": {
+                    "area": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Area"
+                    },
+                    "block": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Block"
+                    },
+                    "lane": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Lane"
+                    },
+                    "stack": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Stack"
+                    },
+                    "tier": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Tier"
+                    },
+                    "orientation": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Orientation",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "area",
+                    "block",
+                    "lane",
+                    "stack",
+                    "tier"
+                ],
+                "title": "LogicalLocation"
+            },
+            "PlannedContainerDestinationListSchema": {
+                "properties": {
+                    "area": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Area",
+                        "default": ""
+                    },
+                    "block": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Block",
+                        "default": ""
+                    },
+                    "lane": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Lane",
+                        "default": 1
+                    },
+                    "stack": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Stack",
+                        "default": 1
+                    },
+                    "tier": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Tier",
+                        "default": 1
+                    },
+                    "orientation": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Orientation",
+                        "default": ""
+                    },
+                    "uniqueObjectID": {
+                        "type": "string",
+                        "title": "Uniqueobjectid"
+                    },
+                    "destDoorDirection": {
+                        "type": "string",
+                        "title": "Destdoordirection"
+                    },
+                    "containerNum": {
+                        "type": "string",
+                        "title": "Containernum"
+                    },
+                    "containerISO": {
+                        "type": "string",
+                        "title": "Containeriso"
+                    },
+                    "containerLengthFT": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerlengthft"
+                    },
+                    "containerWeightKG": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerweightkg"
+                    },
+                    "containerStack": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerstack"
+                    },
+                    "containerHeight": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerheight"
+                    },
+                    "containerWidth": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Containerwidth"
+                    },
+                    "targetReady": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Targetready",
+                        "default": true
+                    },
+                    "reeferStatus": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Reeferstatus",
+                        "default": ""
+                    },
+                    "relativePos": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Relativepos",
+                        "default": ""
+                    },
+                    "associatedTwinContainer_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Associatedtwincontainer Id",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "PlannedContainerDestinationListSchema"
+            },
+            "RchSchema": {
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "title": "Offset"
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "craneID": {
+                        "type": "string",
+                        "title": "Craneid",
+                        "default": ""
+                    },
+                    "timeStamp": {
+                        "type": "string",
+                        "title": "Timestamp"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "offset",
+                    "vin",
+                    "timeStamp"
+                ],
+                "title": "RchSchema"
+            },
+            "ReceiveTaskType": {
+                "type": "string",
+                "enum": [
+                    "NAVI_FINISHED",
+                    "CRANE_ARRIVE",
+                    "ALIMENT_FINISHED",
+                    "CNTR_FINISHED",
+                    "MISSION_FINISHED",
+                    "UNLOCK_FINISHED",
+                    "AUTO_BACKUP_FINISHED",
+                    "UP_HANG_FINISHED",
+                    "DOWN_HANG_FINISHED",
+                    "LOCK_FINISHED",
+                    "NEED_RCH",
+                    "RCH_FINISHED",
+                    "BUFFER_TRUE",
+                    "TG_DOOR_OPEN",
+                    "HOIST_READY",
+                    "IS_LOADABLE_LANE",
+                    "IS_LOADABLE_HOLDING",
+                    "SPREADER_FINISHED",
+                    "IS_HAVE_LANE",
+                    "Reefer_OFF",
+                    "TASK_ERROR",
+                    "CEG_OPEN_DOOR",
+                    "UPDATE_PREEMPTION_TASK",
+                    "UPDATE_BOX_AND_DESTINATION",
+                    "SPREADER_BUTTON_STOP",
+                    "SPREADER_BUTTON_RESUME",
+                    "MIXED_AREA_ATTR_AVAILABLE",
+                    "CHCK_VEHICLE_CHASSIS_6",
+                    "UPDATE_TEMP_PARKING_DEST",
+                    "TEMP_PARKING_FINISHED",
+                    "TEMP_PARKING_CANCEL",
+                    "TEMP_PARKING_RESUME",
+                    "SPREADER_TASK_START",
+                    "SPREADER_CONTAINER_FINISHED",
+                    "WAIT_TELEOP_FINISHED"
+                ],
+                "title": "ReceiveTaskType"
+            },
+            "ServiceTaskInSchema": {
+                "properties": {
+                    "activityId": {
+                        "type": "string",
+                        "title": "Activityid"
+                    },
+                    "processDefinitionKey": {
+                        "type": "string",
+                        "title": "Processdefinitionkey"
+                    },
+                    "businessKey": {
+                        "type": "string",
+                        "title": "Businesskey"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "title": "Tenantid"
+                    },
+                    "topicName": {
+                        "type": "string",
+                        "title": "Topicname"
+                    },
+                    "variables": {
+                        "type": "object",
+                        "title": "Variables"
+                    },
+                    "serviceEnv": {
+                        "type": "object",
+                        "title": "Serviceenv"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "activityId",
+                    "processDefinitionKey",
+                    "businessKey",
+                    "tenantId",
+                    "topicName",
+                    "variables",
+                    "serviceEnv"
+                ],
+                "title": "ServiceTaskInSchema"
+            },
+            "ServiceTaskOutSchema": {
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "title": "Data",
+                        "default": {}
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": ""
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "ServiceTaskOutSchema"
+            },
+            "UpdateQcTaskSchema": {
+                "properties": {
+                    "qcId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Qcid"
+                    },
+                    "spreadSize": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Spreadsize"
+                    }
+                },
+                "type": "object",
+                "title": "UpdateQcTaskSchema"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "VehicleOrderSchema": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename"
+                    },
+                    "messageUniqueId": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fid"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp"
+                    },
+                    "executeTogether": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Executetogether",
+                        "default": false
+                    },
+                    "uniqueOrderID": {
+                        "type": "string",
+                        "title": "Uniqueorderid"
+                    },
+                    "origin": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Origin",
+                        "default": ""
+                    },
+                    "X": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "X",
+                        "default": 0
+                    },
+                    "Y": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Y",
+                        "default": 0
+                    },
+                    "XY_heading": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Xy Heading",
+                        "default": 0
+                    },
+                    "craneID": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Craneid",
+                        "default": ""
+                    },
+                    "moveType": {
+                        "type": "string",
+                        "title": "Movetype",
+                        "default": ""
+                    },
+                    "jobType": {
+                        "type": "string",
+                        "title": "Jobtype"
+                    },
+                    "vehicleID": {
+                        "type": "string",
+                        "title": "Vehicleid"
+                    },
+                    "bidirection": {
+                        "type": "integer",
+                        "title": "Bidirection",
+                        "default": 1
+                    },
+                    "job_content": {
+                        "type": "object",
+                        "title": "Job Content",
+                        "default": {}
+                    },
+                    "passingLocation": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Passinglocation",
+                        "default": ""
+                    },
+                    "movementType": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Movementtype",
+                        "default": ""
+                    },
+                    "destination": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/DestinationSchema"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "plannedContainerDestinationList": {
+                        "items": {
+                            "$ref": "#/components/schemas/PlannedContainerDestinationListSchema"
+                        },
+                        "type": "array",
+                        "title": "Plannedcontainerdestinationlist",
+                        "default": []
+                    },
+                    "vesselVisitID": {
+                        "type": "string",
+                        "title": "Vesselvisitid",
+                        "default": ""
+                    },
+                    "mode": {
+                        "type": "string",
+                        "title": "Mode",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "messageName",
+                    "uniqueOrderID",
+                    "jobType",
+                    "vehicleID"
+                ],
+                "title": "VehicleOrderSchema",
+                "description": "{\n    \"messageName\":\"VehicleOrder\",\n    \"messageUniqueId\":\"2bb59340-2584-4777-81da-5503c00d474e\",\n    \"messageTimestamp\":\"2023-10-31T09:14:07.308Z\",\n    \"originStartTime\":\"2023-10-31T09:13:57.768049Z\",\n    \"moveType\":\"single\",\n    \"uniqueOrderID\":\"d9ca79f0-7ee3-4815-9f42-ec068e1e334e\",\n    \"origin\":\"USBTOS\",\n    \"jobType\":\"DELIVER\",\n    \"vehicleID\":\"SC03\",\n    \"job_content\":{\n        \"tosUniqueID\":\"63cf65e4-a4a5-4ecf-a645-96dc6cc46ae5\"\n    },\n    \"bidirection\":0,\n    \"movementType\":\"Yardmove\",\n    \"destination\":{\n        \"logicalLocation\":{\n            \"area\":\"YARD\",\n            \"block\":\"L01\",\n            \"lane\":1,\n            \"stack\":\"24\",\n            \"tier\":2,\n            \"orientation\":\"N\"\n        },\n        \"portLocation\":null\n    },\n    \"plannedContainerDestinationList\":[\n        {\n            \"area\":\"YARD\",\n            \"block\":\"K01\",\n            \"lane\":1,\n            \"stack\":\"24\",\n            \"tier\":1,\n            \"uniqueObjectID\":\"TESTEMU0011-0\",\n            \"targetReady\":true,\n            \"reeferStatus\":\"False\",\n            \"relativePos\":\"Center\",\n            \"destDoorDirection\":\"N\",\n            \"containerNum\":\"TESTEMU0011\",\n            \"containerISO\":\"42G1\",\n            \"containerLengthFT\":12116,\n            \"containerStack\":\"02\",\n            \"containerHeight\":2591,\n            \"containerWeightKG\":500,\n            \"containerWidth\":2438,\n            \"associatedTwinContainer_id\":null\n        }\n    ],\n    \"stageData\":{\n        \"job_status\":\"READY\",\n        \"job_lane\":\"L01\",\n        \"re_assigned\":false\n    },\n    \"X\":null,\n    \"Y\":null,\n    \"XY_heading\":null\n}"
+            }
+        }
+    }
+}

@@ -1,0 +1,947 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "ChainBoot",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/asc_cps_info_report": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "Asc Cps Info Report",
+                "description": "CPS\u6570\u636e",
+                "operationId": "asc_cps_info_report_api_asc_cps_info_report_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CPSInfoRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CPSInfoResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/plc": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "Plc",
+                "description": "\u63a5\u6536TE\u53d1\u8fc7\u6765\u7684opcua\u6570\u636e",
+                "operationId": "plc_api_plc_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlcDataRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/application_lane_handler": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "operationId": "_api_application_lane_handler_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApplicationLaneRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/qc_holding_info": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "\u9009\u62e9qc holding point \u7b49\u5f85\u533a\n:return:",
+                "operationId": "_api_qc_holding_info_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QCPointRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/query_container_point": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "\u4e3ainventory\u63d0\u4f9b\u5378\u8239\u7bb1\u5b50\u70b9\u4f4d\n:return:",
+                "operationId": "_api_query_container_point_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContainerPointRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/qc_position": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "\u66f4\u65b0qc x\n:return:",
+                "operationId": "_api_qc_position_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateQCPositionModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/qc_signal": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "\u521b\u5efa\u6216\u91ca\u653eqc\u9501\u95ed\u533a\n:return:",
+                "operationId": "_api_qc_signal_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QCSignalRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/qc_holding_status": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "{\n  \"messageName\": \"QC\",\n  \"messageUniqueID\": \"\",\n  \"messageTimestamp\":\"\",\n  \"deviceId\": 1,\n  \"lane\": 1\n}",
+                "operationId": "_api_qc_holding_status_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QCHoldingRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/response_mixed_area": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "{\"messageNumber\":8,\n\"value\":True\n}\nairlock\uff0c\u8de8\u8fd0\u8f66\u5728\u91cc\u9762\u7533\u8bf7\u5f00\u95e8num 8,ceg:atuo \u95e8\u53d110\uff0c \u624b\u52a8\u95e8\u53d19",
+                "operationId": "_api_response_mixed_area_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MixedAreaRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/engine": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "description": "{\n\"sc\":\"SC01\",\n\"value\":True,\n\"node\":engine\n}",
+                "operationId": "_api_engine_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EngineRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/update_plc_data": {
+            "post": {
+                "tags": [
+                    "cps_info_report"
+                ],
+                "summary": "",
+                "operationId": "_api_update_plc_data_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePlcDataModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApplicationLaneRequestModel": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename",
+                        "default": ""
+                    },
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "title": "Deviceid"
+                    },
+                    "vehicleId": {
+                        "type": "string",
+                        "title": "Vehicleid"
+                    },
+                    "lane": {
+                        "type": "integer",
+                        "title": "Lane"
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "title": "Status"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "deviceId",
+                    "vehicleId",
+                    "lane",
+                    "status"
+                ],
+                "title": "ApplicationLaneRequestModel"
+            },
+            "CPSInfoRequestModel": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename",
+                        "default": "CPSInfoReport"
+                    },
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "vehicleID": {
+                        "type": "string",
+                        "title": "Vehicleid"
+                    },
+                    "deviceID": {
+                        "type": "string",
+                        "title": "Deviceid"
+                    },
+                    "offset": {
+                        "type": "number",
+                        "title": "Offset"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "title": "Status"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicleID",
+                    "deviceID",
+                    "offset",
+                    "status"
+                ],
+                "title": "CPSInfoRequestModel"
+            },
+            "CPSInfoResponseModel": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": ""
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code",
+                    "msg",
+                    "error"
+                ],
+                "title": "CPSInfoResponseModel"
+            },
+            "CommonResponseModel": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": ""
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error",
+                        "default": ""
+                    },
+                    "data": {
+                        "type": "object",
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code",
+                    "msg",
+                    "error",
+                    "data"
+                ],
+                "title": "CommonResponseModel"
+            },
+            "ContainerPointRequestModel": {
+                "properties": {
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "QcId": {
+                        "type": "string",
+                        "title": "Qcid"
+                    },
+                    "lane": {
+                        "type": "string",
+                        "title": "Lane"
+                    },
+                    "offset": {
+                        "type": "number",
+                        "title": "Offset"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "QcId",
+                    "lane",
+                    "offset"
+                ],
+                "title": "ContainerPointRequestModel"
+            },
+            "EngineRequestModel": {
+                "properties": {
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "node": {
+                        "type": "string",
+                        "title": "Node"
+                    },
+                    "vehicleId": {
+                        "type": "string",
+                        "title": "Vehicleid"
+                    },
+                    "value": {
+                        "type": "boolean",
+                        "title": "Value"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "node",
+                    "vehicleId",
+                    "value"
+                ],
+                "title": "EngineRequestModel"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "MixedAreaRequestModel": {
+                "properties": {
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "messageNumber": {
+                        "type": "integer",
+                        "title": "Messagenumber"
+                    },
+                    "value": {
+                        "type": "boolean",
+                        "title": "Value"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "messageNumber",
+                    "value"
+                ],
+                "title": "MixedAreaRequestModel"
+            },
+            "PlcDataRequestModel": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename",
+                        "default": ""
+                    },
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "title": "Deviceid"
+                    },
+                    "content": {
+                        "type": "object",
+                        "title": "Content"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "deviceId",
+                    "content"
+                ],
+                "title": "PlcDataRequestModel"
+            },
+            "QCHoldingRequestModel": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename",
+                        "default": ""
+                    },
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "title": "Deviceid"
+                    },
+                    "lane": {
+                        "type": "integer",
+                        "title": "Lane"
+                    },
+                    "lock": {
+                        "type": "boolean",
+                        "title": "Lock"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "deviceId",
+                    "lane"
+                ],
+                "title": "QCHoldingRequestModel"
+            },
+            "QCPointRequestModel": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename",
+                        "default": ""
+                    },
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "title": "Deviceid"
+                    },
+                    "lane": {
+                        "type": "integer",
+                        "title": "Lane"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "deviceId",
+                    "lane"
+                ],
+                "title": "QCPointRequestModel"
+            },
+            "QCSignalRequestModel": {
+                "properties": {
+                    "messageName": {
+                        "type": "string",
+                        "title": "Messagename",
+                        "default": ""
+                    },
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "QcId": {
+                        "type": "string",
+                        "title": "Qcid"
+                    },
+                    "ActivityAction": {
+                        "type": "string",
+                        "title": "Activityaction"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "QcId",
+                    "ActivityAction"
+                ],
+                "title": "QCSignalRequestModel"
+            },
+            "UpdatePlcDataModel": {
+                "properties": {
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "plcKey": {
+                        "type": "string",
+                        "title": "Plckey"
+                    },
+                    "plcValue": {
+                        "title": "Plcvalue"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "plcKey",
+                    "plcValue"
+                ],
+                "title": "UpdatePlcDataModel"
+            },
+            "UpdateQCPositionModel": {
+                "properties": {
+                    "messageUniqueID": {
+                        "type": "string",
+                        "title": "Messageuniqueid",
+                        "description": "\u6d88\u606fID"
+                    },
+                    "messageTimestamp": {
+                        "type": "string",
+                        "title": "Messagetimestamp",
+                        "description": "\u6d88\u606f\u53d1\u9001\u65f6\u95f4"
+                    },
+                    "x": {
+                        "type": "integer",
+                        "title": "X"
+                    },
+                    "QcId": {
+                        "type": "string",
+                        "title": "Qcid"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "x",
+                    "QcId"
+                ],
+                "title": "UpdateQCPositionModel"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        }
+    }
+}
