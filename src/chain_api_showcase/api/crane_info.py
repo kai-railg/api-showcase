@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Union
+from typing import Union, Tuple, Dict
 from urllib import parse
 
 from pydantic import BaseModel
@@ -20,116 +20,130 @@ class Crane_InfoRequest(object):
     url = FMS_IP_ADDRESS + ":" + "8014"
     
     @classmethod
-    async def asc_cps_info_report(cls, body: CPSInfoRequestModel) -> AsyncHttpResponse:
+    async def asc_cps_info_report(cls, body: CPSInfoRequestModel) -> Tuple[int, Dict]:
         """
         Asc Cps Info Report
         CPS数据
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/asc_cps_info_report"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/asc_cps_info_report, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def plc(cls, body: PlcDataRequestModel) -> AsyncHttpResponse:
+    async def plc(cls, body: PlcDataRequestModel) -> Tuple[int, Dict]:
         """
         Plc
         接收TE发过来的opcua数据
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/plc"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/plc, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def application_lane_handler(cls, body: ApplicationLaneRequestModel) -> AsyncHttpResponse:
+    async def application_lane_handler(cls, body: ApplicationLaneRequestModel) -> Tuple[int, Dict]:
         """
         
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/application_lane_handler"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/application_lane_handler, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def qc_holding_info(cls, body: QCPointRequestModel) -> AsyncHttpResponse:
+    async def qc_holding_info(cls, body: QCPointRequestModel) -> Tuple[int, Dict]:
         """
         
         选择qc holding point 等待区
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/qc_holding_info"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_holding_info, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def query_container_point(cls, body: ContainerPointRequestModel) -> AsyncHttpResponse:
+    async def query_container_point(cls, body: ContainerPointRequestModel) -> Tuple[int, Dict]:
         """
         
         为inventory提供卸船箱子点位
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/query_container_point"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/query_container_point, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def qc_position(cls, body: UpdateQCPositionModel) -> AsyncHttpResponse:
+    async def qc_position(cls, body: UpdateQCPositionModel) -> Tuple[int, Dict]:
         """
         
         更新qc x
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/qc_position"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_position, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def qc_signal(cls, body: QCSignalRequestModel) -> AsyncHttpResponse:
+    async def qc_signal(cls, body: QCSignalRequestModel) -> Tuple[int, Dict]:
         """
         
         创建或释放qc锁闭区
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/qc_signal"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_signal, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def qc_holding_status(cls, body: QCHoldingRequestModel) -> AsyncHttpResponse:
+    async def qc_holding_status(cls, body: QCHoldingRequestModel) -> Tuple[int, Dict]:
         """
         
         {
@@ -140,17 +154,19 @@ class Crane_InfoRequest(object):
   "lane": 1
 }
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/qc_holding_status"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_holding_status, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def api_response_mixed_area_post(cls, body: MixedAreaRequestModel) -> AsyncHttpResponse:
+    async def api_response_mixed_area_post(cls, body: MixedAreaRequestModel) -> Tuple[int, Dict]:
         """
         
         {"messageNumber":8,
@@ -158,17 +174,19 @@ class Crane_InfoRequest(object):
 }
 airlock，跨运车在里面申请开门num 8,ceg:atuo 门发10， 手动门发9
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/response_mixed_area"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/response_mixed_area, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def api_engine_post(cls, body: EngineRequestModel) -> AsyncHttpResponse:
+    async def api_engine_post(cls, body: EngineRequestModel) -> Tuple[int, Dict]:
         """
         
         {
@@ -177,27 +195,31 @@ airlock，跨运车在里面申请开门num 8,ceg:atuo 门发10， 手动门发9
 "node":engine
 }
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/engine"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/engine, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def update_plc_data(cls, body: UpdatePlcDataModel) -> AsyncHttpResponse:
+    async def update_plc_data(cls, body: UpdatePlcDataModel) -> Tuple[int, Dict]:
         """
         
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/update_plc_data"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/update_plc_data, response: {resp.text}")
+        return resp.status, resp.json()
+        

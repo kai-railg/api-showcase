@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Union
+from typing import Union, Tuple, Dict
 from urllib import parse
 
 from pydantic import BaseModel
@@ -20,151 +20,171 @@ class Task_ExecutorRequest(object):
     url = FMS_IP_ADDRESS + ":" + "8100"
     
     @classmethod
-    async def message_event_start_post(cls, body: VehicleOrderSchema) -> AsyncHttpResponse:
+    async def message_event_start_post(cls, body: VehicleOrderSchema) -> Tuple[int, Dict]:
         """
         Start Process
         流程启动
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/start"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/start, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def abort(cls, vehicle_id: str, cancel_reason: str) -> AsyncHttpResponse:
+    async def abort(cls, vehicle_id: str, cancel_reason: str) -> Tuple[int, Dict]:
         """
         Abort Process
         中止流程
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/abort"
             ),
             
             params=dict(vehicle_id=vehicle_id, cancel_reason=cancel_reason)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/abort, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def rch(cls, body: RchSchema) -> AsyncHttpResponse:
+    async def rch(cls, body: RchSchema) -> Tuple[int, Dict]:
         """
         Rch
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/rch"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/rch, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def update_qc_task(cls, body: UpdateQcTaskSchema) -> AsyncHttpResponse:
+    async def update_qc_task(cls, body: UpdateQcTaskSchema) -> Tuple[int, Dict]:
         """
         Update Task
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/update_qc_task"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/update_qc_task, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def event(cls, body: EventListenerInSchema,event_type: ReceiveTaskType) -> AsyncHttpResponse:
+    async def event(cls, body: EventListenerInSchema,event_type: ReceiveTaskType) -> Tuple[int, Dict]:
         """
         Event Listener
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/event"
             ),
             json=body.dict(),
             params=dict(event_type=event_type)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/event, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def cancel_camunda_process(cls, body: CancelCamundaSchema) -> AsyncHttpResponse:
+    async def cancel_camunda_process(cls, body: CancelCamundaSchema) -> Tuple[int, Dict]:
         """
         Cancel Camunda Process
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/cancel_camunda_process"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/cancel_camunda_process, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def boundary_event(cls, body: BoundaryEventSchema) -> AsyncHttpResponse:
+    async def boundary_event(cls, body: BoundaryEventSchema) -> Tuple[int, Dict]:
         """
         Boundary Event
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/message_event/boundary_event"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/boundary_event, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def skip(cls, vehicle_id: str, target_node: str, current_task_id: str) -> AsyncHttpResponse:
+    async def skip(cls, vehicle_id: str, target_node: str, current_task_id: str) -> Tuple[int, Dict]:
         """
         节点跳跃
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/process_instance/skip"
             ),
             
             params=dict(vehicle_id=vehicle_id, target_node=target_node, current_task_id=current_task_id)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /process_instance/skip, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def activity(cls, vehicle_id: str) -> AsyncHttpResponse:
+    async def activity(cls, vehicle_id: str) -> Tuple[int, Dict]:
         """
         获取当前节点Name
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/process_instance/activity"
             ),
             params=dict(vehicle_id=vehicle_id)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /process_instance/activity, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def service_task(cls, body: ServiceTaskInSchema) -> AsyncHttpResponse:
+    async def service_task(cls, body: ServiceTaskInSchema) -> Tuple[int, Dict]:
         """
         
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/service_task"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /service_task, response: {resp.text}")
+        return resp.status, resp.json()
+        

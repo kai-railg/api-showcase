@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Union
+from typing import Union, Tuple, Dict
 from urllib import parse
 
 from pydantic import BaseModel
@@ -20,112 +20,126 @@ class Vehicle_ManagerRequest(object):
     url = FMS_IP_ADDRESS + ":" + "8101"
     
     @classmethod
-    async def fleetmgmt(cls, ) -> AsyncHttpResponse:
+    async def fleetmgmt(cls) -> Tuple[int, Dict]:
         """
         查询所有车辆的上下线状态
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/fleetmgmt/"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/fleetmgmt/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def stop(cls, body: StopRequestInSchema) -> AsyncHttpResponse:
+    async def stop(cls, body: StopRequestInSchema) -> Tuple[int, Dict]:
         """
         单车警停
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/stop/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/stop/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def stop_all(cls, body: StopAllRequestInSchema) -> AsyncHttpResponse:
+    async def stop_all(cls, body: StopAllRequestInSchema) -> Tuple[int, Dict]:
         """
         全场警停
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/stop-all/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/stop-all/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def position_remove(cls, body: RemoveVehiclePositionRequestInSchema,vin: str) -> AsyncHttpResponse:
+    async def position_remove(cls, body: RemoveVehiclePositionRequestInSchema,vin: str) -> Tuple[int, Dict]:
         """
         删除幽灵车
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/position_remove/{vin}"
             ),
             json=body.dict(),
             params=dict(vin=vin)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/position_remove/{vin}, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def position_remove_all(cls, body: RemoveAllVehiclePositionRequestInSchema) -> AsyncHttpResponse:
+    async def position_remove_all(cls, body: RemoveAllVehiclePositionRequestInSchema) -> Tuple[int, Dict]:
         """
         一键清理占位车辆
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/position_remove_all/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/position_remove_all/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def power(cls, body: VehiclePowerRequestInSchema) -> AsyncHttpResponse:
+    async def power(cls, body: VehiclePowerRequestInSchema) -> Tuple[int, Dict]:
         """
         上/下电
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/power/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/power/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def bertinitial(cls, body: BerthRequestInSchema) -> AsyncHttpResponse:
+    async def bertinitial(cls, body: BerthRequestInSchema) -> Tuple[int, Dict]:
         """
         更新船舶停靠朝向
         :param request: {'vesselVisitId': '9450387', 'operateType': 2, 'vesselDirection': 2, 'bowPbNum': [], 'sternPbNum': []}
 operateType: 1 Initial (Default) 船舶靠岸; 2 Departure 船舶离岸
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/bertinitial/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/bertinitial/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def navigation(cls, body: NavigationRequestInSchema) -> AsyncHttpResponse:
+    async def navigation(cls, body: NavigationRequestInSchema) -> Tuple[int, Dict]:
         """
         下发路径
         起始点:
@@ -149,109 +163,123 @@ request params:
     "containerId2Pos": 0
 }
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/navigation/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/navigation/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def api_vehicleManager_abort_post(cls, vehicle_id: str) -> AsyncHttpResponse:
+    async def api_vehicleManager_abort_post(cls, vehicle_id: str) -> Tuple[int, Dict]:
         """
         Abort
         :param request: {"vehicle_id": "SC01", "updateMissionStatus": "ABORT", "transId":"a-b-c"}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/abort/{vehicle_id}"
             ),
             
             params=dict(vehicle_id=vehicle_id)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/abort/{vehicle_id}, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def status(cls, twist_lock_station_id: str) -> AsyncHttpResponse:
+    async def status(cls, twist_lock_station_id: str) -> Tuple[int, Dict]:
         """
         查询单个锁站状态
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/twist_lock/status/{twist_lock_station_id}"
             ),
             params=dict(twist_lock_station_id=twist_lock_station_id)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/twist_lock/status/{twist_lock_station_id}, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def twist_locks(cls, status: str) -> AsyncHttpResponse:
+    async def twist_locks(cls, status: str) -> Tuple[int, Dict]:
         """
         根据状态查询符合要求的所有锁站
         status 共有如下枚举值CLOSE，IDLE，OCCUPIED，ASSIGNED，REMOVE,ALL
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/twist_locks/"
             ),
             params=dict(status=status)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/twist_locks/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def handshake(cls, body: HandshakeRequestInSchema) -> AsyncHttpResponse:
+    async def handshake(cls, body: HandshakeRequestInSchema) -> Tuple[int, Dict]:
         """
         握手开关
         :param request: {'vehicleMissionId':'aaaaaa-bbbb','vin':'SC01','handshakeType':'on'}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/handshake/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/handshake/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def qc_positions_change(cls, body: QCPositionRequestInSchema) -> AsyncHttpResponse:
+    async def qc_positions_change(cls, body: QCPositionRequestInSchema) -> Tuple[int, Dict]:
         """
         修改Redis中岸桥的坐标值
         :param request: {'vehicleMissionId':'aaa-bbb','QCNumber':'QC01','x':'123','y':'123'}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/qc_positions_change/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/qc_positions_change/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def unlock(cls, body: UnlockVehicleRequestInSchema) -> AsyncHttpResponse:
+    async def unlock(cls, body: UnlockVehicleRequestInSchema) -> Tuple[int, Dict]:
         """
         异常时解锁
         :param request: {'vehicleMissionId':'aaa-bbb','vin':'SC01','operationType':'unlock','offset':15}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/unlock/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/unlock/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def alignment(cls, body: AlignmentRequestInSchema) -> AsyncHttpResponse:
+    async def alignment(cls, body: AlignmentRequestInSchema) -> Tuple[int, Dict]:
         """
         下发对位任务
         :param request:
@@ -269,49 +297,55 @@ request params:
 }
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/alignment/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/alignment/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def safetyLeave(cls, body: SafeLeaveRequestInSchema) -> AsyncHttpResponse:
+    async def safetyLeave(cls, body: SafeLeaveRequestInSchema) -> Tuple[int, Dict]:
         """
         安全驶离
         :param request: {'vin':'SC01','operationType':'LEAVE'}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/safetyLeave/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/safetyLeave/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def lockout_notification(cls, body: LockoutNotificationRequestInSchema) -> AsyncHttpResponse:
+    async def lockout_notification(cls, body: LockoutNotificationRequestInSchema) -> Tuple[int, Dict]:
         """
         闭锁通知
         :param request: {'vin':'SC01','missionId':'11'，'targetId':'RTG01','autoCalib':1}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/lockout_notification/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/lockout_notification/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def short_route_mission(cls, body: ShortBackPathRequestInSchema) -> AsyncHttpResponse:
+    async def short_route_mission(cls, body: ShortBackPathRequestInSchema) -> Tuple[int, Dict]:
         """
         短途倒车
         {
@@ -323,17 +357,19 @@ request params:
 :param request:
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/short_route_mission/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/short_route_mission/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def query_position_available(cls, body: QueryAvailablePosRequestInSchema) -> AsyncHttpResponse:
+    async def query_position_available(cls, body: QueryAvailablePosRequestInSchema) -> Tuple[int, Dict]:
         """
         查询点位是否可用
         {
@@ -346,17 +382,19 @@ request params:
 :param request:
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/query_position_available/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/query_position_available/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def report_led_information(cls, body: ReportLedInfoRequestInSchema) -> AsyncHttpResponse:
+    async def report_led_information(cls, body: ReportLedInfoRequestInSchema) -> Tuple[int, Dict]:
         """
         向单车上报Led信息
         {
@@ -369,33 +407,37 @@ request params:
 :param request:
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/report_led_information/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/report_led_information/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def weather(cls, body: ReportWeatherRequestInSchema) -> AsyncHttpResponse:
+    async def weather(cls, body: ReportWeatherRequestInSchema) -> Tuple[int, Dict]:
         """
         天气信息通知
         :param request: {'vehicleMissionId':'aaaa-bbbb','vin':'SC01','operationType':'rain'}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/weather/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/weather/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def ts_positions_change(cls, body: TSPositionRequestInSchema) -> AsyncHttpResponse:
+    async def ts_positions_change(cls, body: TSPositionRequestInSchema) -> Tuple[int, Dict]:
         """
         修改Redis中锁站的坐标值
         :param request:{
@@ -412,64 +454,72 @@ request params:
     "status":200
 }
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/ts_positions_change/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/ts_positions_change/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def create_qctp_area(cls, body: CreateDynamicQCAreaRequestInSchema) -> AsyncHttpResponse:
+    async def create_qctp_area(cls, body: CreateDynamicQCAreaRequestInSchema) -> Tuple[int, Dict]:
         """
         创建Qctp倒车随动区域
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/create_qctp_area/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/create_qctp_area/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def delete_qctp_area(cls, body: DeleteDynamicQCAreaRequestInSchema) -> AsyncHttpResponse:
+    async def delete_qctp_area(cls, body: DeleteDynamicQCAreaRequestInSchema) -> Tuple[int, Dict]:
         """
         删除Qctp倒车随动区域
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/delete_qctp_area/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/delete_qctp_area/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def handle_area_by_qc_number(cls, body: HandleAreaByQCRequestInSchema) -> AsyncHttpResponse:
+    async def handle_area_by_qc_number(cls, body: HandleAreaByQCRequestInSchema) -> Tuple[int, Dict]:
         """
         卸舱盖板期间创建Evade类型锁闭区
         :param request: {'transId': 'de2cb4b3-c324-45f9-84ff-097b3d2c728a','lockAreaId':'QCTP.QC38.04','operationType':'CREATE'}
 :param request: {'transId': 'de2cb4b3-c324-45f9-84ff-097b3d2c728a','lockAreaId':'QCTP.QC38.04','operationType':'DELETE'}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/handle_area_by_qc_number/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/handle_area_by_qc_number/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def query_position_available_by_destination_type(cls, body: QueryAvailablePosByTypeRequestInSchema) -> AsyncHttpResponse:
+    async def query_position_available_by_destination_type(cls, body: QueryAvailablePosByTypeRequestInSchema) -> Tuple[int, Dict]:
         """
         按照点位类别查询点位是否可用
         :适用项目：所有项目-产品线
@@ -502,63 +552,71 @@ request params:
             }
         }
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/query_position_available_by_destination_type/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/query_position_available_by_destination_type/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def handel_nopass_area(cls, ) -> AsyncHttpResponse:
+    async def handel_nopass_area(cls) -> Tuple[int, Dict]:
         """
         创建/更新/删除锁闭区
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/handel_nopass_area/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/handel_nopass_area/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def query_nopass_area(cls, ) -> AsyncHttpResponse:
+    async def query_nopass_area(cls) -> Tuple[int, Dict]:
         """
         查询锁闭区
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/query_nopass_area/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/query_nopass_area/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def report_speed_ratio(cls, body: ReportSpeedRatioRequestInSchema) -> AsyncHttpResponse:
+    async def report_speed_ratio(cls, body: ReportSpeedRatioRequestInSchema) -> Tuple[int, Dict]:
         """
         调整单车仿真器倍率
         :param request: {'vehicleMissionId':'aaaa-bbbb','vin':'ALL','speedRatio':1}
 :return:
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/report_speed_ratio/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/report_speed_ratio/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def save_lock_area_check_time(cls, ) -> AsyncHttpResponse:
+    async def save_lock_area_check_time(cls) -> Tuple[int, Dict]:
         """
         设置车辆在卡口的等待时间
         :param request:{
@@ -570,32 +628,36 @@ request params:
     "status":200
 }
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/save_lock_area_check_time/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/save_lock_area_check_time/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def forced_alarm_cancel(cls, ) -> AsyncHttpResponse:
+    async def forced_alarm_cancel(cls) -> Tuple[int, Dict]:
         """
         强制恢复故障车辆
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/forced_alarm_cancel/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/forced_alarm_cancel/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def report_qtruck_command(cls, body: ReportQtruckCommandRequestInSchema) -> AsyncHttpResponse:
+    async def report_qtruck_command(cls, body: ReportQtruckCommandRequestInSchema) -> Tuple[int, Dict]:
         """
         倒车及上下挂
         :param request: {'transId':'aaaa-bbbb','vin':'SC01','missionCommand':15}
@@ -604,17 +666,19 @@ request params:
         16-开始自动上挂
         17-开始自动下挂
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/report_qtruck_command/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/report_qtruck_command/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def alarm_request(cls, body: AlarmRequestInSchema) -> AsyncHttpResponse:
+    async def alarm_request(cls, body: AlarmRequestInSchema) -> Tuple[int, Dict]:
         """
         告警信息上报
         :param request:
@@ -622,335 +686,381 @@ request params:
     12- path planning故障[自定义]
     13- path planning hub故障[自定义]
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/alarm_request/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/alarm_request/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def receive_vehicle_message(cls, body: VinMqttRequestInSchema) -> AsyncHttpResponse:
+    async def receive_vehicle_message(cls, body: VinMqttRequestInSchema) -> Tuple[int, Dict]:
         """
         接收车辆的Mqtt消息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/receive_vehicle_message/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/receive_vehicle_message/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def sensorInfo(cls, vehicle_id: str) -> AsyncHttpResponse:
+    async def sensorInfo(cls, vehicle_id: str) -> Tuple[int, Dict]:
         """
         上报车辆激光数据
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/sensorInfo/"
             ),
             params=dict(vehicle_id=vehicle_id)
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/sensorInfo/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def unlock_init(cls, ) -> AsyncHttpResponse:
+    async def unlock_init(cls) -> Tuple[int, Dict]:
         """
         下发解锁任务
         todo 需要实现下发解锁任务逻辑，需要实现request_body对应的schema
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/unlock_init/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/unlock_init/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def eventRegister(cls, body: EventRegisterInSchema) -> AsyncHttpResponse:
+    async def eventRegister(cls, body: EventRegisterInSchema) -> Tuple[int, Dict]:
         """
         事件注册
         todo 需要实现事件注册的逻辑， request_body的schema也需要实现
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/eventRegister/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/eventRegister/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def api_test(cls, ) -> AsyncHttpResponse:
+    async def api_test(cls) -> Tuple[int, Dict]:
         """
         Receive Vehicle Message
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/api_test/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/api_test/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def start_tracemalloc(cls, ) -> AsyncHttpResponse:
+    async def start_tracemalloc(cls) -> Tuple[int, Dict]:
         """
         Service Status
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/trace/start_tracemalloc"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/trace/start_tracemalloc, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def stop_tracemalloc(cls, ) -> AsyncHttpResponse:
+    async def stop_tracemalloc(cls) -> Tuple[int, Dict]:
         """
         Service Status
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/trace/stop_tracemalloc"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/trace/stop_tracemalloc, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def get_tracemalloc(cls, ) -> AsyncHttpResponse:
+    async def get_tracemalloc(cls) -> Tuple[int, Dict]:
         """
         Service Status
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/api/vehicleManager/trace/get_tracemalloc"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/vehicleManager/trace/get_tracemalloc, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def GetRRTaskInfo(cls, body: TaskInfoRequestInSchema) -> AsyncHttpResponse:
+    async def GetRRTaskInfo(cls, body: TaskInfoRequestInSchema) -> Tuple[int, Dict]:
         """
         请求任务信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/GetRRTaskInfo/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/GetRRTaskInfo/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def SetRRTaskStatus(cls, body: TaskStatusRequestInSchema) -> AsyncHttpResponse:
+    async def SetRRTaskStatus(cls, body: TaskStatusRequestInSchema) -> Tuple[int, Dict]:
         """
         请求获取
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/SetRRTaskStatus/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/SetRRTaskStatus/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def TruckPathReport(cls, body: PathRequestInSchema) -> AsyncHttpResponse:
+    async def TruckPathReport(cls, body: PathRequestInSchema) -> Tuple[int, Dict]:
         """
         上报路径信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/TruckPathReport/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/TruckPathReport/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def GetRoute(cls, body: PathRequestInSchema) -> AsyncHttpResponse:
+    async def GetRoute(cls, body: PathRequestInSchema) -> Tuple[int, Dict]:
         """
         请求导航路径
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/GetRoute/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/GetRoute/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def getEmergencyStopInfo(cls, ) -> AsyncHttpResponse:
+    async def getEmergencyStopInfo(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车获取急停信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/getEmergencyStopInfo/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/getEmergencyStopInfo/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def SetTruckLocationInfo(cls, ) -> AsyncHttpResponse:
+    async def SetTruckLocationInfo(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车上报位置信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/SetTruckLocationInfo/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/SetTruckLocationInfo/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def SetTruckChassis(cls, ) -> AsyncHttpResponse:
+    async def SetTruckChassis(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车上报底盘信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/SetTruckChassis/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/SetTruckChassis/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def SetTruckSystemStatus(cls, ) -> AsyncHttpResponse:
+    async def SetTruckSystemStatus(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车上报系统信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/SetTruckSystemStatus/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/SetTruckSystemStatus/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def SetSuspendReasonReport(cls, ) -> AsyncHttpResponse:
+    async def SetSuspendReasonReport(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车上报停车原因
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/SetSuspendReasonReport/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/SetSuspendReasonReport/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def CauseMatchFailure(cls, ) -> AsyncHttpResponse:
+    async def CauseMatchFailure(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车上报对位超时原因
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/CauseMatchFailure/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/CauseMatchFailure/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def GetServiceStatus(cls, ) -> AsyncHttpResponse:
+    async def GetServiceStatus(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车获取服务状态
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/WellGNS/GetServiceStatus/"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/GetServiceStatus/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def GetRainFallInfo(cls, ) -> AsyncHttpResponse:
+    async def GetRainFallInfo(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车获取雨量模式以及雨量信息
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/WellGNS/GetRainFallInfo/"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/GetRainFallInfo/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def GetAllvehicleinfo(cls, ) -> AsyncHttpResponse:
+    async def GetAllvehicleinfo(cls) -> Tuple[int, Dict]:
         """
         获取车辆位置信息
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/WellGNS/GetAllvehicleinfo/"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/GetAllvehicleinfo/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def GetTrunkInformation(cls, ) -> AsyncHttpResponse:
+    async def GetTrunkInformation(cls) -> Tuple[int, Dict]:
         """
         马来西亚单车上报是否有箱信息
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/WellGNS/GetTrunkInformation/"
             ),
             
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /WellGNS/GetTrunkInformation/, response: {resp.text}")
+        return resp.status, resp.json()
+        

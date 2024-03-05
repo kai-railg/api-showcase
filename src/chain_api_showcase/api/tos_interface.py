@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Union
+from typing import Union, Tuple, Dict
 from urllib import parse
 
 from pydantic import BaseModel
@@ -20,194 +20,220 @@ class Tos_InterfaceRequest(object):
     url = FMS_IP_ADDRESS + ":" + "18998"
     
     @classmethod
-    async def fms_area_inventory_query_post(cls, body: AreaInventoryQuery) -> AsyncHttpResponse:
+    async def fms_area_inventory_query_post(cls, body: AreaInventoryQuery) -> Tuple[int, Dict]:
         """
         Area Inventory Query
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/fms/area/inventory/query/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /fms/area/inventory/query/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def response(cls, body: WaCreatedResponse) -> AsyncHttpResponse:
+    async def response(cls, body: WaCreatedResponse) -> Tuple[int, Dict]:
         """
         Wa Created Response
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/fms/wacreated/response/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /fms/wacreated/response/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def fms_wacancelled_response_post(cls, body: WaCancelledResponse) -> AsyncHttpResponse:
+    async def fms_wacancelled_response_post(cls, body: WaCancelledResponse) -> Tuple[int, Dict]:
         """
         Wa Cancelled Response
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/fms/wacancelled/response/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /fms/wacancelled/response/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def fms_sc_status_post(cls, body: ScStatus) -> AsyncHttpResponse:
+    async def fms_sc_status_post(cls, body: ScStatus) -> Tuple[int, Dict]:
         """
         Sc Status
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/fms/sc/status/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /fms/sc/status/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def updated(cls, body: AreaAvailabilityUpdated) -> AsyncHttpResponse:
+    async def updated(cls, body: AreaAvailabilityUpdated) -> Tuple[int, Dict]:
         """
         Area Availability Updated
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/fms/area/availability/updated/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /fms/area/availability/updated/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def fms_container_change_post(cls, body: ContainerUpdate) -> AsyncHttpResponse:
+    async def fms_container_change_post(cls, body: ContainerUpdate) -> Tuple[int, Dict]:
         """
         Container Change
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/fms/container/change/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /fms/container/change/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def message(cls, body: object) -> AsyncHttpResponse:
+    async def message(cls, body: object) -> Tuple[int, Dict]:
         """
         Ail Message
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/ail/message/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /ail/message/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def inventory_import_degree(cls, body: InventoryImportDegree) -> AsyncHttpResponse:
+    async def inventory_import_degree(cls, body: InventoryImportDegree) -> Tuple[int, Dict]:
         """
         Inventory Import Degree
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/upload/inventory_import_degree/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /upload/inventory_import_degree/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def login(cls, body: Login) -> AsyncHttpResponse:
+    async def login(cls, body: Login) -> Tuple[int, Dict]:
         """
         Login
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/upload/new/login/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /upload/new/login/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def send(cls, body: ButtonSend) -> AsyncHttpResponse:
+    async def send(cls, body: ButtonSend) -> Tuple[int, Dict]:
         """
         New Button Send
         
         """
-        
-        return await async_post(
+        resp = await async_post(
             url=parse.urljoin(
                 cls.url, "/upload/new/button/send/"
             ),
             json=body.dict(),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /upload/new/button/send/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def refresh(cls, ) -> AsyncHttpResponse:
+    async def refresh(cls) -> Tuple[int, Dict]:
         """
         New Button Refresh
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/upload/new/button/refresh/"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /upload/new/button/refresh/, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def finish_workinstruction_csv(cls, ) -> AsyncHttpResponse:
+    async def finish_workinstruction_csv(cls) -> Tuple[int, Dict]:
         """
         Finish Workinstruction
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/inventory_data/finish_workinstruction.csv"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /inventory_data/finish_workinstruction.csv, response: {resp.text}")
+        return resp.status, resp.json()
+        
     @classmethod
-    async def init_yard_csv(cls, ) -> AsyncHttpResponse:
+    async def init_yard_csv(cls) -> Tuple[int, Dict]:
         """
         Init Yard
         
         """
-        
-        return await async_get(
+        resp = await async_get(
             url=parse.urljoin(
                 cls.url, "/inventory_data/init_yard.csv"
             ),
             
         )
-         
+        if resp.status != 200:
+            print(f"Request failed: {resp.status}, url: {cls.url}, api: /inventory_data/init_yard.csv, response: {resp.text}")
+        return resp.status, resp.json()
+        
