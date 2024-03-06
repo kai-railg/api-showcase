@@ -8,6 +8,8 @@ from pydantic import BaseModel
 from chain_http.async_client import (
     get as async_get,
     post as async_post,
+    put as async_put,
+    delete as async_delete,
     AsyncHttpResponse,
 )
 
@@ -1788,6 +1790,10 @@ class Task_InfoRequest(object):
         删除锁站
 
         """
+        resp = await async_delete(
+            url=parse.urljoin(cls.url, "/api/taskInfo/ts_switch/automatic"),
+            params=dict(ts_name=ts_name),
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"

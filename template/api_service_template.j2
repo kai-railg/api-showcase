@@ -8,7 +8,9 @@ from pydantic import BaseModel
 from chain_http.async_client import (
     get as async_get,
     post as async_post,
-    AsyncHttpResponse,
+    put as async_put,
+    delete as async_delete,
+    AsyncHttpResponse
 )
 
 from ..schemas.{{ project_name }} import *
@@ -39,8 +41,8 @@ class {{ cls_name }}(object):
         """
         {{ endpoint.summary }}
         {{ endpoint.description }}
-        """{% if endpoint.method == 'post' %}
-        resp = await async_post(
+        """{% if endpoint.method in ['post', 'put', 'delete'] %}
+        resp = await async_{{ endpoint.method }}(
             url=parse.urljoin(
                 cls.url, "{{ endpoint.path }}"
             ),

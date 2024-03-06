@@ -8,6 +8,8 @@ from pydantic import BaseModel
 from chain_http.async_client import (
     get as async_get,
     post as async_post,
+    put as async_put,
+    delete as async_delete,
     AsyncHttpResponse,
 )
 
@@ -210,8 +212,8 @@ class Task_ExecutorRequest(object):
         cls, body: CycleEventSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        Event Process
         循环事件注册与取消
+        用来支持循环事件的注册和取消通过task info存储事件列表，列表支持去重通过camunda循环事件的定义触发事件执行camunda事件的销毁：1. 任务列表为空2. 通过外部接口取消
         """
         resp = await async_post(
             url=parse.urljoin(cls.url, "/event/cycle_event"),
@@ -229,8 +231,8 @@ class Task_ExecutorRequest(object):
         cls, body: SubscribeEventSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        Subscribe Event
         订阅事件的注册与取消
+        1. 用来支持订阅事件2. 通过task info存储订阅者列表，列表支持去重3. 通过camunda循环事件的定义触发事件执行4. 调用事件对应的接口，推送返回值给订阅者
         """
         resp = await async_post(
             url=parse.urljoin(cls.url, "/event/subscribe_event"),

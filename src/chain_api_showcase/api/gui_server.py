@@ -8,6 +8,8 @@ from pydantic import BaseModel
 from chain_http.async_client import (
     get as async_get,
     post as async_post,
+    put as async_put,
+    delete as async_delete,
     AsyncHttpResponse,
 )
 
@@ -62,6 +64,11 @@ class Gui_ServerRequest(object):
         修改用户密码
 
         """
+        resp = await async_put(
+            url=parse.urljoin(cls.url, "/auth/update_passwd/{item_id}"),
+            json=body.dict(),
+            params=dict(item_id=item_id),
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /auth/update_passwd/{item_id}, response: {resp.text}"
@@ -94,6 +101,11 @@ class Gui_ServerRequest(object):
         更新用户信息
 
         """
+        resp = await async_put(
+            url=parse.urljoin(cls.url, "/user/{item_id}"),
+            json=body.dict(),
+            params=dict(item_id=item_id),
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /user/{item_id}, response: {resp.text}"
@@ -123,6 +135,9 @@ class Gui_ServerRequest(object):
         删除用户
 
         """
+        resp = await async_delete(
+            url=parse.urljoin(cls.url, "/user/{item_id}"), params=dict(item_id=item_id)
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /user/{item_id}, response: {resp.text}"
@@ -196,6 +211,11 @@ class Gui_ServerRequest(object):
         更新组
 
         """
+        resp = await async_put(
+            url=parse.urljoin(cls.url, "/group/{item_id}"),
+            json=body.dict(),
+            params=dict(item_id=item_id),
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /group/{item_id}, response: {resp.text}"
@@ -225,6 +245,9 @@ class Gui_ServerRequest(object):
         删除组
 
         """
+        resp = await async_delete(
+            url=parse.urljoin(cls.url, "/group/{item_id}"), params=dict(item_id=item_id)
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /group/{item_id}, response: {resp.text}"
@@ -275,6 +298,11 @@ class Gui_ServerRequest(object):
         更新权限信息
 
         """
+        resp = await async_put(
+            url=parse.urljoin(cls.url, "/permission/{item_id}"),
+            json=body.dict(),
+            params=dict(item_id=item_id),
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /permission/{item_id}, response: {resp.text}"
@@ -305,6 +333,10 @@ class Gui_ServerRequest(object):
         删除权限
 
         """
+        resp = await async_delete(
+            url=parse.urljoin(cls.url, "/permission/{item_id}"),
+            params=dict(item_id=item_id),
+        )
         if resp.status != 200:
             print(
                 f"Request failed: {resp.status}, url: {cls.url}, api: /permission/{item_id}, response: {resp.text}"

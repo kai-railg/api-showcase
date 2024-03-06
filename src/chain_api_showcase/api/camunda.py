@@ -8,6 +8,8 @@ from pydantic import BaseModel
 from chain_http.async_client import (
     get as async_get,
     post as async_post,
+    put as async_put,
+    delete as async_delete,
     AsyncHttpResponse,
 )
 
