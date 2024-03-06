@@ -150,6 +150,7 @@ def get_api_endpoints(project_config: Dict) -> Dict:
                     "description": vals.get("description", ""),
                     "model": model,
                     "path": path,
+                    "response_model": vals.get("responses").get("200", {}).get("content", {}).get("application/json", {}).get("schema", {}).get("$ref", "").split("/")[-1],
                     "parameters": [
                         {
                             "name": param["name"],
@@ -186,3 +187,11 @@ def generate_api_code(project_config: Dict):
 
     with open(f"./{pip_dir}/api/{project_config['name']}.py", "w") as f:
         f.write(rendered_content)
+
+
+def format_file(project_name: str):
+    command: List = [
+        "black",
+        f"./{pip_dir}/api/{project_name}.py"
+    ]
+    subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)

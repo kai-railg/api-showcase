@@ -18,155 +18,160 @@ FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
 
 class Task_SchedulerRequest(object):
     url = FMS_IP_ADDRESS + ":" + "26102"
-    
+
     @classmethod
-    async def receive_mi(cls, body: MovementInstructions) -> Tuple[int, Dict]:
+    async def receive_mi(
+        cls, body: MovementInstructions
+    ) -> Tuple[int, MovementCreatedResponse]:
         """
         Process Movement Instructions
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/receive_mi/"
-            ),
+            url=parse.urljoin(cls.url, "/receive_mi/"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/, response: {resp.text}")
-        return resp.status, resp.json()
-        
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, MovementCreatedResponse.model_validate_json(resp)
+
     @classmethod
     async def remove(cls) -> Tuple[int, Dict]:
         """
         Process Remove
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/remove"
-            ),
-            
-            
+            url=parse.urljoin(cls.url, "/remove"),
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /remove, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /remove, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
-    async def dc(cls, body: DependencyCheck) -> Tuple[int, Dict]:
+    async def dc(cls, body: DependencyCheck) -> Tuple[int, DependencyCheckResponse]:
         """
         Process Movement Instructions
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/receive_mi/dc"
-            ),
+            url=parse.urljoin(cls.url, "/receive_mi/dc"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/dc, response: {resp.text}")
-        return resp.status, resp.json()
-        
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/dc, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, DependencyCheckResponse.model_validate_json(resp)
+
     @classmethod
-    async def cancel(cls, body: MovementCancel) -> Tuple[int, Dict]:
+    async def cancel(cls, body: MovementCancel) -> Tuple[int, MovementCancelResponse]:
         """
         Process Movement Cancel Instructions
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/receive_mi/cancel"
-            ),
+            url=parse.urljoin(cls.url, "/receive_mi/cancel"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/cancel, response: {resp.text}")
-        return resp.status, resp.json()
-        
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/cancel, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, MovementCancelResponse.model_validate_json(resp)
+
     @classmethod
-    async def receive_mi_update_post(cls, body: MovementInstructions) -> Tuple[int, Dict]:
+    async def receive_mi_update_post(
+        cls, body: MovementInstructions
+    ) -> Tuple[int, MovementUpdateResponse]:
         """
         Process Movement Instruction Update
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/receive_mi/update"
-            ),
+            url=parse.urljoin(cls.url, "/receive_mi/update"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/update, response: {resp.text}")
-        return resp.status, resp.json()
-        
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/update, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, MovementUpdateResponse.model_validate_json(resp)
+
     @classmethod
-    async def receive_action_code(cls, body: VehicleOrder) -> Tuple[int, Dict]:
+    async def receive_action_code(
+        cls, body: VehicleOrder
+    ) -> Tuple[int, ActionCodeResponse]:
         """
         Process Code
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/receive_action_code"
-            ),
+            url=parse.urljoin(cls.url, "/receive_action_code"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /receive_action_code, response: {resp.text}")
-        return resp.status, resp.json()
-        
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_action_code, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, ActionCodeResponse.model_validate_json(resp)
+
     @classmethod
     async def order_update(cls, body: TOSOrderUpdate) -> Tuple[int, Dict]:
         """
         Process Tos Side Order Update
-        
+
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/tos_interface/order_update"
-            ),
+            url=parse.urljoin(cls.url, "/tos_interface/order_update"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /tos_interface/order_update, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /tos_interface/order_update, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def check_sc(cls) -> Tuple[int, Dict]:
         """
         Monitor Sc Status
-        
+
         """
         resp = await async_get(
-            url=parse.urljoin(
-                cls.url, "/monitor/check_sc"
-            ),
-            
+            url=parse.urljoin(cls.url, "/monitor/check_sc"),
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /monitor/check_sc, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /monitor/check_sc, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def check_sc_details(cls, sc_id: str) -> Tuple[int, Dict]:
         """
         Get Sc Data Status
-        
+
         """
         resp = await async_get(
-            url=parse.urljoin(
-                cls.url, "/monitor/check_sc_details/{sc_id}"
-            ),
-            params=dict(sc_id=sc_id)
+            url=parse.urljoin(cls.url, "/monitor/check_sc_details/{sc_id}"),
+            params=dict(sc_id=sc_id),
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /monitor/check_sc_details/{sc_id}, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /monitor/check_sc_details/{sc_id}, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        

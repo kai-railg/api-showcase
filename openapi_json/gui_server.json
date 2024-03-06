@@ -2237,6 +2237,114 @@
                 }
             }
         },
+        "/api/taskInfo/EquipmentStatus/GetAll": {
+            "get": {
+                "tags": [
+                    "api_proxy"
+                ],
+                "summary": "Api Proxy",
+                "operationId": "api_proxy_api_taskInfo_EquipmentStatus_GetAll_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "api_proxy"
+                ],
+                "summary": "Api Proxy",
+                "operationId": "api_proxy_api_taskInfo_EquipmentStatus_GetAll_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task/rc_task": {
+            "get": {
+                "tags": [
+                    "api_proxy"
+                ],
+                "summary": "Api Proxy",
+                "operationId": "api_proxy_api_task_rc_task_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "api_proxy"
+                ],
+                "summary": "Api Proxy",
+                "operationId": "api_proxy_api_task_rc_task_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/telep": {
+            "get": {
+                "tags": [
+                    "api_proxy"
+                ],
+                "summary": "Api Proxy",
+                "operationId": "api_proxy_api_telep_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "api_proxy"
+                ],
+                "summary": "Api Proxy",
+                "operationId": "api_proxy_api_telep_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/VesselInfo/SetVesselInfo": {
             "post": {
                 "tags": [
@@ -2367,6 +2475,7 @@
                     "vessel_info"
                 ],
                 "summary": "\u4fee\u6539\u8239",
+                "description": "{\n    \"ETA\": \"1701453720\",\n    \"ETB\": \"1701543840\",\n    \"vesselVisitId\": \"111\",\n    \"vesselName\": \"\u6d4b\u8bd5\u8239\u8236\u65b9\u541112\",\n    \"inVyg\": \"impor12\",\n    \"phase\": \"DEPARTED\",\n    \"bollardFore\": 1070,\n    \"bollardAfter\": 1010,\n    \"ETD\": \"1701934680\"\n}",
                 "operationId": "\u4fee\u6539\u8239_VesselInfo_EditVesselInfo_post",
                 "requestBody": {
                     "content": {
@@ -2530,6 +2639,7 @@
                     "message_api"
                 ],
                 "summary": "\u83b7\u53d6\u6240\u6709\u544a\u8b66\u4fe1\u606f",
+                "description": "request params:\n    {\n    \"start_time\": \"2023-09-01 00:00:00\",\n    \"end_time\": \"2023-12-07 00:00:00\",\n    \"messageType\": \"truck\",\n    \"truck_list\": [\"AT01\"],\n    \"per_page\": 10,\n    \"page\": 1\n    }",
                 "operationId": "\u83b7\u53d6\u6240\u6709\u544a\u8b66\u4fe1\u606f_message_GetAllMessage_post",
                 "requestBody": {
                     "content": {
@@ -3033,6 +3143,48 @@
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/FailTaskSchemas"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/TaskCorrelation/event_report": {
+            "post": {
+                "tags": [
+                    "task_info"
+                ],
+                "summary": "\u624b\u52a8\u8865\u4e8b\u4ef6\u4e0a\u62a5\u4fe1\u53f7",
+                "description": "task executor \u8fd4\u56de\u7684\u54cd\u5e94\u4f53\u5171\u4e24\u79cd\uff1a\n    \u7b2c\u4e00\u79cd\uff1a\n        {\"data\": null, \"code\": 200, \"msg\": \"success\", \"error\": \"\"}\n    \u7b2c\u4e8c\u79cd\uff1a\n        {\"detail\": {\n            \"code\": 15700,\n            \"msg\": \"event_listener_malaysia \u6267\u884c\u5931\u8d25, \",\n            \"error\": \"RequestExternalError\"}\n        }",
+                "operationId": "\u624b\u52a8\u8865\u4e8b\u4ef6\u4e0a\u62a5\u4fe1\u53f7_TaskCorrelation_event_report_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EventReport"
                             }
                         }
                     },
@@ -3688,6 +3840,39 @@
                     "error"
                 ],
                 "title": "DeleteSuccessSchema"
+            },
+            "EventReport": {
+                "properties": {
+                    "vehicleID": {
+                        "type": "string",
+                        "title": "Vehicleid"
+                    },
+                    "eventType": {
+                        "type": "string",
+                        "title": "Eventtype"
+                    },
+                    "origin": {
+                        "type": "string",
+                        "title": "Origin",
+                        "default": "GUI"
+                    },
+                    "timeStamp": {
+                        "type": "string",
+                        "title": "Timestamp",
+                        "default": ""
+                    },
+                    "data": {
+                        "type": "object",
+                        "title": "Data",
+                        "default": {}
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vehicleID",
+                    "eventType"
+                ],
+                "title": "EventReport"
             },
             "FailTaskSchemas": {
                 "properties": {

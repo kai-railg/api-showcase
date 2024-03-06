@@ -280,6 +280,7 @@
                     "message_event"
                 ],
                 "summary": "Boundary Event",
+                "description": "\u89e6\u53d1\u6d41\u7a0b\u56fe\u4e2d\u7684 MESSAGE BOUNDARY EVENT \u8282\u70b9",
                 "operationId": "boundary_event_message_event_boundary_event_post",
                 "requestBody": {
                     "content": {
@@ -297,7 +298,8 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                    "type": "object",
+                                    "title": "Response Boundary Event Message Event Boundary Event Post"
                                 }
                             }
                         }
@@ -465,13 +467,18 @@
                 "type": "string",
                 "enum": [
                     "update_event",
+                    "update_ground_event",
                     "shuffle_event",
                     "temp_parking_event",
                     "temp_parking_cancel",
                     "temp_parking_resume",
                     "redo_event",
+                    "redo_ground_event",
                     "manual_complete_event",
-                    "teleop_event"
+                    "teleop_event",
+                    "abort_event",
+                    "abort_ground_event",
+                    "abort_pickup_event"
                 ],
                 "title": "BoundaryEventEnum"
             },
@@ -925,6 +932,17 @@
                         "title": "Targetready",
                         "default": true
                     },
+                    "portLocation": {
+                        "anyOf": [
+                            {
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Portlocation"
+                    },
                     "reeferStatus": {
                         "anyOf": [
                             {
@@ -1009,7 +1027,9 @@
                     "NEED_RCH",
                     "RCH_FINISHED",
                     "BUFFER_TRUE",
+                    "WAIT_CONTAINER_APPEAR",
                     "TG_DOOR_OPEN",
+                    "REEFER_DOOR_OPEN",
                     "HOIST_READY",
                     "IS_LOADABLE_LANE",
                     "IS_LOADABLE_HOLDING",
@@ -1030,7 +1050,9 @@
                     "TEMP_PARKING_RESUME",
                     "SPREADER_TASK_START",
                     "SPREADER_CONTAINER_FINISHED",
-                    "WAIT_TELEOP_FINISHED"
+                    "WAIT_TELEOP_FINISHED",
+                    "ASC_SWITCH_MODE",
+                    "CHECK_SPREADER_FINISHED"
                 ],
                 "title": "ReceiveTaskType"
             },

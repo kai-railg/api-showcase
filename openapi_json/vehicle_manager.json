@@ -2631,6 +2631,17 @@
                         "type": "string",
                         "title": "Orientation"
                     },
+                    "locationType": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Locationtype"
+                    },
                     "moveTask": {
                         "type": "boolean",
                         "title": "Movetask",

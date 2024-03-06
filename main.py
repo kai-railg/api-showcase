@@ -13,7 +13,7 @@ from core import (
     get_openapi_json,
     write_openapi_json,
     generate_pydantic_model,
-    generate_api_code
+    generate_api_code, format_file
 )
 
 if __name__ == '__main__':
@@ -26,4 +26,5 @@ if __name__ == '__main__':
         write_openapi_json(openapi_json, name)
         generate_pydantic_model(name)
         generate_api_code(project_config)
+        format_file(name)
         print(f"generate {name} success...")

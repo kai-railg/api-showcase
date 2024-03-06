@@ -18,7 +18,7 @@ FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
 
 class CamundaRequest(object):
     url = FMS_IP_ADDRESS + ":" + "8099"
-    
+
     @classmethod
     async def startProcess(cls, body: StartProcessRequest) -> Tuple[int, Dict]:
         """
@@ -26,16 +26,16 @@ class CamundaRequest(object):
         发起流程
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/startProcess"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/startProcess"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/startProcess, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/startProcess, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def setVariablesByBisKey(cls, body: VariableRequest) -> Tuple[int, Dict]:
         """
@@ -43,18 +43,20 @@ class CamundaRequest(object):
         根据业务主键设置流程变量
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/setVariablesByBisKey"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/setVariablesByBisKey"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/setVariablesByBisKey, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/setVariablesByBisKey, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
-    async def searchCurrentActiveMessageEvents(cls, body: ActInfoRequest) -> Tuple[int, Dict]:
+    async def searchCurrentActiveMessageEvents(
+        cls, body: ActInfoRequest
+    ) -> Tuple[int, Dict]:
         """
         None
         获取当前活动receiveEvents
@@ -64,12 +66,14 @@ class CamundaRequest(object):
                 cls.url, "/api/camundaProcess/searchCurrentActiveMessageEvents"
             ),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/searchCurrentActiveMessageEvents, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/searchCurrentActiveMessageEvents, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def searchCurrentActInfo(cls, body: ActInfoRequest) -> Tuple[int, Dict]:
         """
@@ -77,33 +81,35 @@ class CamundaRequest(object):
         获取当前流程节点定义
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/searchCurrentActInfo"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/searchCurrentActInfo"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/searchCurrentActInfo, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/searchCurrentActInfo, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
-    async def receivedTaskMessageEvent(cls, body: ReceivedTaskRequest) -> Tuple[int, Dict]:
+    async def receivedTaskMessageEvent(
+        cls, body: ReceivedTaskRequest
+    ) -> Tuple[int, Dict]:
         """
         None
         推动receiveTask
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/receivedTaskMessageEvent"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/receivedTaskMessageEvent"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/receivedTaskMessageEvent, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/receivedTaskMessageEvent, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def receivedMessageEvent(cls, body: ReceivedMessageEvent) -> Tuple[int, Dict]:
         """
@@ -111,16 +117,16 @@ class CamundaRequest(object):
         信封事件驱动
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/receivedMessageEvent"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/receivedMessageEvent"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/receivedMessageEvent, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/receivedMessageEvent, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def receivedCommon(cls, body: ReceivedCommonRequest) -> Tuple[int, Dict]:
         """
@@ -128,16 +134,16 @@ class CamundaRequest(object):
         接口驱动receiveTask流程继续
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/receivedCommon"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/receivedCommon"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/receivedCommon, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/receivedCommon, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def completeUserTask(cls, body: ReceivedCommonRequest) -> Tuple[int, Dict]:
         """
@@ -145,16 +151,16 @@ class CamundaRequest(object):
         驱动userTask
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/completeUserTask"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/completeUserTask"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/completeUserTask, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/completeUserTask, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def cancelProcess(cls, body: CancelProcessRequest) -> Tuple[int, Dict]:
         """
@@ -162,13 +168,12 @@ class CamundaRequest(object):
         取消流程
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/camundaProcess/cancelProcess"
-            ),
+            url=parse.urljoin(cls.url, "/api/camundaProcess/cancelProcess"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/cancelProcess, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/camundaProcess/cancelProcess, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        

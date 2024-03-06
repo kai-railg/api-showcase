@@ -23,11 +23,11 @@ body: {{ endpoint.model }}{{ "," if endpoint.parameters }}
     {%- if parameter.model  -%}
     {{ parameter.name }}: {{ parameter.model }}{{ ", " if not loop.last }}
     {%- elif parameter.type == 'string' -%}
-{{ parameter.name }}: str{{ ", " if not loop.last }}
+{{ parameter.name }}: str{{ " = str()" if parameter.default else "" }}{{ ", " if not loop.last }}
     {%- elif parameter.type == 'integer' -%}
-{{ parameter.name }}: int{{ ", " if not loop.last }}
+{{ parameter.name }}: int{{ " = int()" if parameter.default else "" }}{{ ", " if not loop.last }}
     {%- elif parameter.type -%}
-{{ parameter.name }}: {{ parameter.type }}{{ ", " if not loop.last }}
+{{ parameter.name }}: {{ parameter.type }}{% if parameter.default %} = {% if parameter.type == 'bool' %}str({{ parameter.default }}).lower(){% else %}"{{ parameter.default }}"{% endif %}{% endif %}{{ ", " if not loop.last }}
     {%- endif -%}
 {%- endfor -%}
 {%- endmacro %}
@@ -35,7 +35,7 @@ class {{ cls_name }}(object):
     url = FMS_IP_ADDRESS + ":" + "{{ port }}"
     {% for endpoint in endpoints %}
     @classmethod
-    async def {{ endpoint.func_name }}(cls{{ ", " if generate_parameter(endpoint) else "" }}{{ generate_parameter(endpoint) }}) -> Tuple[int, Dict]:
+    async def {{ endpoint.func_name }}(cls{{ ", " if generate_parameter(endpoint) else "" }}{{ generate_parameter(endpoint) }}) -> Tuple[int, {{ endpoint.response_model if endpoint.response_model != "" else "Dict" }}]:
         """
         {{ endpoint.summary }}
         {{ endpoint.description }}
@@ -55,5 +55,6 @@ class {{ cls_name }}(object):
         ){% endif %}
         if resp.status != 200:
             print(f"Request failed: {resp.status}, url: {cls.url}, api: {{ endpoint.path }}, response: {resp.text}")
-        return resp.status, resp.json()
+            return resp.status, resp.text
+        return resp.status, {% if endpoint.response_model %} {{ endpoint.response_model }}.model_validate_json(resp)  {% else %} resp.json() {% endif %}
         {% endfor %}

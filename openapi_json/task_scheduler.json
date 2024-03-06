@@ -155,7 +155,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/MovementCancelResponse"
+                                    "$ref": "#/components/schemas/MovementUpdateResponse"
                                 }
                             }
                         }
@@ -683,6 +683,10 @@
                     "tosUniqueID": {
                         "title": "Tosuniqueid",
                         "type": "string"
+                    },
+                    "twinMoveID": {
+                        "title": "Twinmoveid",
+                        "type": "string"
                     }
                 }
             },
@@ -992,6 +996,34 @@
                     "Discharge"
                 ],
                 "description": "An enumeration."
+            },
+            "MovementUpdateResponse": {
+                "title": "MovementUpdateResponse",
+                "required": [
+                    "messageName",
+                    "messageUniqueID",
+                    "timeStamp",
+                    "updateResult"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageName": {
+                        "title": "Messagename",
+                        "type": "string"
+                    },
+                    "messageUniqueID": {
+                        "title": "Messageuniqueid",
+                        "type": "string"
+                    },
+                    "timeStamp": {
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "updateResult": {
+                        "title": "Updateresult",
+                        "type": "boolean"
+                    }
+                }
             },
             "Origin": {
                 "title": "Origin",

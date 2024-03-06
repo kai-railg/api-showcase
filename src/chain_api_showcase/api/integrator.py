@@ -18,7 +18,7 @@ FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
 
 class IntegratorRequest(object):
     url = FMS_IP_ADDRESS + ":" + "10101"
-    
+
     @classmethod
     async def insert(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -26,16 +26,16 @@ class IntegratorRequest(object):
         向任务队列插入新任务
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/task/insert"
-            ),
+            url=parse.urljoin(cls.url, "/api/task/insert"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/task/insert, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/task/insert, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def clear(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -43,16 +43,16 @@ class IntegratorRequest(object):
         清空任务队列
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/task/clear"
-            ),
+            url=parse.urljoin(cls.url, "/api/task/clear"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/task/clear, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/task/clear, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def get_all(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -60,16 +60,16 @@ class IntegratorRequest(object):
         获取任务队列
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/task/get_all"
-            ),
+            url=parse.urljoin(cls.url, "/api/task/get_all"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/task/get_all, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/task/get_all, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def rotate(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -77,16 +77,49 @@ class IntegratorRequest(object):
         倒箱门
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/rotate"
-            ),
+            url=parse.urljoin(cls.url, "/api/rotate"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/rotate, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/rotate, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
+    @classmethod
+    async def complete(cls, vehicle_id: str) -> Tuple[int, Dict]:
+        """
+        Complete
+        手动complete
+        """
+        resp = await async_post(
+            url=parse.urljoin(cls.url, "/api/complete"),
+            params=dict(vehicle_id=vehicle_id),
+        )
+        if resp.status != 200:
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/complete, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, resp.json()
+
+    @classmethod
+    async def exclusiveZone(cls) -> Tuple[int, Dict]:
+        """
+        Rotate
+        车辆是否处于reefer和TG
+        """
+        resp = await async_get(
+            url=parse.urljoin(cls.url, "/api/exclusiveZone"),
+        )
+        if resp.status != 200:
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/exclusiveZone, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, resp.json()
+
     @classmethod
     async def shuffle(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -94,16 +127,16 @@ class IntegratorRequest(object):
         处理shuffle
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/shuffle"
-            ),
+            url=parse.urljoin(cls.url, "/shuffle"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /shuffle, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /shuffle, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def start(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -111,16 +144,16 @@ class IntegratorRequest(object):
         启动任务
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/message_event/start"
-            ),
+            url=parse.urljoin(cls.url, "/message_event/start"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/start, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /message_event/start, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def start_teleop(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -128,16 +161,16 @@ class IntegratorRequest(object):
         远控
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/start_teleop"
-            ),
+            url=parse.urljoin(cls.url, "/api/start_teleop"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/start_teleop, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/start_teleop, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        
+
     @classmethod
     async def report(cls, body: object) -> Tuple[int, Dict]:
         """
@@ -145,13 +178,12 @@ class IntegratorRequest(object):
         上报任务状态
         """
         resp = await async_post(
-            url=parse.urljoin(
-                cls.url, "/api/task_report/report"
-            ),
+            url=parse.urljoin(cls.url, "/api/task_report/report"),
             json=body.dict(),
-            
         )
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: /api/task_report/report, response: {resp.text}")
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/task_report/report, response: {resp.text}"
+            )
+            return resp.status, resp.text
         return resp.status, resp.json()
-        

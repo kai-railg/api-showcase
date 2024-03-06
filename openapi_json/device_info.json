@@ -483,6 +483,47 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "vehicle_status"
+                ],
+                "summary": "\u8bbe\u7f6e\u5355\u8f66\u5750\u6807",
+                "operationId": "\u8bbe\u7f6e\u5355\u8f66\u5750\u6807_api_deviceInfo_vehicleStatus_bsm_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "Request",
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response \u8bbe\u7f6e\u5355\u8f66\u5750\u6807 Api Deviceinfo Vehiclestatus Bsm Post",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/api/deviceInfo/vehicleStatus/soc": {
