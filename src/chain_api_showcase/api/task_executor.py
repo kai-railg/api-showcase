@@ -204,3 +204,57 @@ class Task_ExecutorRequest(object):
             )
             return resp.status, resp.text
         return resp.status, ServiceTaskOutSchema.model_validate_json(resp)
+
+    @classmethod
+    async def cycle_event(
+        cls, body: CycleEventSchema
+    ) -> Tuple[int, CreateSuccessSchema]:
+        """
+        Event Process
+        循环事件注册与取消
+        """
+        resp = await async_post(
+            url=parse.urljoin(cls.url, "/event/cycle_event"),
+            json=body.dict(),
+        )
+        if resp.status != 200:
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /event/cycle_event, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, CreateSuccessSchema.model_validate_json(resp)
+
+    @classmethod
+    async def subscribe_event(
+        cls, body: SubscribeEventSchema
+    ) -> Tuple[int, CreateSuccessSchema]:
+        """
+        Subscribe Event
+        订阅事件的注册与取消
+        """
+        resp = await async_post(
+            url=parse.urljoin(cls.url, "/event/subscribe_event"),
+            json=body.dict(),
+        )
+        if resp.status != 200:
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /event/subscribe_event, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, CreateSuccessSchema.model_validate_json(resp)
+
+    @classmethod
+    async def abort_all_event_process(cls) -> Tuple[int, CreateSuccessSchema]:
+        """
+        Abort All Event Process
+        取消事件流程
+        """
+        resp = await async_post(
+            url=parse.urljoin(cls.url, "/event/abort_all_event_process"),
+        )
+        if resp.status != 200:
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /event/abort_all_event_process, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, CreateSuccessSchema.model_validate_json(resp)

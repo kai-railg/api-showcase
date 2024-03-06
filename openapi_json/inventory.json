@@ -646,6 +646,26 @@
                     }
                 }
             }
+        },
+        "/api/event/KpiEventCallback": {
+            "post": {
+                "tags": [
+                    "event"
+                ],
+                "summary": "KPI\u4e8b\u4ef6\u56de\u8c03",
+                "description": "KPI\u4e8b\u4ef6\u56de\u8c03, \u7528\u4e8e\u66f4\u65b0KPI\u4fe1\u606f",
+                "operationId": "post_api_event_KpiEventCallback_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -655,7 +675,7 @@
                     "version": {
                         "type": "string",
                         "title": "Version",
-                        "default": "20240306_064100"
+                        "default": "20240306_081955"
                     },
                     "points": {
                         "items": {

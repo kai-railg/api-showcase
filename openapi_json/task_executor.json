@@ -459,6 +459,112 @@
                     }
                 }
             }
+        },
+        "/event/cycle_event": {
+            "post": {
+                "tags": [
+                    "event"
+                ],
+                "summary": "Event Process",
+                "description": "\u5faa\u73af\u4e8b\u4ef6\u6ce8\u518c\u4e0e\u53d6\u6d88",
+                "operationId": "event_process_event_cycle_event_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CycleEventSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/event/subscribe_event": {
+            "post": {
+                "tags": [
+                    "event"
+                ],
+                "summary": "Subscribe Event",
+                "description": "\u8ba2\u9605\u4e8b\u4ef6\u7684\u6ce8\u518c\u4e0e\u53d6\u6d88",
+                "operationId": "subscribe_event_event_subscribe_event_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubscribeEventSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/event/abort_all_event_process": {
+            "post": {
+                "tags": [
+                    "event"
+                ],
+                "summary": "Abort All Event Process",
+                "description": "\u53d6\u6d88\u4e8b\u4ef6\u6d41\u7a0b",
+                "operationId": "abort_all_event_process_event_abort_all_event_process_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSuccessSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -564,6 +670,53 @@
                 "type": "object",
                 "title": "CreateSuccessSchema"
             },
+            "CycleEventSchema": {
+                "properties": {
+                    "event_name": {
+                        "type": "string",
+                        "title": "Event Name",
+                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6"
+                    },
+                    "event_type": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/EventType"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88",
+                        "default": "register"
+                    },
+                    "callback_url": {
+                        "type": "string",
+                        "title": "Callback Url",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u5730\u5740"
+                    },
+                    "callback_params": {
+                        "type": "object",
+                        "title": "Callback Params",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u53c2\u6570",
+                        "default": {}
+                    },
+                    "callback_method": {
+                        "type": "string",
+                        "title": "Callback Method",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
+                        "default": "get"
+                    },
+                    "time_cycle_pt": {
+                        "type": "integer",
+                        "title": "Time Cycle Pt",
+                        "description": "\u5faa\u73af\u4e8b\u4ef6\u95f4\u9694\uff0c\u5355\u4f4d\u4e3a\u79d2",
+                        "default": 10
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "event_name",
+                    "callback_url"
+                ],
+                "title": "CycleEventSchema"
+            },
             "DestinationSchema": {
                 "properties": {
                     "logicalLocation": {
@@ -639,6 +792,15 @@
                     "vin"
                 ],
                 "title": "EventListenerInSchema"
+            },
+            "EventType": {
+                "type": "string",
+                "enum": [
+                    "register",
+                    "cancel",
+                    "clear"
+                ],
+                "title": "EventType"
             },
             "GetActivityNode": {
                 "properties": {
@@ -1124,6 +1286,48 @@
                 },
                 "type": "object",
                 "title": "ServiceTaskOutSchema"
+            },
+            "SubscribeEventNameEnum": {
+                "const": "ScStatus",
+                "title": "SubscribeEventNameEnum"
+            },
+            "SubscribeEventSchema": {
+                "properties": {
+                    "event_name": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/SubscribeEventNameEnum"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6\uff0c\u6bd4\u5982 ScStatus "
+                    },
+                    "event_type": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/EventType"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88",
+                        "default": "register"
+                    },
+                    "callback_url": {
+                        "type": "string",
+                        "title": "Callback Url",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u5730\u5740"
+                    },
+                    "callback_method": {
+                        "type": "string",
+                        "title": "Callback Method",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
+                        "default": "post"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "event_name",
+                    "callback_url"
+                ],
+                "title": "SubscribeEventSchema"
             },
             "UpdateQcTaskSchema": {
                 "properties": {

@@ -296,3 +296,19 @@ class InventoryRequest(object):
             )
             return resp.status, resp.text
         return resp.status, resp.json()
+
+    @classmethod
+    async def KpiEventCallback(cls) -> Tuple[int, Dict]:
+        """
+        KPI事件回调
+        KPI事件回调, 用于更新KPI信息
+        """
+        resp = await async_post(
+            url=parse.urljoin(cls.url, "/api/event/KpiEventCallback"),
+        )
+        if resp.status != 200:
+            print(
+                f"Request failed: {resp.status}, url: {cls.url}, api: /api/event/KpiEventCallback, response: {resp.text}"
+            )
+            return resp.status, resp.text
+        return resp.status, resp.json()

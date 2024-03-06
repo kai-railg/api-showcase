@@ -20,7 +20,7 @@ def get_openapi_json(config: Dict) -> Dict:
     :param config:
     :return:
     """
-    url = f"http://{remote_ip}:{config['port']}/{config.get('openapi_url', 'openapi.json')}"
+    url = f"http://{config.get('ip', remote_ip)}:{config['port']}/{config.get('openapi_url', 'openapi.json')}"
     return requests.get(url).json()
 
 
@@ -99,7 +99,7 @@ def get_param_type(param: Dict):
         type_of = param["schema"]["allOf"]
     else:
         print(param)
-        raise
+        return
 
     all_type = []
     for p in type_of:
