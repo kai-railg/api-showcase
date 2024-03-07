@@ -26,7 +26,8 @@ classifiers = [
 dependencies = [
     "requests",
     "chain-http",
-    "datamodel-code-generator"
+    "datamodel-code-generator",
+    "chain-nacos"
 ]
 
 
