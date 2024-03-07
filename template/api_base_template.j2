@@ -14,6 +14,7 @@ class ApiRequestBaseCls(object):
         self.SERVICE_PORT: int = 0
         self.SERVICE_NAME: str = ""
         self.protocol: str = "http"
+        self.timeout: int = os.environ.get('timeout', 6)
 
     @property
     def nacos_address(self):
