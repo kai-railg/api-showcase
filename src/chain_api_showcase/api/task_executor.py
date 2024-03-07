@@ -24,6 +24,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         super(TaskExecutorRequestCls, self).__init__()
         self.SERVICE_PORT = 8100
         self.SERVICE_NAME = "task_executor"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def message_event_start_post(
         self, body: VehicleOrderSchema
@@ -435,48 +436,48 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
             return resp.status_code, resp.text
         return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
-    async def subscribe_event(
-        self, body: SubscribeEventSchema
+    async def event_driven(
+        self, body: EventDrivenSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        订阅事件的注册与取消
-        1. 用来支持订阅事件2. 通过task info存储订阅者列表，列表支持去重3. 通过camunda循环事件的定义触发事件执行4. 调用事件对应的接口，推送返回值给订阅者
+        事件驱动的发布、订阅、取消
+        用来支持事件驱动的发布、订阅和取消通过task info存储事件列表，列表支持去重事件发布时，通过事件列表，根据 module_name 找到对应的url, 推送给订阅者场景适用如下： 需要监听 Inventory 箱子变化，注册 container_update 事件，inventory 箱子变化后会发布事件，订阅着收到事件后，调用相关接口重新获取inventory箱子信息
         """
         resp = await async_post(
-            url=parse.urljoin(self.url, "/event/subscribe_event"),
+            url=parse.urljoin(self.url, "/event/event_driven"),
             timeout=self.timeout,
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /event/subscribe_event, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /event/event_driven, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
-    def subscribe_event_sync(
-        self, body: SubscribeEventSchema
+    def event_driven_sync(
+        self, body: EventDrivenSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        订阅事件的注册与取消
-        1. 用来支持订阅事件2. 通过task info存储订阅者列表，列表支持去重3. 通过camunda循环事件的定义触发事件执行4. 调用事件对应的接口，推送返回值给订阅者
+        事件驱动的发布、订阅、取消
+        用来支持事件驱动的发布、订阅和取消通过task info存储事件列表，列表支持去重事件发布时，通过事件列表，根据 module_name 找到对应的url, 推送给订阅者场景适用如下： 需要监听 Inventory 箱子变化，注册 container_update 事件，inventory 箱子变化后会发布事件，订阅着收到事件后，调用相关接口重新获取inventory箱子信息
         """
         resp = requests.post(
-            url=parse.urljoin(self.url, "/event/subscribe_event"),
+            url=parse.urljoin(self.url, "/event/event_driven"),
             timeout=self.timeout,
             json=body.dict(),
         )
         if resp.status_code != 200:
             print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /event/subscribe_event, response: {resp.text}"
+                f"Request failed: {resp.status_code}, url: {self.url}, api: /event/event_driven, response: {resp.text}"
             )
             return resp.status_code, resp.text
         return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def abort_all_event_process(self) -> Tuple[int, CreateSuccessSchema]:
         """
-        Abort All Event Process
         取消事件流程
+        取消循环、订阅、事件驱动的camunda流程, 并清空任务列表
         """
         resp = await async_post(
             url=parse.urljoin(self.url, "/event/abort_all_event_process"),
@@ -491,8 +492,8 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
 
     def abort_all_event_process_sync(self) -> Tuple[int, CreateSuccessSchema]:
         """
-        Abort All Event Process
         取消事件流程
+        取消循环、订阅、事件驱动的camunda流程, 并清空任务列表
         """
         resp = requests.post(
             url=parse.urljoin(self.url, "/event/abort_all_event_process"),

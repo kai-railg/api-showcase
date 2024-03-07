@@ -24,6 +24,7 @@ class VehicleManagerRequestCls(ApiRequestBaseCls):
         super(VehicleManagerRequestCls, self).__init__()
         self.SERVICE_PORT = 8101
         self.SERVICE_NAME = "vehicle_manager"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def fleetmgmt(self) -> Tuple[int, FleetmgmtResponseInSchema]:
         """

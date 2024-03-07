@@ -502,19 +502,19 @@
                 }
             }
         },
-        "/event/subscribe_event": {
+        "/event/event_driven": {
             "post": {
                 "tags": [
                     "event"
                 ],
-                "summary": "\u8ba2\u9605\u4e8b\u4ef6\u7684\u6ce8\u518c\u4e0e\u53d6\u6d88",
-                "description": "1. \u7528\u6765\u652f\u6301\u8ba2\u9605\u4e8b\u4ef62. \u901a\u8fc7task info\u5b58\u50a8\u8ba2\u9605\u8005\u5217\u8868\uff0c\u5217\u8868\u652f\u6301\u53bb\u91cd3. \u901a\u8fc7camunda\u5faa\u73af\u4e8b\u4ef6\u7684\u5b9a\u4e49\u89e6\u53d1\u4e8b\u4ef6\u6267\u884c4. \u8c03\u7528\u4e8b\u4ef6\u5bf9\u5e94\u7684\u63a5\u53e3\uff0c\u63a8\u9001\u8fd4\u56de\u503c\u7ed9\u8ba2\u9605\u8005",
-                "operationId": "subscribe_event_event_subscribe_event_post",
+                "summary": "\u4e8b\u4ef6\u9a71\u52a8\u7684\u53d1\u5e03\u3001\u8ba2\u9605\u3001\u53d6\u6d88",
+                "description": "\u7528\u6765\u652f\u6301\u4e8b\u4ef6\u9a71\u52a8\u7684\u53d1\u5e03\u3001\u8ba2\u9605\u548c\u53d6\u6d88\u901a\u8fc7task info\u5b58\u50a8\u4e8b\u4ef6\u5217\u8868\uff0c\u5217\u8868\u652f\u6301\u53bb\u91cd\u4e8b\u4ef6\u53d1\u5e03\u65f6\uff0c\u901a\u8fc7\u4e8b\u4ef6\u5217\u8868\uff0c\u6839\u636e module_name \u627e\u5230\u5bf9\u5e94\u7684url, \u63a8\u9001\u7ed9\u8ba2\u9605\u8005\u573a\u666f\u9002\u7528\u5982\u4e0b\uff1a \u9700\u8981\u76d1\u542c Inventory \u7bb1\u5b50\u53d8\u5316\uff0c\u6ce8\u518c container_update \u4e8b\u4ef6\uff0cinventory \u7bb1\u5b50\u53d8\u5316\u540e\u4f1a\u53d1\u5e03\u4e8b\u4ef6\uff0c\u8ba2\u9605\u7740\u6536\u5230\u4e8b\u4ef6\u540e\uff0c\u8c03\u7528\u76f8\u5173\u63a5\u53e3\u91cd\u65b0\u83b7\u53d6inventory\u7bb1\u5b50\u4fe1\u606f",
+                "operationId": "event_driven_event_event_driven_post",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/SubscribeEventSchema"
+                                "$ref": "#/components/schemas/EventDrivenSchema"
                             }
                         }
                     },
@@ -549,8 +549,8 @@
                 "tags": [
                     "event"
                 ],
-                "summary": "Abort All Event Process",
-                "description": "\u53d6\u6d88\u4e8b\u4ef6\u6d41\u7a0b",
+                "summary": "\u53d6\u6d88\u4e8b\u4ef6\u6d41\u7a0b",
+                "description": "\u53d6\u6d88\u5faa\u73af\u3001\u8ba2\u9605\u3001\u4e8b\u4ef6\u9a71\u52a8\u7684camunda\u6d41\u7a0b, \u5e76\u6e05\u7a7a\u4efb\u52a1\u5217\u8868",
                 "operationId": "abort_all_event_process_event_abort_all_event_process_post",
                 "responses": {
                     "200": {
@@ -670,12 +670,16 @@
                 "type": "object",
                 "title": "CreateSuccessSchema"
             },
+            "CycleEventNameEnum": {
+                "enum": [],
+                "title": "CycleEventNameEnum"
+            },
             "CycleEventSchema": {
                 "properties": {
                     "event_name": {
-                        "type": "string",
-                        "title": "Event Name",
-                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6"
+                        "enum": [],
+                        "title": "CycleEventNameEnum",
+                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6, enum\u7c7b\u578b\u4ece\u914d\u7f6e\u6587\u4ef6\u4e2d\u52a0\u8f7d"
                     },
                     "event_type": {
                         "allOf": [
@@ -728,6 +732,54 @@
                     "logicalLocation"
                 ],
                 "title": "DestinationSchema"
+            },
+            "EventDrivenNameEnum": {
+                "enum": [],
+                "title": "EventDrivenNameEnum"
+            },
+            "EventDrivenSchema": {
+                "properties": {
+                    "event_name": {
+                        "enum": [],
+                        "title": "EventDrivenNameEnum",
+                        "description": "\u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6\uff0c\u6bd4\u5982 container_update\uff0cenum\u7c7b\u578b\u4ece\u914d\u7f6e\u6587\u4ef6\u4e2d\u52a0\u8f7d "
+                    },
+                    "event_type": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/EventDrivenTypeEnum"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88"
+                    },
+                    "callback_module_name": {
+                        "type": "string",
+                        "title": "Callback Module Name",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u6a21\u5757\u540d",
+                        "default": ""
+                    },
+                    "callback_method": {
+                        "type": "string",
+                        "title": "Callback Method",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
+                        "default": "post"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "event_name",
+                    "event_type"
+                ],
+                "title": "EventDrivenSchema"
+            },
+            "EventDrivenTypeEnum": {
+                "type": "string",
+                "enum": [
+                    "publish",
+                    "subscribe",
+                    "cancel"
+                ],
+                "title": "EventDrivenTypeEnum"
             },
             "EventListenerInSchema": {
                 "properties": {
@@ -1286,48 +1338,6 @@
                 },
                 "type": "object",
                 "title": "ServiceTaskOutSchema"
-            },
-            "SubscribeEventNameEnum": {
-                "const": "ScStatus",
-                "title": "SubscribeEventNameEnum"
-            },
-            "SubscribeEventSchema": {
-                "properties": {
-                    "event_name": {
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/SubscribeEventNameEnum"
-                            }
-                        ],
-                        "description": "\u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6\uff0c\u6bd4\u5982 ScStatus "
-                    },
-                    "event_type": {
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/EventType"
-                            }
-                        ],
-                        "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88",
-                        "default": "register"
-                    },
-                    "callback_url": {
-                        "type": "string",
-                        "title": "Callback Url",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03\u5730\u5740"
-                    },
-                    "callback_method": {
-                        "type": "string",
-                        "title": "Callback Method",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
-                        "default": "post"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "event_name",
-                    "callback_url"
-                ],
-                "title": "SubscribeEventSchema"
             },
             "UpdateQcTaskSchema": {
                 "properties": {

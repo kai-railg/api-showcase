@@ -24,6 +24,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         super(DeviceInfoRequestCls, self).__init__()
         self.SERVICE_PORT = 11000
         self.SERVICE_NAME = "device_info"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def api_deviceInfo_maintain_status_post(self) -> Tuple[int, Dict]:
         """

@@ -24,6 +24,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         super(TaskSchedulerRequestCls, self).__init__()
         self.SERVICE_PORT = 26102
         self.SERVICE_NAME = "task_scheduler"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def receive_mi(
         self, body: MovementInstructions

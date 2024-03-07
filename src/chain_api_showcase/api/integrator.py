@@ -24,6 +24,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
         super(IntegratorRequestCls, self).__init__()
         self.SERVICE_PORT = 10101
         self.SERVICE_NAME = "integrator"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def insert(self, body: object) -> Tuple[int, Dict]:
         """

@@ -24,6 +24,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
         super(InventoryRequestCls, self).__init__()
         self.SERVICE_PORT = 19102
         self.SERVICE_NAME = "inventory"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def AddPoint(self, body: AddPointSchema) -> Tuple[int, Dict]:
         """

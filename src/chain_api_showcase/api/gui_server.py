@@ -24,6 +24,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         super(GuiServerRequestCls, self).__init__()
         self.SERVICE_PORT = 8020
         self.SERVICE_NAME = "gui_server"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def authentication(
         self, body: LoginInSchema

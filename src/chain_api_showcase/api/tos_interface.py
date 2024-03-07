@@ -24,6 +24,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         super(TosInterfaceRequestCls, self).__init__()
         self.SERVICE_PORT = 18998
         self.SERVICE_NAME = "tos_interface"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def fms_area_inventory_query_post(
         self, body: AreaInventoryQuery

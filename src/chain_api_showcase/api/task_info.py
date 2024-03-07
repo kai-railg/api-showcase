@@ -24,6 +24,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         super(TaskInfoRequestCls, self).__init__()
         self.SERVICE_PORT = 10000
         self.SERVICE_NAME = "task_info"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def api_taskInfo_maintain_status_post(self) -> Tuple[int, Dict]:
         """

@@ -24,6 +24,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
         super(CamundaRequestCls, self).__init__()
         self.SERVICE_PORT = 8099
         self.SERVICE_NAME = "camunda"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def startProcess(self, body: StartProcessRequest) -> Tuple[int, Dict]:
         """

@@ -40,6 +40,7 @@ class {{ cls_name }}Cls(ApiRequestBaseCls):
         super({{ cls_name }}Cls, self).__init__()
         self.SERVICE_PORT = {{ port }}
         self.SERVICE_NAME = "{{ project_name }}"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     {% for endpoint in endpoints %}
     async def {{ endpoint.func_name }}(self{{ ", " if generate_parameter(endpoint) else "" }}{{ generate_parameter(endpoint) }}) -> Tuple[int, {{ endpoint.response_model if endpoint.response_model != "" else "Dict" }}]:

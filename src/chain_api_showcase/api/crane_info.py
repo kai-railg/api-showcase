@@ -24,6 +24,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         super(CraneInfoRequestCls, self).__init__()
         self.SERVICE_PORT = 8014
         self.SERVICE_NAME = "crane_info"
+        self.module_mapping[self.SERVICE_NAME] = self
 
     async def asc_cps_info_report(
         self, body: CPSInfoRequestModel
