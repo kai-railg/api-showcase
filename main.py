@@ -17,8 +17,9 @@ from core import (
 )
 
 if __name__ == '__main__':
-    if not os.path.exists(f"./{pip_dir}"):
-        os.mkdir(f"./{pip_dir}")
+    for d in ["api", "schemas"]:
+        if not os.path.exists(f"{pip_dir}/{d}/"):
+            os.makedirs(f"{pip_dir}/{d}/", exist_ok=True)
 
     for project_config in projects:
         name: str = project_config["name"]

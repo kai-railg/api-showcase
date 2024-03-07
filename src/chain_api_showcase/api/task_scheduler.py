@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 from typing import Union, Tuple, Dict
 from urllib import parse
 
@@ -13,167 +12,165 @@ from chain_http.async_client import (
     AsyncHttpResponse,
 )
 
+from .api_base import ApiRequestBaseCls
 from ..schemas.task_scheduler import *
 
-FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
+__all__ = ["TaskSchedulerRequest"]
 
 
-class Task_SchedulerRequest(object):
-    url = FMS_IP_ADDRESS + ":" + "26102"
+class TaskSchedulerRequestCls(ApiRequestBaseCls):
+    def __init__(self):
+        super(TaskSchedulerRequestCls, self).__init__()
+        self.SERVICE_PORT = 26102
+        self.SERVICE_NAME = "task_scheduler"
 
-    @classmethod
     async def receive_mi(
-        cls, body: MovementInstructions
+        self, body: MovementInstructions
     ) -> Tuple[int, MovementCreatedResponse]:
         """
         Process Movement Instructions
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/receive_mi/"),
+            url=parse.urljoin(self.url, "/receive_mi/"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /receive_mi/, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, MovementCreatedResponse.model_validate_json(resp)
 
-    @classmethod
-    async def remove(cls) -> Tuple[int, Dict]:
+    async def remove(self) -> Tuple[int, Dict]:
         """
         Process Remove
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/remove"),
+            url=parse.urljoin(self.url, "/remove"),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /remove, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /remove, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, resp.json()
 
-    @classmethod
-    async def dc(cls, body: DependencyCheck) -> Tuple[int, DependencyCheckResponse]:
+    async def dc(self, body: DependencyCheck) -> Tuple[int, DependencyCheckResponse]:
         """
         Process Movement Instructions
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/receive_mi/dc"),
+            url=parse.urljoin(self.url, "/receive_mi/dc"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/dc, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /receive_mi/dc, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, DependencyCheckResponse.model_validate_json(resp)
 
-    @classmethod
-    async def cancel(cls, body: MovementCancel) -> Tuple[int, MovementCancelResponse]:
+    async def cancel(self, body: MovementCancel) -> Tuple[int, MovementCancelResponse]:
         """
         Process Movement Cancel Instructions
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/receive_mi/cancel"),
+            url=parse.urljoin(self.url, "/receive_mi/cancel"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/cancel, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /receive_mi/cancel, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, MovementCancelResponse.model_validate_json(resp)
 
-    @classmethod
     async def receive_mi_update_post(
-        cls, body: MovementInstructions
+        self, body: MovementInstructions
     ) -> Tuple[int, MovementUpdateResponse]:
         """
         Process Movement Instruction Update
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/receive_mi/update"),
+            url=parse.urljoin(self.url, "/receive_mi/update"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_mi/update, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /receive_mi/update, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, MovementUpdateResponse.model_validate_json(resp)
 
-    @classmethod
     async def receive_action_code(
-        cls, body: VehicleOrder
+        self, body: VehicleOrder
     ) -> Tuple[int, ActionCodeResponse]:
         """
         Process Code
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/receive_action_code"),
+            url=parse.urljoin(self.url, "/receive_action_code"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /receive_action_code, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /receive_action_code, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, ActionCodeResponse.model_validate_json(resp)
 
-    @classmethod
-    async def order_update(cls, body: TOSOrderUpdate) -> Tuple[int, Dict]:
+    async def order_update(self, body: TOSOrderUpdate) -> Tuple[int, Dict]:
         """
         Process Tos Side Order Update
 
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/tos_interface/order_update"),
+            url=parse.urljoin(self.url, "/tos_interface/order_update"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /tos_interface/order_update, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /tos_interface/order_update, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, resp.json()
 
-    @classmethod
-    async def check_sc(cls) -> Tuple[int, Dict]:
+    async def check_sc(self) -> Tuple[int, Dict]:
         """
         Monitor Sc Status
 
         """
         resp = await async_get(
-            url=parse.urljoin(cls.url, "/monitor/check_sc"),
+            url=parse.urljoin(self.url, "/monitor/check_sc"),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /monitor/check_sc, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /monitor/check_sc, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, resp.json()
 
-    @classmethod
-    async def check_sc_details(cls, sc_id: str) -> Tuple[int, Dict]:
+    async def check_sc_details(self, sc_id: str) -> Tuple[int, Dict]:
         """
         Get Sc Data Status
 
         """
         resp = await async_get(
-            url=parse.urljoin(cls.url, "/monitor/check_sc_details/{sc_id}"),
+            url=parse.urljoin(self.url, "/monitor/check_sc_details/{sc_id}"),
             params=dict(sc_id=sc_id),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /monitor/check_sc_details/{sc_id}, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /monitor/check_sc_details/{sc_id}, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, resp.json()
+
+
+TaskSchedulerRequest = TaskSchedulerRequestCls()

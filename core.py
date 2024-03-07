@@ -129,7 +129,7 @@ def get_api_endpoints(project_config: Dict) -> Dict:
     result = {
         "endpoints": [],
         "port": port,
-        "cls_name": project_name.title() + "Request",
+        "cls_name": project_name.title().replace("_", "") + "Request",
         "project_name": project_name,
     }
 
@@ -187,6 +187,10 @@ def generate_api_code(project_config: Dict):
 
     with open(f"./{pip_dir}/api/{project_config['name']}.py", "w") as f:
         f.write(rendered_content)
+
+    # 写入 api_base.py
+    with open(f"./{pip_dir}/api/api_base.py", "w") as f:
+        f.write(env.get_template("./template/api_base_template.j2").render())
 
 
 def format_file(project_name: str):

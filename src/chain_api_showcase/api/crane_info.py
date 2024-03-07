@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 from typing import Union, Tuple, Dict
 from urllib import parse
 
@@ -13,69 +12,69 @@ from chain_http.async_client import (
     AsyncHttpResponse,
 )
 
+from .api_base import ApiRequestBaseCls
 from ..schemas.crane_info import *
 
-FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
+__all__ = ["CraneInfoRequest"]
 
 
-class Crane_InfoRequest(object):
-    url = FMS_IP_ADDRESS + ":" + "8014"
+class CraneInfoRequestCls(ApiRequestBaseCls):
+    def __init__(self):
+        super(CraneInfoRequestCls, self).__init__()
+        self.SERVICE_PORT = 8014
+        self.SERVICE_NAME = "crane_info"
 
-    @classmethod
     async def asc_cps_info_report(
-        cls, body: CPSInfoRequestModel
+        self, body: CPSInfoRequestModel
     ) -> Tuple[int, CPSInfoResponseModel]:
         """
         Asc Cps Info Report
         CPS数据
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/asc_cps_info_report"),
+            url=parse.urljoin(self.url, "/api/asc_cps_info_report"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/asc_cps_info_report, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/asc_cps_info_report, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CPSInfoResponseModel.model_validate_json(resp)
 
-    @classmethod
-    async def plc(cls, body: PlcDataRequestModel) -> Tuple[int, CommonResponseModel]:
+    async def plc(self, body: PlcDataRequestModel) -> Tuple[int, CommonResponseModel]:
         """
         Plc
         接收TE发过来的opcua数据
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/plc"),
+            url=parse.urljoin(self.url, "/api/plc"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/plc, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/plc, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def application_lane_handler(
-        cls, body: ApplicationLaneRequestModel
+        self, body: ApplicationLaneRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """ """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/application_lane_handler"),
+            url=parse.urljoin(self.url, "/api/application_lane_handler"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/application_lane_handler, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/application_lane_handler, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def qc_holding_info(
-        cls, body: QCPointRequestModel
+        self, body: QCPointRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -83,19 +82,18 @@ class Crane_InfoRequest(object):
         :return:
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/qc_holding_info"),
+            url=parse.urljoin(self.url, "/api/qc_holding_info"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_holding_info, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/qc_holding_info, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def query_container_point(
-        cls, body: ContainerPointRequestModel
+        self, body: ContainerPointRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -103,19 +101,18 @@ class Crane_InfoRequest(object):
         :return:
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/query_container_point"),
+            url=parse.urljoin(self.url, "/api/query_container_point"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/query_container_point, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/query_container_point, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def qc_position(
-        cls, body: UpdateQCPositionModel
+        self, body: UpdateQCPositionModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -123,19 +120,18 @@ class Crane_InfoRequest(object):
         :return:
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/qc_position"),
+            url=parse.urljoin(self.url, "/api/qc_position"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_position, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/qc_position, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def qc_signal(
-        cls, body: QCSignalRequestModel
+        self, body: QCSignalRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -143,19 +139,18 @@ class Crane_InfoRequest(object):
         :return:
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/qc_signal"),
+            url=parse.urljoin(self.url, "/api/qc_signal"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_signal, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/qc_signal, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def qc_holding_status(
-        cls, body: QCHoldingRequestModel
+        self, body: QCHoldingRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -168,19 +163,18 @@ class Crane_InfoRequest(object):
         }
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/qc_holding_status"),
+            url=parse.urljoin(self.url, "/api/qc_holding_status"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/qc_holding_status, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/qc_holding_status, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def api_response_mixed_area_post(
-        cls, body: MixedAreaRequestModel
+        self, body: MixedAreaRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -190,19 +184,18 @@ class Crane_InfoRequest(object):
         airlock，跨运车在里面申请开门num 8,ceg:atuo 门发10， 手动门发9
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/response_mixed_area"),
+            url=parse.urljoin(self.url, "/api/response_mixed_area"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/response_mixed_area, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/response_mixed_area, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def api_engine_post(
-        cls, body: EngineRequestModel
+        self, body: EngineRequestModel
     ) -> Tuple[int, CommonResponseModel]:
         """
 
@@ -213,28 +206,30 @@ class Crane_InfoRequest(object):
         }
         """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/engine"),
+            url=parse.urljoin(self.url, "/api/engine"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/engine, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/engine, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
 
-    @classmethod
     async def update_plc_data(
-        cls, body: UpdatePlcDataModel
+        self, body: UpdatePlcDataModel
     ) -> Tuple[int, CommonResponseModel]:
         """ """
         resp = await async_post(
-            url=parse.urljoin(cls.url, "/api/update_plc_data"),
+            url=parse.urljoin(self.url, "/api/update_plc_data"),
             json=body.dict(),
         )
         if resp.status != 200:
             print(
-                f"Request failed: {resp.status}, url: {cls.url}, api: /api/update_plc_data, response: {resp.text}"
+                f"Request failed: {resp.status}, url: {self.url}, api: /api/update_plc_data, response: {resp.text}"
             )
             return resp.status, resp.text
         return resp.status, CommonResponseModel.model_validate_json(resp)
+
+
+CraneInfoRequest = CraneInfoRequestCls()

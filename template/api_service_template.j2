@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 from typing import Union, Tuple, Dict
 from urllib import parse
 
@@ -13,9 +12,11 @@ from chain_http.async_client import (
     AsyncHttpResponse
 )
 
+from .api_base import ApiRequestBaseCls
 from ..schemas.{{ project_name }} import *
 
-FMS_IP_ADDRESS = f"http://{os.environ.get('FMS_IP_ADDRESS', '127.0.0.1')}"
+__all__ = ["{{ cls_name }}"]
+
 {# 处理post请求的模型和get参数，避免不必要的换行 #}
 {% macro generate_parameter(endpoint) -%}
 {%- if endpoint.model -%}
@@ -33,30 +34,35 @@ body: {{ endpoint.model }}{{ "," if endpoint.parameters }}
     {%- endif -%}
 {%- endfor -%}
 {%- endmacro %}
-class {{ cls_name }}(object):
-    url = FMS_IP_ADDRESS + ":" + "{{ port }}"
+class {{ cls_name }}Cls(ApiRequestBaseCls):
+    def __init__(self):
+        super({{ cls_name }}Cls, self).__init__()
+        self.SERVICE_PORT = {{ port }}
+        self.SERVICE_NAME = "{{ project_name }}"
+
     {% for endpoint in endpoints %}
-    @classmethod
-    async def {{ endpoint.func_name }}(cls{{ ", " if generate_parameter(endpoint) else "" }}{{ generate_parameter(endpoint) }}) -> Tuple[int, {{ endpoint.response_model if endpoint.response_model != "" else "Dict" }}]:
+    async def {{ endpoint.func_name }}(self{{ ", " if generate_parameter(endpoint) else "" }}{{ generate_parameter(endpoint) }}) -> Tuple[int, {{ endpoint.response_model if endpoint.response_model != "" else "Dict" }}]:
         """
         {{ endpoint.summary }}
         {{ endpoint.description }}
         """{% if endpoint.method in ['post', 'put', 'delete'] %}
         resp = await async_{{ endpoint.method }}(
             url=parse.urljoin(
-                cls.url, "{{ endpoint.path }}"
+                self.url, "{{ endpoint.path }}"
             ),
             {% if endpoint.model %}json=body.dict(),{% endif %}
             {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
         ){% elif endpoint.method == 'get' %}
         resp = await async_get(
             url=parse.urljoin(
-                cls.url, "{{ endpoint.path }}"
+                self.url, "{{ endpoint.path }}"
             ),
             {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
         ){% endif %}
         if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {cls.url}, api: {{ endpoint.path }}, response: {resp.text}")
+            print(f"Request failed: {resp.status}, url: {self.url}, api: {{ endpoint.path }}, response: {resp.text}")
             return resp.status, resp.text
         return resp.status, {% if endpoint.response_model %} {{ endpoint.response_model }}.model_validate_json(resp)  {% else %} resp.json() {% endif %}
         {% endfor %}
+
+{{ cls_name }} = {{ cls_name }}Cls()
