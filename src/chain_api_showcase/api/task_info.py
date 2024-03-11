@@ -31,96 +31,72 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         Service Status
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/maintain/status"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/maintain/status",
+            body={},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/maintain/status, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_maintain_status_post_sync(self) -> Tuple[int, Dict]:
         """
         Service Status
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/maintain/status"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/maintain/status",
+            body={},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/maintain/status, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def deleteAllArea(self) -> Tuple[int, Dict]:
         """
         删除所有锁闭区
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/maintain/deleteAllArea"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/maintain/deleteAllArea",
+            body={},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/maintain/deleteAllArea, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def deleteAllArea_sync(self) -> Tuple[int, Dict]:
         """
         删除所有锁闭区
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/maintain/deleteAllArea"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/maintain/deleteAllArea",
+            body={},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/maintain/deleteAllArea, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def abortAllJob(self) -> Tuple[int, Dict]:
         """
         取消所有任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/maintain/abortAllJob"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/maintain/abortAllJob",
+            body={},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/maintain/abortAllJob, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def abortAllJob_sync(self) -> Tuple[int, Dict]:
         """
         取消所有任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/maintain/abortAllJob"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/maintain/abortAllJob",
+            body={},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/maintain/abortAllJob, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def kvStore(
         self, namespace: str, key: str, json_decode: bool = str(True).lower()
@@ -129,17 +105,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取 Key-Value 存储值
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore"),
-            timeout=self.timeout,
-            params=dict(namespace=namespace, key=key, json_decode=json_decode),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/kvStore",
+            body={
+                "params": dict(namespace=namespace, key=key, json_decode=json_decode)
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/kvStore, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def kvStore_sync(
         self, namespace: str, key: str, json_decode: bool = str(True).lower()
@@ -148,17 +121,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取 Key-Value 存储值
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore"),
-            timeout=self.timeout,
-            params=dict(namespace=namespace, key=key, json_decode=json_decode),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/kvStore",
+            body={
+                "params": dict(namespace=namespace, key=key, json_decode=json_decode)
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/kvStore, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_kvStore_post(
         self, body: SetKvStoreInSchema
@@ -167,17 +137,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置 Key-Value 存储
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/kvStore",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/kvStore, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_kvStore_post_sync(
         self, body: SetKvStoreInSchema
@@ -186,17 +153,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置 Key-Value 存储
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/kvStore",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/kvStore, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_kvStore_delete_post(
         self, body: DeleteKvStore
@@ -205,17 +169,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除 Key-Value 存储
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/kvStore/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/kvStore/delete, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_kvStore_delete_post_sync(
         self, body: DeleteKvStore
@@ -224,17 +185,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除 Key-Value 存储
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/kvStore/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/kvStore/delete, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_kvStore_list_get(
         self, namespace: str, key: str
@@ -243,17 +201,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取 Key-Value List 存储值
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/list"),
-            timeout=self.timeout,
-            params=dict(namespace=namespace, key=key),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/kvStore/list",
+            body={"params": dict(namespace=namespace, key=key)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/kvStore/list, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_kvStore_list_get_sync(
         self, namespace: str, key: str
@@ -262,17 +215,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取 Key-Value List 存储值
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/list"),
-            timeout=self.timeout,
-            params=dict(namespace=namespace, key=key),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/kvStore/list",
+            body={"params": dict(namespace=namespace, key=key)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/kvStore/list, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_kvStore_list_post(
         self, body: SetKvStoreListInSchema
@@ -281,17 +229,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置 Key-Value List 存储 (添加/移除/清空值)
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/list"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/kvStore/list",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/kvStore/list, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_kvStore_list_post_sync(
         self, body: SetKvStoreListInSchema
@@ -300,17 +245,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置 Key-Value List 存储 (添加/移除/清空值)
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/list"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/kvStore/list",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/kvStore/list, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def listFind(
         self, namespace: str, key: str, value: str
@@ -319,17 +261,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查找 Key-Value List 一个值是否存在
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/listFind"),
-            timeout=self.timeout,
-            params=dict(namespace=namespace, key=key, value=value),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/kvStore/listFind",
+            body={"params": dict(namespace=namespace, key=key, value=value)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/kvStore/listFind, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def listFind_sync(
         self, namespace: str, key: str, value: str
@@ -338,51 +275,36 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查找 Key-Value List 一个值是否存在
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/kvStore/listFind"),
-            timeout=self.timeout,
-            params=dict(namespace=namespace, key=key, value=value),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/kvStore/listFind",
+            body={"params": dict(namespace=namespace, key=key, value=value)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/kvStore/listFind, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def process(self, job_type: str) -> Tuple[int, GetBusProcessOutSchema]:
         """
         获取模板
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/process"),
-            timeout=self.timeout,
-            params=dict(job_type=job_type),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/process",
+            body={"params": dict(job_type=job_type)},
+            resp_model=GetBusProcessOutSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/process, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, GetBusProcessOutSchema.model_validate_json(resp)
 
     def process_sync(self, job_type: str) -> Tuple[int, GetBusProcessOutSchema]:
         """
         获取模板
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/process"),
-            timeout=self.timeout,
-            params=dict(job_type=job_type),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/process",
+            body={"params": dict(job_type=job_type)},
+            resp_model=GetBusProcessOutSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/process, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, GetBusProcessOutSchema.model_validate_json(resp)
 
     async def api_taskInfo_process_post(
         self, body: SetBusProcessInSchema
@@ -391,17 +313,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置模板
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/process"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/process",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/process, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_process_post_sync(
         self, body: SetBusProcessInSchema
@@ -410,51 +329,38 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置模板
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/process"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/process",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/process, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_containerInfo_get(self, vehicle_id: str) -> Tuple[int, Dict]:
         """
         获取箱子信息
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/containerInfo"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/containerInfo",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/containerInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_containerInfo_get_sync(self, vehicle_id: str) -> Tuple[int, Dict]:
         """
         获取箱子信息
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/containerInfo"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/containerInfo",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/containerInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def api_taskInfo_containerInfo_post(
         self, body: SetContainerInfoInSchema
@@ -463,17 +369,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         修改箱子信息
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/containerInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/containerInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/containerInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_containerInfo_post_sync(
         self, body: SetContainerInfoInSchema
@@ -482,51 +385,42 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         修改箱子信息
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/containerInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/containerInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/containerInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def create(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         创建Job
         创建 Job
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/create"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/create",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/create, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def create_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         创建Job
         创建 Job
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/create"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/create",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/create, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_status_post(
         self, vehicle_id: str, job_status: int, job_id: str, origin: str
@@ -535,22 +429,19 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务状态
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/status"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id,
-                job_status=job_status,
-                job_id=job_id,
-                origin=origin,
-            ),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/status",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id,
+                    job_status=job_status,
+                    job_id=job_id,
+                    origin=origin,
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/status, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_status_post_sync(
         self, vehicle_id: str, job_status: int, job_id: str, origin: str
@@ -559,22 +450,19 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务状态
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/status"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id,
-                job_status=job_status,
-                job_id=job_id,
-                origin=origin,
-            ),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/status",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id,
+                    job_status=job_status,
+                    job_id=job_id,
+                    origin=origin,
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/status, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def stage(
         self, vehicle_id: str, job_id: str, job_stage: str = "CREATED"
@@ -583,17 +471,16 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务进度
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/stage"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id, job_id=job_id, job_stage=job_stage),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/stage",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id, job_id=job_id, job_stage=job_stage
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/stage, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def stage_sync(
         self, vehicle_id: str, job_id: str, job_stage: str = "CREATED"
@@ -602,17 +489,16 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务进度
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/stage"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id, job_id=job_id, job_stage=job_stage),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/stage",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id, job_id=job_id, job_stage=job_stage
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/stage, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def stage_vehicle(
         self, vehicle_id: str, job_id: str, job_stage_vehicle: int
@@ -621,21 +507,18 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务进度
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/stage_vehicle"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id,
-                job_id=job_id,
-                job_stage_vehicle=job_stage_vehicle,
-            ),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/stage_vehicle",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id,
+                    job_id=job_id,
+                    job_stage_vehicle=job_stage_vehicle,
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/stage_vehicle, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def stage_vehicle_sync(
         self, vehicle_id: str, job_id: str, job_stage_vehicle: int
@@ -644,55 +527,42 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务进度
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/stage_vehicle"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id,
-                job_id=job_id,
-                job_stage_vehicle=job_stage_vehicle,
-            ),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/stage_vehicle",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id,
+                    job_id=job_id,
+                    job_stage_vehicle=job_stage_vehicle,
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/stage_vehicle, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def businessKey(self, vehicle_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取正在执行的业务Id
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/businessKey"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/businessKey",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/businessKey, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def businessKey_sync(self, vehicle_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取正在执行的业务Id
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/businessKey"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/businessKey",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/businessKey, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_get(
         self, vehicle_id: str
@@ -701,17 +571,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取车辆的当前任务
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_get_sync(
         self, vehicle_id: str
@@ -720,119 +585,84 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取车辆的当前任务
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def get(self, job_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         使用 Job Id 获取 Job (Raw)
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/get"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/get",
+            body={"params": dict(job_id=job_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/get, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def get_sync(self, job_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         使用 Job Id 获取 Job (Raw)
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/get"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/get",
+            body={"params": dict(job_id=job_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/get, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def getStd(self, job_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         使用 Job Id 获取 Job (Std)
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/getStd"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/getStd",
+            body={"params": dict(job_id=job_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/getStd, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def getStd_sync(self, job_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         使用 Job Id 获取 Job (Std)
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/getStd"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/getStd",
+            body={"params": dict(job_id=job_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/getStd, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def getByMission(self, mission_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         使用 Mission 获取 Job
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/getByMission"),
-            timeout=self.timeout,
-            params=dict(mission_id=mission_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/getByMission",
+            body={"params": dict(mission_id=mission_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/getByMission, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def getByMission_sync(self, mission_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         使用 Mission 获取 Job
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/getByMission"),
-            timeout=self.timeout,
-            params=dict(mission_id=mission_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/getByMission",
+            body={"params": dict(mission_id=mission_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/getByMission, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_abort_post(
         self, vehicle_id: str, origin: str, cancel_reason: str
@@ -841,19 +671,16 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         中止任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/abort"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id, origin=origin, cancel_reason=cancel_reason
-            ),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/abort",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id, origin=origin, cancel_reason=cancel_reason
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/abort, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_abort_post_sync(
         self, vehicle_id: str, origin: str, cancel_reason: str
@@ -862,19 +689,16 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         中止任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/abort"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id, origin=origin, cancel_reason=cancel_reason
-            ),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/abort",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id, origin=origin, cancel_reason=cancel_reason
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/abort, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def updateJobDest(
         self, body: UpdateJobDest
@@ -883,17 +707,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务目的位置
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobDest"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/updateJobDest",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/updateJobDest, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def updateJobDest_sync(
         self, body: UpdateJobDest
@@ -902,17 +723,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务目的位置
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobDest"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/updateJobDest",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/updateJobDest, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def updateJobTask(
         self, body: UpdateJobTask
@@ -921,17 +739,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobTask"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/updateJobTask",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/updateJobTask, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def updateJobTask_sync(
         self, body: UpdateJobTask
@@ -940,17 +755,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobTask"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/updateJobTask",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/updateJobTask, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def updatePlanContainers(
         self, body: UpdatePlanContainers
@@ -959,19 +771,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务计划箱子
 
         """
-        resp = await async_post(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/vehicleJob/updatePlanContainers"
-            ),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/updatePlanContainers",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/updatePlanContainers, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def updatePlanContainers_sync(
         self, body: UpdatePlanContainers
@@ -980,19 +787,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务计划箱子
 
         """
-        resp = requests.post(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/vehicleJob/updatePlanContainers"
-            ),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/updatePlanContainers",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/updatePlanContainers, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def updateAdditionalInfo(
         self, body: UpdateAdditionalInfo
@@ -1001,19 +803,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新附加信息
 
         """
-        resp = await async_post(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/vehicleJob/updateAdditionalInfo"
-            ),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/updateAdditionalInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/updateAdditionalInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def updateAdditionalInfo_sync(
         self, body: UpdateAdditionalInfo
@@ -1022,19 +819,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新附加信息
 
         """
-        resp = requests.post(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/vehicleJob/updateAdditionalInfo"
-            ),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/updateAdditionalInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/updateAdditionalInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_complete_post(
         self, vehicle_id: str, job_status: int = "9"
@@ -1043,17 +835,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         正常结束任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/complete"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id, job_status=job_status),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/complete",
+            body={"params": dict(vehicle_id=vehicle_id, job_status=job_status)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/complete, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_complete_post_sync(
         self, vehicle_id: str, job_status: int = "9"
@@ -1062,17 +849,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         正常结束任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/complete"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id, job_status=job_status),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/complete",
+            body={"params": dict(vehicle_id=vehicle_id, job_status=job_status)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/complete, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def jobMission(
         self, job_id: str, mission_id: str
@@ -1081,17 +863,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取 Job Mission
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/jobMission"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id, mission_id=mission_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/jobMission",
+            body={"params": dict(job_id=job_id, mission_id=mission_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/jobMission, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def jobMission_sync(
         self, job_id: str, mission_id: str
@@ -1100,17 +877,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取 Job Mission
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/jobMission"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id, mission_id=mission_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/jobMission",
+            body={"params": dict(job_id=job_id, mission_id=mission_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/jobMission, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_jobMission_post(
         self, job_id: str, mission_id: str
@@ -1119,17 +891,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         绑定 Job Mission
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/jobMission"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id, mission_id=mission_id),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/jobMission",
+            body={"params": dict(job_id=job_id, mission_id=mission_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/jobMission, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_jobMission_post_sync(
         self, job_id: str, mission_id: str
@@ -1138,17 +905,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         绑定 Job Mission
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/jobMission"),
-            timeout=self.timeout,
-            params=dict(job_id=job_id, mission_id=mission_id),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/jobMission",
+            body={"params": dict(job_id=job_id, mission_id=mission_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/jobMission, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def stageTag(
         self, vehicle_id: str, job_id: str, job_stage_tag: str
@@ -1157,19 +919,16 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务进度标签
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/stageTag"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id, job_id=job_id, job_stage_tag=job_stage_tag
-            ),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/stageTag",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id, job_id=job_id, job_stage_tag=job_stage_tag
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/stageTag, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def stageTag_sync(
         self, vehicle_id: str, job_id: str, job_stage_tag: str
@@ -1178,19 +937,16 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         更新任务进度标签
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/stageTag"),
-            timeout=self.timeout,
-            params=dict(
-                vehicle_id=vehicle_id, job_id=job_id, job_stage_tag=job_stage_tag
-            ),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/stageTag",
+            body={
+                "params": dict(
+                    vehicle_id=vehicle_id, job_id=job_id, job_stage_tag=job_stage_tag
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/stageTag, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_resendJob_post(
         self, body: ResendJobPost
@@ -1199,17 +955,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         重新派发旧任务
         允许 business_keys 或者 resend_jobs 两种形式的请求
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/resendJob"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/resendJob",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/resendJob, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_resendJob_post_sync(
         self, body: ResendJobPost
@@ -1218,17 +971,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         重新派发旧任务
         允许 business_keys 或者 resend_jobs 两种形式的请求
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/resendJob"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/resendJob",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/resendJob, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_delete_post(
         self, body: DeleteJobPost
@@ -1237,17 +987,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/delete, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_delete_post_sync(
         self, body: DeleteJobPost
@@ -1256,17 +1003,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/delete, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_query_post(
         self, body: QueryJobPost
@@ -1275,17 +1019,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         任务查询
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/query",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/query, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_query_post_sync(
         self, body: QueryJobPost
@@ -1294,83 +1035,62 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         任务查询
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/query",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/query, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def newest(self, vehicle_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取车辆最后执行的任务
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/newest"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/newest",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/newest, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def newest_sync(self, vehicle_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取车辆最后执行的任务
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/newest"),
-            timeout=self.timeout,
-            params=dict(vehicle_id=vehicle_id),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/newest",
+            body={"params": dict(vehicle_id=vehicle_id)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/newest, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def all_newest_job(self) -> Tuple[int, CreateSuccessSchema]:
         """
         获取所有车辆最后执行的任务
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/all_newest_job"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/all_newest_job",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/all_newest_job, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def all_newest_job_sync(self) -> Tuple[int, CreateSuccessSchema]:
         """
         获取所有车辆最后执行的任务
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/all_newest_job"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/all_newest_job",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/all_newest_job, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_all_current_job_get(
         self,
@@ -1379,16 +1099,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取所有当前正在执行的任务
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/all_current_job"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/all_current_job",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/all_current_job, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_all_current_job_get_sync(
         self,
@@ -1397,16 +1113,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取所有当前正在执行的任务
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/all_current_job"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/all_current_job",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/all_current_job, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_query_all_post(
         self, body: QueryJobAllPost
@@ -1415,17 +1127,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         历史任务查询
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query_all"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/query_all",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/query_all, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_query_all_post_sync(
         self, body: QueryJobAllPost
@@ -1434,17 +1143,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         历史任务查询
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query_all"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/query_all",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/query_all, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def all_newest_job_filter(
         self, origin: str
@@ -1453,19 +1159,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查询每个车最新的任务（带过滤器）
 
         """
-        resp = await async_get(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/vehicleJob/all_newest_job_filter"
-            ),
-            timeout=self.timeout,
-            params=dict(origin=origin),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/all_newest_job_filter",
+            body={"params": dict(origin=origin)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/all_newest_job_filter, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def all_newest_job_filter_sync(
         self, origin: str
@@ -1474,51 +1173,36 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查询每个车最新的任务（带过滤器）
 
         """
-        resp = requests.get(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/vehicleJob/all_newest_job_filter"
-            ),
-            timeout=self.timeout,
-            params=dict(origin=origin),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/all_newest_job_filter",
+            body={"params": dict(origin=origin)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/all_newest_job_filter, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def virtual_points(self) -> Tuple[int, CreateSuccessSchema]:
         """
         获取Virtual任务类型的点位
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/virtual_points"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/vehicleJob/virtual_points",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/virtual_points, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def virtual_points_sync(self) -> Tuple[int, CreateSuccessSchema]:
         """
         获取Virtual任务类型的点位
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/virtual_points"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/vehicleJob/virtual_points",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/virtual_points, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_vehicleJob_virtual_points_post(
         self, body: VirtualPointsPost
@@ -1527,17 +1211,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         存储Virtual任务类型的点位
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/virtual_points"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/virtual_points",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/virtual_points, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_vehicleJob_virtual_points_post_sync(
         self, body: VirtualPointsPost
@@ -1546,17 +1227,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         存储Virtual任务类型的点位
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/virtual_points"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/virtual_points",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/virtual_points, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def workflowNodes(
         self, body: SetWorkflowNodes
@@ -1565,17 +1243,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         记录节点
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/workflowNodes"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/vehicleJob/workflowNodes",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/vehicleJob/workflowNodes, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def workflowNodes_sync(
         self, body: SetWorkflowNodes
@@ -1584,51 +1259,38 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         记录节点
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/workflowNodes"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/vehicleJob/workflowNodes",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/vehicleJob/workflowNodes, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def workflowConfig(self, config_item: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取工作流配置项
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/workflowConfig"),
-            timeout=self.timeout,
-            params=dict(config_item=config_item),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/workflowConfig",
+            body={"params": dict(config_item=config_item)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/workflowConfig, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def workflowConfig_sync(self, config_item: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取工作流配置项
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/workflowConfig"),
-            timeout=self.timeout,
-            params=dict(config_item=config_item),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/workflowConfig",
+            body={"params": dict(config_item=config_item)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/workflowConfig, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_workflowConfig_post(
         self, config_item: str, value: str
@@ -1637,17 +1299,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置工作流配置项
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/workflowConfig"),
-            timeout=self.timeout,
-            params=dict(config_item=config_item, value=value),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/workflowConfig",
+            body={"params": dict(config_item=config_item, value=value)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/workflowConfig, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_workflowConfig_post_sync(
         self, config_item: str, value: str
@@ -1656,17 +1313,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置工作流配置项
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/workflowConfig"),
-            timeout=self.timeout,
-            params=dict(config_item=config_item, value=value),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/workflowConfig",
+            body={"params": dict(config_item=config_item, value=value)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/workflowConfig, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_lockArea_get(
         self, type: str, tag: str
@@ -1675,17 +1327,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取锁闭区
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea"),
-            timeout=self.timeout,
-            params=dict(type=type, tag=tag),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/lockArea",
+            body={"params": dict(type=type, tag=tag)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_lockArea_get_sync(
         self, type: str, tag: str
@@ -1694,17 +1341,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取锁闭区
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea"),
-            timeout=self.timeout,
-            params=dict(type=type, tag=tag),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/lockArea",
+            body={"params": dict(type=type, tag=tag)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_lockArea_post(
         self, body: object
@@ -1742,17 +1384,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         ]
         }
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/lockArea",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_lockArea_post_sync(
         self, body: object
@@ -1790,17 +1429,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         ]
         }
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/lockArea",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_lockArea_delete_post(
         self, body: object
@@ -1809,17 +1445,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁闭区
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/lockArea/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea/delete, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_lockArea_delete_post_sync(
         self, body: object
@@ -1828,17 +1461,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁闭区
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/lockArea/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea/delete, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_lockArea_deleteByTag_post(
         self, body: object
@@ -1847,17 +1477,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁闭区(指定 Tag)
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/deleteByTag"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/lockArea/deleteByTag",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea/deleteByTag, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_lockArea_deleteByTag_post_sync(
         self, body: object
@@ -1866,17 +1493,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁闭区(指定 Tag)
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/deleteByTag"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/lockArea/deleteByTag",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea/deleteByTag, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_lockArea_change_post(
         self, body: object
@@ -1885,17 +1509,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         修改锁闭区
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/change"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/lockArea/change",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea/change, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_lockArea_change_post_sync(
         self, body: object
@@ -1904,85 +1525,70 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         修改锁闭区
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/change"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/lockArea/change",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea/change, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def changeByTag(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         通过标签修改锁闭区
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/changeByTag"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/lockArea/changeByTag",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea/changeByTag, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def changeByTag_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         通过标签修改锁闭区
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/changeByTag"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/lockArea/changeByTag",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea/changeByTag, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def update_or_create(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         创建或者修改锁闭区
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/update_or_create"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/lockArea/update_or_create",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/lockArea/update_or_create, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def update_or_create_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         创建或者修改锁闭区
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/lockArea/update_or_create"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/lockArea/update_or_create",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/lockArea/update_or_create, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_VesselInfo_SetVesselInfo_post(
         self, body: SetVesselInfoSchemas
@@ -1991,17 +1597,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         创建船舶
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/VesselInfo/SetVesselInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/VesselInfo/SetVesselInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_VesselInfo_SetVesselInfo_post_sync(
         self, body: SetVesselInfoSchemas
@@ -2010,17 +1613,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         创建船舶
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/VesselInfo/SetVesselInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/VesselInfo/SetVesselInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_VesselInfo_EditVesselInfo_post(
         self, body: object
@@ -2029,17 +1629,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         修改船
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/EditVesselInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/VesselInfo/EditVesselInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/VesselInfo/EditVesselInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_VesselInfo_EditVesselInfo_post_sync(
         self, body: object
@@ -2048,17 +1645,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         修改船
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/EditVesselInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/VesselInfo/EditVesselInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/VesselInfo/EditVesselInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def GetVesselInfo(
         self, vesselVisitId: str
@@ -2067,34 +1661,24 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取船信息
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/GetVesselInfo"),
-            timeout=self.timeout,
-            params=dict(vesselVisitId=vesselVisitId),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/VesselInfo/GetVesselInfo",
+            body={"params": dict(vesselVisitId=vesselVisitId)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/VesselInfo/GetVesselInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def GetVesselInfo_sync(self, vesselVisitId: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取船信息
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/GetVesselInfo"),
-            timeout=self.timeout,
-            params=dict(vesselVisitId=vesselVisitId),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/VesselInfo/GetVesselInfo",
+            body={"params": dict(vesselVisitId=vesselVisitId)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/VesselInfo/GetVesselInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def DeleteVesselInfo(
         self, body: DelVesselInfoSchemas
@@ -2103,17 +1687,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除船信息
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/DeleteVesselInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/VesselInfo/DeleteVesselInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/VesselInfo/DeleteVesselInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def DeleteVesselInfo_sync(
         self, body: DelVesselInfoSchemas
@@ -2122,17 +1703,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除船信息
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/DeleteVesselInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/VesselInfo/DeleteVesselInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/VesselInfo/DeleteVesselInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_VesselInfo_SetVesselInfoStatus_post(
         self, body: SetVesselInfoStatusSchemas
@@ -2141,17 +1719,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置自动建船开关
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfoStatus"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/VesselInfo/SetVesselInfoStatus",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/VesselInfo/SetVesselInfoStatus, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_VesselInfo_SetVesselInfoStatus_post_sync(
         self, body: SetVesselInfoStatusSchemas
@@ -2160,17 +1735,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置自动建船开关
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfoStatus"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/VesselInfo/SetVesselInfoStatus",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/VesselInfo/SetVesselInfoStatus, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def AlarmMessageStart(
         self, body: SetAlarmMessage
@@ -2195,17 +1767,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         "error_origin": "system"  # chassis
         }
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/Message/AlarmMessageStart",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/Message/AlarmMessageStart, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def AlarmMessageStart_sync(
         self, body: SetAlarmMessage
@@ -2230,17 +1799,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         "error_origin": "system"  # chassis
         }
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/Message/AlarmMessageStart",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/Message/AlarmMessageStart, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def AlarmMessageStart_bak(
         self, body: SetAlarmMessage
@@ -2249,17 +1815,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         单车上报告警信息开始
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart_bak"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/Message/AlarmMessageStart_bak",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/Message/AlarmMessageStart_bak, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def AlarmMessageStart_bak_sync(
         self, body: SetAlarmMessage
@@ -2268,17 +1831,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         单车上报告警信息开始
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart_bak"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/Message/AlarmMessageStart_bak",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/Message/AlarmMessageStart_bak, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def AlarmMessageStop(
         self, body: StopAlarmMessage
@@ -2287,17 +1847,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         单车上报告警信息结束
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStop"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/Message/AlarmMessageStop",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/Message/AlarmMessageStop, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def AlarmMessageStop_sync(
         self, body: StopAlarmMessage
@@ -2306,17 +1863,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         单车上报告警信息结束
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStop"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/Message/AlarmMessageStop",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/Message/AlarmMessageStop, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def GetAlarmMessage(
         self, body: AlarmMessageSchema
@@ -2325,17 +1879,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取单车告警信息
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/GetAlarmMessage"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/Message/GetAlarmMessage",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchemaCount,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/Message/GetAlarmMessage, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchemaCount.model_validate_json(resp)
 
     def GetAlarmMessage_sync(
         self, body: AlarmMessageSchema
@@ -2344,17 +1895,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取单车告警信息
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/GetAlarmMessage"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/Message/GetAlarmMessage",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchemaCount,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/Message/GetAlarmMessage, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchemaCount.model_validate_json(resp)
 
     async def SetFmsMessage(
         self, body: SetFMSMessage
@@ -2363,17 +1911,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置Fms告警信息
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/SetFmsMessage"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/Message/SetFmsMessage",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/Message/SetFmsMessage, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def SetFmsMessage_sync(
         self, body: SetFMSMessage
@@ -2382,17 +1927,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置Fms告警信息
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/SetFmsMessage"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/Message/SetFmsMessage",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/Message/SetFmsMessage, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def GetFmsMessage(
         self, body: AlarmMessageSchema
@@ -2401,17 +1943,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取Fms告警信息
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/GetFmsMessage"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/Message/GetFmsMessage",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchemaCount,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/Message/GetFmsMessage, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchemaCount.model_validate_json(resp)
 
     def GetFmsMessage_sync(
         self, body: AlarmMessageSchema
@@ -2420,51 +1959,42 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取Fms告警信息
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/Message/GetFmsMessage"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/Message/GetFmsMessage",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchemaCount,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/Message/GetFmsMessage, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchemaCount.model_validate_json(resp)
 
     async def set(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         设置子任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/subTask/set"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/subTask/set",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/subTask/set, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def set_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         设置子任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/subTask/set"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/subTask/set",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/subTask/set, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_subTask_get_get(
         self, vin: str
@@ -2473,17 +2003,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取子任务
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/subTask/get"),
-            timeout=self.timeout,
-            params=dict(vin=vin),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/subTask/get",
+            body={"params": dict(vin=vin)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/subTask/get, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_subTask_get_get_sync(
         self, vin: str
@@ -2492,17 +2017,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取子任务
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/subTask/get"),
-            timeout=self.timeout,
-            params=dict(vin=vin),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/subTask/get",
+            body={"params": dict(vin=vin)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/subTask/get, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_subTask_clear_post(
         self, vin: str
@@ -2511,17 +2031,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除子任务
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/subTask/clear"),
-            timeout=self.timeout,
-            params=dict(vin=vin),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/subTask/clear",
+            body={"params": dict(vin=vin)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/subTask/clear, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_subTask_clear_post_sync(
         self, vin: str
@@ -2530,85 +2045,68 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除子任务
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/subTask/clear"),
-            timeout=self.timeout,
-            params=dict(vin=vin),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/subTask/clear",
+            body={"params": dict(vin=vin)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/subTask/clear, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def fenceEvent(self, body: CreateFence) -> Tuple[int, CreateSuccessSchema]:
         """
         上报围栏事件
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/fenceEvent",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/fenceEvent, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def fenceEvent_sync(self, body: CreateFence) -> Tuple[int, CreateSuccessSchema]:
         """
         上报围栏事件
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/fenceEvent",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/fenceEvent, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def finish(self, body: FinishFenceEvent) -> Tuple[int, CreateSuccessSchema]:
         """
         标记围栏事件完成
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent/finish"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/fenceEvent/finish",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/fenceEvent/finish, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def finish_sync(self, body: FinishFenceEvent) -> Tuple[int, CreateSuccessSchema]:
         """
         标记围栏事件完成
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent/finish"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/fenceEvent/finish",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/fenceEvent/finish, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_fenceEvent_get_post(
         self,
@@ -2622,23 +2120,20 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取围栏事件
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent/get"),
-            timeout=self.timeout,
-            params=dict(
-                device_id=device_id,
-                passing_location=passing_location,
-                passing_event=passing_event,
-                start_time=start_time,
-                end_time=end_time,
-            ),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/fenceEvent/get",
+            body={
+                "params": dict(
+                    device_id=device_id,
+                    passing_location=passing_location,
+                    passing_event=passing_event,
+                    start_time=start_time,
+                    end_time=end_time,
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/fenceEvent/get, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_fenceEvent_get_post_sync(
         self,
@@ -2652,193 +2147,160 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取围栏事件
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent/get"),
-            timeout=self.timeout,
-            params=dict(
-                device_id=device_id,
-                passing_location=passing_location,
-                passing_event=passing_event,
-                start_time=start_time,
-                end_time=end_time,
-            ),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/fenceEvent/get",
+            body={
+                "params": dict(
+                    device_id=device_id,
+                    passing_location=passing_location,
+                    passing_event=passing_event,
+                    start_time=start_time,
+                    end_time=end_time,
+                )
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/fenceEvent/get, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_taskPool_get_post(self, body: object) -> Tuple[int, Dict]:
         """
         Get Task Pool
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/get"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/get",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/get, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_taskPool_get_post_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Get Task Pool
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/get"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/get",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/get, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def add(self, body: object) -> Tuple[int, Dict]:
         """
         Add Task Pool
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/add"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/add",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/add, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def add_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Add Task Pool
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/add"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/add",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/add, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def reject(self, body: object) -> Tuple[int, Dict]:
         """
         Add Task Pool Reject
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/reject"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/reject",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/reject, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def reject_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Add Task Pool Reject
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/reject"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/reject",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/reject, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def update(self, body: object) -> Tuple[int, Dict]:
         """
         Update Task Pool
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/update"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/update",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/update, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def update_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Update Task Pool
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/update"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/update",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/update, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def api_taskInfo_taskPool_abort_post(self, body: object) -> Tuple[int, Dict]:
         """
         Abort Task Pool
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/abort"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/abort",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/abort, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_taskPool_abort_post_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Abort Task Pool
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/abort"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/abort",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/abort, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def api_taskInfo_taskPool_runImmediate_post(
         self, body: object
@@ -2847,17 +2309,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         Runimmediate
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/runImmediate"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/runImmediate",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/runImmediate, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_taskPool_runImmediate_post_sync(
         self, body: object
@@ -2866,85 +2325,70 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         Runimmediate
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/runImmediate"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/runImmediate",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/runImmediate, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def api_taskInfo_taskPool_delete_post(self, body: object) -> Tuple[int, Dict]:
         """
         Delete Task Pool
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/taskPool/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/taskPool/delete, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def api_taskInfo_taskPool_delete_post_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Delete Task Pool
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/taskPool/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/taskPool/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/taskPool/delete, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def TsRelated(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         创建锁站
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/TsRelated",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/TsRelated, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def TsRelated_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         创建锁站
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/TsRelated",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/TsRelated, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_TsRelated_delete_post(
         self, body: object
@@ -2953,17 +2397,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁站
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/TsRelated/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/TsRelated/delete, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_TsRelated_delete_post_sync(
         self, body: object
@@ -2972,85 +2413,70 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁站
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/delete"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/TsRelated/delete",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/TsRelated/delete, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def Edit(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         修改Ts
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Edit"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/TsRelated/Edit",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/TsRelated/Edit, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def Edit_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         修改Ts
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Edit"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/TsRelated/Edit",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/TsRelated/Edit, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def Get(self, body: GetTsSchemas) -> Tuple[int, CreateSuccessSchema]:
         """
         获取Ts
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Get"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/TsRelated/Get",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/TsRelated/Get, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def Get_sync(self, body: GetTsSchemas) -> Tuple[int, CreateSuccessSchema]:
         """
         获取Ts
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Get"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/TsRelated/Get",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/TsRelated/Get, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_EquipmentStatus_post(
         self, body: object
@@ -3062,17 +2488,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             "switch_val":"off"
         }
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/EquipmentStatus",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/EquipmentStatus, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_EquipmentStatus_post_sync(
         self, body: object
@@ -3084,17 +2507,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             "switch_val":"off"
         }
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/EquipmentStatus",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/EquipmentStatus, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_EquipmentStatus_GetAll_get(
         self,
@@ -3103,16 +2523,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取Cms,Cps状态
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/GetAll"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/EquipmentStatus/GetAll",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/GetAll, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_EquipmentStatus_GetAll_get_sync(
         self,
@@ -3121,16 +2537,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取Cms,Cps状态
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/GetAll"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/EquipmentStatus/GetAll",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/GetAll, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_EquipmentStatus_Get_get(
         self,
@@ -3139,16 +2551,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取Cms,Cps状态
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/Get"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/EquipmentStatus/Get",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/Get, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_EquipmentStatus_Get_get_sync(
         self,
@@ -3157,16 +2565,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取Cms,Cps状态
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/Get"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/EquipmentStatus/Get",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/Get, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_EquipmentStatus_SpreaderSize_post(
         self, body: object
@@ -3175,17 +2579,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置吊具尺寸
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/SpreaderSize"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/EquipmentStatus/SpreaderSize",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/SpreaderSize, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_EquipmentStatus_SpreaderSize_post_sync(
         self, body: object
@@ -3194,17 +2595,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置吊具尺寸
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/SpreaderSize"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/EquipmentStatus/SpreaderSize",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/SpreaderSize, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def GetSpreaderSize(
         self, switch_val_name: str
@@ -3213,19 +2611,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取吊具尺寸
 
         """
-        resp = await async_get(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/EquipmentStatus/GetSpreaderSize"
-            ),
-            timeout=self.timeout,
-            params=dict(switch_val_name=switch_val_name),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/EquipmentStatus/GetSpreaderSize",
+            body={"params": dict(switch_val_name=switch_val_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/GetSpreaderSize, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def GetSpreaderSize_sync(
         self, switch_val_name: str
@@ -3234,19 +2625,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         获取吊具尺寸
 
         """
-        resp = requests.get(
-            url=parse.urljoin(
-                self.url, "/api/taskInfo/EquipmentStatus/GetSpreaderSize"
-            ),
-            timeout=self.timeout,
-            params=dict(switch_val_name=switch_val_name),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/EquipmentStatus/GetSpreaderSize",
+            body={"params": dict(switch_val_name=switch_val_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/EquipmentStatus/GetSpreaderSize, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_PaceGlobal_post(
         self, body: object
@@ -3255,17 +2639,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         配置全局速度
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/PaceGlobal"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/PaceGlobal",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/PaceGlobal, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_PaceGlobal_post_sync(
         self, body: object
@@ -3274,17 +2655,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         配置全局速度
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/PaceGlobal"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/PaceGlobal",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/PaceGlobal, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_quayCrane_SetLane_post(
         self, body: SetLaneInSchema
@@ -3297,17 +2675,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             "value": "02"
         }
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/quayCrane/SetLane"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/quayCrane/SetLane",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/quayCrane/SetLane, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_quayCrane_SetLane_post_sync(
         self, body: SetLaneInSchema
@@ -3320,17 +2695,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             "value": "02"
         }
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/quayCrane/SetLane"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/quayCrane/SetLane",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/quayCrane/SetLane, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def GetLane(self) -> Tuple[int, CreateSuccessSchema]:
         """
@@ -3341,16 +2713,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             "value": "02"
         }
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/quayCrane/GetLane"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/quayCrane/GetLane",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/quayCrane/GetLane, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def GetLane_sync(self) -> Tuple[int, CreateSuccessSchema]:
         """
@@ -3361,16 +2729,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             "value": "02"
         }
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/quayCrane/GetLane"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/quayCrane/GetLane",
+            body={},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/quayCrane/GetLane, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def preArrive(
         self, body: PreArriveInSchema
@@ -3379,17 +2743,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         上报预到达
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/preArrive"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/preArrive",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/preArrive, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def preArrive_sync(
         self, body: PreArriveInSchema
@@ -3398,17 +2759,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         上报预到达
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/preArrive"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/preArrive",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/preArrive, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def ts_switch(
         self, ts_type: str, ts_name: str
@@ -3417,17 +2775,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查询锁站
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch"),
-            timeout=self.timeout,
-            params=dict(ts_type=ts_type, ts_name=ts_name),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/ts_switch",
+            body={"params": dict(ts_type=ts_type, ts_name=ts_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/ts_switch, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def ts_switch_sync(
         self, ts_type: str, ts_name: str
@@ -3436,17 +2789,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查询锁站
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch"),
-            timeout=self.timeout,
-            params=dict(ts_type=ts_type, ts_name=ts_name),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/ts_switch",
+            body={"params": dict(ts_type=ts_type, ts_name=ts_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/ts_switch, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_ts_switch_post(
         self, body: LockSwitchInSchema
@@ -3455,17 +2803,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置更新锁站开关
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/ts_switch",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/ts_switch, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_ts_switch_post_sync(
         self, body: LockSwitchInSchema
@@ -3474,17 +2819,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置更新锁站开关
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/ts_switch",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/ts_switch, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def automatic(
         self, ts_type: str, ts_name: str
@@ -3493,17 +2835,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查询锁站
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
-            timeout=self.timeout,
-            params=dict(ts_type=ts_type, ts_name=ts_name),
+        return await self.request(
+            request=async_get,
+            api="/api/taskInfo/ts_switch/automatic",
+            body={"params": dict(ts_type=ts_type, ts_name=ts_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def automatic_sync(
         self, ts_type: str, ts_name: str
@@ -3512,17 +2849,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         查询锁站
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
-            timeout=self.timeout,
-            params=dict(ts_type=ts_type, ts_name=ts_name),
+        return self.request_sync(
+            request=requests.get,
+            api="/api/taskInfo/ts_switch/automatic",
+            body={"params": dict(ts_type=ts_type, ts_name=ts_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_ts_switch_automatic_post(
         self, body: AutomaticTsSwitchSchema
@@ -3531,17 +2863,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置更新锁站开关
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/ts_switch/automatic",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_ts_switch_automatic_post_sync(
         self, body: AutomaticTsSwitchSchema
@@ -3550,17 +2879,14 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         设置更新锁站开关
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/ts_switch/automatic",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def api_taskInfo_ts_switch_automatic_delete(
         self, ts_name: str
@@ -3569,17 +2895,12 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁站
 
         """
-        resp = await async_delete(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
-            timeout=self.timeout,
-            params=dict(ts_name=ts_name),
+        return await self.request(
+            request=async_delete,
+            api="/api/taskInfo/ts_switch/automatic",
+            body={"params": dict(ts_name=ts_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def api_taskInfo_ts_switch_automatic_delete_sync(
         self, ts_name: str
@@ -3588,51 +2909,40 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         删除锁站
 
         """
-        resp = requests.delete(
-            url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
-            timeout=self.timeout,
-            params=dict(ts_name=ts_name),
+        return self.request_sync(
+            request=requests.delete,
+            api="/api/taskInfo/ts_switch/automatic",
+            body={"params": dict(ts_name=ts_name)},
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/ts_switch/automatic, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def sim_start_job(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         上报预到达
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/simApi/sim_start_job"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/simApi/sim_start_job",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/simApi/sim_start_job, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def sim_start_job_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
         """
         上报预到达
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/simApi/sim_start_job"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/simApi/sim_start_job",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/simApi/sim_start_job, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
     async def fullControl(
         self, body: FullStopStatus
@@ -3641,34 +2951,28 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         全场紧停或者恢复
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fullControl"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/taskInfo/fullControl",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/taskInfo/fullControl, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, CreateSuccessSchema.model_validate_json(resp)
 
     def fullControl_sync(self, body: FullStopStatus) -> Tuple[int, CreateSuccessSchema]:
         """
         全场紧停或者恢复
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/taskInfo/fullControl"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/taskInfo/fullControl",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=CreateSuccessSchema,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/taskInfo/fullControl, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, CreateSuccessSchema.model_validate_json(resp)
 
 
 TaskInfoRequest = TaskInfoRequestCls()

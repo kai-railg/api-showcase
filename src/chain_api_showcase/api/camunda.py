@@ -31,68 +31,56 @@ class CamundaRequestCls(ApiRequestBaseCls):
         None
         发起流程
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/startProcess"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/startProcess",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/startProcess, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def startProcess_sync(self, body: StartProcessRequest) -> Tuple[int, Dict]:
         """
         None
         发起流程
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/startProcess"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/startProcess",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/startProcess, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def setVariablesByBisKey(self, body: VariableRequest) -> Tuple[int, Dict]:
         """
         None
         根据业务主键设置流程变量
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/setVariablesByBisKey"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/setVariablesByBisKey",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/setVariablesByBisKey, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def setVariablesByBisKey_sync(self, body: VariableRequest) -> Tuple[int, Dict]:
         """
         None
         根据业务主键设置流程变量
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/setVariablesByBisKey"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/setVariablesByBisKey",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/setVariablesByBisKey, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def searchCurrentActiveMessageEvents(
         self, body: ActInfoRequest
@@ -101,19 +89,14 @@ class CamundaRequestCls(ApiRequestBaseCls):
         None
         获取当前活动receiveEvents
         """
-        resp = await async_post(
-            url=parse.urljoin(
-                self.url, "/api/camundaProcess/searchCurrentActiveMessageEvents"
-            ),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/searchCurrentActiveMessageEvents",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/searchCurrentActiveMessageEvents, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def searchCurrentActiveMessageEvents_sync(
         self, body: ActInfoRequest
@@ -122,53 +105,42 @@ class CamundaRequestCls(ApiRequestBaseCls):
         None
         获取当前活动receiveEvents
         """
-        resp = requests.post(
-            url=parse.urljoin(
-                self.url, "/api/camundaProcess/searchCurrentActiveMessageEvents"
-            ),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/searchCurrentActiveMessageEvents",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/searchCurrentActiveMessageEvents, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def searchCurrentActInfo(self, body: ActInfoRequest) -> Tuple[int, Dict]:
         """
         None
         获取当前流程节点定义
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/searchCurrentActInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/searchCurrentActInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/searchCurrentActInfo, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def searchCurrentActInfo_sync(self, body: ActInfoRequest) -> Tuple[int, Dict]:
         """
         None
         获取当前流程节点定义
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/searchCurrentActInfo"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/searchCurrentActInfo",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/searchCurrentActInfo, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def receivedTaskMessageEvent(
         self, body: ReceivedTaskRequest
@@ -177,17 +149,14 @@ class CamundaRequestCls(ApiRequestBaseCls):
         None
         推动receiveTask
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/receivedTaskMessageEvent"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/receivedTaskMessageEvent",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/receivedTaskMessageEvent, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def receivedTaskMessageEvent_sync(
         self, body: ReceivedTaskRequest
@@ -196,17 +165,14 @@ class CamundaRequestCls(ApiRequestBaseCls):
         None
         推动receiveTask
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/receivedTaskMessageEvent"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/receivedTaskMessageEvent",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/receivedTaskMessageEvent, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def receivedMessageEvent(
         self, body: ReceivedMessageEvent
@@ -215,136 +181,112 @@ class CamundaRequestCls(ApiRequestBaseCls):
         None
         信封事件驱动
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/receivedMessageEvent"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/receivedMessageEvent",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/receivedMessageEvent, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def receivedMessageEvent_sync(self, body: ReceivedMessageEvent) -> Tuple[int, Dict]:
         """
         None
         信封事件驱动
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/receivedMessageEvent"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/receivedMessageEvent",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/receivedMessageEvent, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def receivedCommon(self, body: ReceivedCommonRequest) -> Tuple[int, Dict]:
         """
         None
         接口驱动receiveTask流程继续
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/receivedCommon"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/receivedCommon",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/receivedCommon, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def receivedCommon_sync(self, body: ReceivedCommonRequest) -> Tuple[int, Dict]:
         """
         None
         接口驱动receiveTask流程继续
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/receivedCommon"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/receivedCommon",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/receivedCommon, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def completeUserTask(self, body: ReceivedCommonRequest) -> Tuple[int, Dict]:
         """
         None
         驱动userTask
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/completeUserTask"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/completeUserTask",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/completeUserTask, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def completeUserTask_sync(self, body: ReceivedCommonRequest) -> Tuple[int, Dict]:
         """
         None
         驱动userTask
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/completeUserTask"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/completeUserTask",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/completeUserTask, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def cancelProcess(self, body: CancelProcessRequest) -> Tuple[int, Dict]:
         """
         None
         取消流程
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/cancelProcess"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/api/camundaProcess/cancelProcess",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /api/camundaProcess/cancelProcess, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def cancelProcess_sync(self, body: CancelProcessRequest) -> Tuple[int, Dict]:
         """
         None
         取消流程
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/api/camundaProcess/cancelProcess"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/api/camundaProcess/cancelProcess",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /api/camundaProcess/cancelProcess, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
 
 CamundaRequest = CamundaRequestCls()

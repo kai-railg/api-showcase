@@ -33,17 +33,14 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Area Inventory Query
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/fms/area/inventory/query/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/fms/area/inventory/query/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /fms/area/inventory/query/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def fms_area_inventory_query_post_sync(
         self, body: AreaInventoryQuery
@@ -52,51 +49,42 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Area Inventory Query
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/fms/area/inventory/query/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/fms/area/inventory/query/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /fms/area/inventory/query/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def response(self, body: WaCreatedResponse) -> Tuple[int, Dict]:
         """
         Wa Created Response
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/fms/wacreated/response/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/fms/wacreated/response/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /fms/wacreated/response/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def response_sync(self, body: WaCreatedResponse) -> Tuple[int, Dict]:
         """
         Wa Created Response
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/fms/wacreated/response/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/fms/wacreated/response/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /fms/wacreated/response/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def fms_wacancelled_response_post(
         self, body: WaCancelledResponse
@@ -105,17 +93,14 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Wa Cancelled Response
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/fms/wacancelled/response/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/fms/wacancelled/response/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /fms/wacancelled/response/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def fms_wacancelled_response_post_sync(
         self, body: WaCancelledResponse
@@ -124,85 +109,70 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Wa Cancelled Response
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/fms/wacancelled/response/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/fms/wacancelled/response/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /fms/wacancelled/response/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def fms_sc_status_post(self, body: ScStatus) -> Tuple[int, Dict]:
         """
         Sc Status
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/fms/sc/status/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/fms/sc/status/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /fms/sc/status/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def fms_sc_status_post_sync(self, body: ScStatus) -> Tuple[int, Dict]:
         """
         Sc Status
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/fms/sc/status/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/fms/sc/status/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /fms/sc/status/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def updated(self, body: AreaAvailabilityUpdated) -> Tuple[int, Dict]:
         """
         Area Availability Updated
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/fms/area/availability/updated/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/fms/area/availability/updated/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /fms/area/availability/updated/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def updated_sync(self, body: AreaAvailabilityUpdated) -> Tuple[int, Dict]:
         """
         Area Availability Updated
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/fms/area/availability/updated/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/fms/area/availability/updated/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /fms/area/availability/updated/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def fms_container_change_post(
         self, body: ContainerUpdate
@@ -211,68 +181,56 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Container Change
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/fms/container/change/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/fms/container/change/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /fms/container/change/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def fms_container_change_post_sync(self, body: ContainerUpdate) -> Tuple[int, Dict]:
         """
         Container Change
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/fms/container/change/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/fms/container/change/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /fms/container/change/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def message(self, body: object) -> Tuple[int, Dict]:
         """
         Ail Message
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/ail/message/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/ail/message/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /ail/message/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def message_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Ail Message
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/ail/message/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/ail/message/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /ail/message/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def inventory_import_degree(
         self, body: InventoryImportDegree
@@ -281,17 +239,14 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Inventory Import Degree
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/upload/inventory_import_degree/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/upload/inventory_import_degree/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /upload/inventory_import_degree/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def inventory_import_degree_sync(
         self, body: InventoryImportDegree
@@ -300,181 +255,142 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
         Inventory Import Degree
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/upload/inventory_import_degree/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/upload/inventory_import_degree/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /upload/inventory_import_degree/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def login(self, body: Login) -> Tuple[int, Dict]:
         """
         Login
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/upload/new/login/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/upload/new/login/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /upload/new/login/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def login_sync(self, body: Login) -> Tuple[int, Dict]:
         """
         Login
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/upload/new/login/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/upload/new/login/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /upload/new/login/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def send(self, body: ButtonSend) -> Tuple[int, Dict]:
         """
         New Button Send
 
         """
-        resp = await async_post(
-            url=parse.urljoin(self.url, "/upload/new/button/send/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return await self.request(
+            request=async_post,
+            api="/upload/new/button/send/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /upload/new/button/send/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def send_sync(self, body: ButtonSend) -> Tuple[int, Dict]:
         """
         New Button Send
 
         """
-        resp = requests.post(
-            url=parse.urljoin(self.url, "/upload/new/button/send/"),
-            timeout=self.timeout,
-            data=body.model_dump_json(),
+        return self.request_sync(
+            request=requests.post,
+            api="/upload/new/button/send/",
+            body={
+                "data": body.model_dump_json(),
+            },
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /upload/new/button/send/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def refresh(self) -> Tuple[int, Dict]:
         """
         New Button Refresh
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/upload/new/button/refresh/"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/upload/new/button/refresh/",
+            body={},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /upload/new/button/refresh/, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def refresh_sync(self) -> Tuple[int, Dict]:
         """
         New Button Refresh
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/upload/new/button/refresh/"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/upload/new/button/refresh/",
+            body={},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /upload/new/button/refresh/, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def finish_workinstruction_csv(self) -> Tuple[int, Dict]:
         """
         Finish Workinstruction
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/inventory_data/finish_workinstruction.csv"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/inventory_data/finish_workinstruction.csv",
+            body={},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /inventory_data/finish_workinstruction.csv, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def finish_workinstruction_csv_sync(self) -> Tuple[int, Dict]:
         """
         Finish Workinstruction
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/inventory_data/finish_workinstruction.csv"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/inventory_data/finish_workinstruction.csv",
+            body={},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /inventory_data/finish_workinstruction.csv, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
     async def init_yard_csv(self) -> Tuple[int, Dict]:
         """
         Init Yard
 
         """
-        resp = await async_get(
-            url=parse.urljoin(self.url, "/inventory_data/init_yard.csv"),
-            timeout=self.timeout,
+        return await self.request(
+            request=async_get,
+            api="/inventory_data/init_yard.csv",
+            body={},
+            resp_model=None,
         )
-        if resp.status != 200:
-            print(
-                f"Request failed: {resp.status}, url: {self.url}, api: /inventory_data/init_yard.csv, response: {resp.text}"
-            )
-            return resp.status, resp.text
-        return resp.status, resp.json()
 
     def init_yard_csv_sync(self) -> Tuple[int, Dict]:
         """
         Init Yard
 
         """
-        resp = requests.get(
-            url=parse.urljoin(self.url, "/inventory_data/init_yard.csv"),
-            timeout=self.timeout,
+        return self.request_sync(
+            request=requests.get,
+            api="/inventory_data/init_yard.csv",
+            body={},
+            resp_model=None,
         )
-        if resp.status_code != 200:
-            print(
-                f"Request failed: {resp.status_code}, url: {self.url}, api: /inventory_data/init_yard.csv, response: {resp.text}"
-            )
-            return resp.status_code, resp.text
-        return resp.status_code, resp.json()
 
 
 TosInterfaceRequest = TosInterfaceRequestCls()

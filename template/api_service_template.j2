@@ -47,51 +47,30 @@ class {{ cls_name }}Cls(ApiRequestBaseCls):
         """
         {{ endpoint.summary }}
         {{ endpoint.description }}
-        """{% if endpoint.method in ['post', 'put', 'delete'] %}
-        resp = await async_{{ endpoint.method }}(
-            url=parse.urljoin(
-                self.url, "{{ endpoint.path }}"
-            ),
-            timeout = self.timeout,
-            {% if endpoint.model %}data=body.model_dump_json(),{% endif %}
-            {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
-        ){% elif endpoint.method == 'get' %}
-        resp = await async_get(
-            url=parse.urljoin(
-                self.url, "{{ endpoint.path }}"
-            ),
-            timeout = self.timeout,
-            {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
-        ){% endif %}
-        if resp.status != 200:
-            print(f"Request failed: {resp.status}, url: {self.url}, api: {{ endpoint.path }}, response: {resp.text}")
-            return resp.status, resp.text
-        return resp.status, {% if endpoint.response_model %} {{ endpoint.response_model }}.model_validate_json(resp)  {% else %} resp.json() {% endif %}
+        """
+        return await self.request(
+            request=async_{{ endpoint.method }},
+            api="{{ endpoint.path }}",
+            body={
+                {% if endpoint.method != 'get' %}{% if endpoint.model %}"data": body.model_dump_json(),{% endif %}{% endif %}
+                {% if endpoint.parameters %}"params": dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
+            },
+            resp_model={{ endpoint.response_model if endpoint.response_model else None }}
+        )
     def {{ endpoint.func_name }}_sync(self{{ ", " if generate_parameter(endpoint) else "" }}{{ generate_parameter(endpoint) }}) -> Tuple[int, {{ endpoint.response_model if endpoint.response_model != "" else "Dict" }}]:
         """
         {{ endpoint.summary }}
         {{ endpoint.description }}
-        """{% if endpoint.method in ['post', 'put', 'delete'] %}
-        resp = requests.{{ endpoint.method }}(
-            url=parse.urljoin(
-                self.url, "{{ endpoint.path }}"
-            ),
-            timeout = self.timeout,
-            {% if endpoint.model %}data=body.model_dump_json(),{% endif %}
-            {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
-        ){% elif endpoint.method == 'get' %}
-        resp = requests.get(
-            url=parse.urljoin(
-                self.url, "{{ endpoint.path }}"
-            ),
-            timeout = self.timeout,
-            {% if endpoint.parameters %}params=dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
-        ){% endif %}
-        if resp.status_code != 200:
-            print(f"Request failed: {resp.status_code}, url: {self.url}, api: {{ endpoint.path }}, response: {resp.text}")
-            return resp.status_code, resp.text
-        return resp.status_code, {% if endpoint.response_model %} {{ endpoint.response_model }}.model_validate_json(resp)  {% else %} resp.json() {% endif %}
-
+        """
+        return self.request_sync(
+            request=requests.{{ endpoint.method }},
+            api="{{ endpoint.path }}",
+            body={
+                {% if endpoint.method != 'get' %}{% if endpoint.model %}"data": body.model_dump_json(),{% endif %}{% endif %}
+                {% if endpoint.parameters %}"params": dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
+            },
+            resp_model={{ endpoint.response_model if endpoint.response_model else None }}
+        )
     {% endfor %}
 
 {{ cls_name }} = {{ cls_name }}Cls()
