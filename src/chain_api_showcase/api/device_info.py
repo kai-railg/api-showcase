@@ -362,7 +362,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/LoginStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -381,7 +381,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/LoginStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -438,7 +438,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/mode"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -457,7 +457,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/mode"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -510,7 +510,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/bsm"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -529,7 +529,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/bsm"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -582,7 +582,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/soc"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -601,7 +601,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/soc"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -654,7 +654,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/longPath"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -673,7 +673,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/longPath"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -726,7 +726,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/shortPath"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -745,7 +745,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/shortPath"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -798,7 +798,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/suspend"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -817,7 +817,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/suspend"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -874,7 +874,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/trailerStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -893,7 +893,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/trailerStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -946,7 +946,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/ghostVehicle"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -965,7 +965,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/ghostVehicle"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -986,7 +986,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/vehicleStatus/ghostVehicleCancel"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1007,7 +1007,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/vehicleStatus/ghostVehicleCancel"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1136,7 +1136,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/SetOperation"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1155,7 +1155,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/SetOperation"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1208,7 +1208,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/vehicleStatus/SuspendReasonReport"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1227,7 +1227,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/vehicleStatus/SuspendReasonReport"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1278,7 +1278,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/StopTime"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1295,7 +1295,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/StopTime"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1380,7 +1380,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/BtnStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(vehicle_id=vehicle_id),
         )
         if resp.status != 200:
@@ -1400,7 +1400,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/vehicleStatus/BtnStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(vehicle_id=vehicle_id),
         )
         if resp.status_code != 200:
@@ -1572,7 +1572,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/PileInfo/SetPileInfoReport"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1591,7 +1591,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/PileInfo/SetPileInfoReport"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1608,7 +1608,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/PileInfo/getPileInfoReport"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1625,7 +1625,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/PileInfo/getPileInfoReport"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1646,7 +1646,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/PileInfo/SetPileInfoAllCodeReport"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1667,7 +1667,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/PileInfo/SetPileInfoAllCodeReport"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1720,7 +1720,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/PileInfo/PileMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1737,7 +1737,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/PileInfo/PileMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1786,7 +1786,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/externalTruck/arriveTg"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1803,7 +1803,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/externalTruck/arriveTg"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1820,7 +1820,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/deviceInfo/externalTruck/leaveTg"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1837,7 +1837,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/deviceInfo/externalTruck/leaveTg"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1856,7 +1856,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/emergency_status/SetmultiCarEmergencyStop"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1875,7 +1875,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/emergency_status/SetmultiCarEmergencyStop"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(

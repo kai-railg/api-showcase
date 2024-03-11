@@ -36,7 +36,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message_event/start"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -55,7 +55,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message_event/start"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -110,7 +110,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message_event/rch"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -127,7 +127,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message_event/rch"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -146,7 +146,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message_event/update_qc_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -165,7 +165,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message_event/update_qc_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -184,7 +184,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message_event/event"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(event_type=event_type),
         )
         if resp.status != 200:
@@ -204,7 +204,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message_event/event"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(event_type=event_type),
         )
         if resp.status_code != 200:
@@ -224,7 +224,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message_event/cancel_camunda_process"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -243,7 +243,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message_event/cancel_camunda_process"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -260,7 +260,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message_event/boundary_event"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -277,7 +277,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message_event/boundary_event"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -373,7 +373,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/service_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -389,7 +389,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/service_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -408,7 +408,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/event/cycle_event"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -427,7 +427,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/event/cycle_event"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -446,7 +446,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/event/event_driven"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -465,7 +465,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/event/event_driven"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(

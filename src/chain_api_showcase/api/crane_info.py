@@ -36,7 +36,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/asc_cps_info_report"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -55,7 +55,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/asc_cps_info_report"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -72,7 +72,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/plc"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -89,7 +89,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/plc"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -105,7 +105,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/application_lane_handler"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -121,7 +121,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/application_lane_handler"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -141,7 +141,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/qc_holding_info"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -161,7 +161,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/qc_holding_info"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -181,7 +181,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/query_container_point"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -201,7 +201,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/query_container_point"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -221,7 +221,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/qc_position"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -241,7 +241,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/qc_position"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -261,7 +261,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/qc_signal"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -281,7 +281,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/qc_signal"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -306,7 +306,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/qc_holding_status"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -331,7 +331,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/qc_holding_status"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -353,7 +353,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/response_mixed_area"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -375,7 +375,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/response_mixed_area"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -398,7 +398,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/engine"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -421,7 +421,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/engine"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -437,7 +437,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/update_plc_data"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -453,7 +453,7 @@ class CraneInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/update_plc_data"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(

@@ -170,7 +170,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/kvStore"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -189,7 +189,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/kvStore"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -208,7 +208,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/kvStore/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -227,7 +227,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/kvStore/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -284,7 +284,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/kvStore/list"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -303,7 +303,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/kvStore/list"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -394,7 +394,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/process"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -413,7 +413,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/process"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -466,7 +466,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/containerInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -485,7 +485,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/containerInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -502,7 +502,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/create"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -519,7 +519,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/create"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -886,7 +886,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobDest"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -905,7 +905,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobDest"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -924,7 +924,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobTask"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -943,7 +943,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/updateJobTask"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -964,7 +964,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/taskInfo/vehicleJob/updatePlanContainers"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -985,7 +985,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/taskInfo/vehicleJob/updatePlanContainers"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1006,7 +1006,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/taskInfo/vehicleJob/updateAdditionalInfo"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1027,7 +1027,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
                 self.url, "/api/taskInfo/vehicleJob/updateAdditionalInfo"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1202,7 +1202,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/resendJob"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1221,7 +1221,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/resendJob"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1240,7 +1240,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1259,7 +1259,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1278,7 +1278,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1297,7 +1297,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1418,7 +1418,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query_all"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1437,7 +1437,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/query_all"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1530,7 +1530,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/virtual_points"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1549,7 +1549,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/virtual_points"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1568,7 +1568,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/workflowNodes"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1587,7 +1587,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/vehicleJob/workflowNodes"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1745,7 +1745,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1793,7 +1793,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1812,7 +1812,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1831,7 +1831,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1850,7 +1850,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/deleteByTag"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1869,7 +1869,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/deleteByTag"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1888,7 +1888,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/change"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1907,7 +1907,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/change"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1924,7 +1924,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/changeByTag"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1941,7 +1941,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/changeByTag"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1958,7 +1958,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/update_or_create"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -1975,7 +1975,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/lockArea/update_or_create"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -1994,7 +1994,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2013,7 +2013,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2032,7 +2032,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/EditVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2051,7 +2051,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/EditVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2106,7 +2106,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/DeleteVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2125,7 +2125,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/DeleteVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2144,7 +2144,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfoStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2163,7 +2163,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/VesselInfo/SetVesselInfoStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2198,7 +2198,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2233,7 +2233,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2252,7 +2252,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart_bak"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2271,7 +2271,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStart_bak"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2290,7 +2290,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStop"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2309,7 +2309,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/AlarmMessageStop"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2328,7 +2328,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/GetAlarmMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2347,7 +2347,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/GetAlarmMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2366,7 +2366,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/SetFmsMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2385,7 +2385,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/SetFmsMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2404,7 +2404,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/GetFmsMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2423,7 +2423,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/Message/GetFmsMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2440,7 +2440,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/subTask/set"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2457,7 +2457,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/subTask/set"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2550,7 +2550,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2567,7 +2567,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2584,7 +2584,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent/finish"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2601,7 +2601,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/fenceEvent/finish"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2678,7 +2678,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/get"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2695,7 +2695,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/get"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2712,7 +2712,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/add"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2729,7 +2729,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/add"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2746,7 +2746,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/reject"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2763,7 +2763,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/reject"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2780,7 +2780,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/update"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2797,7 +2797,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/update"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2814,7 +2814,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/abort"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2831,7 +2831,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/abort"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2850,7 +2850,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/runImmediate"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2869,7 +2869,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/runImmediate"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2886,7 +2886,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2903,7 +2903,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/taskPool/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2920,7 +2920,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2937,7 +2937,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2956,7 +2956,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -2975,7 +2975,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/delete"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -2992,7 +2992,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Edit"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3009,7 +3009,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Edit"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3026,7 +3026,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Get"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3043,7 +3043,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/TsRelated/Get"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3065,7 +3065,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3087,7 +3087,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3178,7 +3178,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/SpreaderSize"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3197,7 +3197,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/SpreaderSize"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3258,7 +3258,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/PaceGlobal"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3277,7 +3277,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/PaceGlobal"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3300,7 +3300,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/quayCrane/SetLane"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3323,7 +3323,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/quayCrane/SetLane"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3382,7 +3382,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/preArrive"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3401,7 +3401,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/preArrive"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3458,7 +3458,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/ts_switch"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3477,7 +3477,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/ts_switch"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3534,7 +3534,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3553,7 +3553,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/ts_switch/automatic"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3608,7 +3608,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/simApi/sim_start_job"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3625,7 +3625,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/simApi/sim_start_job"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3644,7 +3644,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/fullControl"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3661,7 +3661,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/fullControl"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(

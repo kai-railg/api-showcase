@@ -36,7 +36,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/receive_mi/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -55,7 +55,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/receive_mi/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -104,7 +104,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/receive_mi/dc"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -121,7 +121,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/receive_mi/dc"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -138,7 +138,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/receive_mi/cancel"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -155,7 +155,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/receive_mi/cancel"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -174,7 +174,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/receive_mi/update"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -193,7 +193,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/receive_mi/update"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -212,7 +212,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/receive_action_code"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -231,7 +231,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/receive_action_code"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -248,7 +248,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/tos_interface/order_update"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -265,7 +265,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/tos_interface/order_update"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(

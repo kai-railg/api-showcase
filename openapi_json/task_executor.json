@@ -671,15 +671,22 @@
                 "title": "CreateSuccessSchema"
             },
             "CycleEventNameEnum": {
-                "enum": [],
+                "type": "string",
+                "enum": [
+                    "InventoryKpiEvent",
+                    "VehicleRequestPathEvent"
+                ],
                 "title": "CycleEventNameEnum"
             },
             "CycleEventSchema": {
                 "properties": {
                     "event_name": {
-                        "enum": [],
-                        "title": "CycleEventNameEnum",
-                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6, enum\u7c7b\u578b\u4ece\u914d\u7f6e\u6587\u4ef6\u4e2d\u52a0\u8f7d"
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/CycleEventNameEnum"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6"
                     },
                     "event_type": {
                         "allOf": [
@@ -690,16 +697,23 @@
                         "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88",
                         "default": "register"
                     },
-                    "callback_url": {
+                    "callback_module_name": {
                         "type": "string",
-                        "title": "Callback Url",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03\u5730\u5740"
+                        "title": "Callback Module Name",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u6a21\u5757\u540d",
+                        "default": ""
                     },
                     "callback_params": {
                         "type": "object",
                         "title": "Callback Params",
                         "description": "\u4e8b\u4ef6\u56de\u8c03\u53c2\u6570",
                         "default": {}
+                    },
+                    "callback_path": {
+                        "type": "string",
+                        "title": "Callback Path",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03url path",
+                        "default": ""
                     },
                     "callback_method": {
                         "type": "string",
@@ -716,8 +730,7 @@
                 },
                 "type": "object",
                 "required": [
-                    "event_name",
-                    "callback_url"
+                    "event_name"
                 ],
                 "title": "CycleEventSchema"
             },
@@ -734,15 +747,22 @@
                 "title": "DestinationSchema"
             },
             "EventDrivenNameEnum": {
-                "enum": [],
+                "type": "string",
+                "enum": [
+                    "container_update",
+                    "vehicle_update"
+                ],
                 "title": "EventDrivenNameEnum"
             },
             "EventDrivenSchema": {
                 "properties": {
                     "event_name": {
-                        "enum": [],
-                        "title": "EventDrivenNameEnum",
-                        "description": "\u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6\uff0c\u6bd4\u5982 container_update\uff0cenum\u7c7b\u578b\u4ece\u914d\u7f6e\u6587\u4ef6\u4e2d\u52a0\u8f7d "
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/EventDrivenNameEnum"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6\uff0c\u6bd4\u5982 container_update "
                     },
                     "event_type": {
                         "allOf": [
@@ -756,6 +776,12 @@
                         "type": "string",
                         "title": "Callback Module Name",
                         "description": "\u4e8b\u4ef6\u56de\u8c03\u6a21\u5757\u540d",
+                        "default": ""
+                    },
+                    "callback_path": {
+                        "type": "string",
+                        "title": "Callback Path",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03url path",
                         "default": ""
                     },
                     "callback_method": {

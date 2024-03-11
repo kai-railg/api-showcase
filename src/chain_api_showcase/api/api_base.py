@@ -10,7 +10,7 @@ class ApiRequestBaseCls(object):
     module_mapping: Dict[str, 'ApiRequestBaseCls'] = {}
 
     def __init__(self):
-        self.USE_NACOS = os.environ.get('USE_NACOS', True)
+        self.USE_NACOS = os.environ.get('USE_NACOS', False)
         self.NACOS_SERVER = os.environ.get('NACOS_SERVER', '127.0.0.1')
         self.NACOS_PORT = os.environ.get('NACOS_PORT', '8848')
         self.FMS_HOST = os.environ.get('FMS_HOST', '127.0.0.1')

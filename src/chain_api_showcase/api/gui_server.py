@@ -36,7 +36,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/authentication/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -55,7 +55,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/authentication/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -108,7 +108,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_put(
             url=parse.urljoin(self.url, "/auth/update_passwd/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status != 200:
@@ -128,7 +128,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.put(
             url=parse.urljoin(self.url, "/auth/update_passwd/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status_code != 200:
@@ -146,7 +146,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/user/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -163,7 +163,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/user/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -182,7 +182,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_put(
             url=parse.urljoin(self.url, "/user/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status != 200:
@@ -202,7 +202,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.put(
             url=parse.urljoin(self.url, "/user/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status_code != 200:
@@ -370,7 +370,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/group/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -387,7 +387,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/group/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -406,7 +406,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_put(
             url=parse.urljoin(self.url, "/group/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status != 200:
@@ -426,7 +426,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.put(
             url=parse.urljoin(self.url, "/group/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status_code != 200:
@@ -546,7 +546,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/permission/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -565,7 +565,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/permission/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -584,7 +584,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_put(
             url=parse.urljoin(self.url, "/permission/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status != 200:
@@ -604,7 +604,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.put(
             url=parse.urljoin(self.url, "/permission/{item_id}"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(item_id=item_id),
         )
         if resp.status_code != 200:
@@ -3049,7 +3049,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/VesselInfo/SetVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3067,7 +3067,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/VesselInfo/SetVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3084,7 +3084,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/VesselInfo/ReleaseVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3101,7 +3101,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/VesselInfo/ReleaseVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3166,7 +3166,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/VesselInfo/EditVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3193,7 +3193,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/VesselInfo/EditVesselInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3214,7 +3214,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/vehicleStatus/ghostVehicleCancel"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3235,7 +3235,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
                 self.url, "/api/deviceInfo/vehicleStatus/ghostVehicleCancel"
             ),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3263,7 +3263,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3291,7 +3291,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3319,7 +3319,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/SpreaderSize/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3347,7 +3347,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/api/taskInfo/EquipmentStatus/SpreaderSize/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3372,7 +3372,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message/GetAllMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3397,7 +3397,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message/GetAllMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3414,7 +3414,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/message/GetFileMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3431,7 +3431,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/message/GetFileMessage"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3450,7 +3450,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/pileinfo/UpdatePileInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3469,7 +3469,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/pileinfo/UpdatePileInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3488,7 +3488,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/pileinfo/UpdateAllPileInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3507,7 +3507,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/pileinfo/UpdateAllPileInfo"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3526,7 +3526,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/denmarkinfo/ContainerInfoSetup"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3545,7 +3545,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/denmarkinfo/ContainerInfoSetup"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3562,7 +3562,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/denmarkinfo/PlcStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3579,7 +3579,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/denmarkinfo/PlcStatus"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3630,7 +3630,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TaskCorrelation/ForceOverTake/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3649,7 +3649,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TaskCorrelation/ForceOverTake/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3668,7 +3668,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TaskCorrelation/update_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3687,7 +3687,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TaskCorrelation/update_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3706,7 +3706,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TaskCorrelation/load_first"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3725,7 +3725,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TaskCorrelation/load_first"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3744,7 +3744,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TaskCorrelation/redo_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3761,7 +3761,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TaskCorrelation/redo_task"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3780,7 +3780,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TaskCorrelation/CollectionFailTask/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3799,7 +3799,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TaskCorrelation/CollectionFailTask/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3824,7 +3824,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TaskCorrelation/event_report"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3849,7 +3849,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TaskCorrelation/event_report"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3866,7 +3866,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/TosLoginStatus/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status != 200:
             print(
@@ -3883,7 +3883,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/TosLoginStatus/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
         )
         if resp.status_code != 200:
             print(
@@ -3902,7 +3902,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = await async_post(
             url=parse.urljoin(self.url, "/twistlock_station/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(operation_type=operation_type),
         )
         if resp.status != 200:
@@ -3922,7 +3922,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
         resp = requests.post(
             url=parse.urljoin(self.url, "/twistlock_station/"),
             timeout=self.timeout,
-            json=body.dict(),
+            data=body.model_dump_json(),
             params=dict(operation_type=operation_type),
         )
         if resp.status_code != 200:
