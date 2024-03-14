@@ -169,67 +169,6 @@
                 }
             }
         },
-        "/api/complete": {
-            "post": {
-                "tags": [
-                    "ctn_router"
-                ],
-                "summary": "Complete",
-                "description": "\u624b\u52a8complete",
-                "operationId": "complete_api_complete_post",
-                "parameters": [
-                    {
-                        "required": true,
-                        "schema": {
-                            "title": "Vehicle Id",
-                            "type": "string"
-                        },
-                        "name": "vehicle_id",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/exclusiveZone": {
-            "get": {
-                "tags": [
-                    "ctn_router"
-                ],
-                "summary": "Rotate",
-                "description": "\u8f66\u8f86\u662f\u5426\u5904\u4e8ereefer\u548cTG",
-                "operationId": "rotate_api_exclusiveZone_get",
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/shuffle": {
             "post": {
                 "tags": [

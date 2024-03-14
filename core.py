@@ -20,8 +20,12 @@ def get_openapi_json(config: Dict) -> Dict:
     :param config:
     :return:
     """
-    url = f"http://{config.get('ip', remote_ip)}:{config['port']}/{config.get('openapi_url', 'openapi.json')}"
-    return requests.get(url).json()
+    try:
+        url = f"http://{config.get('ip', remote_ip)}:{config['port']}/{config.get('openapi_url', 'openapi.json')}"
+        return requests.get(url).json()
+    except Exception as e:
+        print(f"{config['name']} get openapi json error...... ")
+    return {}
 
 
 def write_openapi_json(openapi_json: Dict, project_name: str):
@@ -133,7 +137,8 @@ def get_api_endpoints(project_config: Dict) -> Dict:
         "project_name": project_name,
     }
 
-    for path, methods in data["paths"].items():
+    for pm in data and data["paths"].items():
+        path, methods = pm
         for method, vals in methods.items():
             model = None
             if vals.get("requestBody"):

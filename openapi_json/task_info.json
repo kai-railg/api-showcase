@@ -688,66 +688,6 @@
                 }
             }
         },
-        "/api/taskInfo/vehicleJob/stage_vehicle": {
-            "post": {
-                "tags": [
-                    "vehicle_job"
-                ],
-                "summary": "\u66f4\u65b0\u4efb\u52a1\u8fdb\u5ea6",
-                "operationId": "\u66f4\u65b0\u4efb\u52a1\u8fdb\u5ea6_api_taskInfo_vehicleJob_stage_vehicle_post",
-                "parameters": [
-                    {
-                        "required": true,
-                        "schema": {
-                            "title": "Vehicle Id",
-                            "type": "string"
-                        },
-                        "name": "vehicle_id",
-                        "in": "query"
-                    },
-                    {
-                        "required": true,
-                        "schema": {
-                            "title": "Job Id",
-                            "type": "string"
-                        },
-                        "name": "job_id",
-                        "in": "query"
-                    },
-                    {
-                        "required": true,
-                        "schema": {
-                            "title": "Job Stage Vehicle",
-                            "type": "integer"
-                        },
-                        "name": "job_stage_vehicle",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/taskInfo/vehicleJob/businessKey": {
             "get": {
                 "tags": [
@@ -1061,47 +1001,6 @@
                 }
             }
         },
-        "/api/taskInfo/vehicleJob/updateJobTask": {
-            "post": {
-                "tags": [
-                    "vehicle_job"
-                ],
-                "summary": "\u66f4\u65b0\u4efb\u52a1",
-                "operationId": "\u66f4\u65b0\u4efb\u52a1_api_taskInfo_vehicleJob_updateJobTask_post",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateJobTask"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/taskInfo/vehicleJob/updatePlanContainers": {
             "post": {
                 "tags": [
@@ -1114,47 +1013,6 @@
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/UpdatePlanContainers"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/taskInfo/vehicleJob/updateAdditionalInfo": {
-            "post": {
-                "tags": [
-                    "vehicle_job"
-                ],
-                "summary": "\u66f4\u65b0\u9644\u52a0\u4fe1\u606f",
-                "operationId": "\u66f4\u65b0\u9644\u52a0\u4fe1\u606f_api_taskInfo_vehicleJob_updateAdditionalInfo_post",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateAdditionalInfo"
                             }
                         }
                     },
@@ -1749,47 +1607,6 @@
                 }
             }
         },
-        "/api/taskInfo/vehicleJob/workflowNodes": {
-            "post": {
-                "tags": [
-                    "vehicle_job"
-                ],
-                "summary": "\u8bb0\u5f55\u8282\u70b9",
-                "operationId": "\u8bb0\u5f55\u8282\u70b9_api_taskInfo_vehicleJob_workflowNodes_post",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SetWorkflowNodes"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/taskInfo/workflowConfig": {
             "get": {
                 "tags": [
@@ -1936,7 +1753,6 @@
                     "lock_area"
                 ],
                 "summary": "\u521b\u5efa\u9501\u95ed\u533a",
-                "description": "request params:\n    {\n        \"name\": \"aqwef\",\n        \"subtype\": \"lock\",\n        \"type\": \"lock\",\n        \"created_by\": \"\",\n        \"describe\": \"\",\n        \"polygon\": [\n        {\n        \"x\": 171.6608123779297,\n        \"y\": 165.42526245117188\n        },\n        {\n        \"x\": 148.29757690429688,\n        \"y\": 165.42526245117188\n        },\n        {\n        \"x\": 148.29757690429688,\n        \"y\": 146.14132690429688\n        },\n        {\n        \"x\": 171.6608123779297,\n        \"y\": 146.14132690429688\n        },\n        {\n        \"x\": 171.6608123779297,\n        \"y\": 165.42526245117188\n        }\n    ]\n    }",
                 "operationId": "\u521b\u5efa\u9501\u95ed\u533a_api_taskInfo_lockArea_post",
                 "requestBody": {
                     "content": {
@@ -2106,48 +1922,6 @@
                 ],
                 "summary": "\u901a\u8fc7\u6807\u7b7e\u4fee\u6539\u9501\u95ed\u533a",
                 "operationId": "\u901a\u8fc7\u6807\u7b7e\u4fee\u6539\u9501\u95ed\u533a_api_taskInfo_lockArea_changeByTag_post",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "title": "Request",
-                                "type": "object"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/taskInfo/lockArea/update_or_create": {
-            "post": {
-                "tags": [
-                    "lock_area"
-                ],
-                "summary": "\u521b\u5efa\u6216\u8005\u4fee\u6539\u9501\u95ed\u533a",
-                "operationId": "\u521b\u5efa\u6216\u8005\u4fee\u6539\u9501\u95ed\u533a_api_taskInfo_lockArea_update_or_create_post",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2560,8 +2334,8 @@
                 "tags": [
                     "message"
                 ],
-                "summary": "\u8bbe\u7f6eFms\u544a\u8b66\u4fe1\u606f",
-                "operationId": "\u8bbe\u7f6eFMS\u544a\u8b66\u4fe1\u606f_api_taskInfo_Message_SetFmsMessage_post",
+                "summary": "Fms\u544a\u8b66\u4fe1\u606f",
+                "operationId": "FMS\u544a\u8b66\u4fe1\u606f_api_taskInfo_Message_SetFmsMessage_post",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -3007,46 +2781,6 @@
                 }
             }
         },
-        "/api/taskInfo/taskPool/reject": {
-            "post": {
-                "tags": [
-                    "task_pool"
-                ],
-                "summary": "Add Task Pool Reject",
-                "operationId": "add_task_pool_reject_api_taskInfo_taskPool_reject_post",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "title": "Request",
-                                "type": "object"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/taskInfo/taskPool/update": {
             "post": {
                 "tags": [
@@ -3417,27 +3151,6 @@
                 }
             }
         },
-        "/api/taskInfo/EquipmentStatus/GetAll": {
-            "get": {
-                "tags": [
-                    "EquipmentStatus"
-                ],
-                "summary": "\u83b7\u53d6Cms,Cps\u72b6\u6001",
-                "operationId": "\u83b7\u53d6cms_cps\u72b6\u6001_api_taskInfo_EquipmentStatus_GetAll_get",
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/taskInfo/EquipmentStatus/Get": {
             "get": {
                 "tags": [
@@ -3782,138 +3495,6 @@
                 }
             }
         },
-        "/api/taskInfo/ts_switch/automatic": {
-            "get": {
-                "tags": [
-                    "\u56fa\u5b9a\u9501\u7ad9"
-                ],
-                "summary": "\u67e5\u8be2\u9501\u7ad9",
-                "operationId": "\u67e5\u8be2\u9501\u7ad9_api_taskInfo_ts_switch_automatic_get",
-                "parameters": [
-                    {
-                        "required": false,
-                        "schema": {
-                            "title": "Ts Type",
-                            "type": "string",
-                            "default": ""
-                        },
-                        "name": "ts_type",
-                        "in": "query"
-                    },
-                    {
-                        "required": false,
-                        "schema": {
-                            "title": "Ts Name",
-                            "type": "string",
-                            "default": ""
-                        },
-                        "name": "ts_name",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "\u56fa\u5b9a\u9501\u7ad9"
-                ],
-                "summary": "\u8bbe\u7f6e\u66f4\u65b0\u9501\u7ad9\u5f00\u5173",
-                "operationId": "\u8bbe\u7f6e\u66f4\u65b0\u9501\u7ad9\u5f00\u5173_api_taskInfo_ts_switch_automatic_post",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/AutomaticTsSwitchSchema"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "\u56fa\u5b9a\u9501\u7ad9"
-                ],
-                "summary": "\u5220\u9664\u9501\u7ad9",
-                "operationId": "\u5220\u9664\u9501\u7ad9_api_taskInfo_ts_switch_automatic_delete",
-                "parameters": [
-                    {
-                        "required": true,
-                        "schema": {
-                            "title": "Ts Name",
-                            "type": "string"
-                        },
-                        "name": "ts_name",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CreateSuccessSchema"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/taskInfo/simApi/sim_start_job": {
             "post": {
                 "tags": [
@@ -4050,89 +3631,6 @@
                         "title": "Page",
                         "type": "integer",
                         "default": 1
-                    }
-                }
-            },
-            "AutomaticTsSwitchSchema": {
-                "title": "AutomaticTsSwitchSchema",
-                "required": [
-                    "ts_name",
-                    "vessel_id",
-                    "vessel_name",
-                    "ts_type",
-                    "qc_id",
-                    "bollard_id",
-                    "ts_state",
-                    "ts_lane",
-                    "position",
-                    "offset",
-                    "reason",
-                    "auther",
-                    "x",
-                    "y",
-                    "heading"
-                ],
-                "type": "object",
-                "properties": {
-                    "ts_name": {
-                        "title": "Ts Name",
-                        "type": "string"
-                    },
-                    "vessel_id": {
-                        "title": "Vessel Id",
-                        "type": "string"
-                    },
-                    "vessel_name": {
-                        "title": "Vessel Name",
-                        "type": "string"
-                    },
-                    "ts_type": {
-                        "title": "Ts Type",
-                        "type": "string"
-                    },
-                    "qc_id": {
-                        "title": "Qc Id",
-                        "type": "string"
-                    },
-                    "bollard_id": {
-                        "title": "Bollard Id",
-                        "type": "string"
-                    },
-                    "ts_state": {
-                        "title": "Ts State",
-                        "type": "string"
-                    },
-                    "ts_lane": {
-                        "title": "Ts Lane",
-                        "type": "string"
-                    },
-                    "position": {
-                        "title": "Position",
-                        "type": "string"
-                    },
-                    "offset": {
-                        "title": "Offset",
-                        "type": "number"
-                    },
-                    "reason": {
-                        "title": "Reason",
-                        "type": "string"
-                    },
-                    "auther": {
-                        "title": "Auther",
-                        "type": "string"
-                    },
-                    "x": {
-                        "title": "X",
-                        "type": "number"
-                    },
-                    "y": {
-                        "title": "Y",
-                        "type": "number"
-                    },
-                    "heading": {
-                        "title": "Heading",
-                        "type": "number"
                     }
                 }
             },
@@ -4484,39 +3982,6 @@
                     }
                 }
             },
-            "PortLocation": {
-                "title": "PortLocation",
-                "type": "object",
-                "properties": {
-                    "portX": {
-                        "title": "Portx",
-                        "type": "number",
-                        "default": 0
-                    },
-                    "portY": {
-                        "title": "Porty",
-                        "type": "number",
-                        "default": 0
-                    },
-                    "portZ": {
-                        "title": "Portz",
-                        "type": "number",
-                        "default": 0
-                    },
-                    "portOrientation": {
-                        "title": "Portorientation",
-                        "anyOf": [
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
-                        "default": 0
-                    }
-                }
-            },
             "PreArriveInSchema": {
                 "title": "PreArriveInSchema",
                 "required": [
@@ -4532,17 +3997,19 @@
             },
             "QueryJobAllPost": {
                 "title": "QueryJobAllPost",
+                "required": [
+                    "start_time",
+                    "end_time"
+                ],
                 "type": "object",
                 "properties": {
                     "start_time": {
                         "title": "Start Time",
-                        "type": "string",
-                        "default": ""
+                        "type": "string"
                     },
                     "end_time": {
                         "title": "End Time",
-                        "type": "string",
-                        "default": ""
+                        "type": "string"
                     },
                     "status": {
                         "title": "Status",
@@ -5021,34 +4488,6 @@
                     }
                 }
             },
-            "SetWorkflowNodes": {
-                "title": "SetWorkflowNodes",
-                "required": [
-                    "business_key",
-                    "node"
-                ],
-                "type": "object",
-                "properties": {
-                    "business_key": {
-                        "title": "Business Key",
-                        "type": "string"
-                    },
-                    "node": {
-                        "title": "Node",
-                        "type": "string"
-                    },
-                    "origin": {
-                        "title": "Origin",
-                        "type": "string",
-                        "default": "AUTO"
-                    },
-                    "state": {
-                        "title": "State",
-                        "type": "string",
-                        "default": "open"
-                    }
-                }
-            },
             "StopAlarmMessage": {
                 "title": "StopAlarmMessage",
                 "required": [
@@ -5072,31 +4511,6 @@
                     }
                 }
             },
-            "UpdateAdditionalInfo": {
-                "title": "UpdateAdditionalInfo",
-                "required": [
-                    "vehicle_id"
-                ],
-                "type": "object",
-                "properties": {
-                    "vehicle_id": {
-                        "title": "Vehicle Id",
-                        "type": "string"
-                    },
-                    "job_content": {
-                        "title": "Job Content",
-                        "type": "object"
-                    },
-                    "job_extra": {
-                        "title": "Job Extra",
-                        "type": "object"
-                    },
-                    "job_add": {
-                        "title": "Job Add",
-                        "type": "object"
-                    }
-                }
-            },
             "UpdateJobDest": {
                 "title": "UpdateJobDest",
                 "required": [
@@ -5111,45 +4525,6 @@
                     },
                     "destination": {
                         "$ref": "#/components/schemas/logicalLocation"
-                    },
-                    "port_location": {
-                        "$ref": "#/components/schemas/PortLocation"
-                    }
-                }
-            },
-            "UpdateJobTask": {
-                "title": "UpdateJobTask",
-                "required": [
-                    "business_key"
-                ],
-                "type": "object",
-                "properties": {
-                    "job_content": {
-                        "title": "Job Content",
-                        "type": "object",
-                        "default": {}
-                    },
-                    "business_key": {
-                        "title": "Business Key",
-                        "type": "string"
-                    },
-                    "destination": {
-                        "title": "Destination",
-                        "type": "object",
-                        "default": {}
-                    },
-                    "passingLocation": {
-                        "title": "Passinglocation",
-                        "type": "string",
-                        "default": ""
-                    },
-                    "plannedContainerDestinationList": {
-                        "title": "Plannedcontainerdestinationlist",
-                        "type": "array",
-                        "items": {
-                            "type": "object"
-                        },
-                        "default": []
                     }
                 }
             },

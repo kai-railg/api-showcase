@@ -675,7 +675,7 @@
                     "version": {
                         "type": "string",
                         "title": "Version",
-                        "default": "20240311_090051"
+                        "default": "20240314_070738"
                     },
                     "points": {
                         "items": {

@@ -10,7 +10,7 @@ packages = ["src"]
 
 [project]
 name = "chain-api-showcase"
-version = "0.0.2"
+version = "0.0.2.3"
 authors = [
     { name = "kai.wang", email = "kai.wang@westwell-lab.com" },
 ]
@@ -26,7 +26,6 @@ classifiers = [
 dependencies = [
     "requests",
     "chain-http",
-    "datamodel-code-generator",
     "chain-nacos"
 ]
 

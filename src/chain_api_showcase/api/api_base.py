@@ -12,7 +12,7 @@ class ApiRequestBaseCls(object):
     module_mapping: Dict[str, 'ApiRequestBaseCls'] = {}
 
     def __init__(self):
-        self.USE_NACOS = os.environ.get('USE_NACOS', False)
+        self.USE_NACOS = bool(os.environ.get('USE_NACOS', False))
         self.NACOS_SERVER = os.environ.get('NACOS_SERVER', '127.0.0.1')
         self.NACOS_PORT = os.environ.get('NACOS_PORT', '8848')
         self.FMS_HOST = os.environ.get('FMS_HOST', '127.0.0.1')
@@ -50,20 +50,20 @@ class ApiRequestBaseCls(object):
         url = parse.urljoin(self.url, api)
         try:
             resp = request(
-                {
-                    **body,
-                    **{
-                        "url": url,
-                        "timeout": self.timeout,
-                    },
-                }
+                **{
+                    "url": url,
+                    "timeout": self.timeout,
+                    "data": body.get("data", None),
+                    "params": body.get("params", None),
+                    "headers": {'Content-Type': 'application/json'}
+                },
             )
-            if resp.status != 200:
+            if resp.status_code != 200:
                 print(
-                    f"Request failed: {resp.status}, url:  {url}, response: {resp.text}"
+                    f"Request failed: {resp.status_code}, url:  {url}, response: {resp.text}"
                 )
-                return resp.status, resp.text
-            return resp.status, resp.json() if resp_model is None else resp_model.model_validate(resp.json())
+                return resp.status_code, resp.text
+            return resp.status_code, resp.json() if resp_model is None else resp_model.model_validate(resp.json())
 
         except requests.Timeout as e:
             if max_retry_count >= self.max_retry_count:
@@ -79,13 +79,13 @@ class ApiRequestBaseCls(object):
         url = parse.urljoin(self.url, api)
         try:
             resp = await request(
-                {
-                    **body,
-                    **{
-                        "url": url,
-                        "timeout": self.timeout,
-                    },
-                }
+                **{
+                    "url": url,
+                    "timeout": self.timeout,
+                    "data": body.get("data", None),
+                    "params": body.get("params", None),
+                    "headers": {'Content-Type': 'application/json'}
+                },
             )
             if resp.status != 200:
                 print(

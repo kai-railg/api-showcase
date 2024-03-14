@@ -1091,7 +1091,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1108,7 +1108,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1127,7 +1127,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea_delete__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea_delete__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1144,7 +1144,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea_delete__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea_delete__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1163,7 +1163,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea_deleteByTag__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea_deleteByTag__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1180,7 +1180,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea_deleteByTag__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea_deleteByTag__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1199,7 +1199,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea_change__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea_change__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1216,7 +1216,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_lockArea_change__post",
+                "operationId": "api_proxy_api_taskInfo_lockArea_change__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1235,7 +1235,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_resendJob__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_resendJob__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1252,7 +1252,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_resendJob__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_resendJob__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1271,7 +1271,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_start__post",
+                "operationId": "api_proxy_message_event_start__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1288,7 +1288,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_start__post",
+                "operationId": "api_proxy_message_event_start__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1307,7 +1307,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_abort__post",
+                "operationId": "api_proxy_message_event_abort__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1324,7 +1324,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_abort__post",
+                "operationId": "api_proxy_message_event_abort__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1343,7 +1343,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_delete__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_delete__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1360,7 +1360,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_delete__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_delete__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1379,7 +1379,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_taskPool_runImmediate_post",
+                "operationId": "api_proxy_api_taskInfo_taskPool_runImmediate_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1396,7 +1396,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_taskPool_runImmediate_post",
+                "operationId": "api_proxy_api_taskInfo_taskPool_runImmediate_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1415,7 +1415,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_taskPool_abort_post",
+                "operationId": "api_proxy_api_taskInfo_taskPool_abort_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1432,7 +1432,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_taskPool_abort_post",
+                "operationId": "api_proxy_api_taskInfo_taskPool_abort_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1451,7 +1451,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_trailerStatus_post",
+                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_trailerStatus_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1468,7 +1468,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_trailerStatus_post",
+                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_trailerStatus_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1487,7 +1487,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_mode_post",
+                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_mode_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1504,7 +1504,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_mode_post",
+                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_mode_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1523,7 +1523,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_containerInfo__post",
+                "operationId": "api_proxy_api_taskInfo_containerInfo__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1540,7 +1540,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_containerInfo__post",
+                "operationId": "api_proxy_api_taskInfo_containerInfo__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1559,7 +1559,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_rch_post",
+                "operationId": "api_proxy_message_event_rch_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1576,7 +1576,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_rch_post",
+                "operationId": "api_proxy_message_event_rch_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1595,7 +1595,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_fms_area_inventory_query__post",
+                "operationId": "api_proxy_fms_area_inventory_query__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1612,7 +1612,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_fms_area_inventory_query__post",
+                "operationId": "api_proxy_fms_area_inventory_query__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1631,7 +1631,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_power__post",
+                "operationId": "api_proxy_api_vehicleManager_power__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1648,7 +1648,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_power__post",
+                "operationId": "api_proxy_api_vehicleManager_power__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1667,7 +1667,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_handshake__post",
+                "operationId": "api_proxy_api_vehicleManager_handshake__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1684,7 +1684,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_handshake__post",
+                "operationId": "api_proxy_api_vehicleManager_handshake__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1703,7 +1703,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_SetOperation_post",
+                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_SetOperation_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1720,7 +1720,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_SetOperation_post",
+                "operationId": "api_proxy_api_deviceInfo_vehicleStatus_SetOperation_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1739,7 +1739,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_report_speed_ratio__post",
+                "operationId": "api_proxy_api_vehicleManager_report_speed_ratio__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1756,7 +1756,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_report_speed_ratio__post",
+                "operationId": "api_proxy_api_vehicleManager_report_speed_ratio__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1775,7 +1775,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_container_InventoryUpdate_post",
+                "operationId": "api_proxy_api_container_InventoryUpdate_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1792,7 +1792,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_container_InventoryUpdate_post",
+                "operationId": "api_proxy_api_container_InventoryUpdate_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1811,7 +1811,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_VesselInfo_SetVesselInfoStatus_post",
+                "operationId": "api_proxy_api_taskInfo_VesselInfo_SetVesselInfoStatus_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1828,7 +1828,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_VesselInfo_SetVesselInfoStatus_post",
+                "operationId": "api_proxy_api_taskInfo_VesselInfo_SetVesselInfoStatus_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1847,7 +1847,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_query_all__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_query_all__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1864,7 +1864,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_query_all__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_query_all__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1883,7 +1883,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_PaceGlobal__post",
+                "operationId": "api_proxy_api_taskInfo_PaceGlobal__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1900,7 +1900,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_PaceGlobal__post",
+                "operationId": "api_proxy_api_taskInfo_PaceGlobal__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1919,7 +1919,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_quayCrane_SetLane__post",
+                "operationId": "api_proxy_api_taskInfo_quayCrane_SetLane__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1936,7 +1936,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_quayCrane_SetLane__post",
+                "operationId": "api_proxy_api_taskInfo_quayCrane_SetLane__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1955,7 +1955,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_update_qc_task__post",
+                "operationId": "api_proxy_message_event_update_qc_task__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1972,7 +1972,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_message_event_update_qc_task__post",
+                "operationId": "api_proxy_message_event_update_qc_task__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -1991,7 +1991,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2008,7 +2008,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2027,7 +2027,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_all_current_job__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_all_current_job__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2044,7 +2044,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_vehicleJob_all_current_job__post",
+                "operationId": "api_proxy_api_taskInfo_vehicleJob_all_current_job__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2063,7 +2063,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_container_EditContainers_post",
+                "operationId": "api_proxy_api_container_EditContainers_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2080,7 +2080,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_container_EditContainers_post",
+                "operationId": "api_proxy_api_container_EditContainers_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2099,7 +2099,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_stop__post",
+                "operationId": "api_proxy_api_vehicleManager_stop__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2116,7 +2116,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_stop__post",
+                "operationId": "api_proxy_api_vehicleManager_stop__get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2135,7 +2135,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_engine_post",
+                "operationId": "api_proxy_api_engine_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2152,7 +2152,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_engine_post",
+                "operationId": "api_proxy_api_engine_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2171,7 +2171,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_response_mixed_area_post",
+                "operationId": "api_proxy_api_response_mixed_area_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2188,7 +2188,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_response_mixed_area_post",
+                "operationId": "api_proxy_api_response_mixed_area_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2207,7 +2207,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_points_post",
+                "operationId": "api_proxy_api_vehicleManager_points_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2224,7 +2224,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_vehicleManager_points_post",
+                "operationId": "api_proxy_api_vehicleManager_points_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2243,7 +2243,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_EquipmentStatus_GetAll_post",
+                "operationId": "api_proxy_api_taskInfo_EquipmentStatus_GetAll_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2260,7 +2260,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_taskInfo_EquipmentStatus_GetAll_post",
+                "operationId": "api_proxy_api_taskInfo_EquipmentStatus_GetAll_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2279,7 +2279,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_task_rc_task_post",
+                "operationId": "api_proxy_api_task_rc_task_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2296,7 +2296,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_task_rc_task_post",
+                "operationId": "api_proxy_api_task_rc_task_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2315,7 +2315,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_telep_post",
+                "operationId": "api_proxy_api_telep_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -2332,7 +2332,7 @@
                     "api_proxy"
                 ],
                 "summary": "Api Proxy",
-                "operationId": "api_proxy_api_telep_post",
+                "operationId": "api_proxy_api_telep_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",

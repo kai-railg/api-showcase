@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://192.168.109.73:8099",
+            "url": "http://192.168.109.15:8099",
             "description": "Generated server url"
         }
     ],

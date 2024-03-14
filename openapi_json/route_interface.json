@@ -1,0 +1,337 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "ChainBoot",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/RoutingInterface/navigation/update": {
+            "post": {
+                "summary": "Update Navigation",
+                "operationId": "update_navigation_RoutingInterface_navigation_update_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/RoutingInterface/navigation/get_path": {
+            "get": {
+                "summary": "Get Navigation",
+                "operationId": "get_navigation_RoutingInterface_navigation_get_path_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Device Id",
+                            "type": "string"
+                        },
+                        "name": "device_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Trans Id",
+                            "type": "string"
+                        },
+                        "name": "trans_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Task Id",
+                            "type": "string"
+                        },
+                        "name": "task_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Timestamp",
+                            "type": "integer"
+                        },
+                        "name": "timestamp",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Traj Type",
+                            "type": "integer"
+                        },
+                        "name": "traj_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/RoutingInterface/navigation/navi_status": {
+            "post": {
+                "summary": "Update Navigation",
+                "operationId": "update_navigation_RoutingInterface_navigation_navi_status_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EndPose": {
+                "title": "EndPose",
+                "required": [
+                    "x",
+                    "y",
+                    "heading"
+                ],
+                "type": "object",
+                "properties": {
+                    "x": {
+                        "title": "X",
+                        "type": "number"
+                    },
+                    "y": {
+                        "title": "Y",
+                        "type": "number"
+                    },
+                    "heading": {
+                        "title": "Heading",
+                        "type": "number"
+                    },
+                    "bidirection": {
+                        "title": "Bidirection",
+                        "type": "integer",
+                        "default": 0
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "StartPose": {
+                "title": "StartPose",
+                "required": [
+                    "x",
+                    "y",
+                    "heading"
+                ],
+                "type": "object",
+                "properties": {
+                    "x": {
+                        "title": "X",
+                        "type": "number"
+                    },
+                    "y": {
+                        "title": "Y",
+                        "type": "number"
+                    },
+                    "heading": {
+                        "title": "Heading",
+                        "type": "number"
+                    },
+                    "trailer_x": {
+                        "title": "Trailer X",
+                        "type": "number",
+                        "default": 0
+                    },
+                    "trailer_y": {
+                        "title": "Trailer Y",
+                        "type": "number",
+                        "default": 0
+                    },
+                    "trailer_heading": {
+                        "title": "Trailer Heading",
+                        "type": "number",
+                        "default": 0
+                    }
+                }
+            },
+            "UpdateRequest": {
+                "title": "UpdateRequest",
+                "required": [
+                    "device_id",
+                    "trans_id",
+                    "task_id",
+                    "timestamp",
+                    "start_pose",
+                    "end_pose"
+                ],
+                "type": "object",
+                "properties": {
+                    "device_id": {
+                        "title": "Device Id",
+                        "type": "string"
+                    },
+                    "trans_id": {
+                        "title": "Trans Id",
+                        "type": "string"
+                    },
+                    "task_id": {
+                        "title": "Task Id",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "title": "Timestamp",
+                        "type": "integer"
+                    },
+                    "start_pose": {
+                        "$ref": "#/components/schemas/StartPose"
+                    },
+                    "end_pose": {
+                        "$ref": "#/components/schemas/EndPose"
+                    },
+                    "device_type": {
+                        "title": "Device Type",
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "traj_type": {
+                        "title": "Traj Type",
+                        "type": "string",
+                        "default": "points"
+                    },
+                    "task_type": {
+                        "title": "Task Type",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "vessel_info": {
+                        "title": "Vessel Info",
+                        "type": "object",
+                        "default": {}
+                    },
+                    "passing_location": {
+                        "title": "Passing Location",
+                        "type": "array",
+                        "items": {},
+                        "default": []
+                    },
+                    "arrive": {
+                        "title": "Arrive",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -674,7 +674,8 @@
                 "type": "string",
                 "enum": [
                     "InventoryKpiEvent",
-                    "VehicleRequestPathEvent"
+                    "VehicleRequestPathEvent",
+                    "ShuffleEvent"
                 ],
                 "title": "CycleEventNameEnum"
             },
@@ -750,7 +751,8 @@
                 "type": "string",
                 "enum": [
                     "container_update",
-                    "vehicle_update"
+                    "vehicle_update",
+                    "path_update"
                 ],
                 "title": "EventDrivenNameEnum"
             },

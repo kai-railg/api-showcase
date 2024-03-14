@@ -500,46 +500,6 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    async def stage_vehicle(
-        self, vehicle_id: str, job_id: str, job_stage_vehicle: int
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        更新任务进度
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/vehicleJob/stage_vehicle",
-            body={
-                "params": dict(
-                    vehicle_id=vehicle_id,
-                    job_id=job_id,
-                    job_stage_vehicle=job_stage_vehicle,
-                )
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    def stage_vehicle_sync(
-        self, vehicle_id: str, job_id: str, job_stage_vehicle: int
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        更新任务进度
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/vehicleJob/stage_vehicle",
-            body={
-                "params": dict(
-                    vehicle_id=vehicle_id,
-                    job_id=job_id,
-                    job_stage_vehicle=job_stage_vehicle,
-                )
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
     async def businessKey(self, vehicle_id: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取正在执行的业务Id
@@ -732,38 +692,6 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    async def updateJobTask(
-        self, body: UpdateJobTask
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        更新任务
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/vehicleJob/updateJobTask",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    def updateJobTask_sync(
-        self, body: UpdateJobTask
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        更新任务
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/vehicleJob/updateJobTask",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
     async def updatePlanContainers(
         self, body: UpdatePlanContainers
     ) -> Tuple[int, CreateSuccessSchema]:
@@ -796,39 +724,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    async def updateAdditionalInfo(
-        self, body: UpdateAdditionalInfo
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        更新附加信息
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/vehicleJob/updateAdditionalInfo",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    def updateAdditionalInfo_sync(
-        self, body: UpdateAdditionalInfo
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        更新附加信息
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/vehicleJob/updateAdditionalInfo",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    async def api_taskInfo_vehicleJob_complete_post(
+    async def complete(
         self, vehicle_id: str, job_status: int = "9"
     ) -> Tuple[int, CreateSuccessSchema]:
         """
@@ -842,7 +738,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    def api_taskInfo_vehicleJob_complete_post_sync(
+    def complete_sync(
         self, vehicle_id: str, job_status: int = "9"
     ) -> Tuple[int, CreateSuccessSchema]:
         """
@@ -1236,38 +1132,6 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    async def workflowNodes(
-        self, body: SetWorkflowNodes
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        记录节点
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/vehicleJob/workflowNodes",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    def workflowNodes_sync(
-        self, body: SetWorkflowNodes
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        记录节点
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/vehicleJob/workflowNodes",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
     async def workflowConfig(self, config_item: str) -> Tuple[int, CreateSuccessSchema]:
         """
         获取工作流配置项
@@ -1352,37 +1216,8 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         self, body: object
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-            创建锁闭区
-            request params:
-        {
-            "name": "aqwef",
-            "subtype": "lock",
-            "type": "lock",
-            "created_by": "",
-            "describe": "",
-            "polygon": [
-            {
-            "x": 171.6608123779297,
-            "y": 165.42526245117188
-            },
-            {
-            "x": 148.29757690429688,
-            "y": 165.42526245117188
-            },
-            {
-            "x": 148.29757690429688,
-            "y": 146.14132690429688
-            },
-            {
-            "x": 171.6608123779297,
-            "y": 146.14132690429688
-            },
-            {
-            "x": 171.6608123779297,
-            "y": 165.42526245117188
-            }
-        ]
-        }
+        创建锁闭区
+
         """
         return await self.request(
             request=async_post,
@@ -1397,37 +1232,8 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         self, body: object
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-            创建锁闭区
-            request params:
-        {
-            "name": "aqwef",
-            "subtype": "lock",
-            "type": "lock",
-            "created_by": "",
-            "describe": "",
-            "polygon": [
-            {
-            "x": 171.6608123779297,
-            "y": 165.42526245117188
-            },
-            {
-            "x": 148.29757690429688,
-            "y": 165.42526245117188
-            },
-            {
-            "x": 148.29757690429688,
-            "y": 146.14132690429688
-            },
-            {
-            "x": 171.6608123779297,
-            "y": 146.14132690429688
-            },
-            {
-            "x": 171.6608123779297,
-            "y": 165.42526245117188
-            }
-        ]
-        }
+        创建锁闭区
+
         """
         return self.request_sync(
             request=requests.post,
@@ -1556,34 +1362,6 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         return self.request_sync(
             request=requests.post,
             api="/api/taskInfo/lockArea/changeByTag",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    async def update_or_create(self, body: object) -> Tuple[int, CreateSuccessSchema]:
-        """
-        创建或者修改锁闭区
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/lockArea/update_or_create",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    def update_or_create_sync(self, body: object) -> Tuple[int, CreateSuccessSchema]:
-        """
-        创建或者修改锁闭区
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/lockArea/update_or_create",
             body={
                 "data": body.model_dump_json(),
             },
@@ -1908,7 +1686,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         self, body: SetFMSMessage
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        设置Fms告警信息
+        Fms告警信息
 
         """
         return await self.request(
@@ -1924,7 +1702,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
         self, body: SetFMSMessage
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        设置Fms告警信息
+        Fms告警信息
 
         """
         return self.request_sync(
@@ -2218,35 +1996,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=None,
         )
 
-    async def reject(self, body: object) -> Tuple[int, Dict]:
-        """
-        Add Task Pool Reject
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/taskPool/reject",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=None,
-        )
-
-    def reject_sync(self, body: object) -> Tuple[int, Dict]:
-        """
-        Add Task Pool Reject
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/taskPool/reject",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=None,
-        )
-
-    async def update(self, body: object) -> Tuple[int, Dict]:
+    async def api_taskInfo_taskPool_update_post(self, body: object) -> Tuple[int, Dict]:
         """
         Update Task Pool
 
@@ -2260,7 +2010,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=None,
         )
 
-    def update_sync(self, body: object) -> Tuple[int, Dict]:
+    def api_taskInfo_taskPool_update_post_sync(self, body: object) -> Tuple[int, Dict]:
         """
         Update Task Pool
 
@@ -2513,34 +2263,6 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             body={
                 "data": body.model_dump_json(),
             },
-            resp_model=CreateSuccessSchema,
-        )
-
-    async def api_taskInfo_EquipmentStatus_GetAll_get(
-        self,
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        获取Cms,Cps状态
-
-        """
-        return await self.request(
-            request=async_get,
-            api="/api/taskInfo/EquipmentStatus/GetAll",
-            body={},
-            resp_model=CreateSuccessSchema,
-        )
-
-    def api_taskInfo_EquipmentStatus_GetAll_get_sync(
-        self,
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        获取Cms,Cps状态
-
-        """
-        return self.request_sync(
-            request=requests.get,
-            api="/api/taskInfo/EquipmentStatus/GetAll",
-            body={},
             resp_model=CreateSuccessSchema,
         )
 
@@ -2825,94 +2547,6 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             body={
                 "data": body.model_dump_json(),
             },
-            resp_model=CreateSuccessSchema,
-        )
-
-    async def automatic(
-        self, ts_type: str, ts_name: str
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        查询锁站
-
-        """
-        return await self.request(
-            request=async_get,
-            api="/api/taskInfo/ts_switch/automatic",
-            body={"params": dict(ts_type=ts_type, ts_name=ts_name)},
-            resp_model=CreateSuccessSchema,
-        )
-
-    def automatic_sync(
-        self, ts_type: str, ts_name: str
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        查询锁站
-
-        """
-        return self.request_sync(
-            request=requests.get,
-            api="/api/taskInfo/ts_switch/automatic",
-            body={"params": dict(ts_type=ts_type, ts_name=ts_name)},
-            resp_model=CreateSuccessSchema,
-        )
-
-    async def api_taskInfo_ts_switch_automatic_post(
-        self, body: AutomaticTsSwitchSchema
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        设置更新锁站开关
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/taskInfo/ts_switch/automatic",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    def api_taskInfo_ts_switch_automatic_post_sync(
-        self, body: AutomaticTsSwitchSchema
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        设置更新锁站开关
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/taskInfo/ts_switch/automatic",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=CreateSuccessSchema,
-        )
-
-    async def api_taskInfo_ts_switch_automatic_delete(
-        self, ts_name: str
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        删除锁站
-
-        """
-        return await self.request(
-            request=async_delete,
-            api="/api/taskInfo/ts_switch/automatic",
-            body={"params": dict(ts_name=ts_name)},
-            resp_model=CreateSuccessSchema,
-        )
-
-    def api_taskInfo_ts_switch_automatic_delete_sync(
-        self, ts_name: str
-    ) -> Tuple[int, CreateSuccessSchema]:
-        """
-        删除锁站
-
-        """
-        return self.request_sync(
-            request=requests.delete,
-            api="/api/taskInfo/ts_switch/automatic",
-            body={"params": dict(ts_name=ts_name)},
             resp_model=CreateSuccessSchema,
         )
 

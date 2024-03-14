@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf dist
+
 # package from setup.py
 #python setup.py sdist bdist_wheel
 

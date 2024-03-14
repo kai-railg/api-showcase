@@ -392,38 +392,6 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             resp_model=None,
         )
 
-    async def api_deviceInfo_vehicleStatus_bsm_post(
-        self, body: object
-    ) -> Tuple[int, Dict]:
-        """
-        设置单车坐标
-
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/deviceInfo/vehicleStatus/bsm",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=None,
-        )
-
-    def api_deviceInfo_vehicleStatus_bsm_post_sync(
-        self, body: object
-    ) -> Tuple[int, Dict]:
-        """
-        设置单车坐标
-
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/deviceInfo/vehicleStatus/bsm",
-            body={
-                "data": body.model_dump_json(),
-            },
-            resp_model=None,
-        )
-
     async def soc(self, vehicle_id: str) -> Tuple[int, Dict]:
         """
         获取单车电量

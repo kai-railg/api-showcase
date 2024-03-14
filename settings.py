@@ -7,8 +7,16 @@
 """
 
 pip_dir = "./src/chain_api_showcase"
-remote_ip = "192.168.109.73"
+remote_ip = "192.168.109.15"
 projects = [
+    {
+        "name": "pp",
+        "port": 18000,
+    },
+    {
+        "name": "route_interface",
+        "port": 55000,
+    },
     {
         "name": "inventory",
         "port": 19102,
@@ -56,5 +64,5 @@ projects = [
     {
         "name": "task_scheduler",
         "port": 26102,
-    }
+    },
 ]

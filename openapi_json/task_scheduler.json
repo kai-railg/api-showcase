@@ -480,6 +480,10 @@
                     "processDependency": {
                         "title": "Processdependency",
                         "type": "string"
+                    },
+                    "dependencyType": {
+                        "title": "Dependencytype",
+                        "type": "string"
                     }
                 }
             },
@@ -521,10 +525,13 @@
                         "title": "Pickupdependency",
                         "type": "array",
                         "items": {
-                            "maxItems": 2,
-                            "minItems": 2,
+                            "maxItems": 3,
+                            "minItems": 3,
                             "type": "array",
                             "items": [
+                                {
+                                    "type": "string"
+                                },
                                 {
                                     "type": "string"
                                 },

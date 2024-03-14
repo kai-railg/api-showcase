@@ -138,48 +138,6 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             resp_model=None,
         )
 
-    async def complete(self, vehicle_id: str) -> Tuple[int, Dict]:
-        """
-        Complete
-        手动complete
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/complete",
-            body={"params": dict(vehicle_id=vehicle_id)},
-            resp_model=None,
-        )
-
-    def complete_sync(self, vehicle_id: str) -> Tuple[int, Dict]:
-        """
-        Complete
-        手动complete
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/complete",
-            body={"params": dict(vehicle_id=vehicle_id)},
-            resp_model=None,
-        )
-
-    async def exclusiveZone(self) -> Tuple[int, Dict]:
-        """
-        Rotate
-        车辆是否处于reefer和TG
-        """
-        return await self.request(
-            request=async_get, api="/api/exclusiveZone", body={}, resp_model=None
-        )
-
-    def exclusiveZone_sync(self) -> Tuple[int, Dict]:
-        """
-        Rotate
-        车辆是否处于reefer和TG
-        """
-        return self.request_sync(
-            request=requests.get, api="/api/exclusiveZone", body={}, resp_model=None
-        )
-
     async def shuffle(self, body: object) -> Tuple[int, Dict]:
         """
         Shuffle

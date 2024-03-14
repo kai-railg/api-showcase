@@ -661,7 +661,8 @@
                     "InventoryStatusQueryEvent_type",
                     "Area_type",
                     "Position_type",
-                    "block"
+                    "block",
+                    "lane"
                 ],
                 "type": "object",
                 "properties": {
@@ -691,6 +692,10 @@
                     },
                     "block": {
                         "title": "Block",
+                        "type": "string"
+                    },
+                    "lane": {
+                        "title": "Lane",
                         "type": "string"
                     }
                 }
@@ -781,8 +786,9 @@
                     "Position_type",
                     "area",
                     "lane",
-                    "offsetMm",
-                    "orientation"
+                    "orientation",
+                    "stack",
+                    "relativePos"
                 ],
                 "type": "object",
                 "properties": {
@@ -848,6 +854,14 @@
                     },
                     "orientation": {
                         "title": "Orientation",
+                        "type": "string"
+                    },
+                    "stack": {
+                        "title": "Stack",
+                        "type": "string"
+                    },
+                    "relativePos": {
+                        "title": "Relativepos",
                         "type": "string"
                     }
                 }
