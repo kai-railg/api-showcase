@@ -35,7 +35,7 @@ class RouteInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/RoutingInterface/navigation/update",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -117,7 +117,7 @@ class RouteInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/RoutingInterface/navigation/navi_status",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

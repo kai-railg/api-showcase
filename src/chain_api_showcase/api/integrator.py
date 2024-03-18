@@ -119,7 +119,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/rotate",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -425,7 +425,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/task_report/report",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

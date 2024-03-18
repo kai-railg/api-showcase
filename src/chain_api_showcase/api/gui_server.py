@@ -2206,7 +2206,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/VesselInfo/SetVesselInfo",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2235,7 +2235,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/VesselInfo/ReleaseVesselInfo",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2382,7 +2382,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/EquipmentStatus/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2432,7 +2432,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/EquipmentStatus/SpreaderSize/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2479,7 +2479,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message/GetAllMessage",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2515,7 +2515,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message/GetFileMessage",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

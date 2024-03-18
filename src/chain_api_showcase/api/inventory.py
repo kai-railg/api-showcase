@@ -35,7 +35,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/position/AddPoint",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -95,7 +95,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/position/GetAvailableTier",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -125,7 +125,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/GetContainerPoints",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -155,7 +155,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/InventoryUpdate",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -183,7 +183,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ContainerCheck",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -213,7 +213,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ImportAreaContainers",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -243,7 +243,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ImportContainers",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -271,7 +271,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/RemoveContainers",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -299,7 +299,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/EditContainers",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -327,7 +327,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/LimitLow",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -355,7 +355,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/EventListen",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -383,7 +383,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ContainerQuery",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -411,7 +411,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ContainerTaskCheck",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -439,7 +439,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/CommonInfo",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -467,7 +467,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/TGInitNotify",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -495,7 +495,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/QcLeaveNotify",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

@@ -1509,7 +1509,7 @@ class VehicleManagerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/WellGNS/SetRRTaskStatus/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

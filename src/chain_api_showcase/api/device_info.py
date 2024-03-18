@@ -427,7 +427,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/vehicleStatus/soc",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -483,7 +483,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/vehicleStatus/longPath",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -539,7 +539,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/vehicleStatus/shortPath",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -901,7 +901,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/vehicleStatus/SuspendReasonReport",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -953,7 +953,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/vehicleStatus/StopTime",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1030,7 +1030,10 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
         return await self.request(
             request=async_post,
             api="/api/deviceInfo/vehicleStatus/BtnStatus",
-            body={"data": body, "params": dict(vehicle_id=vehicle_id)},
+            body={
+                "data": body.model_dump_json(),
+                "params": dict(vehicle_id=vehicle_id),
+            },
             resp_model=None,
         )
 
@@ -1205,7 +1208,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/PileInfo/getPileInfoReport",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1235,7 +1238,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/PileInfo/SetPileInfoAllCodeReport",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1289,7 +1292,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/PileInfo/PileMessage",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1341,7 +1344,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/externalTruck/arriveTg",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1369,7 +1372,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/externalTruck/leaveTg",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1397,7 +1400,7 @@ class DeviceInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/deviceInfo/emergency_status/SetmultiCarEmergencyStop",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

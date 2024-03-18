@@ -37,7 +37,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/fms/area/inventory/query/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -67,7 +67,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/fms/wacreated/response/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -97,7 +97,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/fms/wacancelled/response/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -127,7 +127,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/fms/sc/status/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -155,7 +155,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/fms/area/availability/updated/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -185,7 +185,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/fms/container/change/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -213,7 +213,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/ail/message/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -243,7 +243,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/upload/inventory_import_degree/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -273,7 +273,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/upload/new/login/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -301,7 +301,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/upload/new/button/send/",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

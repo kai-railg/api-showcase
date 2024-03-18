@@ -221,7 +221,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message_event/boundary_event",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )

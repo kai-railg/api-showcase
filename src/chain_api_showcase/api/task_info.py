@@ -373,7 +373,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/containerInfo",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1949,7 +1949,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/get",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -1977,7 +1977,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/add",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2005,7 +2005,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/update",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2033,7 +2033,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/abort",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2063,7 +2063,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/runImmediate",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
@@ -2093,7 +2093,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/delete",
             body={
-                "data": body,
+                "data": body.model_dump_json(),
             },
             resp_model=None,
         )
