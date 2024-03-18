@@ -35,7 +35,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/position/AddPoint",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -49,7 +49,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/position/AddPoint",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -95,7 +95,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/position/GetAvailableTier",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -109,7 +109,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/position/GetAvailableTier",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -125,7 +125,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/GetContainerPoints",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -141,7 +141,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/GetContainerPoints",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -155,7 +155,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/InventoryUpdate",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -169,7 +169,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/InventoryUpdate",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -183,7 +183,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ContainerCheck",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -197,7 +197,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/ContainerCheck",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -213,7 +213,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ImportAreaContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -229,7 +229,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/ImportAreaContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -243,7 +243,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ImportContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -257,7 +257,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/ImportContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -271,7 +271,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/RemoveContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -285,7 +285,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/RemoveContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -299,7 +299,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/EditContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -313,7 +313,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/EditContainers",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -327,7 +327,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/LimitLow",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -341,7 +341,35 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/LimitLow",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
+            },
+            resp_model=None,
+        )
+
+    async def EventListen(self, body: EventListenSchema) -> Tuple[int, Dict]:
+        """
+        箱子监听
+        监听某个位置的箱子, 并推送给Task Executor
+        """
+        return await self.request(
+            request=async_post,
+            api="/api/container/EventListen",
+            body={
+                "data": body,
+            },
+            resp_model=None,
+        )
+
+    def EventListen_sync(self, body: EventListenSchema) -> Tuple[int, Dict]:
+        """
+        箱子监听
+        监听某个位置的箱子, 并推送给Task Executor
+        """
+        return self.request_sync(
+            request=requests.post,
+            api="/api/container/EventListen",
+            body={
+                "data": body,
             },
             resp_model=None,
         )
@@ -355,7 +383,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ContainerQuery",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -369,7 +397,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/ContainerQuery",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -383,7 +411,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/ContainerTaskCheck",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -397,7 +425,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/ContainerTaskCheck",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -411,7 +439,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/container/CommonInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -425,7 +453,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/container/CommonInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -439,7 +467,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/TGInitNotify",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -453,7 +481,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/TGInitNotify",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -467,7 +495,7 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/QcLeaveNotify",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -481,32 +509,8 @@ class InventoryRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/QcLeaveNotify",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
-            resp_model=None,
-        )
-
-    async def KpiEventCallback(self) -> Tuple[int, Dict]:
-        """
-        KPI事件回调
-        KPI事件回调, 用于更新KPI信息
-        """
-        return await self.request(
-            request=async_post,
-            api="/api/event/KpiEventCallback",
-            body={},
-            resp_model=None,
-        )
-
-    def KpiEventCallback_sync(self) -> Tuple[int, Dict]:
-        """
-        KPI事件回调
-        KPI事件回调, 用于更新KPI信息
-        """
-        return self.request_sync(
-            request=requests.post,
-            api="/api/event/KpiEventCallback",
-            body={},
             resp_model=None,
         )
 

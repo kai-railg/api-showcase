@@ -20,17 +20,18 @@ projects = [
     {
         "name": "inventory",
         "port": 19102,
-        "ip": "192.168.109.15",
         "openapi_url": "openapi.json",
     },
     {
         "name": "integrator",
         "port": 10101,
+        "ip": "127.0.0.1",
+
     },
     {
         "name": "task_executor",
         "port": 8100,
-        "ip": "192.168.109.15",
+        "ip": "127.0.0.1",
     },
     {
         "name": "vehicle_manager",

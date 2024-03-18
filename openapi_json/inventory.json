@@ -447,6 +447,46 @@
                 }
             }
         },
+        "/api/container/EventListen": {
+            "post": {
+                "tags": [
+                    "container"
+                ],
+                "summary": "\u7bb1\u5b50\u76d1\u542c",
+                "description": "\u76d1\u542c\u67d0\u4e2a\u4f4d\u7f6e\u7684\u7bb1\u5b50, \u5e76\u63a8\u9001\u7ed9Task Executor",
+                "operationId": "post_api_container_EventListen_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EventListenSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/container/ContainerQuery": {
             "post": {
                 "tags": [
@@ -646,26 +686,6 @@
                     }
                 }
             }
-        },
-        "/api/event/KpiEventCallback": {
-            "post": {
-                "tags": [
-                    "event"
-                ],
-                "summary": "KPI\u4e8b\u4ef6\u56de\u8c03",
-                "description": "KPI\u4e8b\u4ef6\u56de\u8c03, \u7528\u4e8e\u66f4\u65b0KPI\u4fe1\u606f",
-                "operationId": "post_api_event_KpiEventCallback_post",
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    }
-                }
-            }
         }
     },
     "components": {
@@ -675,7 +695,7 @@
                     "version": {
                         "type": "string",
                         "title": "Version",
-                        "default": "20240314_070738"
+                        "default": "20240318_031730"
                     },
                     "points": {
                         "items": {
@@ -1022,6 +1042,23 @@
                 "type": "object",
                 "title": "ContainerQuerySchema"
             },
+            "ELMessageNameEnum": {
+                "type": "string",
+                "enum": [
+                    "containerAdd",
+                    "other"
+                ],
+                "title": "ELMessageNameEnum"
+            },
+            "ELTaskStatusEnum": {
+                "type": "string",
+                "enum": [
+                    "start",
+                    "cancel",
+                    "finish"
+                ],
+                "title": "ELTaskStatusEnum"
+            },
             "EditContainerSchema": {
                 "properties": {
                     "area": {
@@ -1090,6 +1127,71 @@
                 },
                 "type": "object",
                 "title": "EditContainerSchema"
+            },
+            "EventListenSchema": {
+                "properties": {
+                    "area": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Area",
+                        "default": ""
+                    },
+                    "block": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Block",
+                        "default": ""
+                    },
+                    "messageName": {
+                        "$ref": "#/components/schemas/ELMessageNameEnum"
+                    },
+                    "task_status": {
+                        "$ref": "#/components/schemas/ELTaskStatusEnum"
+                    },
+                    "task_id": {
+                        "type": "string",
+                        "title": "Task Id"
+                    },
+                    "vin": {
+                        "type": "string",
+                        "title": "Vin"
+                    },
+                    "lane": {
+                        "type": "integer",
+                        "title": "Lane"
+                    },
+                    "tier": {
+                        "type": "integer",
+                        "title": "Tier"
+                    },
+                    "stack": {
+                        "type": "integer",
+                        "title": "Stack"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "messageName",
+                    "task_status",
+                    "task_id",
+                    "vin",
+                    "lane",
+                    "tier",
+                    "stack"
+                ],
+                "title": "EventListenSchema"
             },
             "GetAvailableTierSchema": {
                 "properties": {

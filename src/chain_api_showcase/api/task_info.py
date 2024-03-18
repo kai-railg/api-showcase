@@ -373,7 +373,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/containerInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -389,7 +389,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/containerInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -724,7 +724,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    async def complete(
+    async def api_taskInfo_vehicleJob_complete_post(
         self, vehicle_id: str, job_status: int = "9"
     ) -> Tuple[int, CreateSuccessSchema]:
         """
@@ -738,7 +738,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             resp_model=CreateSuccessSchema,
         )
 
-    def complete_sync(
+    def api_taskInfo_vehicleJob_complete_post_sync(
         self, vehicle_id: str, job_status: int = "9"
     ) -> Tuple[int, CreateSuccessSchema]:
         """
@@ -1949,7 +1949,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/get",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -1963,7 +1963,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/taskPool/get",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -1977,7 +1977,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/add",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -1991,7 +1991,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/taskPool/add",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2005,7 +2005,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2019,7 +2019,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/taskPool/update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2033,7 +2033,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/abort",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2047,7 +2047,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/taskPool/abort",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2063,7 +2063,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/runImmediate",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2079,7 +2079,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/taskPool/runImmediate",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2093,7 +2093,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/delete",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2107,7 +2107,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/taskPool/delete",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )

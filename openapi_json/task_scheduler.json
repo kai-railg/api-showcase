@@ -1009,8 +1009,7 @@
                 "required": [
                     "messageName",
                     "messageUniqueID",
-                    "timeStamp",
-                    "updateResult"
+                    "timeStamp"
                 ],
                 "type": "object",
                 "properties": {

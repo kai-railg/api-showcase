@@ -52,7 +52,7 @@ class {{ cls_name }}Cls(ApiRequestBaseCls):
             request=async_{{ endpoint.method }},
             api="{{ endpoint.path }}",
             body={
-                {% if endpoint.method != 'get' %}{% if endpoint.model %}"data": body.model_dump_json(),{% endif %}{% endif %}
+                {% if endpoint.method != 'get' %}{% if endpoint.model %}"data": body{{ ".model_dump_json()" if endpoint.response_model != "" else "" }} ,{% endif %}{% endif %}
                 {% if endpoint.parameters %}"params": dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
             },
             resp_model={{ endpoint.response_model if endpoint.response_model else None }}
@@ -66,7 +66,7 @@ class {{ cls_name }}Cls(ApiRequestBaseCls):
             request=requests.{{ endpoint.method }},
             api="{{ endpoint.path }}",
             body={
-                {% if endpoint.method != 'get' %}{% if endpoint.model %}"data": body.model_dump_json(),{% endif %}{% endif %}
+                {% if endpoint.method != 'get' %}{% if endpoint.model %}"data": body{{ ".model_dump_json()" if endpoint.response_model != "" else "" }} ,{% endif %}{% endif %}
                 {% if endpoint.parameters %}"params": dict({%- for parameter in endpoint.parameters %}{{ parameter.name }}={{ parameter.name }}{{ ", " if not loop.last }}{% endfor %}){% endif %}
             },
             resp_model={{ endpoint.response_model if endpoint.response_model else None }}

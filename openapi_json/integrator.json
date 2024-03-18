@@ -1,5 +1,5 @@
 {
-    "openapi": "3.0.2",
+    "openapi": "3.1.0",
     "info": {
         "title": "Integrator",
         "version": "0.0.1"
@@ -17,8 +17,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -29,7 +29,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -58,8 +60,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -70,7 +72,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -99,8 +103,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -111,7 +115,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -140,8 +146,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -153,6 +159,280 @@
                         "content": {
                             "application/json": {
                                 "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/complete": {
+            "post": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Complete",
+                "description": "\u624b\u52a8complete",
+                "operationId": "complete_api_complete_post",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/exclusiveZone": {
+            "get": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Exclusive Zone",
+                "description": "\u8f66\u8f86\u662f\u5426\u5904\u4e8ereefer\u548cTG",
+                "operationId": "exclusive_zone_api_exclusiveZone_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/check_block_used": {
+            "get": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Check Block Used",
+                "description": "\u67e5\u8be2\u5f53\u524d\u8f66\u8f86dest\u662f\u5426locked",
+                "operationId": "check_block_used_api_check_block_used_get",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/lock_block": {
+            "post": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Lock Block",
+                "operationId": "lock_block_api_lock_block_post",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/release_block": {
+            "post": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Release Block",
+                "operationId": "release_block_api_release_block_post",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/select_holding": {
+            "get": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Select Holding",
+                "description": "holding\u70b9\u9009\u62e9",
+                "operationId": "select_holding_api_select_holding_get",
+                "parameters": [
+                    {
+                        "name": "vehicle_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Vehicle Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/telep": {
+            "post": {
+                "tags": [
+                    "ctn_router"
+                ],
+                "summary": "Telep",
+                "description": "\u5f02\u5e38\u5904\u7406",
+                "operationId": "telep_api_telep_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Body"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -181,8 +461,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -193,7 +473,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -222,8 +504,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -234,7 +516,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -263,8 +547,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Task Data",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Task Data"
                             }
                         }
                     },
@@ -275,7 +559,51 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/event_callback": {
+            "post": {
+                "tags": [
+                    "common_router"
+                ],
+                "summary": "Event Callback",
+                "description": "\u4e8b\u4ef6\u56de\u8c03\u63a5\u53e3",
+                "operationId": "event_callback_api_event_callback_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EventCallback"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StdRes"
+                                }
                             }
                         }
                     },
@@ -304,8 +632,8 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "title": "Request",
-                                "type": "object"
+                                "type": "object",
+                                "title": "Request"
                             }
                         }
                     },
@@ -336,31 +664,55 @@
     },
     "components": {
         "schemas": {
-            "HTTPValidationError": {
-                "title": "HTTPValidationError",
+            "EventCallback": {
+                "properties": {
+                    "event_name": {
+                        "type": "string",
+                        "title": "Event Name",
+                        "description": "\u4e8b\u4ef6\u7c7b\u578b\u540d\u79f0"
+                    }
+                },
                 "type": "object",
+                "required": [
+                    "event_name"
+                ],
+                "title": "EventCallback"
+            },
+            "HTTPValidationError": {
                 "properties": {
                     "detail": {
-                        "title": "Detail",
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ValidationError"
-                        }
+                        },
+                        "type": "array",
+                        "title": "Detail"
                     }
-                }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "StdRes": {
+                "properties": {
+                    "data": {
+                        "title": "Data"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 200
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg",
+                        "default": "success"
+                    }
+                },
+                "type": "object",
+                "title": "StdRes"
             },
             "ValidationError": {
-                "title": "ValidationError",
-                "required": [
-                    "loc",
-                    "msg",
-                    "type"
-                ],
-                "type": "object",
                 "properties": {
                     "loc": {
-                        "title": "Location",
-                        "type": "array",
                         "items": {
                             "anyOf": [
                                 {
@@ -370,17 +722,26 @@
                                     "type": "integer"
                                 }
                             ]
-                        }
+                        },
+                        "type": "array",
+                        "title": "Location"
                     },
                     "msg": {
-                        "title": "Message",
-                        "type": "string"
+                        "type": "string",
+                        "title": "Message"
                     },
                     "type": {
-                        "title": "Error Type",
-                        "type": "string"
+                        "type": "string",
+                        "title": "Error Type"
                     }
-                }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
             }
         }
     }

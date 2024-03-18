@@ -35,7 +35,7 @@ class RouteInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/RoutingInterface/navigation/update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -49,7 +49,7 @@ class RouteInterfaceRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/RoutingInterface/navigation/update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -117,7 +117,7 @@ class RouteInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/RoutingInterface/navigation/navi_status",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -131,7 +131,7 @@ class RouteInterfaceRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/RoutingInterface/navigation/navi_status",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )

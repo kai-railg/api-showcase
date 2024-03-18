@@ -35,7 +35,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/startProcess",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -49,7 +49,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/startProcess",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -63,7 +63,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/setVariablesByBisKey",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -77,7 +77,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/setVariablesByBisKey",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -93,7 +93,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/searchCurrentActiveMessageEvents",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -109,7 +109,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/searchCurrentActiveMessageEvents",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -123,7 +123,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/searchCurrentActInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -137,7 +137,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/searchCurrentActInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -153,7 +153,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/receivedTaskMessageEvent",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -169,7 +169,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/receivedTaskMessageEvent",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -185,7 +185,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/receivedMessageEvent",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -199,7 +199,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/receivedMessageEvent",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -213,7 +213,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/receivedCommon",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -227,7 +227,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/receivedCommon",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -241,7 +241,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/completeUserTask",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -255,7 +255,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/completeUserTask",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -269,7 +269,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/camundaProcess/cancelProcess",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -283,7 +283,7 @@ class CamundaRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/camundaProcess/cancelProcess",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )

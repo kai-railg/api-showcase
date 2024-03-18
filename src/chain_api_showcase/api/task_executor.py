@@ -221,7 +221,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message_event/boundary_event",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -235,7 +235,7 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/message_event/boundary_event",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -334,8 +334,24 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         self, body: CycleEventSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        循环事件注册与取消
-        用来支持循环事件的注册和取消通过task info存储事件列表，列表支持去重通过camunda循环事件的定义触发事件执行camunda事件的销毁：1. 任务列表为空2. 通过外部接口取消
+            循环事件注册与取消
+            1. 用来支持循环事件的注册和取消
+        2. 注册的时候需要携带事件的名称，事件的类型，事件的回调地址，事件的回调方法
+        3. 通过task info存储事件列表，列表支持去重
+        4. 通过camunda循环调用触发事件，然后task executor 通知注册方
+        5. 用法如下
+                from chain_api_showcase.api.task_executor import TaskExecutorRequest
+                from chain_api_showcase.schemas.task_executor import CycleEventSchema
+
+                status, resp = await TaskExecutorRequest.cycle_event(
+                    CycleEventSchema(
+                        event_name="container_update",
+                        event_type="publish",
+                        callback_module_name="inventory",
+                        callback_path="/api/event/KpiEventCallback",
+                        callback_method="post"
+                    )
+                )
         """
         return await self.request(
             request=async_post,
@@ -350,8 +366,24 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         self, body: CycleEventSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        循环事件注册与取消
-        用来支持循环事件的注册和取消通过task info存储事件列表，列表支持去重通过camunda循环事件的定义触发事件执行camunda事件的销毁：1. 任务列表为空2. 通过外部接口取消
+            循环事件注册与取消
+            1. 用来支持循环事件的注册和取消
+        2. 注册的时候需要携带事件的名称，事件的类型，事件的回调地址，事件的回调方法
+        3. 通过task info存储事件列表，列表支持去重
+        4. 通过camunda循环调用触发事件，然后task executor 通知注册方
+        5. 用法如下
+                from chain_api_showcase.api.task_executor import TaskExecutorRequest
+                from chain_api_showcase.schemas.task_executor import CycleEventSchema
+
+                status, resp = await TaskExecutorRequest.cycle_event(
+                    CycleEventSchema(
+                        event_name="container_update",
+                        event_type="publish",
+                        callback_module_name="inventory",
+                        callback_path="/api/event/KpiEventCallback",
+                        callback_method="post"
+                    )
+                )
         """
         return self.request_sync(
             request=requests.post,
@@ -366,8 +398,24 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         self, body: EventDrivenSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        事件驱动的发布、订阅、取消
-        用来支持事件驱动的发布、订阅和取消通过task info存储事件列表，列表支持去重事件发布时，通过事件列表，根据 module_name 找到对应的url, 推送给订阅者场景适用如下： 需要监听 Inventory 箱子变化，注册 container_update 事件，inventory 箱子变化后会发布事件，订阅着收到事件后，调用相关接口重新获取inventory箱子信息
+            事件驱动的发布、订阅、取消
+            1. 用来支持事件驱动的发布、订阅和取消, 注册者需要实现一个回调接口，并在注册的时候当作参数传入
+        2. 注册的时候需要携带事件的名称，事件的类型，事件的回调地址，事件的回调方法
+        3. 通过task info存储事件列表，列表支持去重
+        4. 事件发布时，通过事件列表，根据 module_name 找到对应的url（需要在chain-api-showcase 库中生成对应的module_name）, 推送给订阅者
+        5. 场景适用于：需要循环请求数据，但是数据变动不频繁，为了减少请求次数，可以使用事件驱动
+        5. 用法如下
+                from chain_api_showcase.api.task_executor import TaskExecutorRequest
+                from chain_api_showcase.schemas.task_executor import EventDrivenSchema
+                await TaskExecutorRequest.event_driven(
+                    EventDrivenSchema(
+                        event_name="container_update",
+                        event_type="publish", # publish 发布事件, subscribe 订阅事件, cancel 取消注册
+                        callback_module_name="inventory",
+                        callback_path="/api/event/KpiEventCallback",
+                        callback_method="post"
+                    )
+                )
         """
         return await self.request(
             request=async_post,
@@ -382,8 +430,24 @@ class TaskExecutorRequestCls(ApiRequestBaseCls):
         self, body: EventDrivenSchema
     ) -> Tuple[int, CreateSuccessSchema]:
         """
-        事件驱动的发布、订阅、取消
-        用来支持事件驱动的发布、订阅和取消通过task info存储事件列表，列表支持去重事件发布时，通过事件列表，根据 module_name 找到对应的url, 推送给订阅者场景适用如下： 需要监听 Inventory 箱子变化，注册 container_update 事件，inventory 箱子变化后会发布事件，订阅着收到事件后，调用相关接口重新获取inventory箱子信息
+            事件驱动的发布、订阅、取消
+            1. 用来支持事件驱动的发布、订阅和取消, 注册者需要实现一个回调接口，并在注册的时候当作参数传入
+        2. 注册的时候需要携带事件的名称，事件的类型，事件的回调地址，事件的回调方法
+        3. 通过task info存储事件列表，列表支持去重
+        4. 事件发布时，通过事件列表，根据 module_name 找到对应的url（需要在chain-api-showcase 库中生成对应的module_name）, 推送给订阅者
+        5. 场景适用于：需要循环请求数据，但是数据变动不频繁，为了减少请求次数，可以使用事件驱动
+        5. 用法如下
+                from chain_api_showcase.api.task_executor import TaskExecutorRequest
+                from chain_api_showcase.schemas.task_executor import EventDrivenSchema
+                await TaskExecutorRequest.event_driven(
+                    EventDrivenSchema(
+                        event_name="container_update",
+                        event_type="publish", # publish 发布事件, subscribe 订阅事件, cancel 取消注册
+                        callback_module_name="inventory",
+                        callback_path="/api/event/KpiEventCallback",
+                        callback_method="post"
+                    )
+                )
         """
         return self.request_sync(
             request=requests.post,

@@ -10,7 +10,7 @@ packages = ["src"]
 
 [project]
 name = "chain-api-showcase"
-version = "0.0.2.3"
+version = "0.0.2.5"
 authors = [
     { name = "kai.wang", email = "kai.wang@westwell-lab.com" },
 ]

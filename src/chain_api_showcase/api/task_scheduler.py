@@ -205,7 +205,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/tos_interface/order_update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -219,7 +219,7 @@ class TaskSchedulerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/tos_interface/order_update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )

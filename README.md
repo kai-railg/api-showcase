@@ -1,24 +1,28 @@
-# Project Name
+# chain-api-show
 
 ## Description
 
-This project provides a tool for automatically generating HTTP request code snippets for any given API by parsing its OpenAPI specification file (`openapi.json`). By leveraging the OpenAPI standard, it ensures consistency and accuracy in the request generation process, making it an invaluable tool for developers working with RESTful APIs.
+chai-api-show 模块旨在帮助您快速了解和使用当前项目中所有使用的 OpenAPI 文档。
 
-The parser reads the `openapi.json` file, which describes the entire API, including paths, methods, parameters, and other details. Based on this description, the tool outputs ready-to-use code snippets for a variety of HTTP request tools and libraries (such as `curl`, `http.client` in Python, `requests`, or any other library of your choice).
+该模块通过 OpenAPI 3.0 格式的 OpenAPI 文档，生成适用于多种 HTTP 请求工具和库的代码片段。
+
+该模块使用pydantic模型生成了请求参数和返回参数的代码片段，以供您在实际开发中了解请求参数和返回值的结构，而无需阅读 OpenAPI 文档来了解这些结构。
+
+同时支持了异步和同步函数调用。
+
+支持nacos注册中心和单机模式，通过配置切换。
+
+当前支持的模块: camunda, crane_info, device_info, gui_server, integrator, inventory, route_interface, task_executor, task_info, scheduler, tos_interface, vehicle_manager
 
 ## Features
 
-- **Automated Generation**: Produce comprehensive HTTP requests for every endpoint defined in the OpenAPI document.
-- **Customizable Output**: Tailor the output to match the specific needs of your HTTP client library.
-- **Support for Multiple Languages**: Generate code snippets in different programming languages (Python, JavaScript, etc.).
-- **Easy Integration**: Designed to fit into existing workflows with minimal setup.
-- **Accuracy and Consistency**: Ensures that requests are generated according to the specifications defined in the OpenAPI document.
+- **循环事件注册**: task_executor 模块定义了事件循环注册，用于支持注册后有参数的和固定频率的接口回调，循环事件由camunda驱动。
+- **驱动事件注册**: task_executor 模块定义了驱动事件注册，用于实现http版本的发布订阅机制，订阅方需要进行注册和事件通知接口。
 
 ## Getting Started
 
-To get started with this project, clone the repository and install the required dependencies:
-
 ```shell
-git clone https://github.com/your-username/project-name.git
-cd project-name
+git clone ssh://git@devgit.westwell.cc:10080/kai.wang/chain-api-showcase.git
+cd chai-api-show
 pip install -r requirements.txt
+python3 main.py

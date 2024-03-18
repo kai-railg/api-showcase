@@ -2160,7 +2160,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post, api="/api/task/rc_task", body={}, resp_model=None
         )
 
-    async def telep(self) -> Tuple[int, Dict]:
+    async def api_telep_get(self) -> Tuple[int, Dict]:
         """
         Api Proxy
 
@@ -2169,7 +2169,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_get, api="/api/telep", body={}, resp_model=None
         )
 
-    def telep_sync(self) -> Tuple[int, Dict]:
+    def api_telep_get_sync(self) -> Tuple[int, Dict]:
         """
         Api Proxy
 
@@ -2206,7 +2206,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/VesselInfo/SetVesselInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2221,7 +2221,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/VesselInfo/SetVesselInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2235,7 +2235,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/VesselInfo/ReleaseVesselInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2249,7 +2249,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/VesselInfo/ReleaseVesselInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2382,7 +2382,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/EquipmentStatus/",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2407,7 +2407,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/EquipmentStatus/",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2432,7 +2432,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/EquipmentStatus/SpreaderSize/",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2457,7 +2457,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/api/taskInfo/EquipmentStatus/SpreaderSize/",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2479,7 +2479,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message/GetAllMessage",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2501,7 +2501,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/message/GetAllMessage",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2515,7 +2515,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message/GetFileMessage",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2529,7 +2529,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=requests.post,
             api="/message/GetFileMessage",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
