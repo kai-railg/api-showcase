@@ -403,7 +403,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/vehicleJob/create",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1223,7 +1223,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/lockArea",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1255,7 +1255,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/lockArea/delete",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1287,7 +1287,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/lockArea/deleteByTag",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1319,7 +1319,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/lockArea/change",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1349,7 +1349,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/lockArea/changeByTag",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1411,7 +1411,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/VesselInfo/EditVesselInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1755,7 +1755,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/subTask/set",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -1949,7 +1949,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/get",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -1977,7 +1977,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/add",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2005,7 +2005,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/update",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2033,7 +2033,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/abort",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2063,7 +2063,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/runImmediate",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2093,7 +2093,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/taskPool/delete",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -2121,7 +2121,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/TsRelated",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2151,7 +2151,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/TsRelated/delete",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2181,7 +2181,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/TsRelated/Edit",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2242,7 +2242,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/EquipmentStatus",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2305,7 +2305,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/EquipmentStatus/SpreaderSize",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2365,7 +2365,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/PaceGlobal",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2559,7 +2559,7 @@ class TaskInfoRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/taskInfo/simApi/sim_start_job",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )

@@ -7,9 +7,12 @@ import requests
 
 from chain_nacos.service_manager import ServiceManager
 
+__all__ = ["ApiRequestBase", "ApiRequestBaseCls"]
+
 
 class ApiRequestBaseCls(object):
     module_mapping: Dict[str, 'ApiRequestBaseCls'] = {}
+    _nacos_clients = []
 
     def __init__(self):
         self.USE_NACOS = bool(os.environ.get('USE_NACOS', False))
@@ -19,15 +22,19 @@ class ApiRequestBaseCls(object):
         self.SERVICE_PORT: int = 0
         self.SERVICE_NAME: str = ""
         self.protocol: str = "http"
-        self.timeout: int = os.environ.get('timeout', 6)
-        self._nacos = None
-        self.max_retry_count = 3
+        self.timeout: int = os.environ.get('TIMEOUT', 3)
+        self.max_retry_count = os.environ.get('MAX_RETRY_COUNT', 3)
 
     @property
-    def nacos(self):
-        if not self._nacos:
-            self._nacos = ServiceManager(self.nacos_address)
-        return self._nacos
+    def nacos(self) -> ServiceManager:
+        """
+        Instantiate the nacos client only once
+        :return:
+        """
+        if len(self._nacos_clients) == 0:
+            nacos = ServiceManager(self.nacos_address)
+            self._nacos_clients.append(nacos)
+        return self._nacos_clients[-1]
 
     @property
     def nacos_address(self):
@@ -103,3 +110,6 @@ class ApiRequestBaseCls(object):
         except Exception as e:
             print(f"Request failed: {e}, url: {url}")
             return 400, str(e)
+
+
+ApiRequestBase = ApiRequestBaseCls()

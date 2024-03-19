@@ -2301,7 +2301,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/VesselInfo/EditVesselInfo",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2639,7 +2639,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/denmarkinfo/PlcStatus",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )
@@ -2893,7 +2893,7 @@ class GuiServerRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/TosLoginStatus/",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=CreateSuccessSchema,
         )

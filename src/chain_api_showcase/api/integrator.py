@@ -35,7 +35,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/task/insert",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -63,7 +63,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/task/clear",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -91,7 +91,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/task/get_all",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -119,7 +119,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/rotate",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
@@ -285,7 +285,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/telep",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -313,7 +313,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/shuffle",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -341,7 +341,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/message_event/start",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -369,7 +369,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/start_teleop",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=StdRes,
         )
@@ -425,7 +425,7 @@ class IntegratorRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/api/task_report/report",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )

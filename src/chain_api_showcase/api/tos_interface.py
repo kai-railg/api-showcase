@@ -213,7 +213,7 @@ class TosInterfaceRequestCls(ApiRequestBaseCls):
             request=async_post,
             api="/ail/message/",
             body={
-                "data": body.model_dump_json(),
+                "data": body,
             },
             resp_model=None,
         )
