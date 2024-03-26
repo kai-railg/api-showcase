@@ -681,23 +681,6 @@
             },
             "CycleEventSchema": {
                 "properties": {
-                    "event_name": {
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/CycleEventNameEnum"
-                            }
-                        ],
-                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6"
-                    },
-                    "event_type": {
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/EventType"
-                            }
-                        ],
-                        "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88",
-                        "default": "register"
-                    },
                     "callback_module_name": {
                         "type": "string",
                         "title": "Callback Module Name",
@@ -721,6 +704,29 @@
                         "title": "Callback Method",
                         "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
                         "default": "get"
+                    },
+                    "is_notify_all": {
+                        "type": "boolean",
+                        "title": "Is Notify All",
+                        "description": "\u662f\u5426\u901a\u77e5\u6240\u6709\u8ba2\u9605\u8005",
+                        "default": false
+                    },
+                    "event_name": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/CycleEventNameEnum"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u540d\u79f0\uff0c\u6bd4\u5982 InventoryKpiEvent, \u4e8b\u4ef6\u552f\u4e00\u6807\u8bc6"
+                    },
+                    "event_type": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/EventType"
+                            }
+                        ],
+                        "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88",
+                        "default": "register"
                     },
                     "time_cycle_pt": {
                         "type": "integer",
@@ -758,6 +764,36 @@
             },
             "EventDrivenSchema": {
                 "properties": {
+                    "callback_module_name": {
+                        "type": "string",
+                        "title": "Callback Module Name",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u6a21\u5757\u540d",
+                        "default": ""
+                    },
+                    "callback_params": {
+                        "type": "object",
+                        "title": "Callback Params",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u53c2\u6570",
+                        "default": {}
+                    },
+                    "callback_path": {
+                        "type": "string",
+                        "title": "Callback Path",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03url path",
+                        "default": ""
+                    },
+                    "callback_method": {
+                        "type": "string",
+                        "title": "Callback Method",
+                        "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
+                        "default": "get"
+                    },
+                    "is_notify_all": {
+                        "type": "boolean",
+                        "title": "Is Notify All",
+                        "description": "\u662f\u5426\u901a\u77e5\u6240\u6709\u8ba2\u9605\u8005",
+                        "default": false
+                    },
                     "event_name": {
                         "allOf": [
                             {
@@ -773,30 +809,6 @@
                             }
                         ],
                         "description": "\u4e8b\u4ef6\u7c7b\u578b\uff0c\u5206\u4e3a\u6ce8\u518c\u548c\u53d6\u6d88"
-                    },
-                    "callback_module_name": {
-                        "type": "string",
-                        "title": "Callback Module Name",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03\u6a21\u5757\u540d",
-                        "default": ""
-                    },
-                    "callback_path": {
-                        "type": "string",
-                        "title": "Callback Path",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03url path",
-                        "default": ""
-                    },
-                    "callback_method": {
-                        "type": "string",
-                        "title": "Callback Method",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03\u65b9\u6cd5",
-                        "default": "post"
-                    },
-                    "callback_params": {
-                        "type": "string",
-                        "title": "Callback Params",
-                        "description": "\u4e8b\u4ef6\u56de\u8c03\u53c2\u6570",
-                        "default": {}
                     }
                 },
                 "type": "object",

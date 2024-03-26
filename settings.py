@@ -26,7 +26,6 @@ projects = [
         "name": "integrator",
         "port": 10101,
         "ip": "127.0.0.1",
-
     },
     {
         "name": "task_executor",

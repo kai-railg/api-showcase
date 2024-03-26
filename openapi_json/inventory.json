@@ -695,7 +695,7 @@
                     "version": {
                         "type": "string",
                         "title": "Version",
-                        "default": "20240318_031730"
+                        "default": "20240326_020930"
                     },
                     "points": {
                         "items": {

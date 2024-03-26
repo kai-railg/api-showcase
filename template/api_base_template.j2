@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 import asyncio
 import os
-from typing import Dict
+from typing import Dict, Iterator
 from urllib import parse
 import requests
 
 from chain_nacos.service_manager import ServiceManager
 
-__all__ = ["ApiRequestBase", "ApiRequestBaseCls"]
-
 
 class ApiRequestBaseCls(object):
     module_mapping: Dict[str, 'ApiRequestBaseCls'] = {}
-    _nacos_clients = []
 
     def __init__(self):
         self.USE_NACOS = bool(os.environ.get('USE_NACOS', False))
@@ -22,19 +19,15 @@ class ApiRequestBaseCls(object):
         self.SERVICE_PORT: int = 0
         self.SERVICE_NAME: str = ""
         self.protocol: str = "http"
-        self.timeout: int = os.environ.get('TIMEOUT', 3)
-        self.max_retry_count = os.environ.get('MAX_RETRY_COUNT', 3)
+        self.timeout: int = os.environ.get('timeout', 6)
+        self._nacos = None
+        self.max_retry_count = 3
 
     @property
-    def nacos(self) -> ServiceManager:
-        """
-        Instantiate the nacos client only once
-        :return:
-        """
-        if len(self._nacos_clients) == 0:
-            nacos = ServiceManager(self.nacos_address)
-            self._nacos_clients.append(nacos)
-        return self._nacos_clients[-1]
+    def nacos(self):
+        if not self._nacos:
+            self._nacos = ServiceManager(self.nacos_address)
+        return self._nacos
 
     @property
     def nacos_address(self):
@@ -45,13 +38,25 @@ class ApiRequestBaseCls(object):
         if not self.USE_NACOS:
             return f"{self.protocol}://{self.FMS_HOST}:{self.SERVICE_PORT}"
 
-        ins = self.nacos.get_random_instance(self.SERVICE_NAME)
-        host, port = ins["ip"], ins["port"]
-        return f"{self.protocol}://{host}:{port}"
+        client = self.nacos.get_random_instance(self.SERVICE_NAME)
+        return self.get_url_from_nacos_client(client)
 
     def get_url_from_module_name(self, module_name: str) -> str:
         obj = self.module_mapping.get(module_name)
         return obj and obj.url
+
+    def get_all_urls_from_module_name(self, module_name: str) -> Iterator:
+        if not self.USE_NACOS:
+            yield f"{self.protocol}://{self.FMS_HOST}:{self.SERVICE_PORT}"
+
+        service_list = self.nacos.list_services(service_name=module_name)
+        instances = service_list.get('hosts', [])
+        for ins in instances:
+            yield self.get_url_from_nacos_client(ins)
+
+    def get_url_from_nacos_client(self, client: dict) -> str:
+        host, port = client["ip"], client["port"]
+        return f"{self.protocol}://{host}:{port}"
 
     def request_sync(self, request, api, body: Dict, resp_model=None, max_retry_count=1) -> Dict:
         url = parse.urljoin(self.url, api)
@@ -110,6 +115,3 @@ class ApiRequestBaseCls(object):
         except Exception as e:
             print(f"Request failed: {e}, url: {url}")
             return 400, str(e)
-
-
-ApiRequestBase = ApiRequestBaseCls()
