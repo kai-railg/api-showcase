@@ -1,0 +1,57 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Integrator;
+
+service Integrator {
+  rpc insert (Request) returns (Response) {}
+  rpc clear (Request) returns (Response) {}
+  rpc get_all (Request) returns (Response) {}
+  rpc rotate (Request) returns (Response) {}
+  rpc complete (Request) returns (Response) {}
+  rpc exclusiveZone (Request) returns (Response) {}
+  rpc check_block_used (Request) returns (Response) {}
+  rpc lock_block (Request) returns (Response) {}
+  rpc release_block (Request) returns (Response) {}
+  rpc select_holding (Request) returns (Response) {}
+  rpc telep (Request) returns (Response) {}
+  rpc shuffle (Request) returns (Response) {}
+  rpc start (Request) returns (Response) {}
+  rpc start_teleop (Request) returns (Response) {}
+  rpc event_callback (EventCallback) returns (Response) {}
+  rpc report (Request) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message EventCallback {
+  string event_name = 1;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message StdRes {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}

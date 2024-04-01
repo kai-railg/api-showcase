@@ -1,0 +1,594 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Gui_Server;
+
+service Gui_Server {
+  rpc authentication (LoginInSchema) returns (Response) {}
+  rpc auth (Request) returns (Response) {}
+  rpc update_passwd (UpdatePasswdInSchema) returns (Response) {}
+  rpc user (CreateUserInSchema) returns (Response) {}
+  rpc user_put (UpdateUserInSchema) returns (Response) {}
+  rpc user_get (Request) returns (Response) {}
+  rpc user_delete (Request) returns (Response) {}
+  rpc list (Request) returns (Response) {}
+  rpc all (Request) returns (Response) {}
+  rpc group (CreateGroupInSchema) returns (Response) {}
+  rpc group_put (UpdateGroupInSchema) returns (Response) {}
+  rpc group_get (Request) returns (Response) {}
+  rpc group_delete (Request) returns (Response) {}
+  rpc group_all_get (Request) returns (Response) {}
+  rpc permission (CreatePermissionInSchema) returns (Response) {}
+  rpc permission_put (UpdatePermissionInSchema) returns (Response) {}
+  rpc permission_get (Request) returns (Response) {}
+  rpc permission_delete (Request) returns (Response) {}
+  rpc permission_all_get (Request) returns (Response) {}
+  rpc permission_list_get (Request) returns (Response) {}
+  rpc download (Request) returns (Response) {}
+  rpc lockArea (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_post (Request) returns (Response) {}
+  rpc delete (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_delete_post (Request) returns (Response) {}
+  rpc deleteByTag (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_deleteByTag_post (Request) returns (Response) {}
+  rpc change (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_change_post (Request) returns (Response) {}
+  rpc resendJob (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_resendJob_post (Request) returns (Response) {}
+  rpc message_event_start_get (Request) returns (Response) {}
+  rpc message_event_start_post (Request) returns (Response) {}
+  rpc message_event_abort_get (Request) returns (Response) {}
+  rpc message_event_abort_post (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_delete_get (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_delete_post (Request) returns (Response) {}
+  rpc runImmediate (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_runImmediate_post (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_abort_get (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_abort_post (Request) returns (Response) {}
+  rpc trailerStatus (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_trailerStatus_post (Request) returns (Response) {}
+  rpc mode (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_mode_post (Request) returns (Response) {}
+  rpc containerInfo (Request) returns (Response) {}
+  rpc api_taskInfo_containerInfo_post (Request) returns (Response) {}
+  rpc message_event_rch_get (Request) returns (Response) {}
+  rpc message_event_rch_post (Request) returns (Response) {}
+  rpc query (Request) returns (Response) {}
+  rpc fms_area_inventory_query_post (Request) returns (Response) {}
+  rpc api_vehicleManager_power_get (Request) returns (Response) {}
+  rpc api_vehicleManager_power_post (Request) returns (Response) {}
+  rpc api_vehicleManager_handshake_get (Request) returns (Response) {}
+  rpc api_vehicleManager_handshake_post (Request) returns (Response) {}
+  rpc SetOperation (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_SetOperation_post (Request) returns (Response) {}
+  rpc api_vehicleManager_report_speed_ratio_get (Request) returns (Response) {}
+  rpc api_vehicleManager_report_speed_ratio_post (Request) returns (Response) {}
+  rpc api_container_InventoryUpdate_get (Request) returns (Response) {}
+  rpc api_container_InventoryUpdate_post (Request) returns (Response) {}
+  rpc SetVesselInfoStatus (Request) returns (Response) {}
+  rpc api_taskInfo_VesselInfo_SetVesselInfoStatus_post (Request) returns (Response) {}
+  rpc query_all (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_query_all_post (Request) returns (Response) {}
+  rpc PaceGlobal (Request) returns (Response) {}
+  rpc api_taskInfo_PaceGlobal_post (Request) returns (Response) {}
+  rpc SetLane (Request) returns (Response) {}
+  rpc api_taskInfo_quayCrane_SetLane_post (Request) returns (Response) {}
+  rpc message_event_update_qc_task_get (Request) returns (Response) {}
+  rpc message_event_update_qc_task_post (Request) returns (Response) {}
+  rpc vehicleJob (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_post (Request) returns (Response) {}
+  rpc all_current_job (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_all_current_job_post (Request) returns (Response) {}
+  rpc api_container_EditContainers_get (Request) returns (Response) {}
+  rpc api_container_EditContainers_post (Request) returns (Response) {}
+  rpc api_vehicleManager_stop_get (Request) returns (Response) {}
+  rpc api_vehicleManager_stop_post (Request) returns (Response) {}
+  rpc engine (Request) returns (Response) {}
+  rpc api_engine_post (Request) returns (Response) {}
+  rpc response_mixed_area (Request) returns (Response) {}
+  rpc api_response_mixed_area_post (Request) returns (Response) {}
+  rpc points (Request) returns (Response) {}
+  rpc api_vehicleManager_points_post (Request) returns (Response) {}
+  rpc GetAll (Request) returns (Response) {}
+  rpc api_taskInfo_EquipmentStatus_GetAll_post (Request) returns (Response) {}
+  rpc rc_task (Request) returns (Response) {}
+  rpc api_task_rc_task_post (Request) returns (Response) {}
+  rpc api_telep_get (Request) returns (Response) {}
+  rpc api_telep_post (Request) returns (Response) {}
+  rpc SetVesselInfo (SetVesselSchemas) returns (Response) {}
+  rpc ReleaseVesselInfo (DelVesselSchemas) returns (Response) {}
+  rpc GetBertNO (Request) returns (Response) {}
+  rpc EditVesselInfo (Request) returns (Response) {}
+  rpc ghostVehicleCancel (SetGhostVehicleCancelPost) returns (Response) {}
+  rpc EquipmentStatus (SetSwitchRequest) returns (Response) {}
+  rpc SpreaderSize (SetSwitchRequest) returns (Response) {}
+  rpc GetAllMessage (GetAllMessageSchemas) returns (Response) {}
+  rpc GetFileMessage (GetAllMessageCSVSchemas) returns (Response) {}
+  rpc UpdatePileInfo (UpdatePileInfoSchemas) returns (Response) {}
+  rpc UpdateAllPileInfo (UpdateALlInfoSchemas) returns (Response) {}
+  rpc ContainerInfoSetup (ContainerSteupSchemas) returns (Response) {}
+  rpc PlcStatus (Request) returns (Response) {}
+  rpc ServerVersion (Request) returns (Response) {}
+  rpc ForceOverTake (ForceOvertakeSchemas) returns (Response) {}
+  rpc update_task (UpdateTaskSchema) returns (Response) {}
+  rpc load_first (LoadFirstInSchema) returns (Response) {}
+  rpc redo_task (RedoTaskInSchema) returns (Response) {}
+  rpc CollectionFailTask (FailTaskSchemas) returns (Response) {}
+  rpc event_report (EventReport) returns (Response) {}
+  rpc TosLoginStatus (Request) returns (Response) {}
+  rpc twistlock_station (CRUDTwistlockStation) returns (Response) {}
+  rpc GetPtions (Request) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message BodyDenmarkinfoImportContainersPost {
+  repeated bytes files = 1;
+}
+
+message BodyFileTransportUploadPost {
+  repeated bytes files = 1;
+}
+
+message CRUDTwistlockStation {
+  string ts_name = 1;
+  string time_stamp = 2;
+  string ts_creator = 3;
+  string ts_vessel = 4;
+  string job_type = 5;
+  string ts_lane = 6;
+  string ts_qc = 7;
+  string ts_bollard = 8;
+  float ts_offset_x = 9;
+  string ts_reason = 10;
+  string ts_status = 11;
+}
+
+message ContainerSteupSchemas {
+  string time_stamp = 1;
+  string operation_type = 2;
+  string vehicle_id = 3;
+  string unique_id = 4;
+  string number = 5;
+  repeated google.protobuf.Any containers = 6;
+}
+
+message CreateGroupInSchema {
+  string name = 1;
+  string description = 2;
+  repeated sint32 permission_list = 3;
+}
+
+message CreatePermissionInSchema {
+  string name = 1;
+  string description = 2;
+  string belong_type = 3;
+  string request_type = 4;
+  string path = 5;
+  string method = 6;
+}
+
+message CreateSuccessSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message CreateUserInSchema {
+  string username = 1;
+  string password = 2;
+  string email = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string department = 6;
+  sint32 group_id = 7;
+  string question1 = 8;
+  string question2 = 9;
+  string answer1 = 10;
+  string answer2 = 11;
+}
+
+message CurrentUserGroupOut {
+  sint32 id = 1;
+  string name = 2;
+  string description = 3;
+  repeated CurrentUserGroupPermission permissions = 4;
+}
+
+message CurrentUserGroupPermission {
+  sint32 id = 1;
+  string name = 2;
+  string code = 3;
+  string belong_type = 4;
+}
+
+message DelVesselSchemas {
+  string vesselVisitId = 1;
+  string vesselName = 2;
+}
+
+message DeleteSuccessSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message EventReport {
+  string vehicleID = 1;
+  string eventType = 2;
+  string origin = 3;
+  string timeStamp = 4;
+  map<string, google.protobuf.Any> data = 5;
+}
+
+message FailTaskSchemas {
+  string vehicle_id = 1;
+  string error_msg = 2;
+  string timestamp = 3;
+  string from_server = 4;
+  sint32 code = 5;
+}
+
+message ForceOvertakeSchemas {
+  string vehicle_id = 1;
+  sint32 overtake = 2;
+}
+
+message GetAllMessageCSVSchemas {
+  string start_time = 1;
+  string end_time = 2;
+  string messageType = 3;
+  repeated google.protobuf.Any truck_list = 4;
+  sint32 per_page = 5;
+  sint32 page = 6;
+}
+
+message GetAllMessageSchemas {
+  string start_time = 1;
+  string end_time = 2;
+  string messageType = 3;
+  repeated google.protobuf.Any truck_list = 4;
+  sint32 per_page = 5;
+  sint32 level = 6;
+  sint32 page = 7;
+}
+
+message GetGroupAllOutSchema {
+  repeated UpdateGroupOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 total = 5;
+  sint32 pages = 6;
+}
+
+message GetGroupOut {
+  string username = 1;
+  string email = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string department = 5;
+  CurrentUserGroupOut group = 6;
+}
+
+message GetGroupOutSchema {
+  GetGroupOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message GetPermissionAllOutSchema {
+  repeated UpdatePermissionOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 total = 5;
+  sint32 pages = 6;
+}
+
+message GetPermissionListOutSchema {
+  repeated UpdatePermissionOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 total = 5;
+  sint32 pages = 6;
+}
+
+message GetPermissionOutSchema {
+  UpdatePermissionOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message GetSelfOut {
+  sint32 id = 1;
+  string username = 2;
+  bool super = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string department = 6;
+  string last_login = 7;
+  string last_logout = 8;
+  GetSelfOutWithGroup group = 9;
+}
+
+message GetSelfOutSchema {
+  GetSelfOut data = 1;
+}
+
+message GetSelfOutWithGroup {
+  sint32 id = 1;
+  string name = 2;
+  string description = 3;
+  repeated GetSelfOutWithGroupPermission permissions = 4;
+}
+
+message GetSelfOutWithGroupPermission {
+  sint32 id = 1;
+  string name = 2;
+  string code = 3;
+  string belong_type = 4;
+}
+
+message GetUserAllOutSchema {
+  repeated GetUserListOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 total = 5;
+  sint32 pages = 6;
+}
+
+message GetUserListOut {
+  sint32 id = 1;
+  string username = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string department = 5;
+  bool is_first_login = 6;
+  GetUserListOutWithGroup group = 7;
+  string last_login = 8;
+  string last_logout = 9;
+}
+
+message GetUserListOutSchema {
+  repeated GetUserListOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 total = 5;
+  sint32 pages = 6;
+}
+
+message GetUserListOutWithGroup {
+  sint32 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message GetUserOut {
+  sint32 id = 1;
+  string username = 2;
+  string email = 3;
+  string department = 4;
+  string first_name = 5;
+  string last_name = 6;
+  sint32 group_id = 7;
+  bool is_active = 8;
+  string last_login = 9;
+  string last_logout = 10;
+  sint32 create_id = 11;
+  sint32 update_id = 12;
+  string create_time = 13;
+  string update_time = 14;
+  bool is_first_login = 15;
+  bool super = 16;
+  CurrentUserGroupOut group = 17;
+}
+
+message GetUserOutSchema {
+  GetUserOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message HTTPValidationError {
+  repeated ValidationError errors = 1;
+}
+
+message LoadFirstInSchema {
+  string vehicleID = 1;
+  string overtakeLane = 2;
+  string origin = 3;
+}
+
+message LoginInSchema {
+  string username = 1;
+  string password = 2;
+}
+
+message RedoTaskInSchema {
+  string vehicleID = 1;
+  string origin = 2;
+}
+
+message SetGhostVehicleCancelPost {
+  string vehicle_id = 1;
+  bool manual_cancel = 2;
+}
+
+message SetSwitchRequest {
+  string switch_val_name = 1;
+  string switch_val = 2;
+  string origin = 3;
+}
+
+message SetVesselSchemas {
+  string vesselVisitId = 1;
+  string vesselName = 2;
+  string inVyg = 3;
+  string outVyg = 4;
+  sint32 bollardFore = 5;
+  sint32 bollardAfter = 6;
+  string vessel_type = 7;
+  repeated google.protobuf.Any at_list = 8;
+  repeated google.protobuf.Any QCAG = 9;
+  string ETA = 10;
+  string ETB = 11;
+  string ETD = 12;
+  string rta_time = 13;
+}
+
+message UpdateALlInfoSchemas {
+  sint32 pile_info_all_code = 1;
+}
+
+message UpdateGroupInSchema {
+  string name = 1;
+  string description = 2;
+  repeated sint32 permission_list = 3;
+}
+
+message UpdateGroupOut {
+  sint32 id = 1;
+  string name = 2;
+  string description = 3;
+  repeated UpdateGroupOutPermission permissions = 4;
+}
+
+message UpdateGroupOutPermission {
+  sint32 id = 1;
+  string name = 2;
+  string code = 3;
+  string belong_type = 4;
+}
+
+message UpdateGroupOutSchema {
+  UpdateGroupOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message UpdatePasswdInSchema {
+  string old_password = 1;
+  string new_password = 2;
+}
+
+message UpdatePermissionInSchema {
+  string name = 1;
+  string description = 2;
+  string belong_type = 3;
+  string request_type = 4;
+  string path = 5;
+  string method = 6;
+}
+
+message UpdatePermissionOut {
+  sint32 id = 1;
+  string name = 2;
+  string code = 3;
+  string description = 4;
+  string belong_type = 5;
+  string request_type = 6;
+  string path = 7;
+  string method = 8;
+}
+
+message UpdatePermissionOutSchema {
+  UpdatePermissionOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message UpdatePileInfoSchemas {
+  string charging_station_id = 1;
+  sint32 fms_code = 2;
+  string gun_id = 3;
+  sint32 gun_fms_code = 4;
+}
+
+message UpdateTaskSchema {
+  string qcId = 1;
+  string spreadSize = 2;
+  string vehicleID = 3;
+  string origin = 4;
+}
+
+message UpdateUserInSchema {
+  string username = 1;
+  string email = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string department = 5;
+  sint32 group_id = 6;
+  string question1 = 7;
+  string question2 = 8;
+  string answer1 = 9;
+  string answer2 = 10;
+}
+
+message UpdateUserOut {
+  string username = 1;
+  string email = 2;
+  string first_name = 3;
+  string last_name = 4;
+}
+
+message UpdateUserOutSchema {
+  UpdateUserOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message UserInfoSchema {
+  sint32 id = 1;
+  string username = 2;
+  string email = 3;
+  string department = 4;
+  string first_name = 5;
+  string last_name = 6;
+  bool is_first_login = 7;
+  bool is_super = 8;
+  sint32 group_id = 9;
+}
+
+message UserWithTokenInfoSchema {
+  UserInfoSchema userinfo = 1;
+  string username = 2;
+  string access_token = 3;
+  sint32 expires_in = 4;
+}
+
+message UserWithTokenOutResponseInfoSchema {
+  UserWithTokenInfoSchema data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}

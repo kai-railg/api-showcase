@@ -1,0 +1,190 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Device_Info;
+
+service Device_Info {
+  rpc api_deviceInfo_maintain_status_post (Request) returns (Response) {}
+  rpc api_deviceInfo_maintain_start_tracemalloc_get (Request) returns (Response) {}
+  rpc api_deviceInfo_maintain_stop_tracemalloc_get (Request) returns (Response) {}
+  rpc api_deviceInfo_maintain_get_tracemalloc_get (Request) returns (Response) {}
+  rpc deleteVehicle (Request) returns (Response) {}
+  rpc deleteTg (Request) returns (Response) {}
+  rpc vehicleDetails (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_vehicleDetails_post (Request) returns (Response) {}
+  rpc LoginStatus (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_LoginStatus_post (SetLoginStatusPost) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_mode_get (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_mode_post (SetModePost) returns (Response) {}
+  rpc bsm (Request) returns (Response) {}
+  rpc soc (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_soc_post (SetSocPost) returns (Response) {}
+  rpc longPath (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_longPath_post (SetLongPath) returns (Response) {}
+  rpc shortPath (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_shortPath_post (SetShortPath) returns (Response) {}
+  rpc suspend (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_suspend_post (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_trailerStatus_get (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_trailerStatus_post (SetTrailerStatusPost) returns (Response) {}
+  rpc ghostVehicle (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_ghostVehicle_post (SetGhostVehiclePost) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_ghostVehicleCancel_post (SetGhostVehicleCancelPost) returns (Response) {}
+  rpc getVehicleChassis (Request) returns (Response) {}
+  rpc getVehicleAscChassis (Request) returns (Response) {}
+  rpc getVehiclesys (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_SetOperation_post (Request) returns (Response) {}
+  rpc Operation (Request) returns (Response) {}
+  rpc SuspendReasonReport (ReportSuspend) returns (Response) {}
+  rpc SuspendReason (Request) returns (Response) {}
+  rpc StopTime (ReportStopTime) returns (Response) {}
+  rpc CurrentStatus (Request) returns (Response) {}
+  rpc BtnStatus (Request) returns (Response) {}
+  rpc api_deviceInfo_vehicleStatus_BtnStatus_post (BtnStatusSchemas) returns (Response) {}
+  rpc craneStatus (Request) returns (Response) {}
+  rpc lane (Request) returns (Response) {}
+  rpc craneList (Request) returns (Response) {}
+  rpc plcStatus (Request) returns (Response) {}
+  rpc SetPileInfoReport (SetPileInfoSchemas) returns (Response) {}
+  rpc getPileInfoReport (GetPileInfoSchemas) returns (Response) {}
+  rpc SetPileInfoAllCodeReport (SetPileInfoAllSchemas) returns (Response) {}
+  rpc GetPileInfoAllCodeReport (Request) returns (Response) {}
+  rpc PileMessage (PileMessageSchemas) returns (Response) {}
+  rpc PileMessageGet (Request) returns (Response) {}
+  rpc arriveTg (Request) returns (Response) {}
+  rpc leaveTg (Request) returns (Response) {}
+  rpc SetmultiCarEmergencyStop (Request) returns (Response) {}
+  rpc GetmultiCarEmergencyStop (Request) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message BtnStatusSchemas {
+  string emergency_stop = 1;
+  string left_status = 2;
+  string right_status = 3;
+}
+
+message CreateSuccessSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message GetPileInfoSchemas {
+  string message_name = 1;
+  string charging_station_id = 2;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message PileMessageSchemas {
+  string charging_station_id = 1;
+  string atID = 2;
+  string message = 3;
+  string MessageId = 4;
+}
+
+message Point {
+  float x = 1;
+  float y = 2;
+  float theta = 3;
+}
+
+message Position {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+  float theta = 4;
+  float v = 5;
+}
+
+message ReportStopTime {
+  string vehicle_id = 1;
+  float stop_time = 2;
+}
+
+message ReportSuspend {
+  string vehicle_id = 1;
+  repeated sint32 suspend_reason = 2;
+  float suspend_time_stamp = 3;
+}
+
+message SetGhostVehicleCancelPost {
+  string vehicle_id = 1;
+  bool manual_cancel = 2;
+}
+
+message SetGhostVehiclePost {
+  string vehicle_id = 1;
+  string ghost_status = 2;
+  Position position = 3;
+}
+
+message SetLoginStatusPost {
+  string vehicle_id = 1;
+  string status = 2;
+  string vehicle_type = 3;
+}
+
+message SetLongPath {
+  string vehicle_id = 1;
+  string vehicle_mission_id = 2;
+  string destination_type = 3;
+  repeated Point path = 4;
+}
+
+message SetModePost {
+  string vehicle_id = 1;
+  string mode = 2;
+}
+
+message SetPileInfoAllSchemas {
+  sint32 pile_info_all_code = 1;
+}
+
+message SetPileInfoSchemas {
+  map<string, google.protobuf.Any> pile_info_data = 1;
+}
+
+message SetShortPath {
+  string vehicle_id = 1;
+  string vehicle_mission_id = 2;
+  string destination_type = 3;
+  repeated Point path = 4;
+}
+
+message SetSocPost {
+  string vehicle_id = 1;
+  string fuel_type = 2;
+  string battery_state = 3;
+  float remaining_fuel_percentage = 4;
+  float remaining_fuel_capacity = 5;
+  string charge_status = 6;
+}
+
+message SetTrailerStatusPost {
+  string vehicle_id = 1;
+  string has_trailer = 2;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}

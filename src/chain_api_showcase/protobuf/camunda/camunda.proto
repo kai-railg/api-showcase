@@ -1,0 +1,123 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Camunda;
+
+service Camunda {
+  rpc startProcess (StartProcessRequest) returns (Response) {}
+  rpc setVariablesByBisKey (VariableRequest) returns (Response) {}
+  rpc searchCurrentActiveMessageEvents (ActInfoRequest) returns (Response) {}
+  rpc searchCurrentActInfo (ActInfoRequest) returns (Response) {}
+  rpc receivedTaskMessageEvent (ReceivedTaskRequest) returns (Response) {}
+  rpc receivedMessageEvent (ReceivedMessageEvent) returns (Response) {}
+  rpc receivedCommon (ReceivedCommonRequest) returns (Response) {}
+  rpc completeUserTask (ReceivedCommonRequest) returns (Response) {}
+  rpc cancelProcess (CancelProcessRequest) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message ActInfoRequest {
+  string businessKey = 1;
+  string tenantId = 2;
+  string processDefKey = 3;
+}
+
+message ActInfoResponse {
+  string actDefId = 1;
+  string messageName = 2;
+  string executionId = 3;
+}
+
+message CancelProcessRequest {
+  string businessKey = 1;
+  string tenantId = 2;
+  string processDefKey = 3;
+  string cancelReason = 4;
+}
+
+message CommonDataResponseActInfoResponse {
+  string code = 1;
+  ActInfoResponse data = 2;
+  string msg = 3;
+}
+
+message CommonDataResponseExecutionEntityDto {
+  string code = 1;
+  ExecutionEntityDto data = 2;
+  string msg = 3;
+}
+
+message CommonDataResponseListActInfoResponse {
+  string code = 1;
+  repeated ActInfoResponse data = 2;
+  string msg = 3;
+}
+
+message CommonDataResponseVoid {
+  string code = 1;
+  map<string, google.protobuf.Any> data = 2;
+  string msg = 3;
+}
+
+message ExecutionEntityDto {
+  string processDefinitionId = 1;
+  string activityId = 2;
+  string activityName = 3;
+  string processInstanceId = 4;
+  string parentId = 5;
+  string superExecutionId = 6;
+  string rootProcessInstanceId = 7;
+  string superCaseExecutionId = 8;
+}
+
+message ReceivedCommonRequest {
+  string businessKey = 1;
+  string tenantId = 2;
+  string processDefKey = 3;
+  string activityId = 4;
+  map<string, google.protobuf.Any> variables = 5;
+}
+
+message ReceivedMessageEvent {
+  string businessKey = 1;
+  string tenantId = 2;
+  string processDefKey = 3;
+  string activityId = 4;
+  string messageName = 5;
+  map<string, google.protobuf.Any> variables = 6;
+}
+
+message ReceivedTaskRequest {
+  string businessKey = 1;
+  string tenantId = 2;
+  string processDefKey = 3;
+  string messageName = 4;
+  map<string, google.protobuf.Any> variables = 5;
+}
+
+message StartProcessRequest {
+  string processDefKey = 1;
+  string businessKey = 2;
+  string tenantId = 3;
+  map<string, google.protobuf.Any> variables = 4;
+}
+
+message VariableRequest {
+  string businessKey = 1;
+  string tenantId = 2;
+  string processDefKey = 3;
+  map<string, google.protobuf.Any> variables = 4;
+}

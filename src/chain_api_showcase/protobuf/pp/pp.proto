@@ -1,0 +1,24 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Pp;
+
+service Pp {
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message Model {
+}

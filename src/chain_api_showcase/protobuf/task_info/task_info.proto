@@ -1,0 +1,362 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Task_Info;
+
+service Task_Info {
+  rpc api_taskInfo_maintain_status_post (Request) returns (Response) {}
+  rpc deleteAllArea (Request) returns (Response) {}
+  rpc abortAllJob (Request) returns (Response) {}
+  rpc kvStore (Request) returns (Response) {}
+  rpc api_taskInfo_kvStore_post (SetKvStoreInSchema) returns (Response) {}
+  rpc api_taskInfo_kvStore_delete_post (DeleteKvStore) returns (Response) {}
+  rpc api_taskInfo_kvStore_list_get (Request) returns (Response) {}
+  rpc api_taskInfo_kvStore_list_post (SetKvStoreListInSchema) returns (Response) {}
+  rpc listFind (Request) returns (Response) {}
+  rpc process (Request) returns (Response) {}
+  rpc api_taskInfo_process_post (SetBusProcessInSchema) returns (Response) {}
+  rpc api_taskInfo_containerInfo_get (Request) returns (Response) {}
+  rpc api_taskInfo_containerInfo_post (SetContainerInfoInSchema) returns (Response) {}
+  rpc create (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_status_post (Request) returns (Response) {}
+  rpc stage (Request) returns (Response) {}
+  rpc businessKey (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_get (Request) returns (Response) {}
+  rpc get (Request) returns (Response) {}
+  rpc getStd (Request) returns (Response) {}
+  rpc getByMission (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_abort_post (Request) returns (Response) {}
+  rpc updateJobDest (UpdateJobDest) returns (Response) {}
+  rpc updatePlanContainers (UpdatePlanContainers) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_complete_post (Request) returns (Response) {}
+  rpc jobMission (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_jobMission_post (Request) returns (Response) {}
+  rpc stageTag (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_resendJob_post (ResendJobPost) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_delete_post (DeleteJobPost) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_query_post (QueryJobPost) returns (Response) {}
+  rpc newest (Request) returns (Response) {}
+  rpc all_newest_job (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_all_current_job_get (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_query_all_post (QueryJobAllPost) returns (Response) {}
+  rpc all_newest_job_filter (Request) returns (Response) {}
+  rpc virtual_points (Request) returns (Response) {}
+  rpc api_taskInfo_vehicleJob_virtual_points_post (VirtualPointsPost) returns (Response) {}
+  rpc workflowConfig (Request) returns (Response) {}
+  rpc api_taskInfo_workflowConfig_post (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_get (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_post (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_delete_post (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_deleteByTag_post (Request) returns (Response) {}
+  rpc api_taskInfo_lockArea_change_post (Request) returns (Response) {}
+  rpc changeByTag (Request) returns (Response) {}
+  rpc api_taskInfo_VesselInfo_SetVesselInfo_post (SetVesselInfoSchemas) returns (Response) {}
+  rpc api_taskInfo_VesselInfo_EditVesselInfo_post (Request) returns (Response) {}
+  rpc GetVesselInfo (Request) returns (Response) {}
+  rpc DeleteVesselInfo (DelVesselInfoSchemas) returns (Response) {}
+  rpc api_taskInfo_VesselInfo_SetVesselInfoStatus_post (SetVesselInfoStatusSchemas) returns (Response) {}
+  rpc AlarmMessageStart (SetAlarmMessage) returns (Response) {}
+  rpc AlarmMessageStart_bak (SetAlarmMessage) returns (Response) {}
+  rpc AlarmMessageStop (StopAlarmMessage) returns (Response) {}
+  rpc GetAlarmMessage (AlarmMessageSchema) returns (Response) {}
+  rpc SetFmsMessage (SetFMSMessage) returns (Response) {}
+  rpc GetFmsMessage (AlarmMessageSchema) returns (Response) {}
+  rpc set (Request) returns (Response) {}
+  rpc api_taskInfo_subTask_get_get (Request) returns (Response) {}
+  rpc api_taskInfo_subTask_clear_post (Request) returns (Response) {}
+  rpc fenceEvent (CreateFence) returns (Response) {}
+  rpc finish (FinishFenceEvent) returns (Response) {}
+  rpc api_taskInfo_fenceEvent_get_post (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_get_post (Request) returns (Response) {}
+  rpc add (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_update_post (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_abort_post (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_runImmediate_post (Request) returns (Response) {}
+  rpc api_taskInfo_taskPool_delete_post (Request) returns (Response) {}
+  rpc TsRelated (Request) returns (Response) {}
+  rpc api_taskInfo_TsRelated_delete_post (Request) returns (Response) {}
+  rpc Edit (Request) returns (Response) {}
+  rpc Get (GetTsSchemas) returns (Response) {}
+  rpc api_taskInfo_EquipmentStatus_post (Request) returns (Response) {}
+  rpc api_taskInfo_EquipmentStatus_Get_get (Request) returns (Response) {}
+  rpc api_taskInfo_EquipmentStatus_SpreaderSize_post (Request) returns (Response) {}
+  rpc GetSpreaderSize (Request) returns (Response) {}
+  rpc api_taskInfo_PaceGlobal_post (Request) returns (Response) {}
+  rpc api_taskInfo_quayCrane_SetLane_post (SetLaneInSchema) returns (Response) {}
+  rpc GetLane (Request) returns (Response) {}
+  rpc preArrive (PreArriveInSchema) returns (Response) {}
+  rpc ts_switch (Request) returns (Response) {}
+  rpc api_taskInfo_ts_switch_post (LockSwitchInSchema) returns (Response) {}
+  rpc sim_start_job (Request) returns (Response) {}
+  rpc fullControl (FullStopStatus) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message AlarmMessageSchema {
+  sint32 start_time = 1;
+  sint32 end_time = 2;
+  repeated google.protobuf.Any truck_list = 3;
+  sint32 level = 4;
+  sint32 per_page = 5;
+  sint32 page = 6;
+}
+
+message ContainerInfoSchema {
+  string containerStack = 1;
+  string containerNum = 2;
+  string containerIso = 3;
+  string doorDirection = 4;
+  string referenceId = 5;
+  string weight = 6;
+  string sealing = 7;
+  string type = 8;
+  string emptyFull = 9;
+}
+
+message CreateFence {
+  string device_id = 1;
+  string passing_location = 2;
+  string passing_event = 3;
+  string timestamp = 4;
+}
+
+message CreateSuccessSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message CreateSuccessSchemaCount {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 count = 5;
+}
+
+message DelVesselInfoSchemas {
+  string vesselVisitId = 1;
+}
+
+message DeleteJobPost {
+  repeated string job_ids = 1;
+}
+
+message DeleteKvStore {
+  string namespace = 1;
+  string key = 2;
+}
+
+message FinishFenceEvent {
+  string device_id = 1;
+  string passing_location = 2;
+  string passing_event = 3;
+  sint32 job_finish = 4;
+}
+
+message FullStopStatus {
+  string status = 1;
+}
+
+message GetBusProcessOut {
+  string process_def_key = 1;
+  string tenant_id = 2;
+  string job_type = 3;
+}
+
+message GetBusProcessOutSchema {
+  GetBusProcessOut data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message GetTsSchemas {
+  string ts_name = 1;
+  string ts_vessel = 2;
+  string job_type = 3;
+  string ts_status = 4;
+  string ts_lane = 5;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message LockSwitchInSchema {
+  string ts_name = 1;
+  string ts_state = 2;
+  string ts_type = 3;
+  float x = 4;
+  float y = 5;
+  float heading = 6;
+}
+
+message LogicalLocation {
+  string area = 1;
+  string block = 2;
+  string lane = 3;
+  string stack = 4;
+  string tier = 5;
+}
+
+message PreArriveInSchema {
+  string vehicle_id = 1;
+}
+
+message QueryJobAllPost {
+  string start_time = 1;
+  string end_time = 2;
+  repeated sint32 status = 3;
+  repeated string vehicles = 4;
+  string area = 5;
+  sint32 page = 6;
+  sint32 page_size = 7;
+}
+
+message QueryJobPost {
+  repeated sint32 status = 1;
+  repeated string vehicles = 2;
+  string area = 3;
+  sint32 page = 4;
+  sint32 page_size = 5;
+}
+
+message ResendJobPost {
+  repeated string business_keys = 1;
+  repeated ResendOneJob resend_jobs = 2;
+}
+
+message ResendOneJob {
+  string job_id = 1;
+  string assign_to = 2;
+}
+
+message SetAlarmMessage {
+  string deviceId = 1;
+  string error_origin = 2;
+  repeated SetAlarmMessageBak error_info = 3;
+}
+
+message SetAlarmMessageBak {
+  string deviceId = 1;
+  string timestamp = 2;
+  sint32 alarmLevel = 3;
+  sint32 alarmCode = 4;
+  sint32 alarmType = 5;
+  string description = 6;
+  sint32 subCode = 7;
+  string subDescription = 8;
+  string messageType = 9;
+}
+
+message SetBusProcessInSchema {
+  string process_def_key = 1;
+  string tenant_id = 2;
+  string job_type = 3;
+}
+
+message SetContainerInfoInSchema {
+  string vehicle_id = 1;
+  bool is_reference_id_updated = 2;
+  repeated ContainerInfoSchema containerList = 3;
+}
+
+message SetFMSMessage {
+  string messageUniqueID = 1;
+  string vehicleID = 2;
+  string description = 3;
+  string source = 4;
+  string type = 5;
+  sint32 level = 6;
+}
+
+message SetKvStoreInSchema {
+  string namespace = 1;
+  string key = 2;
+  google.protobuf.Any value = 3;
+}
+
+message SetKvStoreListInSchema {
+  string namespace = 1;
+  string key = 2;
+  google.protobuf.Any value = 3;
+  string operation = 4;
+  bool allow_duplicate = 5;
+}
+
+message SetLaneInSchema {
+  string device_id = 1;
+  string lane_id = 2;
+  string lane_type = 3;
+}
+
+message SetVesselInfoSchemas {
+  string vesselVisitId = 1;
+  string vesselName = 2;
+  string inVyg = 3;
+  string outVyg = 4;
+  string phase = 5;
+  sint32 bollardFore = 6;
+  sint32 bollardAfter = 7;
+  string vessl_type = 8;
+  string initializedAt = 9;
+  string vesselDirection = 10;
+  repeated google.protobuf.Any at_list = 11;
+  repeated google.protobuf.Any QCAG = 12;
+  repeated google.protobuf.Any bowPB = 13;
+  repeated google.protobuf.Any stnPB = 14;
+  string ETA = 15;
+  string ETB = 16;
+  string ETD = 17;
+  string rta_time = 18;
+  repeated google.protobuf.Any coordinate = 19;
+  string messes_type = 20;
+  string update_status = 21;
+}
+
+message SetVesselInfoStatusSchemas {
+  string vesselVisitId = 1;
+  string VesselStatus = 2;
+}
+
+message StopAlarmMessage {
+  string deviceId = 1;
+  string timestamp = 2;
+  sint32 alarmCode = 3;
+}
+
+message UpdateJobDest {
+  string business_key = 1;
+  LogicalLocation destination = 2;
+}
+
+message UpdatePlanContainers {
+  string business_key = 1;
+  map<string, google.protobuf.Any> plannedContainerDestinationList = 2;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}
+
+message VirtualPointsPost {
+  string virtual_type = 1;
+  repeated string key_points = 2;
+}

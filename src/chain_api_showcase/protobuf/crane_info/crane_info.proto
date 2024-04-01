@@ -1,0 +1,145 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Crane_Info;
+
+service Crane_Info {
+  rpc asc_cps_info_report (CPSInfoRequestModel) returns (Response) {}
+  rpc plc (PlcDataRequestModel) returns (Response) {}
+  rpc application_lane_handler (ApplicationLaneRequestModel) returns (Response) {}
+  rpc qc_holding_info (QCPointRequestModel) returns (Response) {}
+  rpc query_container_point (ContainerPointRequestModel) returns (Response) {}
+  rpc qc_position (UpdateQCPositionModel) returns (Response) {}
+  rpc qc_signal (QCSignalRequestModel) returns (Response) {}
+  rpc qc_holding_status (QCHoldingRequestModel) returns (Response) {}
+  rpc api_response_mixed_area_post (MixedAreaRequestModel) returns (Response) {}
+  rpc api_engine_post (EngineRequestModel) returns (Response) {}
+  rpc update_plc_data (UpdatePlcDataModel) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message ApplicationLaneRequestModel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string messageTimestamp = 3;
+  sint32 deviceId = 4;
+  string vehicleId = 5;
+  sint32 lane = 6;
+  bool status = 7;
+}
+
+message CPSInfoRequestModel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string messageTimestamp = 3;
+  string vehicleID = 4;
+  string deviceID = 5;
+  float offset = 6;
+  sint32 status = 7;
+}
+
+message CPSInfoResponseModel {
+  sint32 code = 1;
+  string msg = 2;
+  string error = 3;
+}
+
+message CommonResponseModel {
+  sint32 code = 1;
+  string msg = 2;
+  string error = 3;
+  map<string, google.protobuf.Any> data = 4;
+}
+
+message ContainerPointRequestModel {
+  string messageUniqueID = 1;
+  string messageTimestamp = 2;
+  string QcId = 3;
+  string lane = 4;
+  float offset = 5;
+}
+
+message EngineRequestModel {
+  string messageUniqueID = 1;
+  string messageTimestamp = 2;
+  string node = 3;
+  string vehicleId = 4;
+  bool value = 5;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message MixedAreaRequestModel {
+  string messageUniqueID = 1;
+  string messageTimestamp = 2;
+  sint32 messageNumber = 3;
+  bool value = 4;
+}
+
+message PlcDataRequestModel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string messageTimestamp = 3;
+  sint32 deviceId = 4;
+  map<string, google.protobuf.Any> content = 5;
+}
+
+message QCHoldingRequestModel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string messageTimestamp = 3;
+  sint32 deviceId = 4;
+  sint32 lane = 5;
+  bool lock = 6;
+}
+
+message QCPointRequestModel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string messageTimestamp = 3;
+  sint32 deviceId = 4;
+  sint32 lane = 5;
+}
+
+message QCSignalRequestModel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string messageTimestamp = 3;
+  string QcId = 4;
+  string ActivityAction = 5;
+}
+
+message UpdatePlcDataModel {
+  string messageUniqueID = 1;
+  string messageTimestamp = 2;
+  string plcKey = 3;
+  google.protobuf.Any plcValue = 4;
+}
+
+message UpdateQCPositionModel {
+  string messageUniqueID = 1;
+  string messageTimestamp = 2;
+  sint32 x = 3;
+  string QcId = 4;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}

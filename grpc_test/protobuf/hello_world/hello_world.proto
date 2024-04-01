@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package helloworld;
+
+// 定义gRPC服务
+service HelloWord {
+  // 定义一个RPC方法
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello1 (stream HelloRequest) returns (HelloReply) {}
+  rpc SayHello2 (HelloRequest) returns (stream HelloReply) {}
+  rpc SayHello3 (stream HelloRequest) returns (stream HelloReply) {}
+}
+
+import "google/protobuf/any.proto";
+message HelloReply {
+  uint32 code = 1;
+  string message = 2;
+  Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义传入的消息格式
+message HelloRequest {
+  string name = 1;
+}
+
+// 定义返回的消息格式
+message HelloReply1 {
+  string message = 1;
+}

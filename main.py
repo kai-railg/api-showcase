@@ -17,15 +17,15 @@ from core import (
 )
 
 if __name__ == '__main__':
-    for d in ["api", "schemas"]:
+    for d in ["api", "schemas", "protobuf"]:
         if not os.path.exists(f"{pip_dir}/{d}/"):
             os.makedirs(f"{pip_dir}/{d}/", exist_ok=True)
 
     for project_config in projects:
         name: str = project_config["name"]
-        openapi_json = get_openapi_json(project_config)
-        write_openapi_json(openapi_json, name)
-        generate_pydantic_model(name)
+        # openapi_json = get_openapi_json(project_config)
+        # write_openapi_json(openapi_json, name)
+        # generate_pydantic_model(name)
         generate_api_code(project_config)
-        format_file(name)
+        # format_file(name)
         print(f"generate {name} success...")

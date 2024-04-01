@@ -1,0 +1,270 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Inventory;
+
+service Inventory {
+  rpc AddPoint (AddPointSchema) returns (Response) {}
+  rpc GetPointsHeading (PositionWithoutTierSchema) returns (Response) {}
+  rpc GetAvailableTier (GetAvailableTierSchema) returns (Response) {}
+  rpc GetContainerPoints (GetContainerPointsSchema) returns (Response) {}
+  rpc InventoryUpdate (InventoryUpdateSchema) returns (Response) {}
+  rpc ContainerCheck (ContainerCheckSchema) returns (Response) {}
+  rpc ImportAreaContainers (ImportContainersSchema) returns (Response) {}
+  rpc ImportContainers (ImportContainersSchema) returns (Response) {}
+  rpc RemoveContainers (RemoveContainerSchema) returns (Response) {}
+  rpc EditContainers (EditContainerSchema) returns (Response) {}
+  rpc LimitLow (LimitLowSchema) returns (Response) {}
+  rpc EventListen (EventListenSchema) returns (Response) {}
+  rpc ContainerQuery (ContainerQuerySchema) returns (Response) {}
+  rpc ContainerTaskCheck (TaskCheckSchema) returns (Response) {}
+  rpc CommonInfo (ContainerCommonInfoSchema) returns (Response) {}
+  rpc TGInitNotify (TGInitNotifySchema) returns (Response) {}
+  rpc QcLeaveNotify (QcLeaveNotifySchema) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message AddPointSchema {
+  string version = 1;
+  repeated SubPoints points = 2;
+}
+
+message ContainerCheckSchema {
+  repeated PositionAndContainer containers = 1;
+  string movement = 2;
+  string job_type = 3;
+  string operator = 4;
+  string vehicle_id = 5;
+}
+
+message ContainerCommonInfoSchema {
+  string message_name = 1;
+}
+
+message ContainerDBSchema {
+  string number = 1;
+  string unique_id = 2;
+  string iso = 3;
+  sint32 length = 4;
+  sint32 width = 5;
+  sint32 height = 6;
+  sint32 weight = 7;
+  float fms_x = 8;
+  float fms_y = 9;
+  float fms_z = 10;
+  string orientation = 11;
+  float fms_orientation = 12;
+  string reefer_status = 13;
+  bool CanBeHandle = 14;
+  string vendor = 15;
+  string color = 16;
+  string associated_twin_container_1 = 17;
+  string associated_twin_container_2 = 18;
+  string ExamImgs = 19;
+  bool iso_complement_status = 20;
+}
+
+message ContainerImportSchema {
+  string number = 1;
+  string unique_id = 2;
+  string iso = 3;
+  sint32 length = 4;
+  sint32 width = 5;
+  sint32 height = 6;
+  sint32 weight = 7;
+  float fms_x = 8;
+  float fms_y = 9;
+  float fms_z = 10;
+  string orientation = 11;
+  float fms_orientation = 12;
+  string reefer_status = 13;
+  bool CanBeHandle = 14;
+  string vendor = 15;
+  string color = 16;
+  string associated_twin_container_1 = 17;
+  string associated_twin_container_2 = 18;
+  string ExamImgs = 19;
+  bool iso_complement_status = 20;
+  bool flush = 21;
+}
+
+message ContainerQuerySchema {
+  string message_name = 1;
+  google.protobuf.Any data = 2;
+}
+
+message EditContainerSchema {
+  string area = 1;
+  string block = 2;
+  string query_unique_id = 3;
+  string container_number = 4;
+  string orientation = 5;
+  sint32 stack = 6;
+  sint32 tier = 7;
+}
+
+message EventListenSchema {
+  string area = 1;
+  string block = 2;
+  string messageName = 3;
+  string task_status = 4;
+  string task_id = 5;
+  string vin = 6;
+  sint32 lane = 7;
+  sint32 tier = 8;
+  sint32 stack = 9;
+}
+
+message GetAvailableTierSchema {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  sint32 stack = 4;
+}
+
+message GetContainerPointsSchema {
+  string unique_id = 1;
+  string number = 2;
+  string area = 3;
+  string block = 4;
+  sint32 lane = 5;
+  sint32 stack = 6;
+  sint32 tier = 7;
+  repeated float points = 8;
+  bool total_container = 9;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message ImportContainersSchema {
+  repeated PositionAndContainerImport containers = 1;
+}
+
+message InventoryUpdateSchema {
+  repeated PositionAndContainer containers = 1;
+  string operation_type = 2;
+  string message_name = 3;
+  string vehicle_id = 4;
+}
+
+message LimitLowSchema {
+  repeated string blocks = 1;
+}
+
+message PosDataDBSchema {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  sint32 tier = 4;
+  sint32 stack = 5;
+  string fms_x = 6;
+  string fms_y = 7;
+  string fms_z = 8;
+}
+
+message PositionAndContainer {
+  PosDataDBSchema position = 1;
+  ContainerDBSchema container = 2;
+}
+
+message PositionAndContainerImport {
+  PositionImportSchema position = 1;
+  ContainerImportSchema container = 2;
+  bool need_check = 3;
+}
+
+message PositionImportSchema {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  sint32 tier = 4;
+  sint32 stack = 5;
+  string fms_x = 6;
+  string fms_y = 7;
+  string fms_z = 8;
+  sint32 pos_data_id = 9;
+}
+
+message PositionWithoutTierSchema {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  sint32 stack = 4;
+}
+
+message QcLeaveNotifySchema {
+  string block = 1;
+}
+
+message RemoveContainerSchema {
+  string unique_id = 1;
+  string number = 2;
+  string area = 3;
+  string block = 4;
+  sint32 lane = 5;
+  sint32 stack = 6;
+  sint32 tier = 7;
+  repeated float points = 8;
+  bool total_container = 9;
+}
+
+message ResponseSuccess {
+  sint32 code = 1;
+  string message = 2;
+  string content = 3;
+  string timeStamp = 4;
+}
+
+message SubPoints {
+  float x = 1;
+  float y = 2;
+  string name = 3;
+  sint32 size = 4;
+  string area = 5;
+  string block = 6;
+  sint32 lane = 7;
+  sint32 stack = 8;
+}
+
+message SubTaskCheckSchema {
+  PositionImportSchema position = 1;
+  ContainerImportSchema container = 2;
+  bool need_check = 3;
+  string operation_type = 4;
+  string jobUniqueID = 5;
+  bool check_status = 6;
+  string check_msg = 7;
+  bool allow_send = 8;
+  google.protobuf.Any pos_data_obj = 9;
+  google.protobuf.Any container_obj = 10;
+}
+
+message TGInitNotifySchema {
+  string truck_type = 1;
+  sint32 lane = 2;
+}
+
+message TaskCheckSchema {
+  repeated SubTaskCheckSchema tasks = 1;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}

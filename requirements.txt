@@ -8,4 +8,7 @@ twine==5.0.0
 requests==2.31.0
 black==24.2.0
 chain-nacos==0.0.11
+grpcio~=1.62.1
+grpcio-tools~=1.62.1
+protobuf~=4.25.3
 

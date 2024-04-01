@@ -1,0 +1,33 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package {{ module_name }};
+
+service {{ service_name }} {
+  {%- for func in functions %}
+  rpc {{ func.name }} ({{ func.model }}) returns (Response) {}
+  {%- endfor %}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+{%- for request in requests %}
+
+message {{ request.name }} {
+  {%- for p in request.params %}
+  {{ p.type }} {{ p.name }} = {{ p.index }};
+  {%- endfor %}
+}
+
+{%- endfor %}

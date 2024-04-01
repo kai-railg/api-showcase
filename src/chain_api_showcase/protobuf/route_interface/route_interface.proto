@@ -1,0 +1,65 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Route_Interface;
+
+service Route_Interface {
+  rpc update (UpdateRequest) returns (Response) {}
+  rpc get_path (Request) returns (Response) {}
+  rpc navi_status (UpdateRequest) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message EndPose {
+  float x = 1;
+  float y = 2;
+  float heading = 3;
+  sint32 bidirection = 4;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message StartPose {
+  float x = 1;
+  float y = 2;
+  float heading = 3;
+  float trailer_x = 4;
+  float trailer_y = 5;
+  float trailer_heading = 6;
+}
+
+message UpdateRequest {
+  string device_id = 1;
+  string trans_id = 2;
+  string task_id = 3;
+  sint32 timestamp = 4;
+  StartPose start_pose = 5;
+  EndPose end_pose = 6;
+  sint32 device_type = 7;
+  string traj_type = 8;
+  string task_type = 9;
+  map<string, google.protobuf.Any> vessel_info = 10;
+  repeated google.protobuf.Any passing_location = 11;
+  bool arrive = 12;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}

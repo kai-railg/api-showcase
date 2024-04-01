@@ -1,0 +1,274 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Task_Scheduler;
+
+service Task_Scheduler {
+  rpc receive_mi (MovementInstructions) returns (Response) {}
+  rpc remove (Request) returns (Response) {}
+  rpc dc (DependencyCheck) returns (Response) {}
+  rpc cancel (MovementCancel) returns (Response) {}
+  rpc receive_mi_update_post (MovementInstructions) returns (Response) {}
+  rpc receive_action_code (VehicleOrder) returns (Response) {}
+  rpc order_update (TOSOrderUpdate) returns (Response) {}
+  rpc check_sc (Request) returns (Response) {}
+  rpc check_sc_details (Request) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message ActionCodeResponse {
+  string messageName = 1;
+  string messageUniqueId = 2;
+  string messageTimestamp = 3;
+  bool buffer = 4;
+  string deliveryStatus = 5;
+  LocationCheck locationCheck = 6;
+}
+
+message ContainerDefinition {
+  string uniqueObjectID = 1;
+  string number = 2;
+  Origin logicalLocation = 3;
+  PortLocation portLocation = 4;
+  string ISO = 5;
+  float length = 6;
+  float width = 7;
+  float height = 8;
+  float weight = 9;
+  string relativePos = 10;
+  bool targetReady = 11;
+  string reeferStatus = 12;
+  string associatedTwinContainer_1 = 13;
+  string associatedTwinContainer_2 = 14;
+}
+
+message DependencyCheck {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  repeated WorkQueueInfo movementInstructions = 3;
+}
+
+message DependencyCheckResponse {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string timeStamp = 3;
+  map<string, google.protobuf.Any> dependencyList = 4;
+}
+
+message DependencyDefinition {
+  string movementUniqueID = 1;
+  string processDependency = 2;
+  string dependencyType = 3;
+}
+
+message DependencyInfo {
+  string movementUniqueID = 1;
+  Origin origin = 2;
+  Destination destination = 3;
+  string containerNumber = 4;
+}
+
+message DependencyItem {
+  repeated string pickupDependency = 1;
+  repeated string groundDependency = 2;
+}
+
+message Destination {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  string stack = 4;
+  sint32 tier = 5;
+  string orientation = 6;
+}
+
+message ExecutorDestination {
+  ExecutorLogicalLocation logicalLocation = 1;
+  ExecutorPortLocation portLocation = 2;
+}
+
+message ExecutorLogicalLocation {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  string stack = 4;
+  sint32 tier = 5;
+  string orientation = 6;
+}
+
+message ExecutorPortLocation {
+  float portX = 1;
+  float portY = 2;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message JobContent {
+  string tosUniqueID = 1;
+  string twinMoveID = 2;
+}
+
+message LocationCheck {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  sint32 stack = 4;
+  sint32 tier = 5;
+  string orientation = 6;
+}
+
+message MovementCancel {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string timestamp = 3;
+  string equipmentName = 4;
+  string equipType = 5;
+}
+
+message MovementCancelResponse {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string timestamp = 3;
+  bool cancelResult = 4;
+}
+
+message MovementCreatedResponse {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string timeStamp = 3;
+  bool stopStatus = 4;
+  repeated MovementInstructionStatus movementInstructionStatus = 5;
+}
+
+message MovementInstruction {
+  string movementUniqueID = 1;
+  string movementStatus = 2;
+  sint32 messageSequence = 3;
+  string workQueueName = 4;
+  string movementType = 5;
+  sint32 twinPickupGap = 6;
+  sint32 twinGroundingGap = 7;
+  string equipmentName = 8;
+  string teleoperatorAssistance = 9;
+  Origin origin = 10;
+  Destination destination = 11;
+  string originStartTime = 12;
+  ContainerDefinition containerDetails = 13;
+  string associatedTwinMove = 14;
+  repeated DependencyDefinition movementDependencies = 15;
+}
+
+message MovementInstructionStatus {
+  string movementUniqueID = 1;
+  string status = 2;
+  string equipmentName = 3;
+  repeated string rejectCode = 4;
+  repeated string rejectReason = 5;
+}
+
+message MovementInstructions {
+  string messageUniqueID = 1;
+  string messageName = 2;
+  string timeStamp = 3;
+  string messageSource = 4;
+  repeated MovementInstruction movementInstructions = 5;
+}
+
+message MovementUpdateResponse {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string timeStamp = 3;
+  bool updateResult = 4;
+}
+
+message Origin {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  string stack = 4;
+  sint32 tier = 5;
+  string orientation = 6;
+}
+
+message PlannedContainerDestinationDict {
+  string area = 1;
+  string block = 2;
+  sint32 lane = 3;
+  string stack = 4;
+  sint32 tier = 5;
+  string uniqueObjectID = 6;
+  bool targetReady = 7;
+  string reeferStatus = 8;
+  string relativePos = 9;
+  string destDoorDirection = 10;
+  string containerNum = 11;
+  string containerISO = 12;
+  float containerLengthFT = 13;
+  float containerHeight = 14;
+  float containerWeightKG = 15;
+  float containerWidth = 16;
+  string associatedTwinContainer_id = 17;
+}
+
+message PortLocation {
+  float portX = 1;
+  float portY = 2;
+}
+
+message StageData {
+  string job_status = 1;
+  string job_lane = 2;
+}
+
+message TOSOrderUpdate {
+  string messageName = 1;
+  string messageUniqueID = 2;
+  string timestamp = 3;
+  string updateOrderOperationType = 4;
+  string updateOrderUniqueID = 5;
+  bool updateOrderStatus = 6;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}
+
+message VehicleOrder {
+  string messageName = 1;
+  string messageUniqueId = 2;
+  string messageTimestamp = 3;
+  string moveType = 4;
+  string uniqueOrderID = 5;
+  string origin = 6;
+  string jobType = 7;
+  string vehicleID = 8;
+  sint32 bidirection = 9;
+  JobContent job_content = 10;
+  string movementType = 11;
+  ExecutorDestination destination = 12;
+  repeated PlannedContainerDestinationDict plannedContainerDestinationList = 13;
+  string actionCode = 14;
+  StageData stageData = 15;
+}
+
+message WorkQueueInfo {
+  string work_queue = 1;
+  repeated DependencyInfo tos_to_scheduler_dependency_list = 2;
+}

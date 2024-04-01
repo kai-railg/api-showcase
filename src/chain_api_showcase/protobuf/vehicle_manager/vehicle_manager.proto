@@ -1,0 +1,589 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Vehicle_Manager;
+
+service Vehicle_Manager {
+  rpc fleetmgmt (Request) returns (Response) {}
+  rpc stop (StopRequestInSchema) returns (Response) {}
+  rpc stop_all (StopAllRequestInSchema) returns (Response) {}
+  rpc position_remove (RemoveVehiclePositionRequestInSchema) returns (Response) {}
+  rpc position_remove_all (RemoveAllVehiclePositionRequestInSchema) returns (Response) {}
+  rpc power (VehiclePowerRequestInSchema) returns (Response) {}
+  rpc bertinitial (BerthRequestInSchema) returns (Response) {}
+  rpc navigation (NavigationRequestInSchema) returns (Response) {}
+  rpc api_vehicleManager_abort_post (Request) returns (Response) {}
+  rpc status (Request) returns (Response) {}
+  rpc twist_locks (Request) returns (Response) {}
+  rpc handshake (HandshakeRequestInSchema) returns (Response) {}
+  rpc qc_positions_change (QCPositionRequestInSchema) returns (Response) {}
+  rpc unlock (UnlockVehicleRequestInSchema) returns (Response) {}
+  rpc alignment (AlignmentRequestInSchema) returns (Response) {}
+  rpc safetyLeave (SafeLeaveRequestInSchema) returns (Response) {}
+  rpc lockout_notification (LockoutNotificationRequestInSchema) returns (Response) {}
+  rpc short_route_mission (ShortBackPathRequestInSchema) returns (Response) {}
+  rpc query_position_available (QueryAvailablePosRequestInSchema) returns (Response) {}
+  rpc report_led_information (ReportLedInfoRequestInSchema) returns (Response) {}
+  rpc weather (ReportWeatherRequestInSchema) returns (Response) {}
+  rpc ts_positions_change (TSPositionRequestInSchema) returns (Response) {}
+  rpc create_qctp_area (CreateDynamicQCAreaRequestInSchema) returns (Response) {}
+  rpc delete_qctp_area (DeleteDynamicQCAreaRequestInSchema) returns (Response) {}
+  rpc handle_area_by_qc_number (HandleAreaByQCRequestInSchema) returns (Response) {}
+  rpc query_position_available_by_destination_type (QueryAvailablePosByTypeRequestInSchema) returns (Response) {}
+  rpc handel_nopass_area (Request) returns (Response) {}
+  rpc query_nopass_area (Request) returns (Response) {}
+  rpc report_speed_ratio (ReportSpeedRatioRequestInSchema) returns (Response) {}
+  rpc save_lock_area_check_time (Request) returns (Response) {}
+  rpc forced_alarm_cancel (Request) returns (Response) {}
+  rpc report_qtruck_command (ReportQtruckCommandRequestInSchema) returns (Response) {}
+  rpc alarm_request (AlarmRequestInSchema) returns (Response) {}
+  rpc receive_vehicle_message (VinMqttRequestInSchema) returns (Response) {}
+  rpc sensorInfo (Request) returns (Response) {}
+  rpc unlock_init (Request) returns (Response) {}
+  rpc eventRegister (EventRegisterInSchema) returns (Response) {}
+  rpc api_test (Request) returns (Response) {}
+  rpc start_tracemalloc (Request) returns (Response) {}
+  rpc stop_tracemalloc (Request) returns (Response) {}
+  rpc get_tracemalloc (Request) returns (Response) {}
+  rpc GetRRTaskInfo (TaskInfoRequestInSchema) returns (Response) {}
+  rpc SetRRTaskStatus (TaskStatusRequestInSchema) returns (Response) {}
+  rpc TruckPathReport (PathRequestInSchema) returns (Response) {}
+  rpc GetRoute (PathRequestInSchema) returns (Response) {}
+  rpc getEmergencyStopInfo (Request) returns (Response) {}
+  rpc SetTruckLocationInfo (Request) returns (Response) {}
+  rpc SetTruckChassis (Request) returns (Response) {}
+  rpc SetTruckSystemStatus (Request) returns (Response) {}
+  rpc SetSuspendReasonReport (Request) returns (Response) {}
+  rpc CauseMatchFailure (Request) returns (Response) {}
+  rpc GetServiceStatus (Request) returns (Response) {}
+  rpc GetRainFallInfo (Request) returns (Response) {}
+  rpc GetAllvehicleinfo (Request) returns (Response) {}
+  rpc GetTrunkInformation (Request) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message AbortResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 status = 5;
+  string errorMsg = 6;
+}
+
+message AlarmRequestInSchema {
+  HeaderObj header = 1;
+  BodyObj body = 2;
+}
+
+message AlarmResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message AlignmentRequestInSchema {
+  string vehicleMissionId = 1;
+  string timeStamp = 2;
+  string vin = 3;
+  string operationType = 4;
+  string craneID = 5;
+  sint32 offset = 6;
+  sint32 ICPS = 7;
+  string containerId1 = 8;
+  sint32 containerId1Size = 9;
+  sint32 containerId1Pos = 10;
+  string containerId2 = 11;
+  sint32 containerId2Size = 12;
+  sint32 containerId2Pos = 13;
+}
+
+message AlignmentResponseInSchema {
+  sint32 status = 1;
+  string errorMsg = 2;
+}
+
+message BerthRequestInSchema {
+  string vesselVisitId = 1;
+  sint32 operateType = 2;
+  sint32 vesselDirection = 3;
+  repeated google.protobuf.Any bowPbNum = 4;
+  repeated google.protobuf.Any sternPbNum = 5;
+}
+
+message BerthResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message BodyObj {
+  sint32 alarmLevel = 1;
+  sint32 alarmType = 2;
+  sint32 alarmCode = 3;
+  string description = 4;
+  sint32 subCode = 5;
+  string subDescription = 6;
+}
+
+message CreateDynamicQCAreaRequestInSchema {
+  float xl = 1;
+  float xr = 2;
+  string ship_id = 3;
+  string position = 4;
+  sint32 lane = 5;
+  bool navi = 6;
+}
+
+message CreateDynamicQCAreaResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message CreateSuccessSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+}
+
+message DeleteDynamicQCAreaRequestInSchema {
+  string ship_id = 1;
+}
+
+message DeleteDynamicQCAreaResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message EventRegisterInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  string timeStamp = 3;
+  string eventType = 4;
+  google.protobuf.Any data = 5;
+}
+
+message FleetmgmtResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  sint32 count = 5;
+  repeated google.protobuf.Any vehicles = 6;
+}
+
+message HTTPValidationError {
+  repeated ValidationError errors = 1;
+}
+
+message HandleAreaByQCRequestInSchema {
+  string transId = 1;
+  string lockAreaId = 2;
+  string operationType = 3;
+  string freeZone = 4;
+  repeated google.protobuf.Any allowedEquipments = 5;
+}
+
+message HandleAreaByQCResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message HandshakeRequestInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  string handshakeType = 3;
+}
+
+message HandshakeResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message HeaderObj {
+  string transId = 1;
+  string deviceId = 2;
+  string timestamp = 3;
+}
+
+message LockoutNotificationRequestInSchema {
+  string vin = 1;
+  string missionId = 2;
+  string targetId = 3;
+  sint32 autoCalib = 4;
+}
+
+message LockoutNotificationResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message NavigationRequestInSchema {
+  string vehicleMissionId = 1;
+  sint32 parkClosely = 2;
+  string operationType = 3;
+  string vin = 4;
+  float X = 5;
+  float Y = 6;
+  float XY_heading = 7;
+  string destination = 8;
+  string missionType = 9;
+  string movementType = 10;
+  string orientation = 11;
+  string locationType = 12;
+  bool moveTask = 13;
+  repeated google.protobuf.Any passingLocation = 14;
+  sint32 missionStage = 15;
+  sint32 bidirection = 16;
+  string containerId1 = 17;
+  sint32 containerId1Size = 18;
+  sint32 containerId1Pos = 19;
+  sint32 containerId1Seq = 20;
+  string containerId1Orientation = 21;
+  string containerId1ISO = 22;
+  float containerId1X = 23;
+  float containerId1Y = 24;
+  sint32 containerId1Weight = 25;
+  string containerId2 = 26;
+  sint32 containerId2Size = 27;
+  sint32 containerId2Pos = 28;
+  sint32 containerId2Seq = 29;
+  string containerId2ISO = 30;
+  float containerId2X = 31;
+  float containerId2Y = 32;
+  string containerId2Orientation = 33;
+}
+
+message PathRequestInSchema {
+  string i_at_id = 1;
+  repeated google.protobuf.Any waypoints = 2;
+}
+
+message PathResponseInSchema {
+  sint32 code = 1;
+  string msg = 2;
+  string truck_id = 3;
+}
+
+message QCPositionRequestInSchema {
+  string QCNumber = 1;
+  string vehicleMissionId = 2;
+  sint32 x = 3;
+  sint32 y = 4;
+}
+
+message QCPositionResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message QueryAvailablePosByTypeRequestInSchema {
+  string vehicleMissionId = 1;
+  string timestamp = 2;
+  repeated string destinationType = 3;
+}
+
+message QueryAvailablePosByTypeResponseInSchema {
+  string data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string vehicleMissionId = 6;
+  string timestamp = 7;
+}
+
+message QueryAvailablePosRequestInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  string destination = 3;
+  sint32 timestamp = 4;
+}
+
+message QueryAvailablePosResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message RemoveAllVehiclePositionRequestInSchema {
+  string requestId = 1;
+  string operationType = 2;
+}
+
+message RemoveAllVehiclePositionResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string vin = 5;
+  string statusCode = 6;
+  string errorMsg = 7;
+}
+
+message RemoveVehiclePositionRequestInSchema {
+  string transId = 1;
+  string operationType = 2;
+}
+
+message RemoveVehiclePositionResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string vin = 5;
+  string statusCode = 6;
+  string errorMsg = 7;
+}
+
+message ReportLedInfoRequestInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  sint32 LedValues = 3;
+  sint32 ID = 4;
+}
+
+message ReportLedInfoResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message ReportQtruckCommandRequestInSchema {
+  string transId = 1;
+  string vin = 2;
+  sint32 missionCommand = 3;
+}
+
+message ReportQtruckCommandResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message ReportSpeedRatioRequestInSchema {
+  string vin = 1;
+  sint32 speedRatio = 2;
+}
+
+message ReportWeatherRequestInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  string operationType = 3;
+}
+
+message ReportWeatherResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message SafeLeaveRequestInSchema {
+  string vin = 1;
+  string operationType = 2;
+  string vehicleMissionId = 3;
+  string timeStamp = 4;
+}
+
+message SafeLeaveResponseInSchema {
+  sint32 code = 1;
+  string vin = 2;
+  string errorMsg = 3;
+}
+
+message SensorResponseInSchema {
+  sint32 FrontObsExists = 1;
+  sint32 RearObsExists = 2;
+  sint32 ObsHeight = 3;
+}
+
+message ShortBackPathRequestInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  string destination = 3;
+}
+
+message ShortBackPathResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message StopAllRequestInSchema {
+  string requestId = 1;
+  sint32 command = 2;
+}
+
+message StopAllResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string vin = 5;
+}
+
+message StopRequestInSchema {
+  string vehicle_id = 1;
+  sint32 command = 2;
+  string operation_type = 3;
+}
+
+message StopResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string vin = 5;
+}
+
+message TSPositionRequestInSchema {
+  string transId = 1;
+  string ts_name = 2;
+  string ts_x = 3;
+  string ts_lane = 4;
+  string ts_type = 5;
+}
+
+message TSPositionResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string ts_name = 6;
+  float ts_x = 7;
+  float ts_y = 8;
+}
+
+message TaskInfoRequestInSchema {
+  string truck_id = 1;
+}
+
+message TaskInfoResponseInSchema {
+  map<string, google.protobuf.Any> container_info = 1;
+  sint32 task_type = 2;
+  sint32 task_op = 3;
+  sint32 task_id = 4;
+  sint32 nGen_task_id = 5;
+  map<string, google.protobuf.Any> header = 6;
+  bool overtake = 7;
+  map<string, google.protobuf.Any> tp_info = 8;
+  map<string, google.protobuf.Any> vessel_info = 9;
+  sint32 force_overtake = 10;
+  bool is_redo = 11;
+  string origin_tasktype = 12;
+  sint32 task_source = 13;
+}
+
+message TaskStatusRequestInSchema {
+  bool success = 1;
+  map<string, google.protobuf.Any> task_info = 2;
+  float time_stamp = 3;
+  string truck_id = 4;
+}
+
+message UnlockVehicleRequestInSchema {
+  string vin = 1;
+  string vehicleMissionId = 2;
+  string operationType = 3;
+  sint32 offset = 4;
+}
+
+message UnlockVehicleResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string status = 5;
+  string errorMsg = 6;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}
+
+message VehiclePowerRequestInSchema {
+  string requestId = 1;
+  string vin = 2;
+  string mgmtType = 3;
+}
+
+message VehiclePowerResponseInSchema {
+  google.protobuf.Any data = 1;
+  sint32 code = 2;
+  string msg = 3;
+  string error = 4;
+  string vin = 5;
+}
+
+message VinMqttRequestInSchema {
+  string topic_name = 1;
+  sint32 qos = 2;
+  string message_type = 3;
+  string received_data = 4;
+}
+
+message VinMqttResponseInSchema {
+  bool success = 1;
+}

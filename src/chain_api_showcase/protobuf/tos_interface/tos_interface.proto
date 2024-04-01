@@ -1,0 +1,139 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package Tos_Interface;
+
+service Tos_Interface {
+  rpc fms_area_inventory_query_post (AreaInventoryQuery) returns (Response) {}
+  rpc response (WaCreatedResponse) returns (Response) {}
+  rpc fms_wacancelled_response_post (WaCancelledResponse) returns (Response) {}
+  rpc fms_sc_status_post (ScStatus) returns (Response) {}
+  rpc updated (AreaAvailabilityUpdated) returns (Response) {}
+  rpc fms_container_change_post (ContainerUpdate) returns (Response) {}
+  rpc message (Request) returns (Response) {}
+  rpc inventory_import_degree (InventoryImportDegree) returns (Response) {}
+  rpc login (Login) returns (Response) {}
+  rpc send (ButtonSend) returns (Response) {}
+  rpc refresh (Request) returns (Response) {}
+  rpc finish_workinstruction_csv (Request) returns (Response) {}
+  rpc init_yard_csv (Request) returns (Response) {}
+}
+
+message Request {
+  google.protobuf.Any data = 1;
+}
+
+message Response {
+  uint32 code = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+  string timestamp = 4;
+  uint32 duration = 5;
+}
+
+// 定义参数结构体
+
+message AreaAvailabilityUpdated {
+  string messageID = 1;
+  string messageName = 2;
+  string AreaStatusEvent_type = 3;
+  string Area_type = 4;
+  string status = 5;
+  repeated google.protobuf.Any Position_list = 6;
+}
+
+message AreaInventoryQuery {
+  string messageID = 1;
+  string messageName = 2;
+  string timeStamp = 3;
+  string InventoryStatusQueryEvent_type = 4;
+  string Area_type = 5;
+  string Position_type = 6;
+  string block = 7;
+  string lane = 8;
+}
+
+message BodyGuiImportInventoryUploadGuiInventoryPost {
+  bytes uploadfile = 1;
+}
+
+message BodyImportInstructionUploadWorkInstructionPost {
+  bytes uploadfile = 1;
+}
+
+message BodyImportInventoryUploadWorkInventoryPost {
+  bytes uploadfile = 1;
+}
+
+message BodyImportQueueUploadWorkQueuePost {
+  bytes uploadfile = 1;
+}
+
+message ButtonSend {
+  string task_name = 1;
+}
+
+message ContainerUpdate {
+  string messageID = 1;
+  string messageName = 2;
+  string InventoryStatusEvent_type = 3;
+  string uid = 4;
+  string number = 5;
+  string ISO = 6;
+  string isoLenFt = 7;
+  string length = 8;
+  string width = 9;
+  string height = 10;
+  string weight = 11;
+  string Position_type = 12;
+  string area = 13;
+  string lane = 14;
+  string offsetMm = 15;
+  string orientation = 16;
+  string stack = 17;
+  string relativePos = 18;
+}
+
+message HTTPValidationError {
+  repeated ValidationError detail = 1;
+}
+
+message InventoryImportDegree {
+  string msg = 1;
+  sint32 code = 2;
+}
+
+message Login {
+  string user_name = 1;
+  string password = 2;
+}
+
+message ScStatus {
+  string vehicle_id = 1;
+  string mode = 2;
+}
+
+message ValidationError {
+  repeated sint32 loc = 1;
+  string msg = 2;
+  string type = 3;
+}
+
+message WaCancelledResponse {
+  string messageID = 1;
+  string messageName = 2;
+  string status = 3;
+  string name = 4;
+  string equipType = 5;
+  string AckMessage_code = 6;
+}
+
+message WaCreatedResponse {
+  string messageID = 1;
+  string timeStamp = 2;
+  string pong = 3;
+  string messageUniqueID = 4;
+  string messageName = 5;
+  string AckEvent_type = 6;
+  string status = 7;
+}
